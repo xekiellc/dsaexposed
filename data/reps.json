@@ -1,0 +1,325 @@
+[
+  {
+    "id": "alexandria-ocasio-cortez",
+    "name": "Alexandria Ocasio-Cortez",
+    "district": "NY-14",
+    "state": "New York",
+    "office": "U.S. Representative",
+    "party": "Democrat",
+    "dsa_status": "DSA Member",
+    "priority": "critical",
+    "photo": "",
+    "profile_url": "/reps/profiles/alexandria-ocasio-cortez.html",
+    "tags": ["Anti-Capitalism", "BDS Support", "Hamas Defense", "DSA Member", "Squad", "Iron Dome No"],
+    "pillars": {
+      "words": true,
+      "funding": true,
+      "support": true,
+      "networks": true
+    },
+    "statements": [
+      {
+        "quote": "Capitalism is an ideology of capital — the most important thing is the concentration of capital and it will move towards the concentration of capital at the expense of human life.",
+        "source": "Interview",
+        "date": "2019",
+        "url": ""
+      },
+      {
+        "quote": "I think that we have created a vision of the future that's fundamentally different from the one the right wants.",
+        "source": "DSA Convention",
+        "date": "2019",
+        "url": ""
+      }
+    ],
+    "votes": [
+      {
+        "date": "2021-09-23",
+        "bill": "Iron Dome Supplemental Appropriations Act",
+        "vote": "NO",
+        "roll_call": "309",
+        "source": "House Record"
+      },
+      {
+        "date": "2023-11-07",
+        "bill": "H.Res. 845 — Censure of Rashida Tlaib",
+        "vote": "NO",
+        "roll_call": "607",
+        "source": "House Record"
+      },
+      {
+        "date": "2023-10-25",
+        "bill": "H.Res. 771 — Condemning Hamas Oct 7 Attack",
+        "vote": "PRESENT",
+        "roll_call": "521",
+        "source": "House Record"
+      }
+    ],
+    "funding": [
+      {
+        "source": "Justice Democrats PAC",
+        "amount": "$2.1M",
+        "cycle": "2024",
+        "risk": "high",
+        "fec_ref": ""
+      }
+    ],
+    "networks": ["DSA National", "Justice Democrats", "Working Families Party", "Sunrise Movement", "BDS Movement"]
+  },
+  {
+    "id": "rashida-tlaib",
+    "name": "Rashida Tlaib",
+    "district": "MI-12",
+    "state": "Michigan",
+    "office": "U.S. Representative",
+    "party": "Democrat",
+    "dsa_status": "DSA Endorsed",
+    "priority": "critical",
+    "photo": "",
+    "profile_url": "/reps/profiles/rashida-tlaib.html",
+    "tags": ["Terrorism Ties", "BDS Support", "Anti-America", "DSA Endorsed", "Squad", "Hamas Defender", "Censured"],
+    "pillars": {
+      "words": true,
+      "funding": true,
+      "support": true,
+      "networks": true
+    },
+    "statements": [
+      {
+        "quote": "From the river to the sea, Palestine will be free.",
+        "source": "Social Media",
+        "date": "2023-10",
+        "url": ""
+      }
+    ],
+    "votes": [
+      {
+        "date": "2021-09-23",
+        "bill": "Iron Dome Supplemental Appropriations Act",
+        "vote": "NO",
+        "roll_call": "309",
+        "source": "House Record"
+      },
+      {
+        "date": "2023-10-25",
+        "bill": "H.Res. 771 — Condemning Hamas Oct 7 Attack",
+        "vote": "NO",
+        "roll_call": "521",
+        "source": "House Record"
+      }
+    ],
+    "funding": [
+      {
+        "source": "CAIR Action Network PAC",
+        "amount": "$140K+",
+        "cycle": "2024",
+        "risk": "terror-adjacent",
+        "fec_ref": ""
+      }
+    ],
+    "networks": ["DSA National", "CAIR", "AMP", "BDS Movement", "Working Families Party"]
+  },
+  {
+    "id": "ilhan-omar",
+    "name": "Ilhan Omar",
+    "district": "MN-05",
+    "state": "Minnesota",
+    "office": "U.S. Representative",
+    "party": "Democrat",
+    "dsa_status": "DSA Endorsed",
+    "priority": "critical",
+    "photo": "",
+    "profile_url": "/reps/profiles/ilhan-omar.html",
+    "tags": ["CAIR Ties", "BDS Support", "Anti-Israel", "DSA Endorsed", "Squad", "Red-Green Bridge"],
+    "pillars": {
+      "words": true,
+      "funding": true,
+      "support": true,
+      "networks": true
+    },
+    "statements": [
+      {
+        "quote": "We must apply human rights standards universally — and that includes standing up to our allies.",
+        "source": "Floor Statement",
+        "date": "2021",
+        "url": ""
+      },
+      {
+        "quote": "Israel has hypnotized the world, may Allah awaken the people and help them see the evil doings of Israel.",
+        "source": "Twitter",
+        "date": "2012-11",
+        "url": ""
+      }
+    ],
+    "votes": [
+      {
+        "date": "2021-09-23",
+        "bill": "Iron Dome Supplemental Appropriations Act",
+        "vote": "NO",
+        "roll_call": "309",
+        "source": "House Record"
+      },
+      {
+        "date": "2023-10-25",
+        "bill": "H.Res. 771 — Condemning Hamas Oct 7 Attack",
+        "vote": "NO",
+        "roll_call": "521",
+        "source": "House Record"
+      }
+    ],
+    "funding": [
+      {
+        "source": "CAIR Action Network PAC",
+        "amount": "$180K+",
+        "cycle": "2024",
+        "risk": "terror-adjacent",
+        "fec_ref": ""
+      }
+    ],
+    "networks": ["DSA National", "CAIR", "AMP", "BDS Movement", "Justice Democrats"]
+  },
+  {
+    "id": "nyc-primary-winner-1",
+    "name": "[NYC Primary Winner #1]",
+    "district": "TBD",
+    "state": "New York",
+    "office": "U.S. Representative",
+    "party": "Democrat",
+    "dsa_status": "DSA Endorsed",
+    "priority": "critical",
+    "photo": "",
+    "profile_url": "/reps/profiles/nyc-primary-winner-1.html",
+    "tags": ["Terrorism Ties", "Anti-America", "DSA Endorsed", "BDS Support", "2026 Primary Win"],
+    "pillars": {
+      "words": true,
+      "funding": true,
+      "support": true,
+      "networks": true
+    },
+    "statements": [],
+    "votes": [],
+    "funding": [],
+    "networks": ["DSA National", "BDS Movement"]
+  },
+  {
+    "id": "nyc-primary-winner-2",
+    "name": "[NYC Primary Winner #2]",
+    "district": "TBD",
+    "state": "New York",
+    "office": "U.S. Representative",
+    "party": "Democrat",
+    "dsa_status": "DSA Endorsed",
+    "priority": "critical",
+    "photo": "",
+    "profile_url": "/reps/profiles/nyc-primary-winner-2.html",
+    "tags": ["Hamas Support", "Anti-Capitalism", "DSA Endorsed", "BDS Support", "2026 Primary Win"],
+    "pillars": {
+      "words": true,
+      "funding": true,
+      "support": true,
+      "networks": true
+    },
+    "statements": [],
+    "votes": [],
+    "funding": [],
+    "networks": ["DSA National", "CAIR", "BDS Movement"]
+  },
+  {
+    "id": "nyc-primary-winner-3",
+    "name": "[NYC Primary Winner #3]",
+    "district": "TBD",
+    "state": "New York",
+    "office": "U.S. Representative",
+    "party": "Democrat",
+    "dsa_status": "DSA Endorsed",
+    "priority": "critical",
+    "photo": "",
+    "profile_url": "/reps/profiles/nyc-primary-winner-3.html",
+    "tags": ["Terrorism Ties", "Communist Platform", "DSA Endorsed", "BDS Support", "2026 Primary Win"],
+    "pillars": {
+      "words": true,
+      "funding": true,
+      "support": true,
+      "networks": true
+    },
+    "statements": [],
+    "votes": [],
+    "funding": [],
+    "networks": ["DSA National", "BDS Movement"]
+  },
+  {
+    "id": "cori-bush",
+    "name": "Cori Bush",
+    "district": "MO-01",
+    "state": "Missouri",
+    "office": "Former U.S. Representative",
+    "party": "Democrat",
+    "dsa_status": "DSA Endorsed",
+    "priority": "high",
+    "photo": "",
+    "profile_url": "/reps/profiles/cori-bush.html",
+    "tags": ["Defund Police", "BDS Support", "Anti-Capitalism", "DSA Endorsed", "Squad", "Lost 2024 Primary"],
+    "pillars": {
+      "words": true,
+      "funding": true,
+      "support": true,
+      "networks": false
+    },
+    "statements": [
+      {
+        "quote": "Defund the police. Defund the military. Defund ICE.",
+        "source": "Twitter",
+        "date": "2020",
+        "url": ""
+      }
+    ],
+    "votes": [],
+    "funding": [],
+    "networks": ["DSA National", "BDS Movement", "Working Families Party"]
+  },
+  {
+    "id": "summer-lee",
+    "name": "Summer Lee",
+    "district": "PA-12",
+    "state": "Pennsylvania",
+    "office": "U.S. Representative",
+    "party": "Democrat",
+    "dsa_status": "DSA Endorsed",
+    "priority": "high",
+    "photo": "",
+    "profile_url": "/reps/profiles/summer-lee.html",
+    "tags": ["Anti-Capitalism", "BDS Support", "DSA Endorsed", "Socialist Platform"],
+    "pillars": {
+      "words": true,
+      "funding": true,
+      "support": true,
+      "networks": false
+    },
+    "statements": [],
+    "votes": [],
+    "funding": [],
+    "networks": ["DSA National", "Justice Democrats", "Working Families Party"]
+  },
+  {
+    "id": "greg-casar",
+    "name": "Greg Casar",
+    "district": "TX-35",
+    "state": "Texas",
+    "office": "U.S. Representative",
+    "party": "Democrat",
+    "dsa_status": "DSA Endorsed",
+    "priority": "high",
+    "photo": "",
+    "profile_url": "/reps/profiles/greg-casar.html",
+    "tags": ["Socialist Platform", "Open Borders", "DSA Endorsed", "Anti-Capitalism"],
+    "pillars": {
+      "words": true,
+      "funding": true,
+      "support": false,
+      "networks": false
+    },
+    "statements": [],
+    "votes": [],
+    "funding": [],
+    "networks": ["DSA National", "Justice Democrats"]
+  }
+]
