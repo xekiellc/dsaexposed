@@ -1,1 +1,16 @@
 
+# DSAExposed.com — Cloudflare Pages Redirects
+
+# 404 handler
+/* /404.html 404
+
+# Trailing slash normalizations
+/reps /reps/ 301
+/terrorism /terrorism/ 301
+/funding /funding/ 301
+/ideology /ideology/ 301
+/networks /networks/ 301
+/chapters /chapters/ 301
+/primaries /primaries/ 301
+/submit /submit/ 301
+/about /about.html 301
