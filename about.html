@@ -1,1 +1,665 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — DSA Exposed</title>
+  <meta name="description" content="DSA Exposed is an independent watchdog operation documenting the Democratic Socialists of America — their words, funding, terrorism ties, communist ideology, and infiltration of American government." />
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PK58BBCJX7');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0A0A0A;
+      --red:     #CC0000;
+      --red-dim: #8B0000;
+      --white:   #F5F5F5;
+      --gray:    #888888;
+      --gray-dk: #2A2A2A;
+      --gray-md: #444444;
+      --yellow:  #FFD700;
+      --border:  #333333;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      background: var(--red);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 8px 0;
+      border-bottom: 2px solid #900;
+    }
+    .ticker-label {
+      display: inline-block;
+      background: var(--black);
+      color: var(--yellow);
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 2px 14px;
+      margin-right: 20px;
+      vertical-align: middle;
+    }
+    .ticker-track {
+      display: inline-block;
+      animation: ticker 40s linear infinite;
+    }
+    .ticker-track span {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--white);
+      margin-right: 60px;
+    }
+    .ticker-track span::before {
+      content: '▶ ';
+      color: var(--yellow);
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--black);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--white);
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--gray);
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--red); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 60px 40px 40px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #110000 0%, var(--black) 100%);
+    }
+    .page-header::before {
+      content: 'MISSION';
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Oswald', sans-serif;
+      font-size: 160px;
+      font-weight: 700;
+      color: rgba(204,0,0,0.05);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .page-eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--red);
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+    .page-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .page-title span { color: var(--red); }
+    .page-sub {
+      font-size: 16px;
+      color: var(--gray);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 60px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 3px;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── MISSION BLOCK ── */
+    .mission-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .mission-text p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .mission-text p strong { color: var(--white); }
+    .mission-text p:last-child { margin-bottom: 0; }
+    .mission-statement {
+      background: var(--gray-dk);
+      border-left: 4px solid var(--red);
+      padding: 36px;
+    }
+    .mission-statement-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+    .mission-statement-text {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .mission-statement-text em {
+      font-style: normal;
+      color: var(--red);
+    }
+    .mission-statement-sub {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ── PRINCIPLES GRID ── */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      background: var(--border);
+    }
+    .principle-card {
+      background: var(--black);
+      padding: 32px 28px;
+    }
+    .principle-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: rgba(204,0,0,0.2);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .principle-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .principle-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ── WHAT WE ARE NOT ── */
+    .not-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+    }
+    .not-card {
+      background: var(--gray-dk);
+      padding: 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .not-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .not-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .not-title.no { color: var(--red); }
+    .not-title.yes { color: var(--yellow); }
+    .not-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── THREAT STATEMENT ── */
+    .threat-statement {
+      background: #110000;
+      border: 1px solid var(--red-dim);
+      border-left: 4px solid var(--red);
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .threat-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+    .threat-text {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 700;
+      line-height: 1.3;
+      max-width: 800px;
+      margin: 0 auto 24px;
+    }
+    .threat-text em {
+      font-style: normal;
+      color: var(--red);
+    }
+    .threat-sub {
+      font-size: 14px;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT BLOCK ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px;
+      background: var(--border);
+    }
+    .contact-card {
+      background: var(--gray-dk);
+      padding: 28px;
+    }
+    .contact-card-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+    .contact-card-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .contact-card-value {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--yellow);
+      letter-spacing: 1px;
+    }
+    .contact-card-desc {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: #0f0f0f;
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+    }
+    .disclaimer-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      color: var(--gray);
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+    .disclaimer-text {
+      font-size: 12px;
+      color: var(--gray-md);
+      line-height: 1.8;
+      max-width: 900px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050505;
+      border-top: 1px solid var(--border);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .footer-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--gray);
+    }
+    .footer-logo span { color: var(--red); }
+    .footer-note {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      color: var(--gray-md);
+      letter-spacing: 1px;
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-header { padding: 40px 20px 28px; }
+      .section { padding: 40px 20px; }
+      .mission-block { grid-template-columns: 1fr; gap: 32px; }
+      .not-grid { grid-template-columns: 1fr; }
+      .threat-statement { padding: 36px 20px; }
+      .disclaimer { padding: 24px 20px; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-note { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <span class="ticker-label">INTEL FEED</span>
+  <span class="ticker-track">
+    <span>NYC primaries: 3 DSA-aligned reps win on anti-America platform</span>
+    <span>DSA national convention endorses BDS movement resolution</span>
+    <span>DSA chapter leaders appear at CAIR-sponsored event</span>
+    <span>Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns</span>
+    <span>DSA publishes "Toward a Socialist America" manifesto</span>
+    <span>Red-Green Axis: Marxist-Islamist alliance deepens in major US cities</span>
+    <span>NYC primaries: 3 DSA-aligned reps win on anti-America platform</span>
+    <span>DSA national convention endorses BDS movement resolution</span>
+    <span>DSA chapter leaders appear at CAIR-sponsored event</span>
+    <span>Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns</span>
+    <span>DSA publishes "Toward a Socialist America" manifesto</span>
+    <span>Red-Green Axis: Marxist-Islamist alliance deepens in major US cities</span>
+  </span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="../" class="nav-logo">DSA<span>EXPOSED</span></a>
+  <ul class="nav-links">
+    <li><a href="../reps/">Rep Tracker</a></li>
+    <li><a href="../terrorism/">Terrorism Ties</a></li>
+    <li><a href="../funding/">Funding</a></li>
+    <li><a href="../ideology/">Ideology</a></li>
+    <li><a href="../networks/">Networks</a></li>
+    <li><a href="../chapters/">Chapters</a></li>
+    <li><a href="../submit/">Submit a Tip</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-eyebrow">// ABOUT THIS OPERATION</div>
+  <h1 class="page-title">Our <span>Mission</span></h1>
+  <p class="page-sub">DSA Exposed is an independent watchdog operation dedicated to documenting the Democratic Socialists of America — their words, funding, terrorism ties, communist ideology, and systematic infiltration of American government.</p>
+</div>
+
+<!-- THREAT STATEMENT -->
+<div class="threat-statement">
+  <div class="threat-label">// WHY THIS SITE EXISTS</div>
+  <div class="threat-text">The DSA is not a fringe movement. It is an <em>organized, funded, and growing threat</em> to the American republic — and most Americans have no idea.</div>
+  <div class="threat-sub">DSA Exposed exists to change that. We track them so you don't have to. Everything is sourced. Everything is documented. Nothing is published without verification.</div>
+</div>
+
+<!-- MISSION -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">// Mission</div>
+    <div class="section-title">What We Do</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="mission-block">
+    <div class="mission-text">
+      <p>The Democratic Socialists of America has spent the last decade executing a deliberate strategy of <strong>electoral infiltration</strong> — placing Marxist-aligned candidates at every level of American government, from city councils to the United States Congress.</p>
+      <p>They have done this while building documented alliances with Islamist organizations — CAIR, the BDS movement, and American Muslims for Palestine — whose leaders have publicly supported Hamas, Hezbollah, and the destruction of the State of Israel. This is the Red-Green Axis, and it operates inside the American political system right now.</p>
+      <p>The mainstream media will not cover this. The political establishment will not acknowledge it. <strong>DSA Exposed will.</strong></p>
+      <p>We document their words — the floor speeches, the social media posts, the convention resolutions. We track their funding — the PACs, the dark money networks, the terror-adjacent donor pipelines. We map their networks — the org ties, the shared infrastructure, the Red-Green coordination. And we publish it all, sourced to primary record, so that Americans can see exactly what is happening inside their government.</p>
+    </div>
+    <div class="mission-statement">
+      <div class="mission-statement-label">// Our Mission</div>
+      <div class="mission-statement-text">To document, expose, and archive the <em>full scope</em> of the DSA's infiltration of American government — sourced, verified, and free for every American to read.</div>
+      <div class="mission-statement-sub">We believe sunlight is the best disinfectant. We believe Americans deserve to know who is representing them, who funds those representatives, and what those representatives actually believe about America, capitalism, Israel, and the West.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">// Standards</div>
+    <div class="section-title">Our Operating Principles</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="principles-grid">
+    <div class="principle-card">
+      <div class="principle-num">01</div>
+      <div class="principle-title">Primary Sources Only</div>
+      <div class="principle-desc">Every claim on this site links to a primary source — congressional records, FEC filings, court documents, verified video, official org publications. We do not cite secondary reporting as evidence. We go to the original record.</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-num">02</div>
+      <div class="principle-title">No Inference — Only Fact</div>
+      <div class="principle-desc">We do not speculate. We do not editorialize claims as fact. If a connection is documented, we publish it with its source. If it is not documented, it does not appear on this site. The facts are damning enough on their own.</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-num">03</div>
+      <div class="principle-title">Independent Operation</div>
+      <div class="principle-desc">DSA Exposed accepts no advertising, no PAC funding, and no government grants. We are independently operated. We have no financial relationship with any political campaign, party, or advocacy organization.</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-num">04</div>
+      <div class="principle-title">Verification Before Publication</div>
+      <div class="principle-desc">Nothing is published without independent verification. Tips submitted through this site are reviewed by our research team and cross-referenced with primary sources before any content is added to the archive.</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-num">05</div>
+      <div class="principle-title">Permanent Archive</div>
+      <div class="principle-desc">Content on this site is archived permanently. Statements that are deleted, accounts that are suspended, and documents that disappear — we keep them. The record does not get scrubbed.</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-num">06</div>
+      <div class="principle-title">Free & Open Access</div>
+      <div class="principle-desc">Everything on DSA Exposed is free to read, share, and reference. No paywall. No subscription. No account required. This information belongs to the American public.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE ARE / ARE NOT -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">// Clarity</div>
+    <div class="section-title">What DSA Exposed Is — and Is Not</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="not-grid">
+    <div class="not-card">
+      <div class="not-icon">✓</div>
+      <div>
+        <div class="not-title yes">We Are: A Watchdog Operation</div>
+        <div class="not-desc">We document public figures' public statements, public votes, public funding, and public organizational affiliations. Everything we publish is drawn from the public record.</div>
+      </div>
+    </div>
+    <div class="not-card">
+      <div class="not-icon">✗</div>
+      <div>
+        <div class="not-title no">We Are Not: A Political Party</div>
+        <div class="not-desc">DSA Exposed is not affiliated with the Republican Party, the Democratic Party, any PAC, or any political campaign. We are an independent watchdog operation with no partisan affiliation.</div>
+      </div>
+    </div>
+    <div class="not-card">
+      <div class="not-icon">✓</div>
+      <div>
+        <div class="not-title yes">We Are: A Primary Source Archive</div>
+        <div class="not-desc">Every claim on this site links to a primary source. Congressional records. FEC filings. Court documents. Published resolutions. Official statements. We do not traffic in rumor or speculation.</div>
+      </div>
+    </div>
+    <div class="not-card">
+      <div class="not-icon">✗</div>
+      <div>
+        <div class="not-title no">We Are Not: A Hate Site</div>
+        <div class="not-desc">We do not target individuals based on religion, ethnicity, or national origin. We document documented facts about public figures' public actions. Criticism of an ideology or an organization is not hate.</div>
+      </div>
+    </div>
+    <div class="not-card">
+      <div class="not-icon">✓</div>
+      <div>
+        <div class="not-title yes">We Are: Pro-America</div>
+        <div class="not-desc">We believe in the Constitution, free markets, national sovereignty, and the rule of law. We believe the United States of America is worth defending — from threats foreign and domestic.</div>
+      </div>
+    </div>
+    <div class="not-card">
+      <div class="not-icon">✗</div>
+      <div>
+        <div class="not-title no">We Are Not: Going Away</div>
+        <div class="not-desc">This archive is permanent. The content does not disappear because a subject deletes a tweet or a platform removes a video. The record stands.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">// Contact</div>
+    <div class="section-title">Get In Touch</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-card-label">// General Inquiries</div>
+      <div class="contact-card-title">Email</div>
+      <div class="contact-card-value">info@dsaexposed.com</div>
+      <div class="contact-card-desc">General questions, media inquiries, corrections, and feedback.</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-label">// Intelligence Tips</div>
+      <div class="contact-card-title">Submit a Tip</div>
+      <div class="contact-card-value">info@dsaexposed.com</div>
+      <div class="contact-card-desc">Documentation, funding records, statements, org ties. Anonymous submissions accepted. Or use our <a href="../submit/" style="color:var(--red);">secure tip form</a>.</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-label">// Press & Media</div>
+      <div class="contact-card-title">Media Inquiries</div>
+      <div class="contact-card-value">info@dsaexposed.com</div>
+      <div class="contact-card-desc">Journalists and researchers may request source documentation for any claim published on this site.</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-label">// Corrections</div>
+      <div class="contact-card-title">Report an Error</div>
+      <div class="contact-card-value">info@dsaexposed.com</div>
+      <div class="contact-card-desc">If you believe a factual error exists on this site, contact us with documentation. Verified corrections are published promptly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <div class="disclaimer-label">// LEGAL DISCLAIMER</div>
+  <div class="disclaimer-text">
+    DSAExposed.com is an independent watchdog and commentary site. All content published on this site is drawn from publicly available sources including congressional records, FEC filings, court documents, official organizational publications, and verified primary sources. All statements attributed to individuals are sourced and linked to their original context. DSA Exposed does not publish unverified claims, rumors, or speculation as fact. This site constitutes protected speech under the First Amendment to the United States Constitution. Criticism of public figures' public actions, statements, and organizational affiliations is a cornerstone of American democratic discourse. DSAExposed.com is not affiliated with any political party, political action committee, campaign, or government entity.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="../" class="footer-logo">DSA<span>EXPOSED</span>.COM</a>
+  <div class="footer-note">
+    All content sourced from public records, FEC filings, congressional records, and verified primary sources.<br>
+    DSAExposed is an independent watchdog operation. All claims are documented.
+  </div>
+</footer>
+
+</body>
+</html>
