@@ -1,0 +1,371 @@
+[
+  {
+    "id": "hamas",
+    "name": "Hamas",
+    "type": "Foreign Terrorist Organization",
+    "designation": "US-Designated FTO",
+    "designation_date": "1997-10-08",
+    "designating_body": "U.S. State Department",
+    "category": "terrorist",
+    "priority": "critical",
+    "description": "Designated Foreign Terrorist Organization by the U.S. State Department. Responsible for the October 7, 2023 attack on Israel killing 1,200 people and taking 251 hostages. DSA refused to condemn the attack and framed it as legitimate resistance.",
+    "profile_url": "/terrorism/orgs/hamas.html",
+    "tags": ["FTO", "US-Designated", "Gaza", "Palestinian", "Terror"],
+    "dsa_connections": [
+      {
+        "type": "RESOLUTION",
+        "description": "DSA National Convention refused to condemn Hamas October 7 attack",
+        "date": "2023-10",
+        "source": "DSA.org",
+        "url": ""
+      },
+      {
+        "type": "ENDORSEMENT",
+        "description": "DSA officially endorses BDS movement — co-founded by Hamas-linked figures",
+        "date": "2017",
+        "source": "DSA.org",
+        "url": ""
+      },
+      {
+        "type": "VOTE",
+        "description": "Multiple DSA reps voted against Iron Dome funding",
+        "date": "2021-09-23",
+        "source": "House Roll Call 309",
+        "url": ""
+      }
+    ],
+    "dsa_reps_connected": ["rashida-tlaib", "ilhan-omar", "alexandria-ocasio-cortez"],
+    "stats": {
+      "attack_deaths": "1,200+",
+      "hostages_taken": "251",
+      "designation_year": "1997"
+    }
+  },
+  {
+    "id": "hezbollah",
+    "name": "Hezbollah",
+    "type": "Foreign Terrorist Organization",
+    "designation": "US-Designated FTO",
+    "designation_date": "1997-10-08",
+    "designating_body": "U.S. State Department",
+    "category": "terrorist",
+    "priority": "critical",
+    "description": "Iranian-backed Shia militant organization and political party based in Lebanon. Designated Foreign Terrorist Organization. Multiple DSA-endorsed officials have opposed U.S. sanctions on Hezbollah and voted against measures to restrict their financing.",
+    "profile_url": "/terrorism/orgs/hezbollah.html",
+    "tags": ["FTO", "US-Designated", "Lebanon", "Iran-Backed", "Terror"],
+    "dsa_connections": [
+      {
+        "type": "VOTE",
+        "description": "Multiple DSA reps voted against Hezbollah sanctions packages",
+        "date": "2023-2024",
+        "source": "House Record",
+        "url": ""
+      },
+      {
+        "type": "STATEMENT",
+        "description": "DSA-aligned figures have appeared at events alongside Hezbollah supporters",
+        "date": "2023",
+        "source": "Documented",
+        "url": ""
+      }
+    ],
+    "dsa_reps_connected": ["ilhan-omar", "rashida-tlaib"],
+    "stats": {
+      "designation_year": "1997",
+      "founding_year": "1982",
+      "state_sponsor": "Iran"
+    }
+  },
+  {
+    "id": "cair",
+    "name": "Council on American-Islamic Relations (CAIR)",
+    "type": "Domestic Advocacy Organization",
+    "designation": "Unindicted Co-Conspirator",
+    "designation_date": "2007",
+    "designating_body": "U.S. Department of Justice",
+    "category": "terror-adjacent",
+    "priority": "critical",
+    "description": "Named as unindicted co-conspirator in the 2007 Holy Land Foundation Hamas financing trial — the largest terrorism financing prosecution in U.S. history. Major DSA donor network and endorsement partner. Largest Muslim advocacy organization in the United States.",
+    "profile_url": "/networks/orgs/cair.html",
+    "tags": ["Terror-Adjacent", "HLF Co-Conspirator", "PAC Network", "Islamist-Aligned", "Bundler"],
+    "dsa_connections": [
+      {
+        "type": "FUNDRAISER",
+        "description": "Ilhan Omar headlined multiple CAIR fundraising events",
+        "date": "Multiple",
+        "source": "FEC Filings",
+        "url": ""
+      },
+      {
+        "type": "FUNDING",
+        "description": "CAIR Action Network PAC bundled $180K+ for Ilhan Omar",
+        "date": "2024",
+        "source": "FEC Filing",
+        "url": ""
+      },
+      {
+        "type": "FUNDING",
+        "description": "CAIR Action Network PAC bundled $140K+ for Rashida Tlaib",
+        "date": "2024",
+        "source": "FEC Filing",
+        "url": ""
+      },
+      {
+        "type": "JOINT EVENT",
+        "description": "CAIR and DSA chapters co-organized post-October 7 rallies in multiple cities",
+        "date": "2023-10",
+        "source": "Documented",
+        "url": ""
+      }
+    ],
+    "dsa_reps_connected": ["ilhan-omar", "rashida-tlaib"],
+    "stats": {
+      "hlf_trial_year": "2007",
+      "founding_year": "1994",
+      "chapters_nationwide": "35+"
+    }
+  },
+  {
+    "id": "bds-movement",
+    "name": "BDS Movement",
+    "type": "International Boycott Movement",
+    "designation": "Terror-Adjacent",
+    "designation_date": "",
+    "designating_body": "",
+    "category": "terror-adjacent",
+    "priority": "critical",
+    "description": "Boycott, Divestment, Sanctions movement targeting Israel. Leadership figures have publicly expressed support for Hamas and armed resistance. DSA has been an official BDS endorser since 2017. Co-founded by Omar Barghouti, a documented Hamas supporter.",
+    "profile_url": "/networks/orgs/bds-movement.html",
+    "tags": ["Terror-Adjacent", "Anti-Israel", "Hamas Links", "Red-Green Bridge", "DSA Partner"],
+    "dsa_connections": [
+      {
+        "type": "ENDORSEMENT",
+        "description": "DSA officially endorsed BDS movement at national convention",
+        "date": "2017",
+        "source": "DSA.org",
+        "url": ""
+      },
+      {
+        "type": "LEGISLATION",
+        "description": "Multiple DSA reps co-sponsored BDS-related legislation",
+        "date": "Ongoing",
+        "source": "Congress.gov",
+        "url": ""
+      },
+      {
+        "type": "COORDINATION",
+        "description": "BDS co-founder Omar Barghouti is a documented Hamas supporter",
+        "date": "",
+        "source": "Documented",
+        "url": ""
+      }
+    ],
+    "dsa_reps_connected": ["alexandria-ocasio-cortez", "rashida-tlaib", "ilhan-omar"],
+    "stats": {
+      "dsa_endorsement_year": "2017",
+      "founding_year": "2005"
+    }
+  },
+  {
+    "id": "amp",
+    "name": "American Muslims for Palestine (AMP)",
+    "type": "Domestic Advocacy Organization",
+    "designation": "HLF-Linked",
+    "designation_date": "",
+    "designating_body": "",
+    "category": "terror-adjacent",
+    "priority": "high",
+    "description": "AMP leadership has been linked by researchers to Holy Land Foundation successor networks. AMP co-sponsors events with DSA chapters nationally and bundles donations for DSA-endorsed candidates. Major Red-Green Axis coordination node.",
+    "profile_url": "/networks/orgs/amp.html",
+    "tags": ["Terror-Adjacent", "HLF Successor Link", "Bundler", "Red-Green Bridge", "DSA Partner"],
+    "dsa_connections": [
+      {
+        "type": "FUNDING",
+        "description": "AMP-linked bundlers contributed $800K+ to multiple DSA candidates",
+        "date": "2024",
+        "source": "FEC / Research",
+        "url": ""
+      },
+      {
+        "type": "JOINT EVENT",
+        "description": "AMP and DSA chapters ran coordinated voter registration campaigns in MI, MN, NY",
+        "date": "2022-2024",
+        "source": "Documented",
+        "url": ""
+      }
+    ],
+    "dsa_reps_connected": ["rashida-tlaib", "ilhan-omar"],
+    "stats": {
+      "founding_year": "2006",
+      "hlf_link": "Documented by researchers"
+    }
+  },
+  {
+    "id": "muslim-student-association",
+    "name": "Muslim Student Association (MSA)",
+    "type": "Campus Organization",
+    "designation": "Muslim Brotherhood Founded",
+    "designation_date": "1963",
+    "designating_body": "",
+    "category": "terror-adjacent",
+    "priority": "medium",
+    "description": "Founded by Muslim Brotherhood members in 1963. MSA chapters on college campuses serve as a recruitment pipeline for both Islamist political networks and DSA-aligned progressive organizations. Active on 600+ campuses nationwide.",
+    "profile_url": "/networks/orgs/msa.html",
+    "tags": ["Muslim Brotherhood", "Campus Network", "Recruitment Pipeline", "CAIR Sister Org"],
+    "dsa_connections": [
+      {
+        "type": "COORDINATION",
+        "description": "MSA chapters co-host events with campus DSA chapters at multiple universities",
+        "date": "Ongoing",
+        "source": "Documented",
+        "url": ""
+      }
+    ],
+    "dsa_reps_connected": [],
+    "stats": {
+      "founding_year": "1963",
+      "campus_chapters": "600+",
+      "founding_org": "Muslim Brotherhood"
+    }
+  },
+  {
+    "id": "justice-democrats",
+    "name": "Justice Democrats",
+    "type": "Political Action Committee",
+    "designation": "Super PAC",
+    "designation_date": "2017",
+    "designating_body": "FEC",
+    "category": "marxist-electoral",
+    "priority": "critical",
+    "description": "Primary electoral vehicle for DSA candidates. Recruits, trains, and funds radical left candidates for federal office. Co-founded by AOC's chief of staff Saikat Chakrabarti. Multiple FEC violations reported. Raised $11.2M in 2022 cycle.",
+    "profile_url": "/funding/orgs/justice-democrats.html",
+    "tags": ["Super PAC", "DSA Electoral Arm", "AOC Founded", "FEC Violations"],
+    "dsa_connections": [
+      {
+        "type": "FUNDING",
+        "description": "Raised and deployed $11.2M for DSA-aligned candidates in 2022",
+        "date": "2022",
+        "source": "FEC Filing",
+        "url": ""
+      },
+      {
+        "type": "FUNDING",
+        "description": "Deployed $2.1M for AOC in 2024 cycle",
+        "date": "2024",
+        "source": "FEC Filing",
+        "url": ""
+      },
+      {
+        "type": "FOUNDING",
+        "description": "Co-founded by AOC's chief of staff Saikat Chakrabarti",
+        "date": "2017",
+        "source": "Public Record",
+        "url": ""
+      }
+    ],
+    "dsa_reps_connected": ["alexandria-ocasio-cortez", "rashida-tlaib", "ilhan-omar", "cori-bush", "summer-lee", "greg-casar"],
+    "stats": {
+      "founding_year": "2017",
+      "cycle_2022_raised": "$11.2M",
+      "dsa_candidates_funded": "22+"
+    }
+  },
+  {
+    "id": "working-families-party",
+    "name": "Working Families Party",
+    "type": "Political Party / PAC",
+    "designation": "527 Organization",
+    "designation_date": "1998",
+    "designating_body": "FEC",
+    "category": "marxist-electoral",
+    "priority": "high",
+    "description": "DSA's primary electoral coalition partner. Co-endorses DSA candidates, coordinates ground operations, and shares donor networks. Active in 12+ states with deep ties to SEIU and progressive unions. Raised $6.8M in 2022 cycle.",
+    "profile_url": "/funding/orgs/working-families-party.html",
+    "tags": ["527 Org", "DSA Coalition Partner", "Union Backed", "Electoral Machine"],
+    "dsa_connections": [
+      {
+        "type": "COALITION",
+        "description": "Co-endorses DSA candidates and coordinates shared voter outreach",
+        "date": "Ongoing",
+        "source": "Public Record",
+        "url": ""
+      },
+      {
+        "type": "FUNDING",
+        "description": "Raised $6.8M in 2022 cycle for progressive and DSA-aligned candidates",
+        "date": "2022",
+        "source": "FEC Filing",
+        "url": ""
+      }
+    ],
+    "dsa_reps_connected": ["alexandria-ocasio-cortez", "rashida-tlaib", "ilhan-omar", "summer-lee"],
+    "stats": {
+      "founding_year": "1998",
+      "cycle_2022_raised": "$6.8M",
+      "active_states": "12+"
+    }
+  },
+  {
+    "id": "sixteen-thirty-fund",
+    "name": "Sixteen Thirty Fund",
+    "type": "Dark Money Network",
+    "designation": "501(c)(4)",
+    "designation_date": "",
+    "designating_body": "IRS",
+    "category": "dark-money",
+    "priority": "high",
+    "description": "Major left-wing dark money hub managed by Arabella Advisors. Funnels hundreds of millions in anonymous donations to progressive causes annually including DSA-aligned candidates and organizations. Donors are not publicly disclosed. Disbursed $400M+ in 2022 cycle.",
+    "profile_url": "/funding/orgs/sixteen-thirty-fund.html",
+    "tags": ["Dark Money", "501c4", "Arabella Advisors", "Anonymous Donors", "Shell Network"],
+    "dsa_connections": [
+      {
+        "type": "FUNDING",
+        "description": "Disbursed $400M+ in 2022 cycle to progressive causes including DSA-adjacent orgs",
+        "date": "2022",
+        "source": "IRS 990",
+        "url": ""
+      }
+    ],
+    "dsa_reps_connected": [],
+    "stats": {
+      "cycle_2022_disbursed": "$400M+",
+      "manager": "Arabella Advisors",
+      "donor_disclosure": "None"
+    }
+  },
+  {
+    "id": "open-society-foundations",
+    "name": "Open Society Foundations",
+    "type": "Private Foundation",
+    "designation": "501(c)(3)",
+    "designation_date": "1979",
+    "designating_body": "IRS",
+    "category": "dark-money",
+    "priority": "high",
+    "description": "George Soros's Open Society Foundations has directed billions to progressive causes globally. OSF has funded organizations that in turn fund DSA-aligned candidates and causes — including criminal justice reform groups, immigration advocacy, and anti-police organizations. Funded 75+ DA races in 2022.",
+    "profile_url": "/funding/orgs/open-society.html",
+    "tags": ["Soros Network", "Global Funder", "DA Races", "Anti-Police", "Open Borders"],
+    "dsa_connections": [
+      {
+        "type": "FUNDING",
+        "description": "Annual US political spend of $500M+ funds DSA-adjacent organizations",
+        "date": "Ongoing",
+        "source": "IRS 990",
+        "url": ""
+      },
+      {
+        "type": "FUNDING",
+        "description": "Funded 75+ progressive DA races in 2022 cycle",
+        "date": "2022",
+        "source": "FEC / IRS",
+        "url": ""
+      }
+    ],
+    "dsa_reps_connected": [],
+    "stats": {
+      "annual_us_spend": "$500M+",
+      "da_races_2022": "75+",
+      "founder": "George Soros"
+    }
+  }
+]
