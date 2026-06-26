@@ -1,88 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Communist Ideology — DSA Exposed</title>
-  <link rel="stylesheet" href="/assets/global.css" />
+  <meta name="description" content="DSA's Marxist roots, anti-capitalism platform, and published vision for transforming the American economic system. Documented from DSA's own publications." />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-PK58BBCJX7");</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PK58BBCJX7');</script>
+  <link rel="stylesheet" href="/assets/global.css" />
   <style>
-    .section{padding:56px 48px;border-bottom:1px solid var(--rule);}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-    .card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--red);padding:28px;transition:box-shadow .2s,transform .2s;}
-    .card:hover{box-shadow:0 4px 16px rgba(20,18,16,.1);transform:translateY(-2px);}
-    .card-eyebrow{font-family:var(--font-mono);font-size:9px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
-    .card-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3;}
-    .card-body{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
-    .card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-    .card-source{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px;border-top:1px solid var(--rule);padding-top:10px;}
-    @media(max-width:900px){.section{padding:40px 24px;}.grid-3{grid-template-columns:1fr;}}
+    .section { padding: 56px 48px; border-bottom: 1px solid var(--rule); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .card { background: var(--white); border: 1px solid var(--rule); border-top: 3px solid var(--red); padding: 28px; transition: box-shadow 0.22s, transform 0.22s; }
+    .card:hover { box-shadow: 0 8px 28px rgba(20,18,16,0.11); transform: translateY(-3px); }
+    .card-eyebrow { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+    .card-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
+    .card-body { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+    .card-body strong { color: var(--ink); }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .card-source { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; border-top: 1px solid var(--rule); padding-top: 10px; }
+    .doctrine-item { display: grid; grid-template-columns: 280px 1fr; gap: 40px; padding: 32px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+    .doctrine-item:last-child { border-bottom: none; }
+    .doctrine-label { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+    .doctrine-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 8px; }
+    .doctrine-body { font-size: 14px; color: var(--muted); line-height: 1.75; }
+    .doctrine-body strong { color: var(--ink); }
+    .doctrine-quote { font-family: var(--font-display); font-size: 14px; font-style: italic; color: var(--red); border-left: 3px solid var(--red); padding-left: 16px; line-height: 1.55; margin-top: 12px; }
+    .doctrine-cite { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-top: 6px; padding-left: 19px; }
+    .collapse-card { background: var(--ink); color: var(--white); padding: 32px 40px; margin-bottom: 2px; border-left: 6px solid var(--red); }
+    .collapse-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .collapse-card p { font-size: 14px; color: var(--rule); line-height: 1.8; }
+    .collapse-card strong { color: var(--yellow); }
+    .result-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 24px; }
+    .result-stat { background: rgba(255,255,255,0.06); padding: 20px 24px; }
+    .result-num { font-family: var(--font-display); font-size: 36px; font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 4px; }
+    .result-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .section { padding: 40px 24px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .doctrine-item { grid-template-columns: 1fr; gap: 16px; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .result-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
-<nav></nav><script src="/components/nav.js"></script>
+
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
+<nav></nav>
+<script src="/components/nav.js"></script>
+
 <div class="page-header">
   <div class="page-header-ghost">IDEOLOGY</div>
   <div class="section-eyebrow">// Section 04 — Ideological Framework</div>
-  <h1>Communist Ideology</h1>
-  <p>DSA's Marxist roots, anti-capitalism platform, and published vision for transforming the American economic system. Documented from DSA's own publications and member statements.</p>
+  <h1>Communist <em>Ideology</em></h1>
+  <p>DSA's Marxist roots, anti-capitalism platform, and published vision for transforming the American economic system. Documented from DSA's own publications and member statements — in their own words.</p>
 </div>
+
+<div class="stats-bar">
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">1982</div>
+    <div class="stat-label">DSA Founded as<br>Marxist Organization</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">92K+</div>
+    <div class="stat-label">Current Members<br>Nationwide</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">7</div>
+    <div class="stat-label">DSA Members<br>in U.S. Congress</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">100%</div>
+    <div class="stat-label">Socialism Failure<br>Rate — Globally</div>
+  </div>
+</div>
+
+<!-- DSA PLATFORM -->
 <section class="section">
-  <div class="section-eyebrow">// Primary Files</div>
-  <div class="section-title">Key Documentation</div>
+  <div class="section-eyebrow">// Their Own Words — DSA National Platform 2021</div>
+  <div class="section-title">What DSA Actually Believes</div>
   <hr class="section-rule" />
-  <div class="grid-3">
-    <div class="card">
-      <div class="card-eyebrow">// DSA Official Platform 2021</div>
-      <div class="card-title">DSA Rejects Capitalism Entirely</div>
-      <div class="card-tags"><span class="tag danger">Anti-Capitalism</span><span class="tag danger">Socialist Platform</span><span class="tag warn">Published Doctrine</span></div>
-      <div class="card-body">We are socialists because we reject an international economic order sustained by private profit, alienated labor, brutal force, and the elevation of property rights over human rights.</div>
-      <div class="card-source">Source: DSA National Platform 2021 — Published on DSA.org</div>
+
+  <div class="doctrine-item">
+    <div>
+      <div class="doctrine-label">// Anti-Capitalism</div>
+      <div class="doctrine-title">DSA Rejects Capitalism — Entirely</div>
     </div>
-    <div class="card">
-      <div class="card-eyebrow">// Venezuela — DSA's Praised Model</div>
-      <div class="card-title">7.7 Million Refugees — Socialism's Result</div>
-      <div class="card-tags"><span class="tag danger">Socialism Failure</span><span class="tag warn">DSA Model Collapse</span></div>
-      <div class="card-body">DSA members praised the Chavez model as recently as 2019. Venezuela has since produced the largest refugee crisis in the Western Hemisphere. Oil-rich nation now has 76% poverty rate under Maduro's socialist government.</div>
-      <div class="card-source">Source: UNHCR Refugee Data · Venezuelan Government Economic Statistics</div>
+    <div>
+      <div class="doctrine-body">This is not a fringe interpretation. It is the opening position of DSA's national platform, published on DSA.org and ratified by the national convention.</div>
+      <div class="doctrine-quote">"We are socialists because we reject an international economic order sustained by private profit, alienated labor, brutal force, and the elevation of property rights over human rights."</div>
+      <div class="doctrine-cite">DSA National Platform 2021 — Published on DSA.org — Ratified by National Convention</div>
     </div>
-    <div class="card">
-      <div class="card-eyebrow">// Cuba — 65 Years of Socialism</div>
-      <div class="card-title">Food Rationing, Political Imprisonment, Mass Exodus</div>
-      <div class="card-tags"><span class="tag danger">Socialism Failure</span><span class="tag warn">DSA Model</span></div>
-      <div class="card-body">Cuba's socialist system has produced food rationing, political imprisonment, internet shutdowns, and a mass exodus. Over 1.5 million Cubans fled to the U.S. in 2022-2023 alone — the largest migration wave in Cuban history.</div>
-      <div class="card-source">Source: U.S. Customs and Border Protection · Cuban Government Records</div>
+  </div>
+
+  <div class="doctrine-item">
+    <div>
+      <div class="doctrine-label">// Abolish Police</div>
+      <div class="doctrine-title">DSA Calls for Abolishing Police, Prisons, and ICE</div>
     </div>
-    <div class="card">
-      <div class="card-eyebrow">// North Korea — Communism's End State</div>
-      <div class="card-title">Yeonmi Park: American Colleges Teach What NK Taught Me</div>
-      <div class="card-tags"><span class="tag danger">Communism End State</span><span class="tag danger">Warning to America</span></div>
-      <div class="card-body">North Korean defector Yeonmi Park: American universities are teaching the same collectivist ideology she escaped. Kim Jong-Un's communist dictatorship produces starvation, prison camps, and total information control — the logical end of socialism.</div>
-      <div class="card-source">Source: Yeonmi Park — TED Talk 2019 · Fox News 2021 · Verified</div>
+    <div>
+      <div class="doctrine-body">DSA's official platform calls for <strong>abolishing ICE, defunding police, and closing prisons.</strong> This is not a moderate reform position — it is the elimination of federal immigration enforcement and the dismantling of the criminal justice system. Avila Chevalier: "All deportations are wrong" — including for convicted criminals. AOC voted NO on additional Capitol Police funding after January 6.</div>
+      <div class="doctrine-quote">"We call for the abolition of ICE and all detention facilities, and the decriminalization of all immigration status offenses."</div>
+      <div class="doctrine-cite">DSA National Platform 2021 — Immigration Section — DSA.org</div>
     </div>
-    <div class="card">
-      <div class="card-eyebrow">// DSA on Police — Abolition Platform</div>
-      <div class="card-title">DSA Calls for Abolishing Police, Prisons, and ICE</div>
-      <div class="card-tags"><span class="tag danger">Abolish Police</span><span class="tag danger">Abolish ICE</span><span class="tag warn">Open Borders</span></div>
-      <div class="card-body">DSA's official platform calls for abolishing ICE, defunding police, and closing prisons. Avila Chevalier: 'All deportations are wrong' — even for convicted criminals. AOC voted NO on funding for Capitol Police after January 6.</div>
-      <div class="card-source">Source: DSA.org Platform · Avila Chevalier Campaign Statements · Congressional Record</div>
+  </div>
+
+  <div class="doctrine-item">
+    <div>
+      <div class="doctrine-label">// Housing Seizure</div>
+      <div class="doctrine-title">Mamdani's Plan: Strip Buildings from Landlords</div>
     </div>
-    <div class="card">
-      <div class="card-eyebrow">// DSA on Housing — Seize Private Property</div>
-      <div class="card-title">Mamdani's Plan: Strip Buildings from Landlords</div>
-      <div class="card-tags"><span class="tag danger">Property Seizure</span><span class="tag warn">Rent Control</span><span class="tag warn">Social Housing</span></div>
-      <div class="card-body">Mamdani's NYC housing platform includes stripping rental buildings from landlords and handing them to tenants. DSA's national platform calls for universal rent control and social housing — government ownership of residential real estate.</div>
-      <div class="card-source">Source: Mamdani Campaign Platform · DSA National Platform 2021</div>
+    <div>
+      <div class="doctrine-body">Mamdani's NYC housing platform includes <strong>stripping rental buildings from landlords and transferring them to tenant ownership.</strong> DSA's national platform calls for universal rent control and social housing — government ownership of residential real estate. This is not rent stabilization. It is property seizure.</div>
+      <div class="doctrine-quote">"Social housing — publicly owned, community controlled, permanently affordable — must replace the speculative housing market."</div>
+      <div class="doctrine-cite">DSA National Platform 2021 — Housing Section · Mamdani Campaign Platform 2025</div>
+    </div>
+  </div>
+
+  <div class="doctrine-item">
+    <div>
+      <div class="doctrine-label">// Medicare for All</div>
+      <div class="doctrine-title">Eliminate Private Health Insurance</div>
+    </div>
+    <div>
+      <div class="doctrine-body">DSA's Medicare for All platform calls for the <strong>complete elimination of private health insurance</strong> in the United States. Not a public option. Not expanded Medicare eligibility. Total elimination of the private market covering 180 million Americans. All seven DSA members of Congress have co-sponsored Medicare for All legislation.</div>
+      <div class="doctrine-quote">"DSA demands the elimination of private health insurance and the establishment of a single-payer system covering all residents."</div>
+      <div class="doctrine-cite">DSA National Platform 2021 — Healthcare Section — DSA.org</div>
+    </div>
+  </div>
+
+  <div class="doctrine-item">
+    <div>
+      <div class="doctrine-label">// Green New Deal</div>
+      <div class="doctrine-title">Government Control of Energy Production</div>
+    </div>
+    <div>
+      <div class="doctrine-body">DSA's climate platform calls for government ownership of energy production — not regulation of private energy companies, but the direct replacement of the private energy sector with government-run utilities. The estimated cost of the DSA-backed Green New Deal is $93 trillion over ten years.</div>
+      <div class="doctrine-quote">"Public ownership of energy production is not optional — it is the only path to a just and sustainable economy."</div>
+      <div class="doctrine-cite">DSA Green New Deal Resolution 2019 — National Convention</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SOCIALISM IN PRACTICE -->
+<section class="section" style="background:var(--paper-dk);">
+  <div class="section-eyebrow">// Where Socialism Has Been Tried</div>
+  <div class="section-title">The Track Record</div>
+  <hr class="section-rule" />
+
+  <div class="collapse-card">
+    <h3>Venezuela — DSA's Praised Model</h3>
+    <p>DSA members praised Hugo Chavez's socialist government as recently as 2019. The result: <strong>7.7 million refugees</strong> — the largest refugee crisis in the Western Hemisphere — from what was once the richest country in South America. Oil-rich Venezuela now has a <strong>76% poverty rate</strong> under Maduro's socialist government. Food rationing is standard. Basic medicine is unavailable.</p>
+    <div class="result-grid">
+      <div class="result-stat"><div class="result-num">7.7M</div><div class="result-label">Refugees — Largest in Western Hemisphere</div></div>
+      <div class="result-stat"><div class="result-num">76%</div><div class="result-label">Poverty Rate Under Socialism</div></div>
+      <div class="result-stat"><div class="result-num">#1</div><div class="result-label">Oil Reserves — Couldn't Feed Its People</div></div>
+    </div>
+  </div>
+
+  <div class="collapse-card" style="margin-top:2px;">
+    <h3>Cuba — 65 Years of Socialism</h3>
+    <p>Cuba's socialist system has produced <strong>food rationing since 1962</strong>, political imprisonment, internet shutdowns, and a mass exodus. Over <strong>1.5 million Cubans fled to the U.S.</strong> in 2022-2023 alone — the largest migration wave in Cuban history. The average Cuban earns $30/month. Basic goods are rationed. Dissidents are imprisoned.</p>
+    <div class="result-grid">
+      <div class="result-stat"><div class="result-num">1962</div><div class="result-label">Food Rationing Began — Never Ended</div></div>
+      <div class="result-stat"><div class="result-num">1.5M</div><div class="result-label">Cubans Fled to U.S. — 2022-2023</div></div>
+      <div class="result-stat"><div class="result-num">$30</div><div class="result-label">Average Monthly Wage</div></div>
+    </div>
+  </div>
+
+  <div class="collapse-card" style="margin-top:2px;">
+    <h3>North Korea — Communism's Logical End</h3>
+    <p>North Korean defector Yeonmi Park has testified that <strong>American universities now teach the same collectivist ideology</strong> she fled. Kim Jong-Un's communist dictatorship produces mass starvation, prison camps for political dissidents, and total information control. An estimated <strong>100,000-200,000 people</strong> are held in political prison camps. The state controls every aspect of life.</p>
+    <div class="result-grid">
+      <div class="result-stat"><div class="result-num">200K</div><div class="result-label">Political Prisoners — Estimated</div></div>
+      <div class="result-stat"><div class="result-num">42%</div><div class="result-label">Population Undernourished</div></div>
+      <div class="result-stat"><div class="result-num">0</div><div class="result-label">Free Elections — Ever</div></div>
     </div>
   </div>
 </section>
+
+<!-- SURVIVOR TESTIMONY -->
+<section class="section">
+  <div class="section-eyebrow">// They Lived It</div>
+  <div class="section-title">Survivor Testimony</div>
+  <hr class="section-rule" />
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-eyebrow">// North Korea Defector</div>
+      <div class="card-title">Yeonmi Park</div>
+      <div class="card-tags"><span class="tag danger">NK Defector</span><span class="tag warn">Columbia University</span></div>
+      <div class="card-body">North Korean defector and human rights activist. Testified before Congress. Studied at Columbia University — where Avila Chevalier co-founded Columbia Apartheid Divest — and was <strong>shocked to find the same collectivist ideology</strong> being taught in American classrooms that she had fled in North Korea.</div>
+      <div class="card-source">Source: TED Talk 2019 · Fox News Interview 2021 · Congressional Testimony · Verified</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// Venezuelan Refugee</div>
+      <div class="card-title">"We Voted for This. Don't."</div>
+      <div class="card-tags"><span class="tag danger">Venezuela Refugee</span><span class="tag warn">Socialism Survivor</span></div>
+      <div class="card-body">Venezuelan refugees who fled Maduro's socialist government — the system DSA members praised as recently as 2019 — have become some of the most vocal opponents of DSA's platform. "We had elections too. We voted for socialism. We lost everything." Their testimony is documented and verified.</div>
+      <div class="card-source">Source: PragerU · Venezuelan Refugee Testimony · Verified</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// Cuban Refugee</div>
+      <div class="card-title">"I Fled Socialism. Now I See It Here."</div>
+      <div class="card-tags"><span class="tag danger">Cuba Refugee</span><span class="tag warn">Socialism Survivor</span></div>
+      <div class="card-body">Cuban refugees who survived 65 years of socialist government describe in detail the progression from promise to rationing to imprisonment. Their accounts of the initial popular support for Fidel Castro's revolution and its aftermath are a direct parallel to the DSA's current electoral trajectory.</div>
+      <div class="card-source">Source: PragerU · Cuban Refugee Testimony · Verified</div>
+    </div>
+  </div>
+  <div style="margin-top:16px;text-align:center;">
+    <a href="/media/" class="btn-ink btn">Watch Their Testimony in the Media Library →</a>
+  </div>
+</section>
+
 <div class="submit-cta">
-  <div><h3>Have Intel to Add?</h3><p>Documentation, sourced statements, funding records, organizational ties. All submissions reviewed before publication.</p></div>
-  <a href="/submit/" class="btn-primary btn">Submit a Tip &rarr;</a>
+  <div>
+    <h3>Have Documentation on DSA Ideology?</h3>
+    <p>Convention resolutions, platform documents, member statements, academic papers. Help us build the complete ideological record.</p>
+  </div>
+  <a href="/submit/" class="btn-primary btn">Submit a Tip →</a>
 </div>
-<footer></footer><div class="footer-bottom"></div>
+
+<footer></footer>
+<div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
 <script src="/components/search.js"></script>
+
 </body>
 </html>
