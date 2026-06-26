@@ -30,16 +30,7 @@
     }
 
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
+    body { background: var(--black); color: var(--white); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
 
     /* TICKER */
@@ -69,7 +60,7 @@
     .stat-num { font-family: 'Oswald', sans-serif; font-size: 40px; font-weight: 700; color: var(--red); line-height: 1; }
     .stat-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
 
-    /* ALERT BANNER */
+    /* ALERT */
     .alert-banner { background: var(--red-dim); border-left: 4px solid var(--yellow); padding: 20px 40px; display: flex; align-items: center; gap: 20px; }
     .alert-tag { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--yellow); white-space: nowrap; }
     .alert-text { font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--white); }
@@ -84,22 +75,110 @@
 
     /* PILLAR GRID */
     .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; background: var(--border); }
-    .pillar-card { background: var(--black); padding: 32px 28px; transition: background 0.2s; cursor: pointer; }
+    .pillar-card { background: var(--black); padding: 32px 28px; transition: background 0.2s; }
     .pillar-card:hover { background: var(--gray-dk); }
     .pillar-icon { font-size: 28px; margin-bottom: 16px; }
     .pillar-name { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
     .pillar-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
 
-    /* REP CARDS */
+    /* MAMDANI FEATURE */
+    .mamdani-card {
+      background: #110000;
+      border: 1px solid var(--red);
+      border-left: 4px solid var(--red);
+      padding: 32px;
+      margin-bottom: 2px;
+      position: relative;
+    }
+    .mamdani-card::before {
+      content: 'ARCHITECT OF THE SWEEP';
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      color: var(--yellow);
+      letter-spacing: 3px;
+    }
+    .mamdani-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+    .mamdani-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .mamdani-office {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--gray);
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    .mamdani-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 20px;
+    }
+    .mamdani-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+    .mamdani-desc strong { color: var(--white); }
+    .mamdani-quotes {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mamdani-quote {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--yellow);
+      border-left: 2px solid var(--red);
+      padding-left: 12px;
+      line-height: 1.5;
+    }
+    .mamdani-quote cite {
+      display: block;
+      font-style: normal;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      color: var(--gray);
+      letter-spacing: 1px;
+      margin-top: 6px;
+    }
+    .mamdani-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .m-tag { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 3px 8px; text-transform: uppercase; }
+    .m-tag.danger { border: 1px solid var(--red); color: var(--red); }
+    .m-tag.warn { border: 1px solid var(--yellow); color: var(--yellow); }
+    .m-tag.gray { border: 1px solid var(--border); color: var(--gray); }
+
+    /* REP GRID */
     .rep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; background: var(--border); }
     .rep-card { background: var(--gray-dk); padding: 28px; position: relative; }
-    .rep-card::before { content: 'FILE OPEN'; position: absolute; top: 16px; right: 16px; font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--red); letter-spacing: 2px; }
-    .rep-district { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; margin-bottom: 8px; }
-    .rep-name { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; }
-    .rep-quote { font-size: 13px; font-style: italic; color: var(--yellow); border-left: 2px solid var(--red); padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }
-    .rep-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .rep-badge { position: absolute; top: 16px; right: 16px; font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; padding: 3px 8px; }
+    .rep-badge.priority { border: 1px solid var(--yellow); color: var(--yellow); }
+    .rep-badge.active { border: 1px solid var(--red); color: var(--red); }
+    .rep-district { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; margin-bottom: 6px; }
+    .rep-name { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+    .rep-office { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; margin-bottom: 12px; }
+    .rep-quote { font-size: 13px; font-style: italic; color: var(--yellow); border-left: 2px solid var(--red); padding-left: 12px; margin-bottom: 6px; line-height: 1.5; }
+    .rep-cite { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 1px; margin-bottom: 14px; }
+    .rep-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
     .rep-tag { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 3px 8px; border: 1px solid var(--border); color: var(--gray); text-transform: uppercase; }
     .rep-tag.danger { border-color: var(--red); color: var(--red); }
+    .rep-tag.warn { border-color: var(--yellow); color: var(--yellow); }
+    .rep-record { border-top: 1px solid var(--border); padding-top: 12px; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); line-height: 1.7; }
+    .rep-record strong { color: var(--red); }
 
     /* NAV CARDS */
     .nav-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; background: var(--border); }
@@ -157,6 +236,7 @@
       .hero-stats { gap: 24px; }
       .section { padding: 48px 20px; }
       .alert-banner { padding: 16px 20px; flex-direction: column; gap: 8px; }
+      .mamdani-body { grid-template-columns: 1fr; }
       .statement-item { grid-template-columns: 1fr; }
       .news-item { grid-template-columns: 1fr; }
       .news-meta { text-align: left; }
@@ -202,7 +282,7 @@
 <!-- ALERT -->
 <div class="alert-banner">
   <div class="alert-tag">⚠ BREAKING</div>
-  <div class="alert-text"><strong>NYC Primary Results:</strong> Three DSA-backed candidates win congressional primaries — all on record with statements supporting the destruction of Israel, opposing U.S. counter-terrorism operations, and calling for the dismantling of American capitalism. Full profiles below.</div>
+  <div class="alert-text"><strong>NYC Socialist Sweep — June 23, 2026:</strong> Mayor Zohran Mamdani's DSA slate went 3-for-3 in congressional primaries. Claire Valdez (NY-7), Darializa Avila Chevalier (NY-13), and Brad Lander (NY-10) all won — toppling two Democratic incumbents. DSA victory party erupted in chants of "From the river to the sea." Full profiles below.</div>
 </div>
 
 <!-- FOUR PILLARS -->
@@ -236,47 +316,114 @@
   </div>
 </section>
 
-<!-- NYC THREE -->
+<!-- NYC SOCIALIST SWEEP -->
 <section class="section">
   <div class="section-header">
-    <div class="section-label">// Priority Files</div>
-    <div class="section-title">NYC Primary Winners</div>
+    <div class="section-label">// Priority Files — NYC Socialist Sweep</div>
+    <div class="section-title">The DSA Machine — June 23, 2026</div>
     <div class="section-rule"></div>
   </div>
+
+  <!-- MAMDANI FEATURED -->
+  <div class="mamdani-card">
+    <div class="mamdani-title">// NYC MAYOR — DSA MEMBER — SOCIALIST MACHINE BOSS</div>
+    <div class="mamdani-name">Zohran Mamdani</div>
+    <div class="mamdani-office">MAYOR OF NEW YORK CITY · DSA MEMBER · ARCHITECT OF THE 2026 SWEEP</div>
+    <div class="mamdani-body">
+      <div class="mamdani-desc">
+        The most powerful DSA official in America. Mamdani swept to power in 2025 and immediately used the mayor's office as a weapon — endorsing three DSA congressional candidates, toppling two Democratic incumbents, and <strong>doubling DSA's representation in Congress in a single night.</strong>
+        <br><br>
+        On his first day in office, he <strong>revoked pro-Israel municipal decrees.</strong> The Israeli Ministry of Foreign Affairs called it "antisemitic gasoline on an open fire." The day after the October 7, 2023 Hamas massacre, his statement made no mention of Hamas — only condemnation of Israel. In a 2017 rap song, <strong>he praised the "Holy Land Five" — Islamic charity heads convicted of financing Hamas.</strong>
+        <br><br>
+        He defended the slogan "globalize the intifada" — a phrase the ADL calls "explicit incitement to violence" — saying it represented "a desperate desire for equality." He has repeatedly accused Israel of "genocide" and "apartheid" and supports the arrest of Israeli PM Netanyahu.
+      </div>
+      <div class="mamdani-quotes">
+        <div class="mamdani-quote">
+          "When the boot of the NYPD is on your neck, it's been laced by the IDF."
+          <cite>— DSA PANEL, 2023 · VERIFIED VIDEO</cite>
+        </div>
+        <div class="mamdani-quote">
+          "My love to the Holy Land Five. You better look 'em up."
+          <cite>— RAP SONG "SALAM," 2017 · VERIFIED AUDIO</cite>
+        </div>
+        <div class="mamdani-quote">
+          "[Globalize the intifada captures] a desperate desire for equality and equal rights in standing up for Palestinian human rights."
+          <cite>— THE BULWARK INTERVIEW, 2025 · VERIFIED</cite>
+        </div>
+      </div>
+    </div>
+    <div class="mamdani-tags">
+      <span class="m-tag danger">Hamas Praise</span>
+      <span class="m-tag danger">HLF Ties</span>
+      <span class="m-tag danger">Anti-Israel</span>
+      <span class="m-tag danger">Intifada Defense</span>
+      <span class="m-tag danger">DSA Member</span>
+      <span class="m-tag warn">Day-1 Anti-Israel Orders</span>
+      <span class="m-tag warn">BDS Support</span>
+      <span class="m-tag gray">NYC Mayor</span>
+    </div>
+  </div>
+
+  <!-- THREE PRIMARY WINNERS -->
   <div class="rep-grid">
+
     <div class="rep-card">
-      <div class="rep-district">NY · PRIMARY WIN 2026</div>
-      <div class="rep-name">Rep. Profile #1</div>
-      <div class="rep-quote">"[On-record statement — sourced from congressional record or public interview]"</div>
+      <div class="rep-badge priority">⚠ PRIMARY WIN 2026</div>
+      <div class="rep-district">NEW YORK · NY-7 · BROOKLYN / QUEENS</div>
+      <div class="rep-name">Claire Valdez</div>
+      <div class="rep-office">DSA MEMBER · DEMOCRATIC NOMINEE NY-7 · LIKELY CONGRESSWOMAN JAN 2027</div>
+      <div class="rep-quote">"This is such a DSA conversation. This is exactly why I really love being a member of DSA."</div>
+      <div class="rep-cite">— TWITCH INTERVIEW WITH STREAMER WHO CALLED JEWS "DEMONIC ETHNICITY" · MAY 2026</div>
       <div class="rep-tags">
-        <span class="rep-tag danger">Terrorism Ties</span>
-        <span class="rep-tag danger">Anti-America</span>
-        <span class="rep-tag">DSA Endorsed</span>
-        <span class="rep-tag">BDS Support</span>
+        <span class="rep-tag danger">DSA Member</span>
+        <span class="rep-tag danger">Anti-Israel</span>
+        <span class="rep-tag danger">Oct 7 Celebration</span>
+        <span class="rep-tag warn">BDS Support</span>
+        <span class="rep-tag warn">Block the Bombs Act</span>
+      </div>
+      <div class="rep-record">
+        <strong>ON RECORD:</strong> Liked X post on Oct. 7 celebrating Hamas attack: "Glory to the resistance." Called Israel's actions "genocide" and "apartheid." Pledged in DSA questionnaire to refuse affiliation with AIPAC, J Street, and Democratic Majority for Israel. Sponsored "Not on Our Dime!" bill banning NY nonprofits from supporting Israel. Marched with Jewish Voice for Peace. Supports arrest of Netanyahu.
       </div>
     </div>
+
     <div class="rep-card">
-      <div class="rep-district">NY · PRIMARY WIN 2026</div>
-      <div class="rep-name">Rep. Profile #2</div>
-      <div class="rep-quote">"[On-record statement — sourced from congressional record or public interview]"</div>
+      <div class="rep-badge priority">⚠ PRIMARY WIN 2026</div>
+      <div class="rep-district">NEW YORK · NY-13 · UPPER MANHATTAN / BRONX</div>
+      <div class="rep-name">Darializa Avila Chevalier</div>
+      <div class="rep-office">DSA MEMBER · DEMOCRATIC NOMINEE NY-13 · LIKELY CONGRESSWOMAN JAN 2027</div>
+      <div class="rep-quote">"The premise of that question ignores the 75 years of occupation that the Palestinian people have been subjected to."</div>
+      <div class="rep-cite">— BROADWAY DEMOCRATS FORUM, WHEN ASKED TO CONDEMN HAMAS OCT. 7 ATTACK · 2026</div>
       <div class="rep-tags">
-        <span class="rep-tag danger">Hamas Support</span>
-        <span class="rep-tag danger">Anti-Capitalism</span>
-        <span class="rep-tag">DSA Endorsed</span>
-        <span class="rep-tag">CAIR Ties</span>
+        <span class="rep-tag danger">DSA Member</span>
+        <span class="rep-tag danger">Refused Hamas Condemnation</span>
+        <span class="rep-tag danger">Oct 8 Rally Attendee</span>
+        <span class="rep-tag warn">Abolish Police</span>
+        <span class="rep-tag warn">Abolish Borders</span>
+      </div>
+      <div class="rep-record">
+        <strong>ON RECORD:</strong> Attended Times Square pro-Hamas rally Oct. 8, 2023 — the day after 1,200 Israelis were massacred. Refused to condemn Hamas at candidate forum. Co-founded Columbia University Apartheid Divest — behind violent 2024 campus occupation. Calls for abolishing police, prisons, and borders. "All deportations are wrong," even for convicted criminals. Branded Israel "apartheid state" committing "genocide" throughout campaign.
       </div>
     </div>
+
     <div class="rep-card">
-      <div class="rep-district">NY · PRIMARY WIN 2026</div>
-      <div class="rep-name">Rep. Profile #3</div>
-      <div class="rep-quote">"[On-record statement — sourced from congressional record or public interview]"</div>
+      <div class="rep-badge priority">⚠ PRIMARY WIN 2026</div>
+      <div class="rep-district">NEW YORK · NY-10 · LOWER MANHATTAN / BROOKLYN</div>
+      <div class="rep-name">Brad Lander</div>
+      <div class="rep-office">MAMDANI-ENDORSED · DEMOCRATIC NOMINEE NY-10 · LIKELY CONGRESSMAN JAN 2027</div>
+      <div class="rep-quote">"We are not complicit in occupation and genocide."</div>
+      <div class="rep-cite">— CAMPAIGN RALLY WITH MAMDANI, JUNE 2026 · VERIFIED</div>
       <div class="rep-tags">
-        <span class="rep-tag danger">Terrorism Ties</span>
-        <span class="rep-tag danger">Communist Platform</span>
-        <span class="rep-tag">DSA Endorsed</span>
-        <span class="rep-tag">BDS Support</span>
+        <span class="rep-tag danger">Anti-Israel</span>
+        <span class="rep-tag danger">Genocide Rhetoric</span>
+        <span class="rep-tag warn">Mamdani Endorsed</span>
+        <span class="rep-tag warn">Former DSA Member</span>
+        <span class="rep-tag gray">Unseated Dan Goldman</span>
+      </div>
+      <div class="rep-record">
+        <strong>ON RECORD:</strong> Former DSA member who left after Oct. 7 but ran as Mamdani's endorsed candidate. Called Israel's military campaign "genocide" repeatedly. Attacked incumbent Dan Goldman for supporting aid to Israel and for refusing to call it genocide. Pledged to oppose all U.S. military aid to Israel. Ran joint campaign ads with DSA member Avila Chevalier. Victory party featured "Free Free Palestine" chants.
       </div>
     </div>
+
   </div>
 </section>
 
@@ -288,9 +435,7 @@
     <div class="section-rule"></div>
   </div>
   <div class="news-feed" id="newsFeed">
-    <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--gray);padding:20px;text-align:center;letter-spacing:2px;">
-      LOADING INTEL FEED...
-    </div>
+    <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--gray);padding:20px;text-align:center;letter-spacing:2px;">LOADING INTEL FEED...</div>
   </div>
 </section>
 
@@ -353,7 +498,7 @@
   </div>
 </section>
 
-<!-- STATEMENT ARCHIVE PREVIEW -->
+<!-- STATEMENT ARCHIVE -->
 <section class="section">
   <div class="section-header">
     <div class="section-label">// Their Words</div>
@@ -371,19 +516,35 @@
     </div>
     <div class="statement-item">
       <div class="statement-meta">
-        <strong>DSA Platform</strong>
-        PUBLISHED DOCUMENT<br>2021<br>NATIONAL PLATFORM
+        <strong>Zohran Mamdani</strong>
+        RAP SONG<br>2017<br>"SALAM"
       </div>
-      <div class="statement-quote">"We are socialists because we reject an international economic order sustained by private profit, alienated labor, brutal force, and the elevation of property rights over human rights."</div>
-      <div class="statement-source">SOURCE:<br>DSA.ORG<br>PLATFORM 2021</div>
+      <div class="statement-quote">"My love to the Holy Land Five. You better look 'em up." — Praising charity heads convicted of financing Hamas.</div>
+      <div class="statement-source">SOURCE:<br>VERIFIED AUDIO<br>"SALAM" 2017</div>
     </div>
     <div class="statement-item">
       <div class="statement-meta">
         <strong>Rashida Tlaib</strong>
         SOCIAL MEDIA<br>OCT 2023<br>U.S. CONGRESS
       </div>
-      <div class="statement-quote">"From the river to the sea, Palestine will be free."</div>
+      <div class="statement-quote">"From the river to the sea, Palestine will be free." — Hamas rallying cry calling for elimination of Israel. Tlaib was subsequently censured by the U.S. House.</div>
       <div class="statement-source">SOURCE:<br>HOUSE RECORD<br>NOV 2023</div>
+    </div>
+    <div class="statement-item">
+      <div class="statement-meta">
+        <strong>Darializa Avila Chevalier</strong>
+        CANDIDATE FORUM<br>2026<br>BROADWAY DEMOCRATS
+      </div>
+      <div class="statement-quote">"The premise of that question ignores the 75 years of occupation..." — Refusing to condemn Hamas's October 7 massacre of 1,200 Israelis.</div>
+      <div class="statement-source">SOURCE:<br>BROADWAY DEMS<br>FORUM 2026</div>
+    </div>
+    <div class="statement-item">
+      <div class="statement-meta">
+        <strong>DSA Platform</strong>
+        PUBLISHED DOCUMENT<br>2021<br>NATIONAL PLATFORM
+      </div>
+      <div class="statement-quote">"We are socialists because we reject an international economic order sustained by private profit, alienated labor, brutal force, and the elevation of property rights over human rights."</div>
+      <div class="statement-source">SOURCE:<br>DSA.ORG<br>PLATFORM 2021</div>
     </div>
   </div>
 </section>
@@ -403,7 +564,6 @@
 <script src="/components/footer.js"></script>
 
 <script>
-  // Load news feed from data/news.json
   fetch('/data/news.json')
     .then(r => r.json())
     .then(articles => {
@@ -412,8 +572,6 @@
         feed.innerHTML = '<div style="font-family:\'Share Tech Mono\',monospace;font-size:11px;color:var(--gray);padding:20px;text-align:center;letter-spacing:2px;">NO ARTICLES FOUND</div>';
         return;
       }
-
-      // Show latest 6
       const latest = articles.slice(0, 6);
       feed.innerHTML = latest.map(a => {
         const date = new Date(a.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
