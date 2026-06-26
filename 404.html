@@ -1,128 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 — File Not Found — DSA Exposed</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PK58BBCJX7');
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --black:#0A0A0A; --red:#CC0000; --red-dim:#8B0000;
-      --white:#F5F5F5; --gray:#888888; --gray-dk:#2A2A2A;
-      --gray-md:#444444; --yellow:#FFD700; --border:#333333;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--white); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
-    a { color: inherit; text-decoration: none; }
-
-    /* TICKER */
-    .ticker-wrap { background: var(--red); overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 2px solid #900; }
-    .ticker-label { display: inline-block; background: var(--black); color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 14px; margin-right: 20px; vertical-align: middle; }
-    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
-    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
-    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* NAV */
-    nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
-    .nav-logo span { color: var(--red); }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--red); }
-
-    /* MAIN */
-    .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 40px; position: relative; overflow: hidden; }
-    .main::before { content: '404'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: 'Oswald', sans-serif; font-size: 400px; font-weight: 700; color: rgba(204,0,0,0.04); pointer-events: none; white-space: nowrap; line-height: 1; }
-
-    .error-box { max-width: 600px; width: 100%; text-align: center; position: relative; z-index: 1; }
-    .error-code { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
-    .error-title { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 6vw, 72px); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; line-height: 1.0; margin-bottom: 24px; }
-    .error-title span { color: var(--red); }
-    .error-desc { font-size: 15px; color: var(--gray); line-height: 1.8; margin-bottom: 48px; max-width: 480px; margin-left: auto; margin-right: auto; }
-
-    /* NAV GRID */
-    .nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); margin-bottom: 32px; text-align: left; }
-    .nav-grid-item { background: var(--gray-dk); padding: 18px 20px; display: block; border-top: 2px solid transparent; transition: border-color 0.2s, background 0.2s; }
-    .nav-grid-item:hover { border-top-color: var(--red); background: #333; }
-    .nav-grid-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 2px; margin-bottom: 4px; }
-    .nav-grid-title { font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-
-    .btn-home { display: inline-block; background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 14px 40px; transition: background 0.2s; }
-    .btn-home:hover { background: #AA0000; }
-
-    /* FOOTER */
-    footer { background: #050505; border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
-    .footer-logo span { color: var(--red); }
-    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; } .nav-links { display: none; }
-      .main { padding: 48px 20px; }
-      .nav-grid { grid-template-columns: 1fr 1fr; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-note { text-align: center; }
-    }
-  </style>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>404 — DSA Exposed</title>
+  <link rel="stylesheet" href="/assets/global.css"/>
 </head>
 <body>
-
-<div class="ticker-wrap"></div>
-<script src="/components/ticker.js"></script>
-
-<nav></nav>
-<script src="/components/nav.js"></script>
-
-<!-- MAIN -->
-<div class="main">
-  <div class="error-box">
-    <div class="error-code">// ERROR 404 — FILE NOT FOUND</div>
-    <h1 class="error-title">Page <span>Not</span> Found</h1>
-    <p class="error-desc">The file you're looking for doesn't exist or has been moved. The DSA wishes more of our content would disappear — it won't. Navigate back to the archive below.</p>
-
-    <div class="nav-grid">
-      <a href="/reps/" class="nav-grid-item">
-        <div class="nav-grid-label">// Section 02</div>
-        <div class="nav-grid-title">Rep Tracker</div>
-      </a>
-      <a href="/terrorism/" class="nav-grid-item">
-        <div class="nav-grid-label">// Section 01</div>
-        <div class="nav-grid-title">Terrorism Ties</div>
-      </a>
-      <a href="/funding/" class="nav-grid-item">
-        <div class="nav-grid-label">// Section 03</div>
-        <div class="nav-grid-title">Follow the Money</div>
-      </a>
-      <a href="/ideology/" class="nav-grid-item">
-        <div class="nav-grid-label">// Section 04</div>
-        <div class="nav-grid-title">Ideology</div>
-      </a>
-      <a href="/networks/" class="nav-grid-item">
-        <div class="nav-grid-label">// Section 05</div>
-        <div class="nav-grid-title">Red-Green Axis</div>
-      </a>
-      <a href="/media/" class="nav-grid-item">
-        <div class="nav-grid-label">// Section 08</div>
-        <div class="nav-grid-title">Media Library</div>
-      </a>
-    </div>
-
-    <a href="/" class="btn-home">← Return to Home Base</a>
+<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
+<nav></nav><script src="/components/nav.js"></script>
+<div class="page-header" style="text-align:center;padding:100px 48px;">
+  <div class="section-eyebrow">// File Not Found</div>
+  <h1 style="font-size:clamp(40px,8vw,120px);">4<em>0</em>4</h1>
+  <p style="font-size:18px;max-width:480px;margin:0 auto 40px;">This file does not exist in our archive. It may have been moved, deleted, or never existed. Return to the dossier.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="/" class="btn-ink btn">Return Home &rarr;</a>
+    <a href="/reps/" class="btn">Rep Tracker &rarr;</a>
+    <a href="/network/" class="btn">Network Map &rarr;</a>
   </div>
 </div>
-
-<footer></footer>
+<footer></footer><div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
-
-</body>
-</html>
+</body></html>
