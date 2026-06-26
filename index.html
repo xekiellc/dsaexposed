@@ -116,7 +116,7 @@
     .statement-source { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 1px; text-align: right; line-height: 1.8; }
 
     .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .feature-card { background: var(--white); border: 1px solid var(--rule); padding: 32px; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
+    .feature-card { background: var(--white); border: 1px solid var(--rule); padding: 32px; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; overflow: hidden; }
     .feature-card:hover { box-shadow: 0 8px 28px rgba(20,18,16,0.1); transform: translateY(-3px); border-color: var(--ink); }
     .feature-icon-svg { margin-bottom: 20px; display: flex; align-items: center; }
     .feature-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
@@ -398,58 +398,151 @@
   <div class="section-title">Investigate the Network</div>
   <hr class="section-rule" />
   <div class="features-grid">
-    <a href="/network/" class="feature-card">
-      <div class="feature-icon-svg">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="8" r="4" stroke="#B80000" stroke-width="2"/>
-          <circle cx="8" cy="28" r="4" stroke="#B80000" stroke-width="2"/>
-          <circle cx="32" cy="28" r="4" stroke="#B80000" stroke-width="2"/>
-          <circle cx="20" cy="22" r="3" stroke="#6B6459" stroke-width="1.5"/>
-          <line x1="20" y1="12" x2="20" y2="19" stroke="#C8BFB0" stroke-width="1.5"/>
-          <line x1="11.5" y1="25.5" x2="17.5" y2="23" stroke="#C8BFB0" stroke-width="1.5"/>
-          <line x1="28.5" y1="25.5" x2="22.5" y2="23" stroke="#C8BFB0" stroke-width="1.5"/>
-          <line x1="11" y1="28" x2="29" y2="28" stroke="#C8BFB0" stroke-width="1" stroke-dasharray="2 2"/>
-        </svg>
+
+    <!-- NETWORK MAP PREVIEW CARD -->
+    <a href="/network/" class="feature-card" style="padding:0;overflow:hidden;">
+      <div style="background:#0F0D0B;height:200px;position:relative;overflow:hidden;">
+        <canvas id="networkPreview" width="400" height="200" style="width:100%;height:100%;opacity:0.9;"></canvas>
+        <div style="position:absolute;top:12px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#B80000;letter-spacing:3px;text-transform:uppercase;">// Live Network</div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 60%, #0F0D0B 100%);"></div>
       </div>
-      <div class="feature-title">Network Map</div>
-      <div class="feature-desc">Interactive force-directed graph. Click any node to explore DSA's full web of connections — reps, orgs, donors, chapters.</div>
-      <span class="feature-link">Explore the Network →</span>
-    </a>
-    <a href="/timeline/" class="feature-card">
-      <div class="feature-icon-svg">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="8" y1="20" x2="32" y2="20" stroke="#C8BFB0" stroke-width="1.5"/>
-          <circle cx="8" cy="20" r="3" fill="#B80000"/>
-          <circle cx="17" cy="20" r="3" fill="#6B6459"/>
-          <circle cx="26" cy="20" r="3" fill="#6B6459"/>
-          <circle cx="32" cy="20" r="3" fill="#B80000"/>
-          <line x1="8" y1="20" x2="8" y2="12" stroke="#B80000" stroke-width="1.5"/>
-          <line x1="32" y1="20" x2="32" y2="12" stroke="#B80000" stroke-width="1.5"/>
-          <rect x="4" y="8" width="8" height="5" rx="1" stroke="#B80000" stroke-width="1.5" fill="none"/>
-          <rect x="28" y="8" width="8" height="5" rx="1" stroke="#B80000" stroke-width="1.5" fill="none"/>
-          <line x1="17" y1="20" x2="17" y2="28" stroke="#6B6459" stroke-width="1"/>
-          <line x1="26" y1="20" x2="26" y2="28" stroke="#6B6459" stroke-width="1"/>
-        </svg>
+      <div style="padding:24px 28px 28px;">
+        <div class="feature-title">Network Map</div>
+        <div class="feature-desc">Interactive force-directed graph. Click any node to explore DSA's full web of connections — reps, orgs, donors, chapters.</div>
+        <span class="feature-link">Explore the Network →</span>
       </div>
-      <div class="feature-title">Timeline</div>
-      <div class="feature-desc">Every event, statement, endorsement, and election from 1982 to the 2026 sweep — scrollable and filterable.</div>
-      <span class="feature-link">View Timeline →</span>
     </a>
-    <a href="/map/" class="feature-card">
-      <div class="feature-icon-svg">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="10" width="32" height="22" rx="2" stroke="#C8BFB0" stroke-width="1.5" fill="none"/>
-          <path d="M4 18 L14 14 L22 20 L30 12 L36 16" stroke="#B80000" stroke-width="1.5" fill="none"/>
-          <circle cx="27" cy="22" r="4" stroke="#B80000" stroke-width="1.5" fill="none"/>
-          <line x1="27" y1="26" x2="27" y2="32" stroke="#B80000" stroke-width="1.5"/>
-          <circle cx="27" cy="22" r="1.5" fill="#B80000"/>
-        </svg>
+
+    <!-- TIMELINE PREVIEW CARD -->
+    <a href="/timeline/" class="feature-card" style="padding:0;overflow:hidden;">
+      <div style="background:#0F0D0B;height:200px;position:relative;overflow:hidden;padding:20px 24px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#B80000;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;">// Historical Record</div>
+        <div style="position:relative;">
+          <div style="position:absolute;left:48px;top:0;bottom:0;width:2px;background:rgba(184,0,0,0.3);"></div>
+          ${['1982','2017','2023','2025','2026'].map((yr,i) => `
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:${i>=3?'#B80000':'#6B6459'};width:36px;text-align:right;letter-spacing:0;">${yr}</div>
+            <div style="width:8px;height:8px;border-radius:50%;background:${i>=3?'#B80000':'#3D3830'};border:2px solid ${i>=3?'#B80000':'#555'};position:relative;z-index:1;flex-shrink:0;"></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:${i>=3?'#FAFAF8':'#6B6459'};letter-spacing:0.3px;">${['DSA Founded','BDS Endorsed','Oct 7 — No Condemnation','Mamdani Wins NYC','2026 Sweep 3-for-3'][i]}</div>
+          </div>`).join('')}
+        </div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 60%, #0F0D0B 100%);"></div>
       </div>
-      <div class="feature-title">Chapter Map</div>
-      <div class="feature-desc">Interactive US map. Click any state to see DSA chapters, threat level, members, candidates, and elected officials.</div>
-      <span class="feature-link">Open Map →</span>
+      <div style="padding:24px 28px 28px;">
+        <div class="feature-title">Timeline</div>
+        <div class="feature-desc">Every event, statement, endorsement, and election from 1982 to the 2026 sweep — scrollable and filterable.</div>
+        <span class="feature-link">View Timeline →</span>
+      </div>
     </a>
+
+    <!-- MAP PREVIEW CARD -->
+    <a href="/map/" class="feature-card" style="padding:0;overflow:hidden;">
+      <div style="background:#0F0D0B;height:200px;position:relative;overflow:hidden;">
+        <canvas id="mapPreview" width="400" height="200" style="width:100%;height:100%;opacity:0.9;"></canvas>
+        <div style="position:absolute;top:12px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#B80000;letter-spacing:3px;text-transform:uppercase;">// Threat Assessment</div>
+        <div style="position:absolute;top:12px;right:16px;display:flex;flex-direction:column;gap:4px;">
+          <div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:2px;background:#B80000;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#888;letter-spacing:1px;">CRITICAL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:2px;background:#C05A00;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#888;letter-spacing:1px;">HIGH</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:2px;background:#C8960C;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#888;letter-spacing:1px;">MEDIUM</span></div>
+        </div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 60%, #0F0D0B 100%);"></div>
+      </div>
+      <div style="padding:24px 28px 28px;">
+        <div class="feature-title">Chapter Map</div>
+        <div class="feature-desc">Interactive US map. Click any state to see DSA chapters, threat level, members, candidates, and elected officials.</div>
+        <span class="feature-link">Open Map →</span>
+      </div>
+    </a>
+
   </div>
+
+  <script>
+  // Network preview canvas
+  (function() {
+    const canvas = document.getElementById('networkPreview');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+
+    const nodes = [
+      {x:200,y:80,r:14,color:'#B80000',label:'Mamdani'},
+      {x:120,y:140,r:10,color:'#B80000',label:'Valdez'},
+      {x:280,y:140,r:10,color:'#B80000',label:'AOC'},
+      {x:80,y:80,r:8,color:'#1B6B1B',label:'NYC DSA'},
+      {x:320,y:80,r:8,color:'#6B3FA0',label:'CAIR'},
+      {x:200,y:160,r:8,color:'#1B6B1B',label:'BDS'},
+      {x:150,y:50,r:7,color:'#C8960C',label:'J.Dems'},
+      {x:260,y:170,r:7,color:'#6B3FA0',label:'AMP'},
+      {x:340,y:150,r:6,color:'#C05A00',label:'Tlaib'},
+      {x:60,y:150,r:6,color:'#C05A00',label:'Lander'},
+    ];
+
+    const links = [
+      [0,1],[0,2],[0,3],[0,5],[1,3],[1,6],[2,4],[2,5],[3,5],[4,7],[4,8],[5,7],[6,1],[8,4],[9,0],[9,1]
+    ];
+
+    ctx.fillStyle = '#0F0D0B';
+    ctx.fillRect(0,0,W,H);
+
+    // Draw links
+    links.forEach(([a,b]) => {
+      ctx.beginPath();
+      ctx.moveTo(nodes[a].x, nodes[a].y);
+      ctx.lineTo(nodes[b].x, nodes[b].y);
+      ctx.strokeStyle = 'rgba(200,191,176,0.15)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+
+    // Draw nodes
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+      ctx.fillStyle = n.color + 'CC';
+      ctx.fill();
+      ctx.strokeStyle = n.color;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(250,250,248,0.7)';
+      ctx.font = '8px "IBM Plex Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(n.label, n.x, n.y + n.r + 10);
+    });
+  })();
+
+  // Map preview canvas - simplified US state grid
+  (function() {
+    const canvas = document.getElementById('mapPreview');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+
+    ctx.fillStyle = '#0F0D0B';
+    ctx.fillRect(0,0,W,H);
+
+    const states = [
+      // [col, row, threat] — simplified grid layout
+      [0,0,'m'],[1,0,'m'],[2,0,'h'],[3,0,'c'],[4,0,'c'],[5,0,'c'],[6,0,'h'],[7,0,'m'],
+      [0,1,'m'],[1,1,'m'],[2,1,'h'],[3,1,'c'],[4,1,'c'],[5,1,'h'],[6,1,'h'],[7,1,'m'],
+      [0,2,'m'],[1,2,'h'],[2,2,'h'],[3,2,'c'],[4,2,'c'],[5,2,'m'],[6,2,'m'],[7,2,'h'],
+      [0,3,'m'],[1,3,'m'],[2,3,'m'],[3,3,'h'],[4,3,'c'],[5,3,'h'],[6,3,'m'],[7,3,'m'],
+    ];
+
+    const colors = { c:'#B80000', h:'#C05A00', m:'#C8960C', n:'#2a2a2a' };
+    const cw = 44, ch = 36, padX = 16, padY = 20;
+
+    states.forEach(([col, row, threat]) => {
+      const x = padX + col * (cw + 3);
+      const y = padY + row * (ch + 3);
+      ctx.fillStyle = (colors[threat] || '#2a2a2a') + '55';
+      ctx.strokeStyle = (colors[threat] || '#333') + 'AA';
+      ctx.lineWidth = 1;
+      ctx.fillRect(x, y, cw, ch);
+      ctx.strokeRect(x, y, cw, ch);
+    });
+  })();
+  </script>
 </section>
 
 <!-- SUBMIT TIP -->
