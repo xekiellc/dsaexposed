@@ -16,7 +16,10 @@
   const isActive = (href) => path === href || (path.startsWith(href) && href !== '/');
 
   document.querySelector('nav').innerHTML = `
-    <a href="/" class="nav-logo">DSA<span>Exposed</span></a>
+    <a href="/" class="nav-logo">
+      <img src="/assets/dsalogo9.png" alt="DSAExposed" style="height:44px;width:44px;object-fit:contain;margin-right:10px;border-radius:2px;" />
+      DSA<span>Exposed</span>
+    </a>
     <ul class="nav-links">
       ${links.map(l => `<li><a href="${l.href}"${isActive(l.href) ? ' class="active"' : ''}>${l.label}</a></li>`).join('')}
     </ul>
