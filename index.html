@@ -28,40 +28,7 @@
       inset: 0;
       background: rgba(8,6,4,0.65);
     }
-    #splash-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      animation: splashFadeIn 0.6s ease forwards;
-    }
-    @keyframes splashFadeIn {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    #splash-logo {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin: 0 auto 28px;
-      filter: drop-shadow(0 4px 24px rgba(184,0,0,0.4));
-    }
-    #splash-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(48px, 8vw, 88px);
-      font-weight: 900;
-      color: #FAFAF8;
-      letter-spacing: -2px;
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-    #splash-title span { color: #B80000; }
-    #splash-sub {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      color: #C8BFB0;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
+
     #splash-bar {
       position: absolute;
       bottom: 0;
@@ -176,11 +143,6 @@
 
 <!-- SPLASH SCREEN -->
 <div id="splash">
-  <div id="splash-content">
-    <img id="splash-logo" src="/assets/dsalogo9.png" alt="DSAExposed" />
-    <div id="splash-title">DSA<span>Exposed</span></div>
-    <div id="splash-sub">Documenting the Radical Left</div>
-  </div>
   <div id="splash-bar"></div>
 </div>
 
