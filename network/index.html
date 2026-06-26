@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network Map — DSA Exposed</title>
+  <meta name="description" content="Interactive network map of DSA connections — reps, organizations, donors, chapters, and terror-adjacent groups." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PK58BBCJX7');</script>
+  <link rel="stylesheet" href="/assets/global.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <style>
+    .network-layout { display: grid; grid-template-columns: 280px 1fr; height: calc(100vh - 140px); border-bottom: 2px solid var(--ink); }
+    .network-sidebar { border-right: 2px solid var(--ink); overflow-y: auto; background: var(--white); }
+    .network-sidebar-header { padding: 20px 24px; border-bottom: 2px solid var(--ink); background: var(--paper-dk); }
+    .network-sidebar-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .network-sidebar-sub { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+    .legend { padding: 16px 24px; border-bottom: 1px solid var(--rule); }
+    .legend-title { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+    .legend-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 1px; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .node-info { padding: 16px 24px; }
+    .node-info-title { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+    .node-detail { display: none; }
+    .node-detail.active { display: block; }
+    .node-detail-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+    .node-detail-type { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .node-detail-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+    .node-detail-connections { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 1px; }
+    .node-detail-link { display: inline-block; margin-top: 12px; font-family: var(--font-mono); font-size: 10px; color: var(--red); letter-spacing: 1.5px; border-bottom: 1px solid var(--red); }
+    .node-empty { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 1px; line-height: 1.8; }
+    .network-canvas { background: var(--paper); position: relative; overflow: hidden; }
+    #networkSvg { width: 100%; height: 100%; }
+    .network-controls { position: absolute; bottom: 20px; right: 20px; display: flex; gap: 8px; }
+    .network-btn { background: var(--white); border: 2px solid var(--ink); font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--ink); padding: 8px 14px; cursor: pointer; transition: all 0.15s; }
+    .network-btn:hover { background: var(--ink); color: var(--white); }
+    .network-tip { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 1.5px; background: var(--white); border: 1px solid var(--rule); padding: 8px 16px; pointer-events: none; white-space: nowrap; }
+    @media (max-width: 900px) {
+      .network-layout { grid-template-columns: 1fr; height: auto; }
+      .network-sidebar { border-right: none; border-bottom: 2px solid var(--ink); max-height: 260px; }
+      .network-canvas { height: 70vw; min-height: 400px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
+<nav></nav>
+<script src="/components/nav.js"></script>
+
+<div class="page-header" style="padding:40px 48px 32px;">
+  <div class="page-header-ghost">NETWORK</div>
+  <div class="section-eyebrow">// Interactive Intelligence Tool</div>
+  <h1 style="font-size:clamp(32px,4vw,56px);margin-bottom:12px;">DSA <em>Network</em> Map</h1>
+  <p style="font-size:15px;">Click any node to explore connections. Drag to reposition. Scroll to zoom. The complete web of DSA relationships — reps, organizations, donors, chapters, and terror-adjacent groups.</p>
+</div>
+
+<div class="network-layout">
+  <!-- SIDEBAR -->
+  <div class="network-sidebar">
+    <div class="network-sidebar-header">
+      <div class="network-sidebar-title">Node Inspector</div>
+      <div class="network-sidebar-sub">Click any node to inspect</div>
+    </div>
+    <div class="legend">
+      <div class="legend-title">// Node Types</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#B80000;"></div>DSA Officials / Reps</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#1B6B1B;"></div>DSA Organizations</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#C8960C;"></div>Funding / PACs</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#6B3FA0;"></div>Terror-Adjacent Orgs</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#C05A00;"></div>Chapters</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#141210;"></div>Key Events</div>
+    </div>
+    <div class="node-info">
+      <div class="node-info-title">// Selected Node</div>
+      <div class="node-empty" id="nodeEmpty">Click any node in the network to inspect its connections, profile, and documented ties.</div>
+      <div class="node-detail" id="nodeDetail">
+        <div class="node-detail-name" id="nodeDetailName"></div>
+        <div class="node-detail-type" id="nodeDetailType"></div>
+        <div class="node-detail-desc" id="nodeDetailDesc"></div>
+        <div class="node-detail-connections" id="nodeDetailConnections"></div>
+        <a class="node-detail-link" id="nodeDetailLink" href="#">View Full Profile →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NETWORK CANVAS -->
+  <div class="network-canvas" id="networkCanvas">
+    <div class="network-tip">Drag nodes · Scroll to zoom · Click to inspect</div>
+    <svg id="networkSvg"></svg>
+    <div class="network-controls">
+      <button class="network-btn" id="btnZoomIn">+</button>
+      <button class="network-btn" id="btnZoomOut">−</button>
+      <button class="network-btn" id="btnReset">Reset</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const NODES = [
+  // DSA Officials (red)
+  { id: 'mamdani', label: 'Zohran Mamdani', type: 'rep', color: '#B80000', r: 28, desc: 'NYC Mayor, DSA member, architect of the 2026 congressional sweep. Praised Hamas-linked "Holy Land Five" in 2017. Revoked pro-Israel decrees Day 1 in office.', link: '/reps/', connections: 'Endorsed: Valdez, Avila Chevalier, Lander. Connected to: NYC DSA, Justice Democrats, BDS Movement.' },
+  { id: 'valdez', label: 'Claire Valdez', type: 'rep', color: '#B80000', r: 22, desc: 'Democratic Nominee NY-7. DSA member. Liked Oct. 7 Hamas celebration post. Pledged to block all military aid to Israel.', link: '/reps/', connections: 'Endorsed by: Mamdani, NYC DSA, Justice Democrats. Funded by: American Priorities PAC.' },
+  { id: 'avila', label: 'Darializa Avila Chevalier', type: 'rep', color: '#B80000', r: 22, desc: 'Democratic Nominee NY-13. DSA member. Attended pro-Hamas Times Square rally Oct. 8, 2023. Refused to condemn Hamas at candidate forum.', link: '/reps/', connections: 'Co-founded: Columbia Apartheid Divest. Endorsed by: NYC DSA, Mamdani. Funded by: Justice Democrats PAC ($1.5M).' },
+  { id: 'lander', label: 'Brad Lander', type: 'rep', color: '#B80000', r: 20, desc: 'Democratic Nominee NY-10. Mamdani-endorsed. Called Israel\'s campaign "genocide." Unseated 2-term incumbent Dan Goldman.', link: '/reps/', connections: 'Endorsed by: Mamdani, Bernie Sanders. Former DSA member. Ran joint ads with Avila Chevalier.' },
+  { id: 'aoc', label: 'Alexandria Ocasio-Cortez', type: 'rep', color: '#B80000', r: 24, desc: 'U.S. Representative NY-14. DSA member. Voted NO on Iron Dome funding. Voted PRESENT on Hamas condemnation.', link: '/reps/', connections: 'DSA member. Endorsed Mamdani for mayor. Connected to: Justice Democrats, Working Families Party.' },
+  { id: 'tlaib', label: 'Rashida Tlaib', type: 'rep', color: '#B80000', r: 22, desc: 'U.S. Representative MI-12. Censured by House for Hamas slogan. CAIR fundraising ties. Voted NO on Hamas condemnation.', link: '/reps/', connections: 'Endorsed by: CAIR Action Network ($140K+). Connected to: AMP, BDS Movement.' },
+  { id: 'omar', label: 'Ilhan Omar', type: 'rep', color: '#B80000', r: 22, desc: 'U.S. Representative MN-05. Equated USA with Hamas. CAIR fundraising ties. Voted NO on Iron Dome.', link: '/reps/', connections: 'CAIR bundled $180K+. Connected to: CAIR Minnesota, BDS Movement.' },
+
+  // DSA Orgs (green)
+  { id: 'nycdsa', label: 'NYC DSA', type: 'org', color: '#1B6B1B', r: 24, desc: 'Largest and most powerful DSA chapter in the country. 12,000+ members. Endorsed Mamdani for mayor, Valdez and Avila Chevalier for Congress.', link: '/chapters/', connections: 'Endorsed: Mamdani, Valdez, Avila Chevalier, 6+ Albany candidates. Connected to: National DSA, BDS Movement.' },
+  { id: 'nationaldsa', label: 'National DSA', type: 'org', color: '#1B6B1B', r: 20, desc: '92,000+ members. 250+ chapters. 2023 convention refused to condemn Hamas Oct. 7 attack. Officially endorsed BDS movement.', link: '/networks/', connections: '250+ chapters. Connected to: BDS Movement, Working Families Party.' },
+  { id: 'justicedem', label: 'Justice Democrats', type: 'org', color: '#1B6B1B', r: 18, desc: 'Co-founded by AOC\'s former chief of staff. Raised and deployed $11.2M+ for DSA-aligned federal candidates.', link: '/funding/', connections: 'Funded: Valdez ($370K), Avila Chevalier ($1.5M). Connected to: National DSA, Working Families Party.' },
+  { id: 'wfp', label: 'Working Families Party', type: 'org', color: '#1B6B1B', r: 16, desc: 'DSA-aligned electoral vehicle. Coordinates with DSA on candidate recruitment and funding.', link: '/networks/', connections: 'Connected to: Justice Democrats, National DSA, Brad Lander.' },
+
+  // Funding (yellow)
+  { id: 'americanpriorities', label: 'American Priorities PAC', type: 'funding', color: '#C8960C', r: 16, desc: 'Anti-AIPAC super PAC. Donated $1.3M to Avila Chevalier, $455K to Valdez. Funded by Muslim businesspeople supporting anti-Israel candidates.', link: '/funding/', connections: 'Funded: Avila Chevalier ($1.3M), Valdez ($455K).' },
+  { id: 'sixtythirty', label: 'Sixteen Thirty Fund', type: 'funding', color: '#C8960C', r: 18, desc: 'Major dark money conduit. Routes donations to progressive and DSA-adjacent candidates without donor disclosure.', link: '/funding/', connections: 'Connected to: Justice Democrats, Working Families Party.' },
+  { id: 'opensociety', label: 'Open Society Foundations', type: 'funding', color: '#C8960C', r: 18, desc: 'George Soros-founded network. Major funder of DSA-adjacent organizations and progressive ballot initiatives.', link: '/funding/', connections: 'Connected to: Working Families Party, CAIR.' },
+
+  // Terror-Adjacent (purple)
+  { id: 'cair', label: 'CAIR', type: 'terror', color: '#6B3FA0', r: 22, desc: 'Council on American-Islamic Relations. Named unindicted co-conspirator in Holy Land Foundation Hamas financing trial. CAIR Action Network PAC bundled $140K+ for Tlaib, $180K+ for Omar.', link: '/terrorism/', connections: 'Connected to: Tlaib, Omar, BDS Movement, AMP. Bundled: $140K Tlaib, $180K Omar.' },
+  { id: 'bds', label: 'BDS Movement', type: 'terror', color: '#6B3FA0', r: 20, desc: 'Boycott, Divestment, Sanctions. Hamas-linked founding. National DSA officially endorsed BDS in 2017. Goal: elimination of Israel.', link: '/terrorism/', connections: 'Endorsed by: National DSA, AOC, Tlaib, Omar, Valdez. Connected to: CAIR, AMP.' },
+  { id: 'amp', label: 'American Muslims for Palestine', type: 'terror', color: '#6B3FA0', r: 18, desc: 'AMP-linked bundlers donated to Tlaib and Omar campaigns. AMP has documented ties to Holy Land Foundation.', link: '/terrorism/', connections: 'Connected to: CAIR, BDS, Tlaib, Omar.' },
+  { id: 'hlf', label: 'Holy Land Foundation', type: 'terror', color: '#6B3FA0', r: 16, desc: 'Convicted of financing Hamas. Largest U.S. terrorism financing prosecution. CAIR named unindicted co-conspirator. Mamdani praised its leaders in 2017.', link: '/terrorism/', connections: 'Connected to: CAIR, AMP, Mamdani (praise).' },
+
+  // Chapters (orange)
+  { id: 'chicagodsa', label: 'Chicago DSA', type: 'chapter', color: '#C05A00', r: 14, desc: '12 active chapters in Illinois. Running candidate in IL-07. SEIU coordination.', link: '/chapters/', connections: 'Connected to: National DSA. Running candidate: IL-07.' },
+  { id: 'seattledsa', label: 'Seattle DSA', type: 'chapter', color: '#C05A00', r: 14, desc: 'Holds multiple city council seats. Targeting WA-07 for federal expansion.', link: '/chapters/', connections: 'Connected to: National DSA. Targeting: WA-07.' },
+  { id: 'ladsa', label: 'Los Angeles DSA', type: 'chapter', color: '#C05A00', r: 14, desc: 'Largest chapter in California. 15,000+ members statewide. Controls significant CA Democratic Party apparatus.', link: '/chapters/', connections: 'Connected to: National DSA. Controls: CA Dem Party apparatus.' },
+
+  // Events (black)
+  { id: 'oct7', label: 'Oct. 7, 2023 Hamas Attack', type: 'event', color: '#141210', r: 16, desc: 'Hamas massacred 1,200 Israelis. DSA did not condemn. Multiple DSA officials praised or refused to condemn. Mamdani\'s statement: zero Hamas mentions.', link: '/terrorism/', connections: 'Response: Mamdani (zero Hamas mention), Avila Chevalier (attended Oct. 8 rally), Tlaib (censured for slogan).' },
+  { id: 'sweep2026', label: '2026 NYC Primary Sweep', type: 'event', color: '#141210', r: 16, desc: 'Mamdani\'s slate went 3-for-3. Valdez (NY-7), Avila Chevalier (NY-13), Lander (NY-10). DSA picks up 6+ Albany seats.', link: '/primaries/', connections: 'Winners: Valdez, Avila Chevalier, Lander. Architect: Mamdani. DSA Congressional count doubles in one night.' },
+];
+
+const LINKS = [
+  // Mamdani connections
+  { source: 'mamdani', target: 'nycdsa', strength: 3 },
+  { source: 'mamdani', target: 'valdez', strength: 3 },
+  { source: 'mamdani', target: 'avila', strength: 3 },
+  { source: 'mamdani', target: 'lander', strength: 3 },
+  { source: 'mamdani', target: 'aoc', strength: 2 },
+  { source: 'mamdani', target: 'hlf', strength: 2 },
+  { source: 'mamdani', target: 'bds', strength: 2 },
+  { source: 'mamdani', target: 'sweep2026', strength: 3 },
+  { source: 'mamdani', target: 'oct7', strength: 2 },
+  // Valdez
+  { source: 'valdez', target: 'nycdsa', strength: 3 },
+  { source: 'valdez', target: 'justicedem', strength: 2 },
+  { source: 'valdez', target: 'americanpriorities', strength: 2 },
+  { source: 'valdez', target: 'bds', strength: 2 },
+  { source: 'valdez', target: 'sweep2026', strength: 3 },
+  { source: 'valdez', target: 'oct7', strength: 2 },
+  // Avila Chevalier
+  { source: 'avila', target: 'nycdsa', strength: 3 },
+  { source: 'avila', target: 'justicedem', strength: 3 },
+  { source: 'avila', target: 'americanpriorities', strength: 3 },
+  { source: 'avila', target: 'bds', strength: 2 },
+  { source: 'avila', target: 'oct7', strength: 3 },
+  { source: 'avila', target: 'sweep2026', strength: 3 },
+  // Lander
+  { source: 'lander', target: 'wfp', strength: 2 },
+  { source: 'lander', target: 'sweep2026', strength: 3 },
+  // AOC
+  { source: 'aoc', target: 'nationaldsa', strength: 3 },
+  { source: 'aoc', target: 'justicedem', strength: 3 },
+  { source: 'aoc', target: 'bds', strength: 2 },
+  // Tlaib
+  { source: 'tlaib', target: 'cair', strength: 3 },
+  { source: 'tlaib', target: 'bds', strength: 3 },
+  { source: 'tlaib', target: 'amp', strength: 2 },
+  { source: 'tlaib', target: 'oct7', strength: 2 },
+  // Omar
+  { source: 'omar', target: 'cair', strength: 3 },
+  { source: 'omar', target: 'bds', strength: 2 },
+  { source: 'omar', target: 'amp', strength: 2 },
+  // Org connections
+  { source: 'nycdsa', target: 'nationaldsa', strength: 3 },
+  { source: 'chicagodsa', target: 'nationaldsa', strength: 2 },
+  { source: 'seattledsa', target: 'nationaldsa', strength: 2 },
+  { source: 'ladsa', target: 'nationaldsa', strength: 2 },
+  { source: 'nationaldsa', target: 'bds', strength: 3 },
+  { source: 'nationaldsa', target: 'wfp', strength: 2 },
+  { source: 'justicedem', target: 'nationaldsa', strength: 2 },
+  { source: 'cair', target: 'hlf', strength: 3 },
+  { source: 'cair', target: 'bds', strength: 3 },
+  { source: 'cair', target: 'amp', strength: 3 },
+  { source: 'amp', target: 'hlf', strength: 2 },
+  { source: 'sixtythirty', target: 'justicedem', strength: 2 },
+  { source: 'opensociety', target: 'wfp', strength: 2 },
+  { source: 'opensociety', target: 'cair', strength: 1 },
+];
+
+// D3 Force Graph
+const canvas = document.getElementById('networkCanvas');
+const svg = d3.select('#networkSvg');
+const width = () => canvas.clientWidth;
+const height = () => canvas.clientHeight;
+
+const zoom = d3.zoom()
+  .scaleExtent([0.3, 3])
+  .on('zoom', (e) => g.attr('transform', e.transform));
+
+svg.call(zoom);
+const g = svg.append('g');
+
+// Arrow marker
+svg.append('defs').append('marker')
+  .attr('id', 'arrow')
+  .attr('viewBox', '0 -5 10 10')
+  .attr('refX', 20).attr('refY', 0)
+  .attr('markerWidth', 6).attr('markerHeight', 6)
+  .attr('orient', 'auto')
+  .append('path').attr('d', 'M0,-5L10,0L0,5').attr('fill', '#C8BFB0');
+
+const simulation = d3.forceSimulation(NODES)
+  .force('link', d3.forceLink(LINKS).id(d => d.id).distance(d => 120 / d.strength))
+  .force('charge', d3.forceManyBody().strength(-400))
+  .force('center', d3.forceCenter(width() / 2, height() / 2))
+  .force('collision', d3.forceCollide().radius(d => d.r + 16));
+
+const link = g.append('g')
+  .selectAll('line')
+  .data(LINKS)
+  .join('line')
+  .attr('stroke', '#C8BFB0')
+  .attr('stroke-width', d => d.strength * 0.8)
+  .attr('stroke-opacity', 0.6);
+
+const node = g.append('g')
+  .selectAll('g')
+  .data(NODES)
+  .join('g')
+  .attr('cursor', 'pointer')
+  .call(d3.drag()
+    .on('start', (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+    .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
+    .on('end', (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
+  )
+  .on('click', (e, d) => {
+    e.stopPropagation();
+    document.getElementById('nodeEmpty').style.display = 'none';
+    const detail = document.getElementById('nodeDetail');
+    detail.classList.add('active');
+    document.getElementById('nodeDetailName').textContent = d.label;
+    document.getElementById('nodeDetailType').textContent = d.type.toUpperCase().replace('REP','DSA OFFICIAL').replace('ORG','ORGANIZATION').replace('TERROR','TERROR-ADJACENT').replace('CHAPTER','CHAPTER').replace('FUNDING','FUNDING / PAC').replace('EVENT','KEY EVENT');
+    document.getElementById('nodeDetailDesc').textContent = d.desc;
+    document.getElementById('nodeDetailConnections').textContent = d.connections;
+    document.getElementById('nodeDetailLink').href = d.link;
+    // Highlight
+    node.selectAll('circle').attr('opacity', n => LINKS.some(l => (l.source.id||l.source) === d.id && (l.target.id||l.target) === n.id || (l.target.id||l.target) === d.id && (l.source.id||l.source) === n.id) || n.id === d.id ? 1 : 0.2);
+    link.attr('stroke-opacity', l => (l.source.id||l.source) === d.id || (l.target.id||l.target) === d.id ? 1 : 0.1);
+  });
+
+node.append('circle')
+  .attr('r', d => d.r)
+  .attr('fill', d => d.color)
+  .attr('fill-opacity', 0.85)
+  .attr('stroke', d => d.color)
+  .attr('stroke-width', 2);
+
+node.append('text')
+  .attr('text-anchor', 'middle')
+  .attr('dy', d => d.r + 14)
+  .attr('font-family', "'IBM Plex Mono', monospace")
+  .attr('font-size', '9px')
+  .attr('fill', '#6B6459')
+  .attr('letter-spacing', '0.5px')
+  .text(d => d.label.length > 20 ? d.label.substring(0,18) + '…' : d.label);
+
+// Click bg to reset
+svg.on('click', () => {
+  node.selectAll('circle').attr('opacity', 1);
+  link.attr('stroke-opacity', 0.6);
+  document.getElementById('nodeEmpty').style.display = 'block';
+  document.getElementById('nodeDetail').classList.remove('active');
+});
+
+simulation.on('tick', () => {
+  link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+  node.attr('transform', d => `translate(${d.x},${d.y})`);
+});
+
+// Controls
+const t = d3.zoomTransform(svg.node());
+document.getElementById('btnZoomIn').onclick = () => svg.transition().call(zoom.scaleBy, 1.4);
+document.getElementById('btnZoomOut').onclick = () => svg.transition().call(zoom.scaleBy, 0.7);
+document.getElementById('btnReset').onclick = () => svg.transition().call(zoom.transform, d3.zoomIdentity.translate(width()/2, height()/2).scale(0.9));
+
+window.addEventListener('resize', () => simulation.force('center', d3.forceCenter(width()/2, height()/2)).alpha(0.1).restart());
+</script>
+
+<script src="/components/search.js"></script>
+<footer></footer>
+<div class="footer-bottom"></div>
+<script src="/components/footer.js"></script>
+</body>
+</html>
