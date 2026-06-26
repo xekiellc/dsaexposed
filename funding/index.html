@@ -4,32 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Follow the Money — DSA Exposed</title>
-  <link rel="stylesheet" href="/assets/global.css" />
+  <meta name="description" content="FEC filings, PAC networks, dark money trails. Who funds the DSA and DSA-aligned candidates — and what they expect in return." />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PK58BBCJX7');</script>
+  <link rel="stylesheet" href="/assets/global.css" />
   <style>
     .section { padding: 56px 48px; border-bottom: 1px solid var(--rule); }
     .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
     .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .card { background: var(--white); border: 1px solid var(--rule); border-top: 3px solid var(--red); padding: 28px; transition: box-shadow 0.2s, transform 0.2s; }
-    .card:hover { box-shadow: 0 4px 16px rgba(20,18,16,0.1); transform: translateY(-2px); }
+    .card { background: var(--white); border: 1px solid var(--rule); border-top: 3px solid var(--red); padding: 28px; transition: box-shadow 0.22s, transform 0.22s; }
+    .card:hover { box-shadow: 0 8px 28px rgba(20,18,16,0.11); transform: translateY(-3px); }
     .card-eyebrow { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
     .card-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
-    .card-body { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+    .card-body { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
     .card-body strong { color: var(--ink); }
-    .card-source { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; border-top: 1px solid var(--rule); padding-top: 10px; }
     .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .card-source { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; border-top: 1px solid var(--rule); padding-top: 10px; }
+    .card-amount { font-family: var(--font-display); font-size: 32px; font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 4px; }
+    .card-amount-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
     .flow-table { width: 100%; border-collapse: collapse; }
-    .flow-table th { font-family: var(--font-mono); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding: 12px 20px; text-align: left; border-bottom: 2px solid var(--ink); background: var(--paper-dk); }
+    .flow-table th { font-family: var(--font-mono); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding: 12px 20px; text-align: left; border-bottom: 2px solid var(--ink); background: var(--paper-dk); white-space: nowrap; }
     .flow-table td { font-family: var(--font-mono); font-size: 11px; color: var(--ink); padding: 14px 20px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
     .flow-table tr:hover td { background: var(--paper-dk); }
-    .amount { color: var(--red); font-weight: 600; }
-    @media (max-width: 900px) { .section { padding: 40px 24px; } .grid-2 { grid-template-columns: 1fr; } .grid-3 { grid-template-columns: 1fr; } }
+    .amount-cell { color: var(--red); font-weight: 600; white-space: nowrap; }
+    .source-cell { color: var(--muted); font-size: 10px; }
+    .flag-cell { color: var(--red); font-size: 10px; }
+    @media (max-width: 900px) {
+      .section { padding: 40px 24px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .flow-table { font-size: 10px; }
+      .flow-table th, .flow-table td { padding: 10px 12px; }
+    }
   </style>
 </head>
 <body>
-<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
-<nav></nav><script src="/components/nav.js"></script>
+
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
+<nav></nav>
+<script src="/components/nav.js"></script>
 
 <div class="page-header">
   <div class="page-header-ghost">FUNDING</div>
@@ -39,10 +53,22 @@
 </div>
 
 <div class="stats-bar">
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">$12M+</div><div class="stat-label">Tracked Campaign Funding</div></div>
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">$1.5M</div><div class="stat-label">Justice Dems → Avila Chevalier</div></div>
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">$320K+</div><div class="stat-label">CAIR PAC → Tlaib + Omar</div></div>
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">$9.6M</div><div class="stat-label">Anti-DSA Spending — Failed 2026</div></div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">$12M+</div>
+    <div class="stat-label">Total Tracked<br>Campaign Funding</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">$2.8M</div>
+    <div class="stat-label">Single Race:<br>Avila Chevalier NY-13</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">$320K+</div>
+    <div class="stat-label">CAIR PAC →<br>Tlaib + Omar</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">$9.6M</div>
+    <div class="stat-label">Anti-DSA 2026<br>Spending — Failed</div>
+  </div>
 </div>
 
 <section class="section">
@@ -50,53 +76,96 @@
   <div class="section-title">Who Bankrolls the DSA</div>
   <hr class="section-rule" />
   <div class="grid-2">
+
     <div class="card">
       <div class="card-eyebrow">// Justice Democrats PAC</div>
+      <div class="card-amount">$11.2M</div>
+      <div class="card-amount-label">2022 Cycle Total Deployed</div>
       <div class="card-title">Justice Democrats — DSA's Federal Electoral Arm</div>
-      <div class="card-tags"><span class="tag danger">$11.2M 2022 Cycle</span><span class="tag warn">AOC Co-Founded</span></div>
-      <div class="card-body">Co-founded by AOC's former chief of staff Saikat Chakrabarti. Raised and deployed <strong>$11.2 million in the 2022 cycle</strong> for DSA-endorsed and DSA-aligned federal candidates. In 2026: $1.5M to Avila Chevalier, $370K to Valdez.</div>
+      <div class="card-tags">
+        <span class="tag danger">AOC Co-Founded</span>
+        <span class="tag danger">$1.5M → Avila Chevalier</span>
+        <span class="tag warn">$370K → Valdez</span>
+      </div>
+      <div class="card-body">Co-founded by AOC's former chief of staff Saikat Chakrabarti. Raised and deployed <strong>$11.2 million in the 2022 cycle</strong> for DSA-endorsed and DSA-aligned federal candidates. In 2026: <strong>$1.5 million to Avila Chevalier</strong> (NY-13) and <strong>$370,000 to Valdez</strong> (NY-7). Combined with American Priorities PAC, this made Avila Chevalier one of the best-funded congressional challengers in the country.</div>
       <div class="card-source">Source: FEC.gov · Justice Democrats PAC · 2022-2026 Disclosures</div>
     </div>
+
     <div class="card">
       <div class="card-eyebrow">// American Priorities PAC</div>
+      <div class="card-amount">$1.75M</div>
+      <div class="card-amount-label">2026 NYC Primary Total</div>
       <div class="card-title">American Priorities — Anti-AIPAC Dark Money</div>
-      <div class="card-tags"><span class="tag danger">$1.3M → Avila Chevalier</span><span class="tag warn">Muslim Donor Network</span></div>
-      <div class="card-body">Anti-AIPAC super PAC funded primarily by Muslim businesspeople supporting anti-Israel candidates. Donated <strong>$1.3 million to Avila Chevalier</strong> and $455,000 to Valdez in the 2026 NYC primaries.</div>
+      <div class="card-tags">
+        <span class="tag danger">$1.3M → Avila Chevalier</span>
+        <span class="tag danger">$455K → Valdez</span>
+        <span class="tag warn">Muslim Donor Network</span>
+      </div>
+      <div class="card-body">Anti-AIPAC super PAC funded primarily by Muslim businesspeople supporting anti-Israel candidates. Donated <strong>$1.3 million to Avila Chevalier</strong> and <strong>$455,000 to Valdez</strong> in the 2026 NYC primaries — making it the single largest outside spender in both races. The PAC's stated mission is electing candidates who will block all U.S. military aid to Israel.</div>
       <div class="card-source">Source: FEC.gov · American Priorities PAC · 2026 Disclosures</div>
     </div>
+
     <div class="card">
       <div class="card-eyebrow">// CAIR Action Network PAC</div>
+      <div class="card-amount">$320K+</div>
+      <div class="card-amount-label">Bundled for DSA-Aligned Reps</div>
       <div class="card-title">CAIR Action Network — Terror-Adjacent Bundling</div>
-      <div class="card-tags"><span class="tag danger">$140K → Tlaib</span><span class="tag danger">$180K → Omar</span></div>
-      <div class="card-body">CAIR Action Network PAC — the political arm of CAIR, named unindicted co-conspirator in the HLF Hamas financing trial — bundled <strong>$140,000+ for Rashida Tlaib</strong> and <strong>$180,000+ for Ilhan Omar.</strong></div>
-      <div class="card-source">Source: FEC.gov · CAIR Action Network PAC · 2020-2024 Disclosures</div>
+      <div class="card-tags">
+        <span class="tag danger">$140K+ → Tlaib</span>
+        <span class="tag danger">$180K+ → Omar</span>
+        <span class="tag danger">HLF Co-Conspirator</span>
+      </div>
+      <div class="card-body">CAIR Action Network PAC — the political arm of CAIR, named an unindicted co-conspirator in the Holy Land Foundation Hamas financing trial — bundled <strong>$140,000+ for Rashida Tlaib</strong> and <strong>$180,000+ for Ilhan Omar</strong> across multiple cycles. Both have headlined CAIR fundraisers and co-sponsored CAIR-organized events.</div>
+      <div class="card-source">Source: FEC.gov · CAIR Action Network PAC · 2020-2024 Disclosures · DOJ HLF Trial Records</div>
     </div>
+
     <div class="card">
       <div class="card-eyebrow">// Sixteen Thirty Fund</div>
+      <div class="card-amount">Undisclosed</div>
+      <div class="card-amount-label">Dark Money — Routed Through 501(c)4</div>
       <div class="card-title">Sixteen Thirty Fund — Dark Money Conduit</div>
-      <div class="card-tags"><span class="tag warn">Dark Money</span><span class="tag warn">Donor Concealment</span></div>
-      <div class="card-body">Major dark money conduit routing donations to progressive and DSA-adjacent candidates without donor disclosure. Routes through multiple layers of nonprofits. Connected to Justice Democrats and Working Families Party.</div>
-      <div class="card-source">Source: IRS Form 990 Filings, OpenSecrets.org Analysis</div>
+      <div class="card-tags">
+        <span class="tag warn">Dark Money</span>
+        <span class="tag warn">Donor Concealment</span>
+        <span class="tag warn">Justice Dems Connected</span>
+      </div>
+      <div class="card-body">Major dark money conduit that routes donations to progressive and DSA-adjacent candidates without public donor disclosure. Operates through multiple layers of 501(c)4 nonprofits to avoid Federal Election Commission disclosure requirements. Documented connections to Justice Democrats and Working Families Party infrastructure.</div>
+      <div class="card-source">Source: IRS Form 990 Filings · OpenSecrets.org Analysis · Senate Finance Committee Report</div>
     </div>
+
     <div class="card">
       <div class="card-eyebrow">// Open Society Foundations</div>
+      <div class="card-amount">$Millions</div>
+      <div class="card-amount-label">To DSA-Adjacent Organizations</div>
       <div class="card-title">Open Society Foundations — Soros Network</div>
-      <div class="card-tags"><span class="tag warn">Progressive Network</span><span class="tag warn">WFP Funder</span></div>
-      <div class="card-body">George Soros-founded network. Major funder of DSA-adjacent organizations including the Working Families Party and CAIR-affiliated legal organizations.</div>
-      <div class="card-source">Source: IRS Form 990 Filings, Open Society Published Grants Database</div>
+      <div class="card-tags">
+        <span class="tag warn">WFP Funder</span>
+        <span class="tag warn">Progressive Infrastructure</span>
+        <span class="tag warn">CAIR-Adjacent</span>
+      </div>
+      <div class="card-body">George Soros-founded network. Major funder of DSA-adjacent organizations including the Working Families Party and CAIR-affiliated legal organizations. Has donated hundreds of millions to progressive ballot initiatives aligned with DSA platform positions including criminal justice reform, immigration policy, and housing.</div>
+      <div class="card-source">Source: IRS Form 990 Filings · Open Society Published Grants Database</div>
     </div>
+
     <div class="card">
       <div class="card-eyebrow">// Working Families Party</div>
-      <div class="card-title">Working Families Party — Electoral Vehicle</div>
-      <div class="card-tags"><span class="tag warn">DSA Aligned</span><span class="tag warn">Cross-Endorsement</span></div>
-      <div class="card-body">DSA-aligned electoral vehicle operating as a minor party in New York and other states. Connected to Open Society, SEIU, and Justice Democrats. Cross-endorsed Brad Lander in the 2026 NY-10 primary.</div>
-      <div class="card-source">Source: NYS Board of Elections, FEC.gov</div>
+      <div class="card-amount">Cross-Ballot</div>
+      <div class="card-amount-label">Electoral Vehicle — NY + 6 Other States</div>
+      <div class="card-title">Working Families Party — DSA Electoral Vehicle</div>
+      <div class="card-tags">
+        <span class="tag warn">DSA Aligned</span>
+        <span class="tag warn">Cross-Endorsed Lander</span>
+        <span class="tag warn">Open Society Funded</span>
+      </div>
+      <div class="card-body">DSA-aligned electoral vehicle operating as a minor party in New York and other states, allowing cross-endorsement of DSA candidates on a separate ballot line. Cross-endorsed Brad Lander in the 2026 NY-10 primary. Connected to Open Society Foundations, SEIU, and Justice Democrats. Provides ballot infrastructure that amplifies DSA electoral efforts.</div>
+      <div class="card-source">Source: NYS Board of Elections · FEC.gov · WFP Published Endorsements</div>
     </div>
+
   </div>
 </section>
 
-<section class="section">
-  <div class="section-eyebrow">// Transaction Log</div>
+<section class="section" style="background:var(--paper-dk);">
+  <div class="section-eyebrow">// Transaction Log — FEC Sourced</div>
   <div class="section-title">Documented Funding Transactions</div>
   <hr class="section-rule" />
   <div style="overflow-x:auto;">
@@ -112,28 +181,130 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>Justice Democrats PAC</td><td>Darializa Avila Chevalier</td><td class="amount">$1,500,000</td><td>2026</td><td>NY-13 primary challenger</td><td>FEC.gov</td></tr>
-        <tr><td>American Priorities PAC</td><td>Darializa Avila Chevalier</td><td class="amount">$1,300,000</td><td>2026</td><td>Anti-AIPAC super PAC</td><td>FEC.gov</td></tr>
-        <tr><td>Justice Democrats PAC</td><td>Claire Valdez</td><td class="amount">$370,000</td><td>2026</td><td>NY-7 primary</td><td>FEC.gov</td></tr>
-        <tr><td>American Priorities PAC</td><td>Claire Valdez</td><td class="amount">$455,000</td><td>2026</td><td>Anti-AIPAC super PAC</td><td>FEC.gov</td></tr>
-        <tr><td>CAIR Action Network PAC</td><td>Rashida Tlaib (bundled)</td><td class="amount">$140,000+</td><td>2020-24</td><td>CAIR = HLF co-conspirator</td><td>FEC.gov</td></tr>
-        <tr><td>CAIR Action Network PAC</td><td>Ilhan Omar (bundled)</td><td class="amount">$180,000+</td><td>2020-24</td><td>CAIR = HLF co-conspirator</td><td>FEC.gov</td></tr>
-        <tr><td>Justice Democrats PAC</td><td>Alexandria Ocasio-Cortez</td><td class="amount">$2,400,000</td><td>2018-24</td><td>Multiple cycles total</td><td>FEC.gov</td></tr>
-        <tr><td>AMP-linked bundlers</td><td>Rashida Tlaib</td><td class="amount">Documented</td><td>2022-24</td><td>AMP = HLF institutional ties</td><td>Senate Judiciary</td></tr>
-        <tr><td>Open Society Foundations</td><td>Working Families Party</td><td class="amount">$millions</td><td>Multiple</td><td>IRS 990 filings</td><td>IRS 990</td></tr>
-        <tr><td>Sixteen Thirty Fund</td><td>Justice Democrats (via 501c4)</td><td class="amount">Undisclosed</td><td>Multiple</td><td>Dark money routing</td><td>OpenSecrets</td></tr>
+        <tr>
+          <td><strong>Justice Democrats PAC</strong></td>
+          <td>Darializa Avila Chevalier</td>
+          <td class="amount-cell">$1,500,000</td>
+          <td>2026</td>
+          <td class="flag-cell">NY-13 primary challenger</td>
+          <td class="source-cell">FEC.gov</td>
+        </tr>
+        <tr>
+          <td><strong>American Priorities PAC</strong></td>
+          <td>Darializa Avila Chevalier</td>
+          <td class="amount-cell">$1,300,000</td>
+          <td>2026</td>
+          <td class="flag-cell">Anti-AIPAC super PAC</td>
+          <td class="source-cell">FEC.gov</td>
+        </tr>
+        <tr>
+          <td><strong>Justice Democrats PAC</strong></td>
+          <td>Claire Valdez</td>
+          <td class="amount-cell">$370,000</td>
+          <td>2026</td>
+          <td class="flag-cell">NY-7 primary</td>
+          <td class="source-cell">FEC.gov</td>
+        </tr>
+        <tr>
+          <td><strong>American Priorities PAC</strong></td>
+          <td>Claire Valdez</td>
+          <td class="amount-cell">$455,000</td>
+          <td>2026</td>
+          <td class="flag-cell">Anti-AIPAC super PAC</td>
+          <td class="source-cell">FEC.gov</td>
+        </tr>
+        <tr>
+          <td><strong>CAIR Action Network PAC</strong></td>
+          <td>Rashida Tlaib (bundled)</td>
+          <td class="amount-cell">$140,000+</td>
+          <td>2020-24</td>
+          <td class="flag-cell">CAIR = HLF unindicted co-conspirator</td>
+          <td class="source-cell">FEC.gov</td>
+        </tr>
+        <tr>
+          <td><strong>CAIR Action Network PAC</strong></td>
+          <td>Ilhan Omar (bundled)</td>
+          <td class="amount-cell">$180,000+</td>
+          <td>2020-24</td>
+          <td class="flag-cell">CAIR = HLF unindicted co-conspirator</td>
+          <td class="source-cell">FEC.gov</td>
+        </tr>
+        <tr>
+          <td><strong>Justice Democrats PAC</strong></td>
+          <td>Alexandria Ocasio-Cortez</td>
+          <td class="amount-cell">$2,400,000</td>
+          <td>2018-24</td>
+          <td class="flag-cell">Multiple cycles total</td>
+          <td class="source-cell">FEC.gov</td>
+        </tr>
+        <tr>
+          <td><strong>AMP-linked bundlers</strong></td>
+          <td>Rashida Tlaib</td>
+          <td class="amount-cell">Documented</td>
+          <td>2022-24</td>
+          <td class="flag-cell">AMP = HLF institutional ties</td>
+          <td class="source-cell">Senate Judiciary</td>
+        </tr>
+        <tr>
+          <td><strong>Open Society Foundations</strong></td>
+          <td>Working Families Party</td>
+          <td class="amount-cell">$millions</td>
+          <td>Multiple</td>
+          <td class="flag-cell">IRS 990 filings</td>
+          <td class="source-cell">IRS 990</td>
+        </tr>
+        <tr>
+          <td><strong>Sixteen Thirty Fund</strong></td>
+          <td>Justice Democrats (via 501c4)</td>
+          <td class="amount-cell">Undisclosed</td>
+          <td>Multiple</td>
+          <td class="flag-cell">Dark money routing</td>
+          <td class="source-cell">OpenSecrets</td>
+        </tr>
       </tbody>
     </table>
+  </div>
+  <p style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:16px;">All figures sourced from public FEC campaign finance disclosures, IRS Form 990 filings, and court records. Updated as new disclosures are filed.</p>
+</section>
+
+<section class="section">
+  <div class="section-eyebrow">// The Anti-DSA Spend — And Why It Failed</div>
+  <div class="section-title">$9.6 Million. Zero Wins.</div>
+  <hr class="section-rule" />
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-eyebrow">// DMFI PAC</div>
+      <div class="card-title">Democratic Majority for Israel</div>
+      <div class="card-body">DMFI PAC deployed millions in negative advertising against Mamdani's endorsed candidates in the 2026 NYC primaries. All three races lost despite heavy spending. DMFI focused primarily on the candidates' statements on Israel and Hamas.</div>
+      <div class="card-source">Source: FEC.gov · DMFI PAC 2026 Disclosures</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// AIPAC Super PAC</div>
+      <div class="card-title">United Democracy Project</div>
+      <div class="card-body">AIPAC's super PAC spent heavily against Avila Chevalier and Valdez in 2026. Both candidates lost despite the spending. The failure marked a significant setback for the pro-Israel donor network in New York Democratic primaries.</div>
+      <div class="card-source">Source: FEC.gov · UDP 2026 Disclosures</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// Outcome</div>
+      <div class="card-title">Why $9.6M Failed</div>
+      <div class="card-body">Analysts cite three factors: Mamdani's organizational infrastructure, the concentration of progressive voters in NYC districts, and the anti-Israel spending itself — which may have activated DSA's base rather than suppressing it. DSA's ground game overwhelmed outside spending.</div>
+      <div class="card-source">Source: Politico · NY Focus · Post-Election Analysis 2026</div>
+    </div>
   </div>
 </section>
 
 <div class="submit-cta">
-  <div><h3>Know a Funding Trail We're Missing?</h3><p>FEC filings, court records, donor lists, PAC disclosures. Help us complete the money map.</p></div>
+  <div>
+    <h3>Know a Funding Trail We're Missing?</h3>
+    <p>FEC filings, court records, donor lists, PAC disclosures, 990 filings. Help us complete the money map.</p>
+  </div>
   <a href="/submit/" class="btn-primary btn">Submit a Tip →</a>
 </div>
 
-<footer></footer><div class="footer-bottom"></div>
+<footer></footer>
+<div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
 <script src="/components/search.js"></script>
+
 </body>
 </html>
