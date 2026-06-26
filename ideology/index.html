@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Communist Ideology — DSA Exposed</title>
   <meta name="description" content="The history of socialism and communism — and their catastrophic failures. How the DSA is importing these ideologies into American government." />
-  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -17,492 +16,113 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black:   #0A0A0A;
-      --red:     #CC0000;
-      --red-dim: #8B0000;
-      --white:   #F5F5F5;
-      --gray:    #888888;
-      --gray-dk: #2A2A2A;
-      --gray-md: #444444;
-      --yellow:  #FFD700;
-      --border:  #333333;
+      --black:#0A0A0A; --red:#CC0000; --red-dim:#8B0000;
+      --white:#F5F5F5; --gray:#888888; --gray-dk:#2A2A2A;
+      --gray-md:#444444; --yellow:#FFD700; --border:#333333;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
+    body { background: var(--black); color: var(--white); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── TICKER ── */
-    .ticker-wrap {
-      background: var(--red);
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 8px 0;
-      border-bottom: 2px solid #900;
-    }
-    .ticker-label {
-      display: inline-block;
-      background: var(--black);
-      color: var(--yellow);
-      font-family: 'Oswald', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      padding: 2px 14px;
-      margin-right: 20px;
-      vertical-align: middle;
-    }
-    .ticker-track {
-      display: inline-block;
-      animation: ticker 40s linear infinite;
-    }
-    .ticker-track span {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 12px;
-      color: var(--white);
-      margin-right: 60px;
-    }
-    .ticker-track span::before {
-      content: '▶ ';
-      color: var(--yellow);
-    }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+    /* TICKER */
+    .ticker-wrap { background: var(--red); overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 2px solid #900; }
+    .ticker-label { display: inline-block; background: var(--black); color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 14px; margin-right: 20px; vertical-align: middle; }
+    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
+    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
+    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── NAV ── */
-    nav {
-      background: var(--black);
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo {
-      font-family: 'Oswald', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--white);
-    }
+    /* NAV */
+    nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
     .nav-logo span { color: var(--red); }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: 'Oswald', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      color: var(--gray);
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--red); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--red); }
 
-    /* ── PAGE HEADER ── */
-    .page-header {
-      padding: 60px 40px 40px;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, #0d0000 0%, var(--black) 100%);
-    }
-    .page-header::before {
-      content: 'FAILED';
-      position: absolute;
-      right: -10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Oswald', sans-serif;
-      font-size: 180px;
-      font-weight: 700;
-      color: rgba(204,0,0,0.06);
-      pointer-events: none;
-      white-space: nowrap;
-    }
-    .page-eyebrow {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px;
-      color: var(--red);
-      letter-spacing: 3px;
-      margin-bottom: 12px;
-    }
-    .page-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: clamp(36px, 5vw, 64px);
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
+    /* PAGE HEADER */
+    .page-header { padding: 60px 40px 40px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; background: linear-gradient(180deg, #0d0000 0%, var(--black) 100%); }
+    .page-header::before { content: 'FAILED'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-family: 'Oswald', sans-serif; font-size: 180px; font-weight: 700; color: rgba(204,0,0,0.06); pointer-events: none; white-space: nowrap; }
+    .page-eyebrow { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 3px; margin-bottom: 12px; }
+    .page-title { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
     .page-title span { color: var(--red); }
-    .page-sub {
-      font-size: 16px;
-      color: var(--gray);
-      max-width: 640px;
-      line-height: 1.7;
-    }
+    .page-sub { font-size: 16px; color: var(--gray); max-width: 640px; line-height: 1.7; }
 
-    /* ── DEATH TOLL BANNER ── */
-    .death-banner {
-      background: #1a0000;
-      border-bottom: 1px solid var(--red-dim);
-      padding: 28px 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 0;
-    }
-    .death-stat {
-      padding: 0 32px;
-      border-right: 1px solid var(--border);
-      text-align: center;
-    }
+    /* DEATH TOLL BANNER */
+    .death-banner { background: #1a0000; border-bottom: 1px solid var(--red-dim); padding: 28px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; }
+    .death-stat { padding: 0 32px; border-right: 1px solid var(--border); text-align: center; }
     .death-stat:first-child { padding-left: 0; }
     .death-stat:last-child { border-right: none; }
-    .death-num {
-      font-family: 'Oswald', sans-serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--red);
-      line-height: 1;
-    }
-    .death-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-top: 6px;
-      line-height: 1.5;
-    }
+    .death-num { font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700; color: var(--red); line-height: 1; }
+    .death-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; line-height: 1.5; }
 
-    /* ── SECTIONS ── */
-    .section {
-      padding: 60px 40px;
-      border-bottom: 1px solid var(--border);
-    }
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-    .section-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--red);
-      letter-spacing: 3px;
-    }
-    .section-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .section-rule {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    /* SECTIONS */
+    .section { padding: 60px 40px; border-bottom: 1px solid var(--border); }
+    .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 40px; }
+    .section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; }
+    .section-title { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+    .section-rule { flex: 1; height: 1px; background: var(--border); }
 
-    /* ── INTRO BLOCK ── */
-    .intro-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 48px;
-    }
-    .intro-text {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.8;
-    }
+    /* INTRO BLOCK */
+    .intro-block { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .intro-text { font-size: 15px; color: var(--gray); line-height: 1.8; }
     .intro-text p { margin-bottom: 16px; }
     .intro-text strong { color: var(--white); }
-    .intro-quote {
-      background: var(--gray-dk);
-      border-left: 4px solid var(--red);
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .intro-quote blockquote {
-      font-size: 18px;
-      font-style: italic;
-      color: var(--yellow);
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .intro-quote cite {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray);
-      letter-spacing: 2px;
-      font-style: normal;
-    }
+    .intro-quote { background: var(--gray-dk); border-left: 4px solid var(--red); padding: 28px; display: flex; flex-direction: column; justify-content: center; }
+    .intro-quote blockquote { font-size: 18px; font-style: italic; color: var(--yellow); line-height: 1.6; margin-bottom: 16px; }
+    .intro-quote cite { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; font-style: normal; }
 
-    /* ── TIMELINE ── */
-    .timeline {
-      position: relative;
-      padding-left: 32px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--red-dim);
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 40px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid var(--border);
-    }
-    .timeline-item:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -38px;
-      top: 6px;
-      width: 12px;
-      height: 12px;
-      background: var(--red);
-      border: 2px solid var(--black);
-    }
-    .timeline-date {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px;
-      color: var(--red);
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-    }
-    .timeline-country {
-      font-family: 'Oswald', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
-    .timeline-regime {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray);
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-    }
-    .timeline-desc {
-      font-size: 14px;
-      color: var(--gray);
-      line-height: 1.7;
-      max-width: 760px;
-      margin-bottom: 16px;
-    }
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--red-dim); }
+    .timeline-item { position: relative; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    .timeline-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .timeline-item::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; background: var(--red); border: 2px solid var(--black); }
+    .timeline-date { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 2px; margin-bottom: 6px; }
+    .timeline-country { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+    .timeline-regime { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; margin-bottom: 12px; }
+    .timeline-desc { font-size: 14px; color: var(--gray); line-height: 1.7; max-width: 760px; margin-bottom: 16px; }
     .timeline-desc strong { color: var(--white); }
-    .timeline-stats {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .timeline-stat {
-      background: var(--gray-dk);
-      padding: 10px 16px;
-      border-left: 2px solid var(--red);
-    }
-    .timeline-stat-num {
-      font-family: 'Oswald', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--red);
-      line-height: 1;
-    }
-    .timeline-stat-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 9px;
-      color: var(--gray);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-top: 3px;
-    }
+    .timeline-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+    .timeline-stat { background: var(--gray-dk); padding: 10px 16px; border-left: 2px solid var(--red); }
+    .timeline-stat-num { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; color: var(--red); line-height: 1; }
+    .timeline-stat-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-top: 3px; }
 
-    /* ── FAILURE GRID ── */
-    .failure-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2px;
-      background: var(--border);
-    }
-    .failure-card {
-      background: var(--gray-dk);
-      padding: 28px;
-      border-top: 3px solid var(--red-dim);
-    }
+    /* FAILURE GRID */
+    .failure-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; background: var(--border); }
+    .failure-card { background: var(--gray-dk); padding: 28px; border-top: 3px solid var(--red-dim); }
     .failure-card.present { border-top-color: var(--red); }
-    .failure-era {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 9px;
-      color: var(--gray);
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
+    .failure-era { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 2px; margin-bottom: 8px; }
     .failure-era.present-tag { color: var(--red); }
-    .failure-country {
-      font-family: 'Oswald', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-    .failure-desc {
-      font-size: 13px;
-      color: var(--gray);
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
+    .failure-country { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+    .failure-desc { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 14px; }
     .failure-desc strong { color: var(--white); }
-    .failure-toll {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px;
-      color: var(--red);
-      letter-spacing: 1px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-    }
+    .failure-toll { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 1px; padding-top: 12px; border-top: 1px solid var(--border); }
 
-    /* ── DSA PLATFORM ── */
-    .platform-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2px;
-      background: var(--border);
-    }
-    .platform-card {
-      background: var(--black);
-      padding: 28px;
-    }
-    .platform-icon {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-    .platform-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 8px;
-    }
-    .platform-desc {
-      font-size: 13px;
-      color: var(--gray);
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-    .platform-quote {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--yellow);
-      letter-spacing: 1px;
-      line-height: 1.6;
-      border-left: 2px solid var(--red);
-      padding-left: 10px;
-    }
+    /* PLATFORM GRID */
+    .platform-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: var(--border); }
+    .platform-card { background: var(--black); padding: 28px; }
+    .platform-icon { font-size: 24px; margin-bottom: 12px; }
+    .platform-title { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+    .platform-desc { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 12px; }
+    .platform-quote { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--yellow); letter-spacing: 1px; line-height: 1.6; border-left: 2px solid var(--red); padding-left: 10px; }
 
-    /* ── SUBMIT CTA ── */
-    .submit-cta {
-      background: var(--gray-dk);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--red);
-      padding: 36px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-    }
-    .submit-cta-text h3 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
+    /* SUBMIT CTA */
+    .submit-cta { background: var(--gray-dk); border: 1px solid var(--border); border-left: 4px solid var(--red); padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .submit-cta-text h3 { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
     .submit-cta-text p { font-size: 13px; color: var(--gray); }
-    .btn-primary {
-      background: var(--red);
-      color: var(--white);
-      font-family: 'Oswald', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      padding: 14px 32px;
-      white-space: nowrap;
-      transition: background 0.2s;
-      display: inline-block;
-    }
+    .btn-primary { background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding: 14px 32px; white-space: nowrap; transition: background 0.2s; display: inline-block; }
     .btn-primary:hover { background: #AA0000; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #050505;
-      border-top: 1px solid var(--border);
-      padding: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .footer-logo {
-      font-family: 'Oswald', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--gray);
-    }
+    /* FOOTER */
+    footer { background: #050505; border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
     .footer-logo span { color: var(--red); }
-    .footer-note {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray-md);
-      letter-spacing: 1px;
-      text-align: right;
-      line-height: 1.8;
-    }
+    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
 
     @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
+      nav { padding: 0 20px; } .nav-links { display: none; }
       .page-header { padding: 40px 20px 28px; }
       .death-banner { padding: 20px; grid-template-columns: 1fr 1fr; gap: 20px; }
       .death-stat { border-right: none; padding: 0; }
@@ -518,38 +138,11 @@
 </head>
 <body>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <span class="ticker-label">INTEL FEED</span>
-  <span class="ticker-track">
-    <span>NYC primaries: 3 DSA-aligned reps win on anti-America platform</span>
-    <span>DSA national convention endorses BDS movement resolution</span>
-    <span>DSA chapter leaders appear at CAIR-sponsored event</span>
-    <span>Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns</span>
-    <span>DSA publishes "Toward a Socialist America" manifesto</span>
-    <span>Red-Green Axis: Marxist-Islamist alliance deepens in major US cities</span>
-    <span>NYC primaries: 3 DSA-aligned reps win on anti-America platform</span>
-    <span>DSA national convention endorses BDS movement resolution</span>
-    <span>DSA chapter leaders appear at CAIR-sponsored event</span>
-    <span>Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns</span>
-    <span>DSA publishes "Toward a Socialist America" manifesto</span>
-    <span>Red-Green Axis: Marxist-Islamist alliance deepens in major US cities</span>
-  </span>
-</div>
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
 
-<!-- NAV -->
-<nav>
-  <a href="../" class="nav-logo">DSA<span>EXPOSED</span></a>
-  <ul class="nav-links">
-    <li><a href="../reps/">Rep Tracker</a></li>
-    <li><a href="../terrorism/">Terrorism Ties</a></li>
-    <li><a href="../funding/">Funding</a></li>
-    <li><a href="../ideology/" class="active">Ideology</a></li>
-    <li><a href="../networks/">Networks</a></li>
-    <li><a href="../chapters/">Chapters</a></li>
-    <li><a href="../submit/">Submit a Tip</a></li>
-  </ul>
-</nav>
+<nav></nav>
+<script src="/components/nav.js"></script>
 
 <!-- PAGE HEADER -->
 <div class="page-header">
@@ -560,22 +153,10 @@
 
 <!-- DEATH TOLL BANNER -->
 <div class="death-banner">
-  <div class="death-stat">
-    <div class="death-num">100M+</div>
-    <div class="death-label">Estimated Deaths<br>Under Communist Regimes</div>
-  </div>
-  <div class="death-stat">
-    <div class="death-num">40+</div>
-    <div class="death-label">Countries That Have<br>Tried Socialism / Communism</div>
-  </div>
-  <div class="death-stat">
-    <div class="death-num">0</div>
-    <div class="death-label">Socialist / Communist<br>Successes</div>
-  </div>
-  <div class="death-stat">
-    <div class="death-num">100%</div>
-    <div class="death-label">Failure Rate —<br>Every Attempt, Every Time</div>
-  </div>
+  <div class="death-stat"><div class="death-num">100M+</div><div class="death-label">Estimated Deaths<br>Under Communist Regimes</div></div>
+  <div class="death-stat"><div class="death-num">40+</div><div class="death-label">Countries That Have<br>Tried Socialism / Communism</div></div>
+  <div class="death-stat"><div class="death-num">0</div><div class="death-label">Socialist / Communist<br>Successes</div></div>
+  <div class="death-stat"><div class="death-num">100%</div><div class="death-label">Failure Rate —<br>Every Attempt, Every Time</div></div>
 </div>
 
 <!-- SOCIALISM HISTORY -->
@@ -585,7 +166,6 @@
     <div class="section-title">The History of Socialism</div>
     <div class="section-rule"></div>
   </div>
-
   <div class="intro-block">
     <div class="intro-text">
       <p>Socialism is an economic and political system in which the means of production — factories, resources, industries — are owned or regulated collectively, typically by the state. First articulated by Karl Marx and Friedrich Engels in the 19th century, socialism promised to eliminate inequality by abolishing private property and redistributing wealth.</p>
@@ -597,94 +177,44 @@
       <cite>— VLADIMIR LENIN, FOUNDER, SOVIET UNION</cite>
     </div>
   </div>
-
-  <!-- SOCIALISM TIMELINE -->
   <div class="timeline">
-
     <div class="timeline-item">
       <div class="timeline-date">1917 — PRESENT</div>
       <div class="timeline-country">Soviet Union / Russia</div>
       <div class="timeline-regime">MARXIST-LENINIST SOCIALISM → COLLAPSE 1991</div>
-      <div class="timeline-desc">The world's first socialist state, established by Lenin following the Bolshevik Revolution. The Soviet experiment lasted 74 years and produced <strong>forced collectivization, engineered famines, the Gulag prison system, political purges, and the Cold War.</strong> The Soviet economy never surpassed the West and collapsed entirely in 1991, leaving behind poverty, dysfunction, and a hollowed-out civil society.</div>
+      <div class="timeline-desc">The world's first socialist state, established by Lenin following the Bolshevik Revolution. The Soviet experiment lasted 74 years and produced <strong>forced collectivization, engineered famines, the Gulag prison system, political purges, and the Cold War.</strong> The Soviet economy never surpassed the West and collapsed entirely in 1991.</div>
       <div class="timeline-stats">
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">20M+</div>
-          <div class="timeline-stat-label">Deaths Under Stalin</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">6M+</div>
-          <div class="timeline-stat-label">Ukrainian Famine (Holodomor)</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">18M</div>
-          <div class="timeline-stat-label">Gulag Prisoners</div>
-        </div>
+        <div class="timeline-stat"><div class="timeline-stat-num">20M+</div><div class="timeline-stat-label">Deaths Under Stalin</div></div>
+        <div class="timeline-stat"><div class="timeline-stat-num">6M+</div><div class="timeline-stat-label">Ukrainian Famine (Holodomor)</div></div>
+        <div class="timeline-stat"><div class="timeline-stat-num">18M</div><div class="timeline-stat-label">Gulag Prisoners</div></div>
       </div>
     </div>
-
     <div class="timeline-item">
       <div class="timeline-date">1959 — PRESENT</div>
       <div class="timeline-country">Cuba</div>
       <div class="timeline-regime">CASTRO SOCIALIST STATE — ONGOING FAILURE</div>
-      <div class="timeline-desc">Fidel Castro's socialist revolution promised equality and prosperity. Instead it delivered <strong>one-party dictatorship, political imprisonment, poverty, and mass emigration.</strong> Cuba remains one of the poorest countries in the Western Hemisphere. Food rationing — introduced in 1962 — continues to this day. Over 1.5 million Cubans have fled to the United States.</div>
+      <div class="timeline-desc">Fidel Castro's socialist revolution promised equality and prosperity. Instead it delivered <strong>one-party dictatorship, political imprisonment, poverty, and mass emigration.</strong> Cuba remains one of the poorest countries in the Western Hemisphere. Food rationing — introduced in 1962 — continues to this day.</div>
       <div class="timeline-stats">
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">1.5M+</div>
-          <div class="timeline-stat-label">Fled to USA</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">60+</div>
-          <div class="timeline-stat-label">Years of Food Rationing</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">$9,500</div>
-          <div class="timeline-stat-label">GDP Per Capita (vs US $80K)</div>
-        </div>
+        <div class="timeline-stat"><div class="timeline-stat-num">1.5M+</div><div class="timeline-stat-label">Fled to USA</div></div>
+        <div class="timeline-stat"><div class="timeline-stat-num">60+</div><div class="timeline-stat-label">Years of Food Rationing</div></div>
+        <div class="timeline-stat"><div class="timeline-stat-num">$9,500</div><div class="timeline-stat-label">GDP Per Capita (vs US $80K)</div></div>
       </div>
     </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date">1975 — PRESENT</div>
-      <div class="timeline-country">Vietnam</div>
-      <div class="timeline-regime">SOCIALIST REPUBLIC — PARTIAL MARKET REFORMS</div>
-      <div class="timeline-desc">After reunification under Ho Chi Minh's Communist Party, Vietnam implemented full socialist collectivization. The result was <strong>mass famine, economic collapse, and the "boat people" refugee crisis</strong> — one of the largest refugee exoduses of the 20th century. Vietnam only began recovering after 1986's Doi Moi reforms, which partially re-introduced market economics.</div>
-      <div class="timeline-stats">
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">800K+</div>
-          <div class="timeline-stat-label">Boat People Refugees</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">200K+</div>
-          <div class="timeline-stat-label">Re-Education Camp Prisoners</div>
-        </div>
-      </div>
-    </div>
-
     <div class="timeline-item">
       <div class="timeline-date">1999 — PRESENT</div>
       <div class="timeline-country">Venezuela</div>
       <div class="timeline-regime">CHAVISMO SOCIALISM — ONGOING COLLAPSE</div>
-      <div class="timeline-desc">Hugo Chávez and Nicolás Maduro turned Venezuela — once the wealthiest country in Latin America — into a failed state through socialism. <strong>Oil nationalization, price controls, and currency manipulation</strong> destroyed the economy. Today Venezuela suffers hyperinflation, mass starvation, and the largest refugee crisis in the Western Hemisphere. DSA members and Squad members praised Chavez's model as recently as 2019.</div>
+      <div class="timeline-desc">Hugo Chávez and Nicolás Maduro turned Venezuela — once the wealthiest country in Latin America — into a failed state through socialism. <strong>Oil nationalization, price controls, and currency manipulation</strong> destroyed the economy. Today Venezuela suffers hyperinflation, mass starvation, and the largest refugee crisis in the Western Hemisphere.</div>
       <div class="timeline-stats">
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">7.7M</div>
-          <div class="timeline-stat-label">Refugees Fled Country</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">2,900%</div>
-          <div class="timeline-stat-label">Peak Annual Inflation</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">76%</div>
-          <div class="timeline-stat-label">Population in Poverty</div>
-        </div>
+        <div class="timeline-stat"><div class="timeline-stat-num">7.7M</div><div class="timeline-stat-label">Refugees Fled Country</div></div>
+        <div class="timeline-stat"><div class="timeline-stat-num">2,900%</div><div class="timeline-stat-label">Peak Annual Inflation</div></div>
+        <div class="timeline-stat"><div class="timeline-stat-num">76%</div><div class="timeline-stat-label">Population in Poverty</div></div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- SOCIALISM FAILURES GRID -->
+<!-- SOCIALISM FAILURES -->
 <section class="section">
   <div class="section-header">
     <div class="section-label">// Past & Present</div>
@@ -692,70 +222,54 @@
     <div class="section-rule"></div>
   </div>
   <div class="failure-grid">
-
     <div class="failure-card">
       <div class="failure-era">PAST FAILURE · 1975–1979</div>
       <div class="failure-country">Cambodia</div>
       <div class="failure-desc">The Khmer Rouge implemented radical agrarian socialism — abolishing money, evacuating cities, and forcing the population into collective farms. <strong>One quarter of Cambodia's population died</strong> in less than four years.</div>
       <div class="failure-toll">DEATH TOLL: 1.5–2 MILLION</div>
     </div>
-
     <div class="failure-card">
       <div class="failure-era">PAST FAILURE · 1949–1976</div>
       <div class="failure-country">China (Mao Era)</div>
       <div class="failure-desc">Mao Zedong's Great Leap Forward collectivized agriculture and nationalized industry. The result was the <strong>deadliest famine in human history</strong> — 15 to 55 million died. The Cultural Revolution added millions more.</div>
       <div class="failure-toll">DEATH TOLL: 40–80 MILLION</div>
     </div>
-
     <div class="failure-card">
       <div class="failure-era">PAST FAILURE · 1948–1994</div>
       <div class="failure-country">North Korea</div>
-      <div class="failure-desc">Kim Il-Sung's socialist state became a hereditary dictatorship. Today North Korea is the world's most isolated and impoverished nation. <strong>Famines in the 1990s killed up to 3.5 million people</strong> while the ruling class lived in luxury.</div>
+      <div class="failure-desc">Kim Il-Sung's socialist state became a hereditary dictatorship. <strong>Famines in the 1990s killed up to 3.5 million people</strong> while the ruling class lived in luxury.</div>
       <div class="failure-toll">DEATH TOLL: 3.5M (FAMINE ALONE)</div>
     </div>
-
     <div class="failure-card">
       <div class="failure-era">PAST FAILURE · 1975–1979</div>
       <div class="failure-country">Ethiopia (Derg)</div>
-      <div class="failure-desc">The Derg military junta imposed Marxist socialism, collectivized land, and banned private trade. The resulting famines and political terror — broadcast globally in 1984 — <strong>killed up to 1.2 million people.</strong></div>
+      <div class="failure-desc">The Derg military junta imposed Marxist socialism, collectivized land, and banned private trade. The resulting famines and political terror <strong>killed up to 1.2 million people.</strong></div>
       <div class="failure-toll">DEATH TOLL: 500K–1.2 MILLION</div>
     </div>
-
-    <div class="failure-card">
-      <div class="failure-era">PAST FAILURE · 1978–1992</div>
-      <div class="failure-country">Afghanistan (PDPA)</div>
-      <div class="failure-desc">The People's Democratic Party of Afghanistan imposed Soviet-style socialism, triggering a civil war that killed over 1 million civilians and drew in the Soviet military for a decade-long occupation.</div>
-      <div class="failure-toll">DEATH TOLL: 1–2 MILLION CIVILIANS</div>
-    </div>
-
     <div class="failure-card present">
       <div class="failure-era present-tag">PRESENT FAILURE · 2013–PRESENT</div>
       <div class="failure-country">Venezuela</div>
       <div class="failure-desc">Maduro's continued Chavismo socialism has produced complete economic collapse. <strong>76% poverty, food and medicine shortages, blackouts, and 7.7 million refugees.</strong> The DSA praised this model.</div>
       <div class="failure-toll">7.7 MILLION REFUGEES — ONGOING</div>
     </div>
-
     <div class="failure-card present">
       <div class="failure-era present-tag">PRESENT FAILURE · 1959–PRESENT</div>
       <div class="failure-country">Cuba</div>
-      <div class="failure-desc">65+ years of socialism have produced food rationing, internet blackouts, political prisoners, and mass emigration. <strong>Record numbers of Cubans fled to the US in 2022–2024</strong> under Biden's open border policies.</div>
+      <div class="failure-desc">65+ years of socialism have produced food rationing, internet blackouts, political prisoners, and mass emigration. <strong>Record numbers of Cubans fled to the US in 2022–2024.</strong></div>
       <div class="failure-toll">ONGOING ECONOMIC COLLAPSE</div>
     </div>
-
     <div class="failure-card present">
       <div class="failure-era present-tag">PRESENT FAILURE · 1948–PRESENT</div>
       <div class="failure-country">North Korea</div>
       <div class="failure-desc">The world's most extreme socialist state maintains power through starvation, concentration camps, and total information control. <strong>An estimated 100,000+ political prisoners</strong> are held in labor camps today.</div>
       <div class="failure-toll">100K+ IN POLITICAL PRISON CAMPS</div>
     </div>
-
     <div class="failure-card present">
       <div class="failure-era present-tag">PRESENT FAILURE · 2022–PRESENT</div>
       <div class="failure-country">Sri Lanka</div>
       <div class="failure-desc">Socialist economic policies — massive government spending, nationalization, money printing — triggered Sri Lanka's 2022 economic collapse. <strong>The president fled the country</strong> as citizens stormed the presidential palace.</div>
       <div class="failure-toll">NATIONAL BANKRUPTCY 2022</div>
     </div>
-
   </div>
 </section>
 
@@ -766,7 +280,6 @@
     <div class="section-title">The History of Communism</div>
     <div class="section-rule"></div>
   </div>
-
   <div class="intro-block">
     <div class="intro-text">
       <p>Communism is the end-stage of Marxist theory — a classless, stateless society in which all property is communally owned. Marx argued that capitalism would inevitably give way to socialism, and then to full communism. In practice, no country has ever achieved communism as Marx defined it.</p>
@@ -778,81 +291,37 @@
       <cite>— KARL MARX, THE COMMUNIST MANIFESTO, 1848</cite>
     </div>
   </div>
-
   <div class="timeline">
-
     <div class="timeline-item">
       <div class="timeline-date">1949 — PRESENT</div>
       <div class="timeline-country">People's Republic of China</div>
       <div class="timeline-regime">CHINESE COMMUNIST PARTY — ONGOING</div>
-      <div class="timeline-desc">Mao Zedong's Communist Party has ruled China since 1949. The Great Leap Forward (1958–62) and Cultural Revolution (1966–76) killed tens of millions. Today the CCP operates <strong>concentration camps for Uyghur Muslims, a social credit surveillance state, and the most sophisticated censorship apparatus in human history.</strong></div>
+      <div class="timeline-desc">Mao Zedong's Communist Party has ruled China since 1949. The Great Leap Forward and Cultural Revolution killed tens of millions. Today the CCP operates <strong>concentration camps for Uyghur Muslims, a social credit surveillance state, and the most sophisticated censorship apparatus in human history.</strong></div>
       <div class="timeline-stats">
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">40–80M</div>
-          <div class="timeline-stat-label">Deaths Under Mao</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">1M+</div>
-          <div class="timeline-stat-label">Uyghurs in Camps Today</div>
-        </div>
+        <div class="timeline-stat"><div class="timeline-stat-num">40–80M</div><div class="timeline-stat-label">Deaths Under Mao</div></div>
+        <div class="timeline-stat"><div class="timeline-stat-num">1M+</div><div class="timeline-stat-label">Uyghurs in Camps Today</div></div>
       </div>
     </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date">1922 — 1991</div>
-      <div class="timeline-country">Soviet Union</div>
-      <div class="timeline-regime">USSR — COLLAPSED</div>
-      <div class="timeline-desc">The Soviet Communist Party ruled for 69 years through the KGB, the Gulag, and political purges. Stalin's Terror alone killed an estimated 1.2 million people in two years. The Soviet economy stagnated for decades before collapsing entirely in 1991, <strong>leaving 15 newly independent states in poverty and chaos.</strong></div>
-      <div class="timeline-stats">
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">1.2M</div>
-          <div class="timeline-stat-label">Stalin's Great Terror (2 Yrs)</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">18M</div>
-          <div class="timeline-stat-label">Total Gulag Prisoners</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">15</div>
-          <div class="timeline-stat-label">States Left in Poverty at Collapse</div>
-        </div>
-      </div>
-    </div>
-
     <div class="timeline-item">
       <div class="timeline-date">1975 — 1979</div>
       <div class="timeline-country">Cambodia — Khmer Rouge</div>
       <div class="timeline-regime">AGRARIAN COMMUNISM — COLLAPSED</div>
-      <div class="timeline-desc">Pol Pot's Khmer Rouge implemented the most radical communist experiment in history — abolishing money, religion, and private life entirely. Cities were emptied at gunpoint. Intellectuals, teachers, and anyone wearing glasses was executed as a class enemy. <strong>In 3 years and 8 months, 25% of Cambodia's entire population was killed.</strong></div>
+      <div class="timeline-desc">Pol Pot's Khmer Rouge implemented the most radical communist experiment in history — abolishing money, religion, and private life entirely. Cities were emptied at gunpoint. <strong>In 3 years and 8 months, 25% of Cambodia's entire population was killed.</strong></div>
       <div class="timeline-stats">
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">2M</div>
-          <div class="timeline-stat-label">Killed in 44 Months</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">25%</div>
-          <div class="timeline-stat-label">Of Total Population Killed</div>
-        </div>
+        <div class="timeline-stat"><div class="timeline-stat-num">2M</div><div class="timeline-stat-label">Killed in 44 Months</div></div>
+        <div class="timeline-stat"><div class="timeline-stat-num">25%</div><div class="timeline-stat-label">Of Total Population Killed</div></div>
       </div>
     </div>
-
     <div class="timeline-item">
       <div class="timeline-date">1948 — PRESENT</div>
       <div class="timeline-country">North Korea</div>
       <div class="timeline-regime">JUCHE COMMUNISM — ONGOING</div>
-      <div class="timeline-desc">The Kim dynasty's Juche communism has produced <strong>the world's most isolated, repressive, and impoverished nation.</strong> Three generations of a single family have maintained power through execution, starvation, and a prison camp system housing an estimated 100,000–200,000 political prisoners. North Korea's GDP per capita is among the lowest on Earth.</div>
+      <div class="timeline-desc">The Kim dynasty's Juche communism has produced <strong>the world's most isolated, repressive, and impoverished nation.</strong> Three generations of a single family have maintained power through execution, starvation, and a prison camp system housing an estimated 100,000–200,000 political prisoners.</div>
       <div class="timeline-stats">
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">3.5M</div>
-          <div class="timeline-stat-label">Famine Deaths (1990s)</div>
-        </div>
-        <div class="timeline-stat">
-          <div class="timeline-stat-num">200K</div>
-          <div class="timeline-stat-label">In Prison Camps Today</div>
-        </div>
+        <div class="timeline-stat"><div class="timeline-stat-num">3.5M</div><div class="timeline-stat-label">Famine Deaths (1990s)</div></div>
+        <div class="timeline-stat"><div class="timeline-stat-num">200K</div><div class="timeline-stat-label">In Prison Camps Today</div></div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -864,49 +333,42 @@
     <div class="section-rule"></div>
   </div>
   <div class="platform-grid">
-
     <div class="platform-card">
       <div class="platform-icon">🏭</div>
       <div class="platform-title">Nationalize Industry</div>
       <div class="platform-desc">DSA calls for public ownership of major industries including energy, healthcare, housing, and finance — removing them from private control.</div>
       <div class="platform-quote">"We believe that the workers and consumers who are affected by economic institutions should own and control them." — DSA PLATFORM</div>
     </div>
-
     <div class="platform-card">
       <div class="platform-icon">🏠</div>
       <div class="platform-title">Abolish Private Housing</div>
       <div class="platform-desc">DSA's housing platform calls for social housing, rent control, and elimination of private landlordism — policies that have produced housing shortages everywhere they've been tried.</div>
       <div class="platform-quote">"Housing is a human right, not a commodity." — DSA HOUSING PLATFORM</div>
     </div>
-
     <div class="platform-card">
       <div class="platform-icon">💊</div>
       <div class="platform-title">Socialize Healthcare</div>
       <div class="platform-desc">Full government takeover of the healthcare system — eliminating private insurance and putting medical decisions under federal bureaucratic control.</div>
       <div class="platform-quote">"Medicare for All is the floor, not the ceiling." — DSA HEALTHCARE PLATFORM</div>
     </div>
-
     <div class="platform-card">
       <div class="platform-icon">💰</div>
       <div class="platform-title">Abolish Capitalism</div>
-      <div class="platform-desc">DSA's founding documents explicitly reject capitalism as a system and call for its replacement with a socialist economic order. This is not fringe — it is DSA's stated core mission.</div>
+      <div class="platform-desc">DSA's founding documents explicitly reject capitalism as a system and call for its replacement with a socialist economic order. This is DSA's stated core mission.</div>
       <div class="platform-quote">"We are socialists because we reject an international economic order sustained by private profit." — DSA PLATFORM 2021</div>
     </div>
-
     <div class="platform-card">
       <div class="platform-icon">🌐</div>
       <div class="platform-title">Open Borders</div>
       <div class="platform-desc">DSA's immigration platform calls for abolishing ICE, decriminalizing all border crossing, and eliminating immigration enforcement — policies designed to erase national sovereignty.</div>
       <div class="platform-quote">"No human being is illegal. Abolish ICE." — DSA IMMIGRATION PLATFORM</div>
     </div>
-
     <div class="platform-card">
       <div class="platform-icon">🔫</div>
       <div class="platform-title">Defund & Disarm</div>
-      <div class="platform-desc">DSA supports abolition of police departments, elimination of ICE and CBP, and sweeping gun control — systematically dismantling America's security and law enforcement infrastructure.</div>
+      <div class="platform-desc">DSA supports abolition of police departments, elimination of ICE and CBP, and sweeping gun control — systematically dismantling America's security infrastructure.</div>
       <div class="platform-quote">"Defund the police. Abolish ICE. Disarm America." — DSA RESOLUTION 2020</div>
     </div>
-
   </div>
 </section>
 
@@ -917,18 +379,12 @@
       <h3>Help Document the DSA's Ideology</h3>
       <p>Published DSA documents, platform statements, resolutions, and member statements. All submissions verified before publication.</p>
     </div>
-    <a href="../submit/" class="btn-primary">Submit a Tip →</a>
+    <a href="/submit/" class="btn-primary">Submit a Tip →</a>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <a href="../" class="footer-logo">DSA<span>EXPOSED</span>.COM</a>
-  <div class="footer-note">
-    All content sourced from public records, published DSA documents, and verified historical scholarship.<br>
-    DSAExposed is an independent watchdog operation. All claims are documented.
-  </div>
-</footer>
+<footer></footer>
+<script src="/components/footer.js"></script>
 
 </body>
 </html>
