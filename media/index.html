@@ -1,538 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Media Library — DSA Exposed</title>
-  <meta name="description" content="Videos, interviews, documentaries, and survivor testimony exposing the failures of socialism, communism, and the DSA's radical agenda." />
+  <link rel="stylesheet" href="/assets/global.css"/>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PK58BBCJX7');
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-PK58BBCJX7");</script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --black:#0A0A0A; --red:#CC0000; --red-dim:#8B0000;
-      --white:#F5F5F5; --gray:#888888; --gray-dk:#2A2A2A;
-      --gray-md:#444444; --yellow:#FFD700; --border:#333333;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--white); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-
-    /* TICKER */
-    .ticker-wrap { background: var(--red); overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 2px solid #900; }
-    .ticker-label { display: inline-block; background: var(--black); color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 14px; margin-right: 20px; vertical-align: middle; }
-    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
-    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
-    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* NAV */
-    nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
-    .nav-logo span { color: var(--red); }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--red); }
-
-    /* PAGE HEADER */
-    .page-header { padding: 60px 40px 40px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; background: linear-gradient(180deg, #0d0000 0%, var(--black) 100%); }
-    .page-header::before { content: 'MEDIA'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-family: 'Oswald', sans-serif; font-size: 200px; font-weight: 700; color: rgba(204,0,0,0.05); pointer-events: none; white-space: nowrap; }
-    .page-eyebrow { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 3px; margin-bottom: 12px; }
-    .page-title { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    .page-title span { color: var(--red); }
-    .page-sub { font-size: 16px; color: var(--gray); max-width: 640px; line-height: 1.7; }
-
-    /* STATS BAR */
-    .stats-bar { display: flex; border-bottom: 1px solid var(--border); }
-    .stats-bar-item { flex: 1; padding: 24px 40px; border-right: 1px solid var(--border); }
-    .stats-bar-item:last-child { border-right: none; }
-    .stats-bar-num { font-family: 'Oswald', sans-serif; font-size: 32px; font-weight: 700; color: var(--red); line-height: 1; }
-    .stats-bar-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
-
-    /* FILTERS */
-    .filters { padding: 20px 40px; border-bottom: 1px solid var(--border); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; background: #0f0f0f; }
-    .filter-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; margin-right: 8px; }
-    .filter-btn { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; padding: 6px 14px; border: 1px solid var(--border); background: transparent; color: var(--gray); cursor: pointer; transition: all 0.2s; }
-    .filter-btn:hover, .filter-btn.active { border-color: var(--red); color: var(--white); background: var(--red-dim); }
-
-    /* SECTIONS */
-    .section { padding: 52px 40px; border-bottom: 1px solid var(--border); }
-    .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; }
-    .section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; }
-    .section-title { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
-    .section-rule { flex: 1; height: 1px; background: var(--border); }
-
-    /* FEATURED GRID — 2 wide */
-    .featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
-
-    /* VIDEO CARD */
-    .video-card { background: var(--gray-dk); display: flex; flex-direction: column; }
-    .video-card.placeholder-card { opacity: 0.5; }
-
-    /* THUMBNAIL */
-    .video-thumb { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; display: block; }
-    .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s, opacity 0.2s; }
-    .video-thumb:hover img { transform: scale(1.03); opacity: 0.85; }
-    .play-btn {
-      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.2); transition: background 0.2s;
-    }
-    .video-thumb:hover .play-btn { background: rgba(204,0,0,0.35); }
-    .play-icon {
-      width: 56px; height: 56px; background: var(--red); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; padding-left: 4px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-      transition: transform 0.2s;
-    }
-    .video-thumb:hover .play-icon { transform: scale(1.1); }
-
-    /* PLACEHOLDER THUMB */
-    .placeholder-thumb {
-      width: 100%; aspect-ratio: 16/9; background: #111;
-      display: flex; align-items: center; justify-content: center;
-      border-bottom: 1px solid var(--border);
-      flex-direction: column; gap: 8px;
-    }
-    .placeholder-thumb-text { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 2px; text-align: center; line-height: 1.8; }
-    .placeholder-thumb-icon { font-size: 28px; opacity: 0.3; }
-
-    /* VIDEO INFO */
-    .video-info { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; }
-    .video-category { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px; }
-    .video-title { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; line-height: 1.3; flex: 1; }
-    .video-desc { font-size: 12px; color: var(--gray); line-height: 1.5; margin-bottom: 12px; }
-    .video-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--border); }
-    .video-source { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray-md); letter-spacing: 1px; }
-    .video-watch { font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--red); letter-spacing: 2px; }
-    .video-coming { font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--gray-md); letter-spacing: 2px; }
-    .video-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
-    .video-tag { font-family: 'Share Tech Mono', monospace; font-size: 8px; letter-spacing: 1px; padding: 2px 6px; border: 1px solid var(--border); color: var(--gray-md); text-transform: uppercase; }
-
-    /* VIDEO GRID — 3 wide */
-    .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; background: var(--border); }
-
-    /* CAT HEADER */
-    .cat-header { display: flex; align-items: center; gap: 16px; padding: 20px 40px; background: #0f0f0f; border-bottom: 1px solid var(--border); border-top: 1px solid var(--border); }
-    .cat-icon { font-size: 20px; }
-    .cat-title { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
-    .cat-count { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; }
-
-    /* SUBMIT CTA */
-    .submit-cta { background: var(--gray-dk); border: 1px solid var(--border); border-left: 4px solid var(--red); padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
-    .submit-cta-text h3 { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
-    .submit-cta-text p { font-size: 13px; color: var(--gray); }
-    .btn-primary { background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding: 14px 32px; white-space: nowrap; transition: background 0.2s; display: inline-block; }
-    .btn-primary:hover { background: #AA0000; }
-
-    /* FOOTER */
-    footer { background: #050505; border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
-    .footer-logo span { color: var(--red); }
-    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; } .nav-links { display: none; }
-      .page-header { padding: 40px 20px 28px; }
-      .stats-bar { flex-wrap: wrap; }
-      .stats-bar-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
-      .filters { padding: 16px 20px; }
-      .section { padding: 36px 20px; }
-      .featured-grid { grid-template-columns: 1fr; }
-      .cat-header { padding: 16px 20px; }
-      .submit-cta { flex-direction: column; padding: 24px 20px; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-note { text-align: center; }
-    }
+    .section{padding:56px 48px;border-bottom:1px solid var(--rule);}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+    .card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--red);padding:28px;transition:box-shadow .2s,transform .2s;position:relative;}
+    .card:hover{box-shadow:0 4px 16px rgba(20,18,16,.1);transform:translateY(-2px);}
+    .card-eyebrow{font-family:var(--font-mono);font-size:9px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+    .card-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3;}
+    .card-body{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
+    .card-body strong{color:var(--ink);}
+    .card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+    .card-source{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px;border-top:1px solid var(--rule);padding-top:10px;}
+    @media(max-width:900px){.section{padding:40px 24px;}.grid-3,.grid-2{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
-
-<div class="ticker-wrap"></div>
-<script src="/components/ticker.js"></script>
-
-<nav></nav>
-<script src="/components/nav.js"></script>
-
-<!-- PAGE HEADER -->
+<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
+<nav></nav><script src="/components/nav.js"></script>
 <div class="page-header">
-  <div class="page-eyebrow">// VIDEO LIBRARY — INTELLIGENCE ARCHIVE</div>
-  <h1 class="page-title">Media <span>Library</span></h1>
-  <p class="page-sub">Videos, interviews, documentaries, and survivor testimony. Economists, historians, defectors, and refugees explain what socialism and communism actually produce — and what the DSA wants to bring to America.</p>
+  <div class="page-header-ghost">MEDIA</div>
+  <div class="section-eyebrow">// Section 08 — Video Intelligence</div>
+  <h1>Media Library</h1>
+  <p>Videos, documentaries, survivor testimony, and expert analysis exposing socialism and the DSA. Every video sourced and verified.</p>
 </div>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-bar-item"><div class="stats-bar-num">15+</div><div class="stats-bar-label">Videos in Library</div></div>
-  <div class="stats-bar-item"><div class="stats-bar-num">5</div><div class="stats-bar-label">Categories</div></div>
-  <div class="stats-bar-item"><div class="stats-bar-num">6</div><div class="stats-bar-label">Verified & Live</div></div>
-  <div class="stats-bar-item"><div class="stats-bar-num">∞</div><div class="stats-bar-label">Growing Archive</div></div>
-</div>
-
-<!-- FILTERS -->
-<div class="filters">
-  <span class="filter-label">// Filter:</span>
-  <button class="filter-btn active" onclick="filterMedia('all', this)">All</button>
-  <button class="filter-btn" onclick="filterMedia('ideology-takedown', this)">Ideology Takedowns</button>
-  <button class="filter-btn" onclick="filterMedia('survivor-testimony', this)">Survivor Testimony</button>
-  <button class="filter-btn" onclick="filterMedia('dsa-specific', this)">DSA Specific</button>
-  <button class="filter-btn" onclick="filterMedia('red-green-axis', this)">Red-Green Axis</button>
-</div>
-
-<!-- FEATURED -->
 <section class="section">
-  <div class="section-header">
-    <div class="section-label">// Must Watch</div>
-    <div class="section-title">Featured — Start Here</div>
-    <div class="section-rule"></div>
-  </div>
-  <div class="featured-grid">
-
-    <div class="video-card" data-category="survivor-testimony">
-      <a href="https://www.youtube.com/watch?v=mLzTo-y8Ef0" target="_blank" rel="noopener" class="video-thumb">
-        <img src="https://img.youtube.com/vi/mLzTo-y8Ef0/maxresdefault.jpg" alt="Yeonmi Park TED Talk" loading="lazy" />
-        <div class="play-btn"><div class="play-icon">▶</div></div>
+  <div class="section-eyebrow">// Survivor Testimony</div>
+  <div class="section-title">They Lived It — Listen to Them</div>
+  <hr class="section-rule"/>
+  <div class="grid-3">
+    <div class="card">
+      <a href="https://www.youtube.com/watch?v=mLzTo-y8Ef0" target="_blank" rel="noopener" class="video-thumb" style="display:block;position:relative;aspect-ratio:16/9;overflow:hidden;margin-bottom:16px;">
+        <img src="https://img.youtube.com/vi/mLzTo-y8Ef0/maxresdefault.jpg" alt="Yeonmi Park TED Talk" style="width:100%;height:100%;object-fit:cover;"/>
+        <div class="play-btn"><div class="play-icon">&#9654;</div></div>
       </a>
-      <div class="video-info">
-        <div class="video-category">// SURVIVOR TESTIMONY — NORTH KOREA</div>
-        <div class="video-title">Yeonmi Park — What I Learned About Freedom After Escaping North Korea</div>
-        <div class="video-tags"><span class="video-tag">North Korea</span><span class="video-tag">Defector</span><span class="video-tag">TED</span><span class="video-tag">Communism</span></div>
-        <div class="video-desc">North Korean defector Yeonmi Park describes life under Kim Jong-Un's communist dictatorship — starvation, prison camps, total information control — and her escape at age 13.</div>
-        <div class="video-footer">
-          <span class="video-source">TED · 2019</span>
-          <a href="https://www.youtube.com/watch?v=mLzTo-y8Ef0" target="_blank" rel="noopener" class="video-watch">WATCH ON YOUTUBE →</a>
-        </div>
-      </div>
+      <div class="card-eyebrow">// North Korea Defector — TED Talk</div>
+      <div class="card-title">Yeonmi Park: "In North Korea They Told Us the Same Things"</div>
+      <div class="card-body">North Korean defector Yeonmi Park describes how American universities now teach the same collectivist ideology she fled. <strong>Watched over 8 million times.</strong></div>
+      <div class="card-source">TED Talk · Yeonmi Park · Verified</div>
     </div>
-
-    <div class="video-card" data-category="survivor-testimony">
-      <a href="https://www.youtube.com/watch?v=CBkFBMlMHvk" target="_blank" rel="noopener" class="video-thumb">
-        <img src="https://img.youtube.com/vi/CBkFBMlMHvk/maxresdefault.jpg" alt="Yeonmi Park Fox News" loading="lazy" />
-        <div class="play-btn"><div class="play-icon">▶</div></div>
+    <div class="card">
+      <a href="https://www.youtube.com/watch?v=CBkFBMlMHvk" target="_blank" rel="noopener" class="video-thumb" style="display:block;position:relative;aspect-ratio:16/9;overflow:hidden;margin-bottom:16px;">
+        <img src="https://img.youtube.com/vi/CBkFBMlMHvk/maxresdefault.jpg" alt="Yeonmi Park Fox News" style="width:100%;height:100%;object-fit:cover;"/>
+        <div class="play-btn"><div class="play-icon">&#9654;</div></div>
       </a>
-      <div class="video-info">
-        <div class="video-category">// SURVIVOR TESTIMONY — NORTH KOREA</div>
-        <div class="video-title">Yeonmi Park — American Colleges Are Teaching What North Korea Taught Me</div>
-        <div class="video-tags"><span class="video-tag">North Korea</span><span class="video-tag">Defector</span><span class="video-tag">Universities</span><span class="video-tag">Warning</span></div>
-        <div class="video-desc">Yeonmi Park warns that the collectivist ideology being taught in American universities is the same ideology she escaped from in North Korea — and that Americans don't recognize the warning signs.</div>
-        <div class="video-footer">
-          <span class="video-source">FOX NEWS · 2021</span>
-          <a href="https://www.youtube.com/watch?v=CBkFBMlMHvk" target="_blank" rel="noopener" class="video-watch">WATCH ON YOUTUBE →</a>
-        </div>
-      </div>
+      <div class="card-eyebrow">// North Korea Defector — Fox News</div>
+      <div class="card-title">Yeonmi Park: "Woke Colleges Are Teaching What NK Taught Me"</div>
+      <div class="card-body">Park explains the parallels between North Korean ideological indoctrination and the Critical Race Theory curriculum she encountered at Columbia University.</div>
+      <div class="card-source">Fox News · Yeonmi Park · Verified</div>
     </div>
-
+    <div class="card">
+      <a href="https://www.youtube.com/watch?v=LUFsQR7Sd1A" target="_blank" rel="noopener" class="video-thumb" style="display:block;position:relative;aspect-ratio:16/9;overflow:hidden;margin-bottom:16px;">
+        <img src="https://img.youtube.com/vi/LUFsQR7Sd1A/maxresdefault.jpg" alt="Cuban Refugee PragerU" style="width:100%;height:100%;object-fit:cover;"/>
+        <div class="play-btn"><div class="play-icon">&#9654;</div></div>
+      </a>
+      <div class="card-eyebrow">// Cuba — Survivor Testimony</div>
+      <div class="card-title">Cuban Refugee: "I Fled Socialism. Now I See It Here."</div>
+      <div class="card-body">A Cuban refugee describes the socialist system she escaped — and the horror of seeing its talking points echoed by American politicians and DSA-aligned candidates.</div>
+      <div class="card-source">PragerU · Cuban Refugee · Verified</div>
+    </div>
+    <div class="card">
+      <a href="https://www.youtube.com/watch?v=8eMFBB25T_4" target="_blank" rel="noopener" class="video-thumb" style="display:block;position:relative;aspect-ratio:16/9;overflow:hidden;margin-bottom:16px;">
+        <img src="https://img.youtube.com/vi/8eMFBB25T_4/maxresdefault.jpg" alt="Venezuelan Refugee PragerU" style="width:100%;height:100%;object-fit:cover;"/>
+        <div class="play-btn"><div class="play-icon">&#9654;</div></div>
+      </a>
+      <div class="card-eyebrow">// Venezuela — Survivor Testimony</div>
+      <div class="card-title">Venezuelan Refugee: "We Voted for This. Don't."</div>
+      <div class="card-body">A Venezuelan refugee explains how Hugo Chavez's socialist government — once praised by DSA members — destroyed the wealthiest country in South America.</div>
+      <div class="card-source">PragerU · Venezuelan Refugee · Verified</div>
+    </div>
+    <div class="card">
+      <a href="https://www.youtube.com/watch?v=EneCikiAEBM" target="_blank" rel="noopener" class="video-thumb" style="display:block;position:relative;aspect-ratio:16/9;overflow:hidden;margin-bottom:16px;">
+        <img src="https://img.youtube.com/vi/EneCikiAEBM/maxresdefault.jpg" alt="Thomas Sowell socialism fails" style="width:100%;height:100%;object-fit:cover;"/>
+        <div class="play-btn"><div class="play-icon">&#9654;</div></div>
+      </a>
+      <div class="card-eyebrow">// Thomas Sowell — Fox Business 2025</div>
+      <div class="card-title">Thomas Sowell: "Socialism Has Never Worked Anywhere"</div>
+      <div class="card-body">Economist and Hoover Institution Fellow Thomas Sowell — one of America's most important public intellectuals — on why socialism fails every time it is tried.</div>
+      <div class="card-source">Fox Business · Thomas Sowell · 2025 · Verified</div>
+    </div>
+    <div class="card">
+      <a href="https://www.youtube.com/watch?v=qg3GTVlwjoE" target="_blank" rel="noopener" class="video-thumb" style="display:block;position:relative;aspect-ratio:16/9;overflow:hidden;margin-bottom:16px;">
+        <img src="https://img.youtube.com/vi/qg3GTVlwjoE/maxresdefault.jpg" alt="Sowell Social Justice Fallacies" style="width:100%;height:100%;object-fit:cover;"/>
+        <div class="play-btn"><div class="play-icon">&#9654;</div></div>
+      </a>
+      <div class="card-eyebrow">// Thomas Sowell — Hoover Institution</div>
+      <div class="card-title">Sowell on Social Justice Fallacies — Age 93</div>
+      <div class="card-body">At age 93, Thomas Sowell dismantles the core ideological claims of the DSA's "social justice" platform in a landmark Hoover Institution interview.</div>
+      <div class="card-source">Hoover Institution · Thomas Sowell · Age 93 · Verified</div>
+    </div>
   </div>
 </section>
-
-<!-- IDEOLOGY TAKEDOWNS -->
-<div class="cat-header" id="ideology-takedown">
-  <div class="cat-icon">💡</div>
-  <div class="cat-title">Ideology Takedowns</div>
-  <div class="cat-count">// ECONOMISTS · HISTORIANS · ANALYSTS</div>
+<div class="submit-cta">
+  <div><h3>Have Intel to Add?</h3><p>Documentation, statements, funding records, org ties. All submissions verified before publication.</p></div>
+  <a href="/submit/" class="btn-primary btn">Submit a Tip &rarr;</a>
 </div>
-<div class="video-grid">
-
-  <div class="video-card" data-category="ideology-takedown">
-    <a href="https://www.youtube.com/watch?v=EneCikiAEBM" target="_blank" rel="noopener" class="video-thumb">
-      <img src="https://img.youtube.com/vi/EneCikiAEBM/maxresdefault.jpg" alt="Thomas Sowell Socialism" loading="lazy" />
-      <div class="play-btn"><div class="play-icon">▶</div></div>
-    </a>
-    <div class="video-info">
-      <div class="video-category">// IDEOLOGY TAKEDOWN</div>
-      <div class="video-title">Thomas Sowell — Socialism Sounds Good. It Always Ends in Disaster.</div>
-      <div class="video-tags"><span class="video-tag">Sowell</span><span class="video-tag">Socialism</span><span class="video-tag">Venezuela</span></div>
-      <div class="video-desc">Sowell's warning: socialism sounds great — it always has. It is only when you look at the hard facts that socialism turns out to be a disaster.</div>
-      <div class="video-footer">
-        <span class="video-source">FOX BUSINESS · 2025</span>
-        <a href="https://www.youtube.com/watch?v=EneCikiAEBM" target="_blank" rel="noopener" class="video-watch">WATCH →</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-card" data-category="ideology-takedown">
-    <a href="https://www.youtube.com/watch?v=qg3GTVlwjoE" target="_blank" rel="noopener" class="video-thumb">
-      <img src="https://img.youtube.com/vi/qg3GTVlwjoE/maxresdefault.jpg" alt="Thomas Sowell Social Justice Fallacies" loading="lazy" />
-      <div class="play-btn"><div class="play-icon">▶</div></div>
-    </a>
-    <div class="video-info">
-      <div class="video-category">// IDEOLOGY TAKEDOWN</div>
-      <div class="video-title">Thomas Sowell — Social Justice Fallacies (Age 93)</div>
-      <div class="video-tags"><span class="video-tag">Sowell</span><span class="video-tag">Social Justice</span><span class="video-tag">Equity</span></div>
-      <div class="video-desc">Thomas Sowell at 93 dismantles the social justice movement and its fallacies — the intellectual case against wealth redistribution and the DSA's core platform.</div>
-      <div class="video-footer">
-        <span class="video-source">HOOVER INSTITUTION · 2023</span>
-        <a href="https://www.youtube.com/watch?v=qg3GTVlwjoE" target="_blank" rel="noopener" class="video-watch">WATCH →</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-card" data-category="ideology-takedown">
-    <a href="https://www.youtube.com/watch?v=uejTE6-nIQI" target="_blank" rel="noopener" class="video-thumb">
-      <img src="https://img.youtube.com/vi/uejTE6-nIQI/maxresdefault.jpg" alt="Thomas Sowell Facts Against Rhetoric" loading="lazy" />
-      <div class="play-btn"><div class="play-icon">▶</div></div>
-    </a>
-    <div class="video-info">
-      <div class="video-category">// IDEOLOGY TAKEDOWN — CLASSIC</div>
-      <div class="video-title">Thomas Sowell — Facts Against Rhetoric: Capitalism, Culture and Tariffs</div>
-      <div class="video-tags"><span class="video-tag">Sowell</span><span class="video-tag">Capitalism</span><span class="video-tag">Culture</span></div>
-      <div class="video-desc">A rare appearance by Thomas Sowell discussing capitalism, culture, and the enduring failures of socialist economic thinking.</div>
-      <div class="video-footer">
-        <span class="video-source">HOOVER INSTITUTION · 2025</span>
-        <a href="https://www.youtube.com/watch?v=uejTE6-nIQI" target="_blank" rel="noopener" class="video-watch">WATCH →</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-card" data-category="ideology-takedown">
-    <a href="https://www.youtube.com/watch?v=-CBpMK2EgCU" target="_blank" rel="noopener" class="video-thumb">
-      <img src="https://img.youtube.com/vi/-CBpMK2EgCU/maxresdefault.jpg" alt="Lessons from Thomas Sowell" loading="lazy" />
-      <div class="play-btn"><div class="play-icon">▶</div></div>
-    </a>
-    <div class="video-info">
-      <div class="video-category">// IDEOLOGY TAKEDOWN — LEGACY</div>
-      <div class="video-title">Lessons from Thomas Sowell — Hoover Institution</div>
-      <div class="video-tags"><span class="video-tag">Sowell</span><span class="video-tag">Legacy</span><span class="video-tag">Economics</span></div>
-      <div class="video-desc">Celebrating the enduring intellectual legacy of Thomas Sowell and his lifelong case against socialism, collectivism, and social justice ideology.</div>
-      <div class="video-footer">
-        <span class="video-source">HOOVER INSTITUTION · 2025</span>
-        <a href="https://www.youtube.com/watch?v=-CBpMK2EgCU" target="_blank" rel="noopener" class="video-watch">WATCH →</a>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- SURVIVOR TESTIMONY -->
-<div class="cat-header" id="survivor-testimony">
-  <div class="cat-icon">🗣</div>
-  <div class="cat-title">Survivor Testimony</div>
-  <div class="cat-count">// REFUGEES · DEFECTORS · EYEWITNESSES</div>
-</div>
-<div class="video-grid">
-
-  <div class="video-card" data-category="survivor-testimony">
-    <a href="https://www.youtube.com/watch?v=mLzTo-y8Ef0" target="_blank" rel="noopener" class="video-thumb">
-      <img src="https://img.youtube.com/vi/mLzTo-y8Ef0/maxresdefault.jpg" alt="Yeonmi Park TED" loading="lazy" />
-      <div class="play-btn"><div class="play-icon">▶</div></div>
-    </a>
-    <div class="video-info">
-      <div class="video-category">// SURVIVOR — NORTH KOREA</div>
-      <div class="video-title">Yeonmi Park — What I Learned About Freedom After Escaping North Korea</div>
-      <div class="video-tags"><span class="video-tag">North Korea</span><span class="video-tag">Defector</span><span class="video-tag">TED</span></div>
-      <div class="video-desc">Harrowing story of escape from Kim Jong-Un's communist dictatorship. Starvation, prison camps, total information control — and why freedom is fragile.</div>
-      <div class="video-footer">
-        <span class="video-source">TED · 2019</span>
-        <a href="https://www.youtube.com/watch?v=mLzTo-y8Ef0" target="_blank" rel="noopener" class="video-watch">WATCH →</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-card" data-category="survivor-testimony">
-    <a href="https://www.youtube.com/watch?v=CBkFBMlMHvk" target="_blank" rel="noopener" class="video-thumb">
-      <img src="https://img.youtube.com/vi/CBkFBMlMHvk/maxresdefault.jpg" alt="Yeonmi Park Fox News Woke" loading="lazy" />
-      <div class="play-btn"><div class="play-icon">▶</div></div>
-    </a>
-    <div class="video-info">
-      <div class="video-category">// SURVIVOR — NORTH KOREA</div>
-      <div class="video-title">Yeonmi Park — American Colleges Are Teaching What North Korea Taught Me</div>
-      <div class="video-tags"><span class="video-tag">North Korea</span><span class="video-tag">Universities</span><span class="video-tag">Warning</span></div>
-      <div class="video-desc">Park warns that American universities are teaching the same collectivist ideology she escaped — and Americans don't recognize the warning signs.</div>
-      <div class="video-footer">
-        <span class="video-source">FOX NEWS · 2021</span>
-        <a href="https://www.youtube.com/watch?v=CBkFBMlMHvk" target="_blank" rel="noopener" class="video-watch">WATCH →</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-card" data-category="survivor-testimony">
-    <a href="https://www.youtube.com/watch?v=LUFsQR7Sd1A" target="_blank" rel="noopener" class="video-thumb">
-      <img src="https://img.youtube.com/vi/LUFsQR7Sd1A/maxresdefault.jpg" alt="Cuban Refugee PragerU" loading="lazy" />
-      <div class="play-btn"><div class="play-icon">▶</div></div>
-    </a>
-    <div class="video-info">
-      <div class="video-category">// SURVIVOR — CUBA</div>
-      <div class="video-title">Cuban Refugee — What Socialism Actually Looks Like From Inside</div>
-      <div class="video-tags"><span class="video-tag">Cuba</span><span class="video-tag">Castro</span><span class="video-tag">Refugee</span></div>
-      <div class="video-desc">A Cuban refugee who lived under Castro's socialist regime describes food rationing, political imprisonment, propaganda, and why she fled to America.</div>
-      <div class="video-footer">
-        <span class="video-source">PRAGERU · 2021</span>
-        <a href="https://www.youtube.com/watch?v=LUFsQR7Sd1A" target="_blank" rel="noopener" class="video-watch">WATCH →</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-card" data-category="survivor-testimony">
-    <a href="https://www.youtube.com/watch?v=8eMFBB25T_4" target="_blank" rel="noopener" class="video-thumb">
-      <img src="https://img.youtube.com/vi/8eMFBB25T_4/maxresdefault.jpg" alt="Venezuelan Refugee PragerU" loading="lazy" />
-      <div class="play-btn"><div class="play-icon">▶</div></div>
-    </a>
-    <div class="video-info">
-      <div class="video-category">// SURVIVOR — VENEZUELA</div>
-      <div class="video-title">Venezuelan Refugee — How Socialism Destroyed the Richest Country in Latin America</div>
-      <div class="video-tags"><span class="video-tag">Venezuela</span><span class="video-tag">Chavez</span><span class="video-tag">Refugee</span></div>
-      <div class="video-desc">A Venezuelan refugee describes how Chavez's socialist revolution turned the wealthiest country in Latin America into a failed state with 76% poverty.</div>
-      <div class="video-footer">
-        <span class="video-source">PRAGERU · 2019</span>
-        <a href="https://www.youtube.com/watch?v=8eMFBB25T_4" target="_blank" rel="noopener" class="video-watch">WATCH →</a>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- DSA SPECIFIC -->
-<div class="cat-header" id="dsa-specific">
-  <div class="cat-icon">🎯</div>
-  <div class="cat-title">DSA Specific</div>
-  <div class="cat-count">// REP STATEMENTS · INVESTIGATIONS · FLOOR SPEECHES</div>
-</div>
-<div class="video-grid">
-
-  <div class="video-card placeholder-card" data-category="dsa-specific">
-    <div class="placeholder-thumb">
-      <div class="placeholder-thumb-icon">📹</div>
-      <div class="placeholder-thumb-text">VIDEO BEING<br>SOURCED & VERIFIED</div>
-    </div>
-    <div class="video-info">
-      <div class="video-category">// DSA SPECIFIC — AOC</div>
-      <div class="video-title">AOC — The Complete On-Record Statement Archive</div>
-      <div class="video-tags"><span class="video-tag">AOC</span><span class="video-tag">DSA</span><span class="video-tag">Statements</span></div>
-      <div class="video-desc">AOC's most extreme statements on capitalism, Israel, Hamas, and American foreign policy — all sourced from verified video and congressional record.</div>
-      <div class="video-footer">
-        <span class="video-source">CONGRESSIONAL RECORD</span>
-        <span class="video-coming">COMING SOON</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-card placeholder-card" data-category="dsa-specific">
-    <div class="placeholder-thumb">
-      <div class="placeholder-thumb-icon">📹</div>
-      <div class="placeholder-thumb-text">VIDEO BEING<br>SOURCED & VERIFIED</div>
-    </div>
-    <div class="video-info">
-      <div class="video-category">// DSA SPECIFIC — TLAIB</div>
-      <div class="video-title">Rashida Tlaib — The Complete Statement Record</div>
-      <div class="video-tags"><span class="video-tag">Tlaib</span><span class="video-tag">Hamas</span><span class="video-tag">Censure</span></div>
-      <div class="video-desc">Tlaib's river to sea chant, votes against condemning Hamas, CAIR fundraising appearances, and floor statements defending Palestinian terrorism.</div>
-      <div class="video-footer">
-        <span class="video-source">CONGRESSIONAL RECORD</span>
-        <span class="video-coming">COMING SOON</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-card placeholder-card" data-category="dsa-specific">
-    <div class="placeholder-thumb">
-      <div class="placeholder-thumb-icon">📹</div>
-      <div class="placeholder-thumb-text">VIDEO BEING<br>SOURCED & VERIFIED</div>
-    </div>
-    <div class="video-info">
-      <div class="video-category">// DSA SPECIFIC — OMAR</div>
-      <div class="video-title">Ilhan Omar — The Complete Statement Record</div>
-      <div class="video-tags"><span class="video-tag">Omar</span><span class="video-tag">CAIR</span><span class="video-tag">Anti-Israel</span></div>
-      <div class="video-desc">Omar equating the US with Hamas, anti-Israel floor speeches, CAIR fundraising appearances, and documented coordination with Islamist political networks.</div>
-      <div class="video-footer">
-        <span class="video-source">CONGRESSIONAL RECORD</span>
-        <span class="video-coming">COMING SOON</span>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- RED GREEN AXIS -->
-<div class="cat-header" id="red-green-axis">
-  <div class="cat-icon">🕸</div>
-  <div class="cat-title">Red-Green Axis</div>
-  <div class="cat-count">// CAIR · BDS · MARXIST-ISLAMIST COALITION</div>
-</div>
-<div class="video-grid">
-
-  <div class="video-card placeholder-card" data-category="red-green-axis">
-    <div class="placeholder-thumb">
-      <div class="placeholder-thumb-icon">📹</div>
-      <div class="placeholder-thumb-text">VIDEO BEING<br>SOURCED & VERIFIED</div>
-    </div>
-    <div class="video-info">
-      <div class="video-category">// RED-GREEN AXIS</div>
-      <div class="video-title">The Red-Green Axis — How Marxists and Islamists Formed a Coalition Against the West</div>
-      <div class="video-tags"><span class="video-tag">Red-Green</span><span class="video-tag">Marxism</span><span class="video-tag">Islamism</span></div>
-      <div class="video-desc">Expert analysis of the strategic alliance between the Marxist left and Islamist organizations — two ideologies united by hatred of Western civilization.</div>
-      <div class="video-footer">
-        <span class="video-source">HOROWITZ FREEDOM CENTER</span>
-        <span class="video-coming">COMING SOON</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-card placeholder-card" data-category="red-green-axis">
-    <div class="placeholder-thumb">
-      <div class="placeholder-thumb-icon">📹</div>
-      <div class="placeholder-thumb-text">VIDEO BEING<br>SOURCED & VERIFIED</div>
-    </div>
-    <div class="video-info">
-      <div class="video-category">// RED-GREEN AXIS — CAIR</div>
-      <div class="video-title">CAIR Exposed — The Truth About America's Largest Muslim Advocacy Organization</div>
-      <div class="video-tags"><span class="video-tag">CAIR</span><span class="video-tag">Hamas</span><span class="video-tag">HLF</span></div>
-      <div class="video-desc">Investigation into CAIR's founding, its ties to the Holy Land Foundation Hamas financing network, and its integration into DSA electoral operations.</div>
-      <div class="video-footer">
-        <span class="video-source">INVESTIGATIVE</span>
-        <span class="video-coming">COMING SOON</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-card placeholder-card" data-category="red-green-axis">
-    <div class="placeholder-thumb">
-      <div class="placeholder-thumb-icon">📹</div>
-      <div class="placeholder-thumb-text">VIDEO BEING<br>SOURCED & VERIFIED</div>
-    </div>
-    <div class="video-info">
-      <div class="video-category">// RED-GREEN AXIS — BDS</div>
-      <div class="video-title">BDS Movement Debunked — The Truth Behind the Anti-Israel Boycott Campaign</div>
-      <div class="video-tags"><span class="video-tag">BDS</span><span class="video-tag">Hamas</span><span class="video-tag">Anti-Israel</span></div>
-      <div class="video-desc">Expert analysis of the BDS movement — its Hamas-linked founding, its goal of eliminating Israel, and its coordination with DSA and American Islamist organizations.</div>
-      <div class="video-footer">
-        <span class="video-source">FDD</span>
-        <span class="video-coming">COMING SOON</span>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- SUBMIT CTA -->
-<section class="section" style="border-bottom:none;">
-  <div class="submit-cta">
-    <div class="submit-cta-text">
-      <h3>Know a Video We Should Add?</h3>
-      <p>Survivor testimony, expert analysis, investigative journalism, congressional floor statements. Submit a link and we'll verify and add it to the library.</p>
-    </div>
-    <a href="/submit/" class="btn-primary">Submit a Video →</a>
-  </div>
-</section>
-
-<footer></footer>
+<footer></footer><div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
-
-<script>
-  function filterMedia(category, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.video-card').forEach(card => {
-      card.style.display = category === 'all' || card.dataset.category === category ? '' : 'none';
-    });
-  }
-</script>
-
-</body>
-</html>
+<script src="/components/search.js"></script>
+</body></html>
