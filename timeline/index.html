@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timeline — DSA Exposed</title>
+  <meta name="description" content="Every DSA event, statement, endorsement, and election from 1982 to the 2026 sweep — scrollable and searchable." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PK58BBCJX7');</script>
+  <link rel="stylesheet" href="/assets/global.css" />
+  <style>
+    .timeline-layout { display: grid; grid-template-columns: 200px 1fr; min-height: 80vh; }
+    .timeline-nav { border-right: 2px solid var(--ink); background: var(--white); padding: 24px 0; position: sticky; top: 68px; height: calc(100vh - 68px); overflow-y: auto; }
+    .timeline-nav-title { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; padding: 0 20px 16px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+    .timeline-nav-year { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 1px; padding: 8px 20px; cursor: pointer; transition: all 0.15s; display: block; text-decoration: none; }
+    .timeline-nav-year:hover, .timeline-nav-year.active { color: var(--red); background: var(--paper-dk); border-left: 3px solid var(--red); padding-left: 17px; }
+    .timeline-content { padding: 48px; }
+    .timeline-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .year-block { margin-bottom: 56px; }
+    .year-heading { font-family: var(--font-display); font-size: 48px; font-weight: 900; color: var(--ink); letter-spacing: -2px; line-height: 1; margin-bottom: 4px; border-bottom: 3px solid var(--ink); padding-bottom: 12px; }
+    .year-count { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 2px; margin-bottom: 24px; }
+    .event-list { display: flex; flex-direction: column; gap: 2px; }
+    .event-item { display: grid; grid-template-columns: 100px 16px 1fr; gap: 0; align-items: stretch; }
+    .event-date { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 1px; padding: 16px 16px 16px 0; text-align: right; line-height: 1.4; }
+    .event-line { display: flex; flex-direction: column; align-items: center; }
+    .event-dot { width: 12px; height: 12px; border-radius: 50%; margin-top: 20px; flex-shrink: 0; }
+    .event-connector { flex: 1; width: 2px; background: var(--rule); }
+    .event-body { background: var(--white); border: 1px solid var(--rule); border-left: 3px solid transparent; padding: 16px 20px; margin: 4px 0 4px 16px; transition: border-left-color 0.15s, box-shadow 0.15s; }
+    .event-body:hover { border-left-color: var(--red); box-shadow: 0 2px 12px rgba(20,18,16,0.08); }
+    .event-category { font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+    .event-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+    .event-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+    .event-source { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; }
+    .cat-election { color: var(--red); }
+    .cat-statement { color: #6B3FA0; }
+    .cat-funding { color: var(--yellow); }
+    .cat-network { color: #1B6B1B; }
+    .cat-chapter { color: #C05A00; }
+    .cat-terror { color: #B80000; }
+    @media (max-width: 900px) {
+      .timeline-layout { grid-template-columns: 1fr; }
+      .timeline-nav { position: static; height: auto; border-right: none; border-bottom: 2px solid var(--ink); display: flex; flex-wrap: wrap; padding: 12px; gap: 4px; }
+      .timeline-nav-title { display: none; }
+      .timeline-nav-year { padding: 6px 12px; }
+      .timeline-content { padding: 24px; }
+      .event-item { grid-template-columns: 80px 16px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
+<nav></nav>
+<script src="/components/nav.js"></script>
+
+<div class="page-header">
+  <div class="page-header-ghost">TIMELINE</div>
+  <div class="section-eyebrow">// Historical Record</div>
+  <h1>DSA <em>Timeline</em></h1>
+  <p>Every event, statement, endorsement, and election. The DSA's full history from founding to the 2026 sweep — documented and sourced.</p>
+</div>
+
+<div style="padding:16px 48px;border-bottom:1px solid var(--rule);background:var(--paper-dk);">
+  <div class="timeline-filter">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" onclick="filterTimeline('all',this)">All</button>
+    <button class="filter-btn" onclick="filterTimeline('election',this)">Elections</button>
+    <button class="filter-btn" onclick="filterTimeline('statement',this)">Statements</button>
+    <button class="filter-btn" onclick="filterTimeline('terror',this)">Terror Ties</button>
+    <button class="filter-btn" onclick="filterTimeline('funding',this)">Funding</button>
+    <button class="filter-btn" onclick="filterTimeline('network',this)">Networks</button>
+  </div>
+</div>
+
+<div class="timeline-layout">
+  <!-- YEAR NAV -->
+  <div class="timeline-nav">
+    <div class="timeline-nav-title">// Jump to Year</div>
+    <a href="#y2026" class="timeline-nav-year">2026</a>
+    <a href="#y2025" class="timeline-nav-year">2025</a>
+    <a href="#y2024" class="timeline-nav-year">2024</a>
+    <a href="#y2023" class="timeline-nav-year">2023</a>
+    <a href="#y2022" class="timeline-nav-year">2022</a>
+    <a href="#y2021" class="timeline-nav-year">2021</a>
+    <a href="#y2019" class="timeline-nav-year">2019</a>
+    <a href="#y2018" class="timeline-nav-year">2018</a>
+    <a href="#y2017" class="timeline-nav-year">2017</a>
+    <a href="#y2016" class="timeline-nav-year">2016</a>
+    <a href="#y2007" class="timeline-nav-year">2007</a>
+    <a href="#y1982" class="timeline-nav-year">1982</a>
+  </div>
+
+  <!-- EVENTS -->
+  <div class="timeline-content">
+
+    <div class="year-block" id="y2026">
+      <div class="year-heading">2026</div>
+      <div class="year-count">9 documented events</div>
+      <div class="event-list">
+
+        <div class="event-item" data-cat="election">
+          <div class="event-date">Jun 23<br>2026</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-election">// Election — Congressional Primary</div>
+            <div class="event-title">NYC Socialist Sweep — Mamdani's Slate Goes 3-for-3</div>
+            <div class="event-desc">Claire Valdez (NY-7), Darializa Avila Chevalier (NY-13), and Brad Lander (NY-10) all win. Two Democratic incumbents toppled. DSA congressional representation doubles in one night. Victory party erupts in "From the river to the sea" chants. $9.6M in anti-DSA spending fails.</div>
+            <div class="event-source">Source: AP, NPR, CBS News, NY1 · June 23, 2026</div>
+          </div>
+        </div>
+
+        <div class="event-item" data-cat="election">
+          <div class="event-date">Jun 23<br>2026</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-election">// Election — NY State Legislature</div>
+            <div class="event-title">DSA Picks Up 6+ NY State Legislature Seats — Bloc Now 15+ in Albany</div>
+            <div class="event-desc">Aber Kawas (SD12), Samantha Kattan (AD37), David Orkin (AD38 — toppled Rajkumar), Christian Celeste Tate (AD54 — toppled Dilan), Eon Huntley (AD56 — toppled Zinerman), Illapa Sairitupac (AD65) all win by double digits.</div>
+            <div class="event-source">Source: NY Focus, AP · June 23-24, 2026</div>
+          </div>
+        </div>
+
+        <div class="event-item" data-cat="statement">
+          <div class="event-date">Jun 23<br>2026</div>
+          <div class="event-line"><div class="event-dot" style="background:#6B3FA0;"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-statement">// Statement — DSA Victory Party</div>
+            <div class="event-title">NYC DSA Victory Party: Crowd Chants "From the River to the Sea"</div>
+            <div class="event-desc">At the DSA victory party following the primary sweep, attendees chanted "From the river to the sea, Palestine will be free" — the Hamas rallying cry widely understood as a call for the elimination of Israel. Video verified.</div>
+            <div class="event-source">Source: Daily Wire, video verification · June 23, 2026</div>
+          </div>
+        </div>
+
+        <div class="event-item" data-cat="statement">
+          <div class="event-date">May<br>2026</div>
+          <div class="event-line"><div class="event-dot" style="background:#6B3FA0;"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-statement">// Statement — Candidate Interview</div>
+            <div class="event-title">Claire Valdez Interviews with Streamer Who Called Jews "Demonic Ethnicity"</div>
+            <div class="event-desc">Valdez sits for interview with Michael Beyer, DSA member who was suspended from Twitch for calling Jews "demonic ethnicity." Valdez: "This is exactly why I really love being a member of DSA." ADL condemned Beyer's antisemitic remarks.</div>
+            <div class="event-source">Source: Jewish Insider · May 2026</div>
+          </div>
+        </div>
+
+        <div class="event-item" data-cat="terror">
+          <div class="event-date">Jan 1<br>2026</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-terror">// Terror Ties — Executive Action</div>
+            <div class="event-title">Mamdani Revokes Pro-Israel Decrees on Day 1 as NYC Mayor</div>
+            <div class="event-desc">Hours after inauguration, Mayor Mamdani wiped all pro-Israel executive orders issued by predecessor Eric Adams. Israeli Foreign Ministry: "This isn't leadership. It's antisemitic gasoline on an open fire." Israel's minister of diaspora affairs called Mamdani a "Hamas sympathiser."</div>
+            <div class="event-source">Source: Al Jazeera, Times of Israel · January 2, 2026</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="year-block" id="y2025">
+      <div class="year-heading">2025</div>
+      <div class="year-count">3 documented events</div>
+      <div class="event-list">
+
+        <div class="event-item" data-cat="election">
+          <div class="event-date">Jun 25<br>2025</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-election">// Election — NYC Mayor</div>
+            <div class="event-title">Zohran Mamdani Wins NYC Mayoral Primary — Stunning Upset of Andrew Cuomo</div>
+            <div class="event-desc">DSA member Zohran Mamdani defeats former Governor Andrew Cuomo in the Democratic primary for NYC Mayor. Becomes first Muslim mayor of America's largest city. First major DSA win at municipal executive level of a major U.S. city.</div>
+            <div class="event-source">Source: AP, NYT · June 25, 2025</div>
+          </div>
+        </div>
+
+        <div class="event-item" data-cat="statement">
+          <div class="event-date">Jun<br>2025</div>
+          <div class="event-line"><div class="event-dot" style="background:#6B3FA0;"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-statement">// Statement — Candidate</div>
+            <div class="event-title">Mamdani Defends "Globalize the Intifada" Slogan</div>
+            <div class="event-desc">In Bulwark interview, Mamdani says "globalize the intifada" captures "a desperate desire for equality and equal rights." ADL CEO Jonathan Greenblatt calls it "explicit incitement to violence." U.S. Holocaust Museum condemns Mamdani's use of the phrase.</div>
+            <div class="event-source">Source: NBC News, ADL, USHMM · June 2025</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="year-block" id="y2024">
+      <div class="year-heading">2024</div>
+      <div class="year-count">4 documented events</div>
+      <div class="event-list">
+
+        <div class="event-item" data-cat="election">
+          <div class="event-date">Nov<br>2024</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-election">// Election — Federal</div>
+            <div class="event-title">AOC, Tlaib, Omar Win Reelection — DSA Bloc Holds in Congress</div>
+            <div class="event-desc">All three DSA-endorsed Squad members win reelection. Cori Bush loses MO-01 primary amid federal indictment. AOC votes PRESENT on Hamas condemnation during cycle. Tlaib censured for Hamas slogan.</div>
+            <div class="event-source">Source: AP, FEC records · November 2024</div>
+          </div>
+        </div>
+
+        <div class="event-item" data-cat="terror">
+          <div class="event-date">Oct<br>2024</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-terror">// Terror Ties — Campus</div>
+            <div class="event-title">Columbia University Apartheid Divest — Violent Campus Occupation</div>
+            <div class="event-desc">Columbia University Apartheid Divest — co-founded by Darializa Avila Chevalier — leads violent occupation of Hamilton Hall. Multiple arrests. Avila Chevalier will later run for Congress citing this activism.</div>
+            <div class="event-source">Source: NYT, Columbia Spectator · 2024</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="year-block" id="y2023">
+      <div class="year-heading">2023</div>
+      <div class="year-count">6 documented events</div>
+      <div class="event-list">
+
+        <div class="event-item" data-cat="terror">
+          <div class="event-date">Oct 7<br>2023</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-terror">// Terror — Hamas Attack</div>
+            <div class="event-title">Hamas Massacres 1,200 Israelis — DSA Officials Respond</div>
+            <div class="event-desc">Hamas kills 1,200 Israelis, takes 251 hostage. Mamdani's statement: zero Hamas mentions, condemns Israel only. Valdez likes X post: "Glory to the resistance." Avila Chevalier attends pro-Hamas Times Square rally Oct. 8. DSA does not condemn the attack.</div>
+            <div class="event-source">Source: Multiple · October 7-8, 2023</div>
+          </div>
+        </div>
+
+        <div class="event-item" data-cat="statement">
+          <div class="event-date">Nov<br>2023</div>
+          <div class="event-line"><div class="event-dot" style="background:#6B3FA0;"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-statement">// Statement — Congressional</div>
+            <div class="event-title">Rashida Tlaib Censured by U.S. House for Hamas Slogan</div>
+            <div class="event-desc">House votes to censure Rep. Rashida Tlaib after she promoted "from the river to the sea, Palestine will be free" — Hamas rallying cry. Tlaib voted NO on the condemnation of Hamas's October 7 attack.</div>
+            <div class="event-source">Source: Congressional Record, Roll Call · November 2023</div>
+          </div>
+        </div>
+
+        <div class="event-item" data-cat="statement">
+          <div class="event-date">Aug<br>2023</div>
+          <div class="event-line"><div class="event-dot" style="background:#6B3FA0;"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-statement">// Statement — National Convention</div>
+            <div class="event-title">DSA 2023 National Convention: Supports Palestinian "Resistance by Any Means"</div>
+            <div class="event-desc">DSA Resolution #34: "The DSA reaffirms its support for the Palestinian people's struggle for liberation and their right to resist occupation by any means necessary." Passes at national convention.</div>
+            <div class="event-source">Source: DSA.org, Resolution #34 · August 2023</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="year-block" id="y2022">
+      <div class="year-heading">2022</div>
+      <div class="year-count">3 documented events</div>
+      <div class="event-list">
+
+        <div class="event-item" data-cat="election">
+          <div class="event-date">Nov<br>2022</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-election">// Election — Federal</div>
+            <div class="event-title">Summer Lee Wins PA-12, Greg Casar Wins TX-35 — DSA Expands</div>
+            <div class="event-desc">Summer Lee wins PA-12, becoming first Black congresswoman from Pennsylvania. Greg Casar wins TX-35 on socialist/open borders platform. DSA congressional bloc grows. Both endorsed by DSA national.</div>
+            <div class="event-source">Source: AP, FEC · November 2022</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="year-block" id="y2021">
+      <div class="year-heading">2021</div>
+      <div class="year-count">2 documented events</div>
+      <div class="event-list">
+
+        <div class="event-item" data-cat="statement">
+          <div class="event-date">Sep<br>2021</div>
+          <div class="event-line"><div class="event-dot" style="background:#6B3FA0;"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-statement">// Statement — Congressional Vote</div>
+            <div class="event-title">AOC Votes NO on Iron Dome Funding — Roll Call 309</div>
+            <div class="event-desc">Alexandria Ocasio-Cortez is among nine House members to vote NO on $1 billion in Iron Dome missile defense funding for Israel. Initially voted present before switching to NO amid DSA chapter pressure.</div>
+            <div class="event-source">Source: Congressional Record, Roll Call 309 · September 23, 2021</div>
+          </div>
+        </div>
+
+        <div class="event-item" data-cat="statement">
+          <div class="event-date">Jun<br>2021</div>
+          <div class="event-line"><div class="event-dot" style="background:#6B3FA0;"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-statement">// Statement — Congressional</div>
+            <div class="event-title">Ilhan Omar Equates U.S. and Israel with Hamas and Taliban</div>
+            <div class="event-desc">Rep. Ilhan Omar: "We must have the same level of accountability and justice for all victims of crimes against humanity. We have seen unthinkable atrocities committed by the U.S., Hamas, Israel, Afghanistan, and the Taliban." Widely condemned.</div>
+            <div class="event-source">Source: Congressional Record · June 2021</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="year-block" id="y2018">
+      <div class="year-heading">2018</div>
+      <div class="year-count">1 documented event</div>
+      <div class="event-list">
+
+        <div class="event-item" data-cat="election">
+          <div class="event-date">Jun<br>2018</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-election">// Election — First Major DSA Win</div>
+            <div class="event-title">Alexandria Ocasio-Cortez Upsets Joe Crowley — DSA Enters Congress</div>
+            <div class="event-desc">AOC defeats 10-term incumbent Joseph Crowley in the NY-14 Democratic primary — the biggest upset in the 2018 midterms. The first major DSA win at the federal level. Marks the beginning of the DSA's systematic electoral strategy.</div>
+            <div class="event-source">Source: AP · June 26, 2018</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="year-block" id="y2017">
+      <div class="year-heading">2017</div>
+      <div class="year-count">2 documented events</div>
+      <div class="event-list">
+
+        <div class="event-item" data-cat="terror">
+          <div class="event-date">2017</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-terror">// Terror Ties — Statement</div>
+            <div class="event-title">Zohran Mamdani Praises Holy Land Foundation Hamas Financiers in Rap Song</div>
+            <div class="event-desc">In rap track "Salam," Mamdani raps: "My love to the Holy Land Five. You better look 'em up." The Holy Land Five are heads of a charity convicted of financing Hamas — the largest terrorism financing prosecution in U.S. history.</div>
+            <div class="event-source">Source: Times of Israel, Verified Audio · 2017</div>
+          </div>
+        </div>
+
+        <div class="event-item" data-cat="network">
+          <div class="event-date">2017</div>
+          <div class="event-line"><div class="event-dot" style="background:#1B6B1B;"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-network">// Network — BDS Endorsement</div>
+            <div class="event-title">DSA National Convention Officially Endorses BDS Movement</div>
+            <div class="event-desc">DSA national convention votes to officially endorse the Boycott, Divestment, Sanctions movement. BDS co-founder Omar Barghouti has documented ties to Hamas leadership. The vote cements the Red-Green Axis within the DSA.</div>
+            <div class="event-source">Source: DSA.org Convention Minutes · 2017</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="year-block" id="y2007">
+      <div class="year-heading">2007</div>
+      <div class="year-count">1 documented event</div>
+      <div class="event-list">
+        <div class="event-item" data-cat="terror">
+          <div class="event-date">2007</div>
+          <div class="event-line"><div class="event-dot" style="background:var(--red);"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-terror">// Terror Ties — Federal Prosecution</div>
+            <div class="event-title">Holy Land Foundation Convicted of Hamas Financing — CAIR Named Co-Conspirator</div>
+            <div class="event-desc">The Holy Land Foundation for Relief and Development is convicted in the largest terrorism financing prosecution in U.S. history. CAIR — the Council on American-Islamic Relations — is named an unindicted co-conspirator. CAIR has since become a major donor to DSA-aligned candidates.</div>
+            <div class="event-source">Source: DOJ Federal Court Records · 2007</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-block" id="y1982">
+      <div class="year-heading">1982</div>
+      <div class="year-count">1 documented event</div>
+      <div class="event-list">
+        <div class="event-item" data-cat="network">
+          <div class="event-date">1982</div>
+          <div class="event-line"><div class="event-dot" style="background:#1B6B1B;"></div><div class="event-connector"></div></div>
+          <div class="event-body">
+            <div class="event-category cat-network">// Organization — Founded</div>
+            <div class="event-title">Democratic Socialists of America Founded</div>
+            <div class="event-desc">DSA founded by Michael Harrington through merger of Democratic Socialist Organizing Committee and New American Movement. Originally a fringe organization with a few thousand members. Would grow to 92,000+ members by 2026 following the Bernie Sanders 2016 surge.</div>
+            <div class="event-source">Source: DSA.org · 1982</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end timeline-content -->
+</div><!-- end timeline-layout -->
+
+<div class="submit-cta">
+  <div>
+    <h3>Know an Event We're Missing?</h3>
+    <p>Statements, votes, endorsements, funding transactions, chapter activities. Help us complete the historical record.</p>
+  </div>
+  <a href="/submit/" class="btn-primary btn">Submit a Tip →</a>
+</div>
+
+<footer></footer>
+<div class="footer-bottom"></div>
+<script src="/components/footer.js"></script>
+<script src="/components/search.js"></script>
+<script>
+  function filterTimeline(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.event-item').forEach(item => {
+      item.style.display = cat === 'all' || item.dataset.cat === cat ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
