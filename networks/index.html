@@ -1,420 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Networks — The Red-Green Axis — DSA Exposed</title>
-  <meta name="description" content="The strategic alliance between Marxist and Islamist organizations. The Red-Green Axis — mapped, sourced, and documented." />
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red-Green Axis — DSA Exposed</title>
+  <link rel="stylesheet" href="/assets/global.css" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PK58BBCJX7');
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-PK58BBCJX7");</script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --black:#0A0A0A; --red:#CC0000; --red-dim:#8B0000;
-      --white:#F5F5F5; --gray:#888888; --gray-dk:#2A2A2A;
-      --gray-md:#444444; --yellow:#FFD700; --border:#333333;
-      --green:#2E7D32; --green-lt:#4CAF50;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--white); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-
-    /* TICKER */
-    .ticker-wrap { background: var(--red); overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 2px solid #900; }
-    .ticker-label { display: inline-block; background: var(--black); color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 14px; margin-right: 20px; vertical-align: middle; }
-    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
-    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
-    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* NAV */
-    nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
-    .nav-logo span { color: var(--red); }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--red); }
-
-    /* PAGE HEADER */
-    .page-header { padding: 60px 40px 40px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; background: linear-gradient(135deg, #0d0000 0%, #000d00 50%, #0A0A0A 100%); }
-    .page-header::before { content: 'AXIS'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-family: 'Oswald', sans-serif; font-size: 200px; font-weight: 700; color: rgba(204,0,0,0.05); pointer-events: none; white-space: nowrap; }
-    .page-eyebrow { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 3px; margin-bottom: 12px; }
-    .page-title { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; line-height: 1.1; }
-    .page-title .red { color: var(--red); }
-    .page-title .green { color: var(--green-lt); }
-    .page-sub { font-size: 16px; color: var(--gray); max-width: 640px; line-height: 1.7; }
-
-    /* AXIS SPLIT */
-    .axis-split { display: grid; grid-template-columns: 1fr 80px 1fr; border-bottom: 1px solid var(--border); }
-    .axis-side { padding: 40px; }
-    .axis-side.red-side { background: #110000; border-right: 1px solid var(--border); }
-    .axis-side.green-side { background: #001100; }
-    .axis-center { display: flex; align-items: center; justify-content: center; font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; color: var(--yellow); background: var(--gray-dk); border-right: 1px solid var(--border); }
-    .axis-side-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 3px; margin-bottom: 12px; text-transform: uppercase; }
-    .axis-side.red-side .axis-side-label { color: var(--red); }
-    .axis-side.green-side .axis-side-label { color: var(--green-lt); }
-    .axis-side-title { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    .axis-side.red-side .axis-side-title { color: var(--red); }
-    .axis-side.green-side .axis-side-title { color: var(--green-lt); }
-    .axis-side-desc { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 20px; }
-    .axis-goals { display: flex; flex-direction: column; gap: 8px; }
-    .axis-goal { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--white); letter-spacing: 1px; padding: 8px 12px; background: rgba(255,255,255,0.04); border-left: 2px solid; }
-    .red-side .axis-goal { border-color: var(--red); }
-    .green-side .axis-goal { border-color: var(--green-lt); }
-
-    /* SHARED GOALS */
-    .shared-goals { background: var(--gray-dk); border-bottom: 1px solid var(--border); padding: 40px; }
-    .shared-goals-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--yellow); letter-spacing: 3px; text-align: center; margin-bottom: 24px; }
-    .shared-goals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; background: var(--border); }
-    .shared-goal-card { background: var(--black); padding: 20px; text-align: center; }
-    .shared-goal-icon { font-size: 24px; margin-bottom: 8px; }
-    .shared-goal-title { font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--yellow); margin-bottom: 6px; }
-    .shared-goal-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
-
-    /* SECTIONS */
-    .section { padding: 56px 40px; border-bottom: 1px solid var(--border); }
-    .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 36px; }
-    .section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; }
-    .section-title { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
-    .section-rule { flex: 1; height: 1px; background: var(--border); }
-
-    /* ORG WEB */
-    .org-web { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; background: var(--border); }
-    .org-node { background: var(--gray-dk); padding: 26px; position: relative; }
-    .org-node-type { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; padding: 2px 8px; margin-bottom: 10px; display: inline-block; text-transform: uppercase; }
-    .org-node-type.marxist { background: rgba(204,0,0,0.15); color: var(--red); border: 1px solid var(--red-dim); }
-    .org-node-type.islamist { background: rgba(46,125,50,0.15); color: var(--green-lt); border: 1px solid var(--green); }
-    .org-node-type.shared { background: rgba(255,215,0,0.1); color: var(--yellow); border: 1px solid #8B7500; }
-    .org-node-name { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
-    .org-node-desc { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 14px; }
-    .org-node-desc strong { color: var(--white); }
-    .org-node-links { border-top: 1px solid var(--border); padding-top: 12px; }
-    .org-node-links-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 2px; margin-bottom: 8px; }
-    .org-link-item { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; padding: 4px 0; border-bottom: 1px solid #1a1a1a; display: flex; justify-content: space-between; }
-    .org-link-item span { color: var(--yellow); }
-
-    /* EVENT FEED */
-    .event-feed { display: flex; flex-direction: column; gap: 2px; }
-    .event-item { background: var(--gray-dk); padding: 22px 28px; display: grid; grid-template-columns: 160px 1fr 100px; gap: 24px; align-items: start; border-left: 3px solid var(--border); transition: border-color 0.2s; }
-    .event-item:hover { border-left-color: var(--red); }
-    .event-meta { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; line-height: 1.8; }
-    .event-meta strong { display: block; color: var(--white); font-size: 11px; margin-bottom: 4px; }
-    .event-desc { font-size: 14px; color: var(--white); line-height: 1.7; }
-    .event-desc em { color: var(--yellow); font-style: italic; }
-    .event-type { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 3px 8px; text-align: center; white-space: nowrap; }
-    .event-type.red-green { border: 1px solid var(--yellow); color: var(--yellow); }
-    .event-type.marxist { border: 1px solid var(--red); color: var(--red); }
-    .event-type.islamist { border: 1px solid var(--green-lt); color: var(--green-lt); }
-
-    /* FIGURES */
-    .figures-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: var(--border); }
-    .figure-card { background: var(--black); padding: 26px; border-top: 3px solid var(--border); }
-    .figure-card.red-fig { border-top-color: var(--red); }
-    .figure-card.green-fig { border-top-color: var(--green-lt); }
-    .figure-card.both-fig { border-top-color: var(--yellow); }
-    .figure-role { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 2px; margin-bottom: 6px; }
-    .figure-name { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
-    .figure-desc { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 12px; }
-    .figure-desc strong { color: var(--white); }
-    .figure-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .figure-tag { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 3px 7px; border: 1px solid var(--border); color: var(--gray); text-transform: uppercase; }
-    .figure-tag.r { border-color: var(--red); color: var(--red); }
-    .figure-tag.g { border-color: var(--green-lt); color: var(--green-lt); }
-    .figure-tag.y { border-color: var(--yellow); color: var(--yellow); }
-
-    /* SUBMIT CTA */
-    .submit-cta { background: var(--gray-dk); border: 1px solid var(--border); border-left: 4px solid var(--red); padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
-    .submit-cta-text h3 { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
-    .submit-cta-text p { font-size: 13px; color: var(--gray); }
-    .btn-primary { background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding: 14px 32px; white-space: nowrap; transition: background 0.2s; display: inline-block; }
-    .btn-primary:hover { background: #AA0000; }
-
-    /* FOOTER */
-    footer { background: #050505; border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
-    .footer-logo span { color: var(--red); }
-    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; } .nav-links { display: none; }
-      .page-header { padding: 40px 20px 28px; }
-      .axis-split { grid-template-columns: 1fr; }
-      .axis-center { display: none; }
-      .axis-side { padding: 28px 20px; }
-      .section { padding: 40px 20px; }
-      .event-item { grid-template-columns: 1fr; }
-      .submit-cta { flex-direction: column; padding: 24px 20px; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-note { text-align: center; }
-    }
+    .section{padding:56px 48px;border-bottom:1px solid var(--rule);}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--red);padding:28px;transition:box-shadow .2s,transform .2s;}
+    .card:hover{box-shadow:0 4px 16px rgba(20,18,16,.1);transform:translateY(-2px);}
+    .card-eyebrow{font-family:var(--font-mono);font-size:9px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+    .card-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3;}
+    .card-body{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
+    .card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+    .card-source{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px;border-top:1px solid var(--rule);padding-top:10px;}
+    @media(max-width:900px){.section{padding:40px 24px;}.grid-3{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
-
-<div class="ticker-wrap"></div>
-<script src="/components/ticker.js"></script>
-
-<nav></nav>
-<script src="/components/nav.js"></script>
-
-<!-- PAGE HEADER -->
+<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
+<nav></nav><script src="/components/nav.js"></script>
 <div class="page-header">
-  <div class="page-eyebrow">// SECTION 05 — INTELLIGENCE DOSSIER</div>
-  <h1 class="page-title">The <span class="red">Red</span>-<span class="green">Green</span> Axis</h1>
-  <p class="page-sub">The strategic alliance between Marxist and Islamist organizations — two ideologies united by a single goal: the destruction of Western civilization. Mapped, sourced, and documented.</p>
+  <div class="page-header-ghost">NETWORKS</div>
+  <div class="section-eyebrow">// Section 05 — Network Intelligence</div>
+  <h1>Red-Green Axis</h1>
+  <p>The strategic alliance between Marxist and Islamist organizations in America — two ideologies united by opposition to Western civilization, capitalism, and Israel. Documented connections, cross-linked and sourced.</p>
 </div>
-
-<!-- AXIS SPLIT -->
-<div class="axis-split">
-  <div class="axis-side red-side">
-    <div class="axis-side-label">// The Red Side</div>
-    <div class="axis-side-title">Marxist Left</div>
-    <div class="axis-side-desc">The DSA, socialist academics, progressive PACs, and the broader Marxist-aligned left. Driven by class warfare theory, anti-capitalism, and the destruction of Western economic and political structures.</div>
-    <div class="axis-goals">
-      <div class="axis-goal">Abolish capitalism and private property</div>
-      <div class="axis-goal">Dismantle U.S. military and intelligence apparatus</div>
-      <div class="axis-goal">Open borders — erase national sovereignty</div>
-      <div class="axis-goal">Defund and abolish police</div>
-      <div class="axis-goal">Eliminate Israel as a U.S. ally</div>
+<section class="section">
+  <div class="section-eyebrow">// Primary Files</div>
+  <div class="section-title">Key Documentation</div>
+  <hr class="section-rule" />
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-eyebrow">// Red-Green Defined</div>
+      <div class="card-title">What Is the Red-Green Axis?</div>
+      <div class="card-tags"><span class="tag danger">Coalition Defined</span><span class="tag warn">Documented Alliance</span></div>
+      <div class="card-body">The Red-Green Axis describes the political coalition between the radical left (Red — Marxist/socialist) and Islamist organizations (Green — political Islam). Both oppose Western civilization, capitalism, Israel, and American national sovereignty. The alliance is documented in shared endorsements, co-organized events, funding flows, and organizational partnerships.</div>
+      <div class="card-source">Source: Academic Analysis · David Horowitz Freedom Center · Multiple Sources</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// DSA + CAIR Coordination</div>
+      <div class="card-title">Shared Endorsements, Shared Events, Shared Donors</div>
+      <div class="card-tags"><span class="tag danger">Documented Coordination</span><span class="tag danger">CAIR DSA Alliance</span></div>
+      <div class="card-body">DSA-endorsed candidates regularly headline CAIR fundraisers. CAIR bundlers donate to DSA campaigns. CAIR and DSA co-organize voter outreach in Michigan and Minnesota. Tlaib: endorsed by DSA, funded by CAIR. Omar: endorsed by DSA, funded by CAIR.</div>
+      <div class="card-source">Source: FEC Records · CAIR Event Listings · DSA Endorsement Records</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// NYC — The Epicenter</div>
+      <div class="card-title">Mamdani + BDS + DSA + CAIR = Red-Green Command Center</div>
+      <div class="card-tags"><span class="tag danger">NYC Command Center</span><span class="tag danger">Full Network</span></div>
+      <div class="card-body">New York City is the epicenter of the Red-Green Axis in America. Mayor Mamdani — a DSA member who praised HLF Hamas financiers — endorses DSA candidates who are endorsed by CAIR, funded by anti-AIPAC PACs, and publicly support BDS. The network is documented, interlocking, and growing.</div>
+      <div class="card-source">Source: Multiple sources — see Rep Tracker, Funding, Terrorism Ties pages</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// BDS as Bridge</div>
+      <div class="card-title">BDS Movement — Where Left and Islamist Meet</div>
+      <div class="card-tags"><span class="tag danger">BDS as Bridge</span><span class="tag warn">Documented Alliance</span></div>
+      <div class="card-body">The BDS movement serves as the primary organizational bridge between the Marxist left and Islamist organizations. National DSA endorsed BDS in 2017. CAIR co-promotes BDS. AMP organizes BDS on college campuses. DSA reps (AOC, Tlaib, Omar) all support BDS. The movement's stated goals are incompatible with Israel's existence.</div>
+      <div class="card-source">Source: DSA 2017 Convention · CAIR BDS Statements · AMP Campus Records</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// Dearborn — Red-Green Stronghold</div>
+      <div class="card-title">Michigan's Arab-American Hub: Where DSA and CAIR Operate Together</div>
+      <div class="card-tags"><span class="tag danger">Red-Green Hub</span><span class="tag warn">Michigan Coordination</span></div>
+      <div class="card-body">Dearborn, Michigan — home of the largest Arab-American population in the U.S. — is a documented Red-Green coordination hub. Rashida Tlaib's MI-12 district. CAIR Michigan and DSA Detroit run coordinated voter outreach. CAIR fundraisers for Tlaib held in Dearborn.</div>
+      <div class="card-source">Source: CAIR Michigan Records · FEC Records · Detroit Free Press</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// Cedar-Riverside — Minneapolis Hub</div>
+      <div class="card-title">MN-05: Ilhan Omar's DSA-CAIR Coordination Zone</div>
+      <div class="card-tags"><span class="tag danger">Red-Green Hub</span><span class="tag warn">Minnesota Coordination</span></div>
+      <div class="card-body">Minneapolis's Cedar-Riverside neighborhood — center of MN-05, Ilhan Omar's district — is a documented Red-Green coordination zone. Minneapolis DSA and CAIR Minnesota run coordinated voter outreach. Omar has headlined multiple CAIR fundraisers. DSA endorsed her in every cycle.</div>
+      <div class="card-source">Source: CAIR Minnesota Records · FEC Records · Star Tribune</div>
     </div>
   </div>
-  <div class="axis-center">+</div>
-  <div class="axis-side green-side">
-    <div class="axis-side-label">// The Green Side</div>
-    <div class="axis-side-title">Islamist Network</div>
-    <div class="axis-side-desc">CAIR, AMP, MSA, and Islamist-aligned political networks. Driven by religious law supremacy, anti-Western ideology, and the goal of undermining U.S. support for Israel.</div>
-    <div class="axis-goals">
-      <div class="axis-goal">End U.S. support for Israel</div>
-      <div class="axis-goal">Expand Sharia-compliant political influence</div>
-      <div class="axis-goal">Dismantle counter-terrorism apparatus</div>
-      <div class="axis-goal">Open borders — mass migration strategy</div>
-      <div class="axis-goal">Delegitimize Western democratic institutions</div>
-    </div>
-  </div>
+</section>
+<div class="submit-cta">
+  <div><h3>Have Intel to Add?</h3><p>Documentation, sourced statements, funding records, organizational ties. All submissions reviewed before publication.</p></div>
+  <a href="/submit/" class="btn-primary btn">Submit a Tip &rarr;</a>
 </div>
-
-<!-- SHARED GOALS -->
-<div class="shared-goals">
-  <div class="shared-goals-label">// WHERE THEY CONVERGE — SHARED STRATEGIC GOALS</div>
-  <div class="shared-goals-grid">
-    <div class="shared-goal-card">
-      <div class="shared-goal-icon">🇮🇱</div>
-      <div class="shared-goal-title">Destroy Israel</div>
-      <div class="shared-goal-desc">Both movements share anti-Israel ideology. DSA endorses BDS. Islamist groups support Hamas. Both oppose U.S. military aid to Israel.</div>
-    </div>
-    <div class="shared-goal-card">
-      <div class="shared-goal-icon">🇺🇸</div>
-      <div class="shared-goal-title">Weaken America</div>
-      <div class="shared-goal-desc">Both seek to defund the military, dismantle intelligence agencies, and eliminate the U.S.'s ability to project global power.</div>
-    </div>
-    <div class="shared-goal-card">
-      <div class="shared-goal-icon">🚔</div>
-      <div class="shared-goal-title">Abolish Police</div>
-      <div class="shared-goal-desc">Shared platform: defund and abolish domestic law enforcement, eliminating internal security capacity.</div>
-    </div>
-    <div class="shared-goal-card">
-      <div class="shared-goal-icon">🌐</div>
-      <div class="shared-goal-title">Open Borders</div>
-      <div class="shared-goal-desc">Both movements advocate for open immigration as a tool to transform American demographics and political power.</div>
-    </div>
-    <div class="shared-goal-card">
-      <div class="shared-goal-icon">🏛</div>
-      <div class="shared-goal-title">Electoral Infiltration</div>
-      <div class="shared-goal-desc">Coordinated strategy to elect aligned candidates at every level — city council to Congress — using shared PAC networks and voter outreach.</div>
-    </div>
-  </div>
-</div>
-
-<!-- ORG WEB -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-label">// Org Map</div>
-    <div class="section-title">The Network — Key Organizations</div>
-    <div class="section-rule"></div>
-  </div>
-  <div class="org-web">
-    <div class="org-node">
-      <div class="org-node-type marxist">Marxist Org</div>
-      <div class="org-node-name">DSA National</div>
-      <div class="org-node-desc">The hub of the Marxist left's electoral strategy. <strong>92+ elected officials. 250+ chapters.</strong> Official BDS endorser. Refused to condemn Hamas's October 7 attack.</div>
-      <div class="org-node-links">
-        <div class="org-node-links-label">// Key Connections</div>
-        <div class="org-link-item">Justice Democrats <span>ELECTORAL ARM</span></div>
-        <div class="org-link-item">Working Families Party <span>COALITION PARTNER</span></div>
-        <div class="org-link-item">BDS Movement <span>OFFICIAL ENDORSER</span></div>
-        <div class="org-link-item">CAIR <span>EVENT CO-SPONSOR</span></div>
-      </div>
-    </div>
-    <div class="org-node">
-      <div class="org-node-type islamist">Islamist-Adjacent</div>
-      <div class="org-node-name">CAIR</div>
-      <div class="org-node-desc">Council on American-Islamic Relations. <strong>Unindicted co-conspirator in the Holy Land Foundation Hamas financing trial.</strong> Largest Muslim advocacy org in the U.S. Major DSA electoral partner.</div>
-      <div class="org-node-links">
-        <div class="org-node-links-label">// Key Connections</div>
-        <div class="org-link-item">Holy Land Foundation <span>CO-CONSPIRATOR</span></div>
-        <div class="org-link-item">Ilhan Omar <span>FUNDRAISER HEADLINER</span></div>
-        <div class="org-link-item">Rashida Tlaib <span>CAIR TIES DOCUMENTED</span></div>
-        <div class="org-link-item">DSA Chapters <span>JOINT EVENTS</span></div>
-      </div>
-    </div>
-    <div class="org-node">
-      <div class="org-node-type shared">Red-Green Bridge</div>
-      <div class="org-node-name">BDS Movement</div>
-      <div class="org-node-desc">The primary bridge between the Marxist left and Islamist networks. <strong>Co-founded by figures with documented Hamas ties. Endorsed by DSA.</strong></div>
-      <div class="org-node-links">
-        <div class="org-node-links-label">// Key Connections</div>
-        <div class="org-link-item">Omar Barghouti (Co-Founder) <span>HAMAS SUPPORTER</span></div>
-        <div class="org-link-item">DSA National <span>OFFICIAL ENDORSER</span></div>
-        <div class="org-link-item">CAIR <span>JOINT CAMPAIGNS</span></div>
-        <div class="org-link-item">AMP <span>COORDINATION DOCUMENTED</span></div>
-      </div>
-    </div>
-    <div class="org-node">
-      <div class="org-node-type islamist">Islamist-Adjacent</div>
-      <div class="org-node-name">American Muslims for Palestine</div>
-      <div class="org-node-desc">AMP leadership has been linked by researchers to Holy Land Foundation successor networks. <strong>AMP co-sponsors events with DSA chapters and bundles donations for DSA-endorsed candidates.</strong></div>
-      <div class="org-node-links">
-        <div class="org-node-links-label">// Key Connections</div>
-        <div class="org-link-item">HLF Successor Network <span>DOCUMENTED</span></div>
-        <div class="org-link-item">DSA Chapters <span>JOINT EVENTS</span></div>
-        <div class="org-link-item">Squad Members <span>DONOR NETWORK</span></div>
-      </div>
-    </div>
-    <div class="org-node">
-      <div class="org-node-type marxist">Marxist Org</div>
-      <div class="org-node-name">Working Families Party</div>
-      <div class="org-node-desc">DSA's primary electoral coalition partner. <strong>Co-endorses DSA candidates, shares voter data, and coordinates PAC spending.</strong> Active in 12+ states.</div>
-      <div class="org-node-links">
-        <div class="org-node-links-label">// Key Connections</div>
-        <div class="org-link-item">DSA National <span>COALITION PARTNER</span></div>
-        <div class="org-link-item">SEIU <span>UNION FUNDING</span></div>
-        <div class="org-link-item">Justice Democrats <span>SHARED ENDORSEMENTS</span></div>
-      </div>
-    </div>
-    <div class="org-node">
-      <div class="org-node-type islamist">Islamist-Adjacent</div>
-      <div class="org-node-name">Muslim Student Association</div>
-      <div class="org-node-desc">Founded by Muslim Brotherhood members in 1963. MSA chapters serve as a <strong>recruitment pipeline for both Islamist political networks and DSA-aligned progressive organizations.</strong></div>
-      <div class="org-node-links">
-        <div class="org-node-links-label">// Key Connections</div>
-        <div class="org-link-item">Muslim Brotherhood <span>FOUNDING ORG</span></div>
-        <div class="org-link-item">CAIR <span>SISTER ORG</span></div>
-        <div class="org-link-item">Campus DSA Chapters <span>CO-EVENTS</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EVENTS -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-label">// Documented Activity</div>
-    <div class="section-title">Red-Green Axis Events & Coordination</div>
-    <div class="section-rule"></div>
-  </div>
-  <div class="event-feed">
-    <div class="event-item">
-      <div class="event-meta"><strong>DSA National</strong>RESOLUTION<br>AUG 2023<br>CONVENTION</div>
-      <div class="event-desc">DSA's national convention passed a resolution endorsing the BDS movement and declining to condemn Hamas's October 7 attack — explicitly framing Palestinian terrorist violence as <em>"legitimate resistance."</em> CAIR and AMP both praised the resolution publicly within 24 hours.</div>
-      <div class="event-type red-green">RED-GREEN</div>
-    </div>
-    <div class="event-item">
-      <div class="event-meta"><strong>CAIR / DSA</strong>JOINT EVENT<br>OCT 2023<br>MULTIPLE CITIES</div>
-      <div class="event-desc">Following October 7, DSA chapters and CAIR co-organized rallies in New York, Chicago, Los Angeles, and Washington D.C. DSA members and CAIR officials shared stages, chanting identical slogans including <em>"from the river to the sea."</em></div>
-      <div class="event-type red-green">RED-GREEN</div>
-    </div>
-    <div class="event-item">
-      <div class="event-meta"><strong>Ilhan Omar</strong>FUNDRAISER<br>MULTIPLE<br>CAIR EVENTS</div>
-      <div class="event-desc">Rep. Ilhan Omar — DSA-endorsed — headlined multiple CAIR fundraising events, accepting campaign contributions from CAIR-affiliated bundlers. CAIR is a named unindicted co-conspirator in the largest Hamas financing prosecution in U.S. history.</div>
-      <div class="event-type islamist">ISLAMIST TIE</div>
-    </div>
-    <div class="event-item">
-      <div class="event-meta"><strong>AOC / DSA</strong>STATEMENT<br>OCT 2023<br>PUBLIC RECORD</div>
-      <div class="event-desc">Alexandria Ocasio-Cortez initially refused to condemn Hamas's October 7 attack and voted present on a House resolution condemning the attack. She later released a statement that attributed the attack to <em>"decades of occupation"</em> — mirroring Hamas's own stated justification.</div>
-      <div class="event-type marxist">MARXIST</div>
-    </div>
-    <div class="event-item">
-      <div class="event-meta"><strong>AMP / DSA</strong>JOINT CAMPAIGN<br>2022–2024<br>NATIONAL</div>
-      <div class="event-desc">American Muslims for Palestine and DSA chapters ran coordinated voter registration and candidate support campaigns in battleground districts in Michigan, Minnesota, and New York — targeting the same DSA-endorsed candidates and using shared messaging infrastructure.</div>
-      <div class="event-type red-green">RED-GREEN</div>
-    </div>
-  </div>
-</section>
-
-<!-- KEY FIGURES -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-label">// Key Figures</div>
-    <div class="section-title">Red-Green Axis — People at the Center</div>
-    <div class="section-rule"></div>
-  </div>
-  <div class="figures-grid">
-    <div class="figure-card both-fig">
-      <div class="figure-role">U.S. REPRESENTATIVE · DSA ENDORSED · RED-GREEN BRIDGE</div>
-      <div class="figure-name">Ilhan Omar</div>
-      <div class="figure-desc">Minnesota congresswoman who serves as one of the most visible connectors between the Marxist left and Islamist political networks. <strong>CAIR fundraiser headliner, BDS co-sponsor, DSA-endorsed.</strong></div>
-      <div class="figure-tags">
-        <span class="figure-tag r">DSA Endorsed</span>
-        <span class="figure-tag g">CAIR Ties</span>
-        <span class="figure-tag y">Red-Green Bridge</span>
-        <span class="figure-tag r">BDS Co-Sponsor</span>
-      </div>
-    </div>
-    <div class="figure-card both-fig">
-      <div class="figure-role">U.S. REPRESENTATIVE · DSA ENDORSED · RED-GREEN BRIDGE</div>
-      <div class="figure-name">Rashida Tlaib</div>
-      <div class="figure-desc">Michigan congresswoman and the first Palestinian-American member of Congress. <strong>DSA-endorsed, CAIR-tied, Hamas defender.</strong> Censured by the House for promoting "from the river to the sea."</div>
-      <div class="figure-tags">
-        <span class="figure-tag r">DSA Endorsed</span>
-        <span class="figure-tag g">CAIR Ties</span>
-        <span class="figure-tag y">Red-Green Bridge</span>
-        <span class="figure-tag g">Hamas Defender</span>
-      </div>
-    </div>
-    <div class="figure-card red-fig">
-      <div class="figure-role">U.S. REPRESENTATIVE · DSA MEMBER · MARXIST LEFT</div>
-      <div class="figure-name">Alexandria Ocasio-Cortez</div>
-      <div class="figure-desc">DSA card-carrying member and the face of American democratic socialism. <strong>Co-author of the Green New Deal, Medicare for All, and open border advocacy.</strong> Refused to condemn Hamas's October 7 attack.</div>
-      <div class="figure-tags">
-        <span class="figure-tag r">DSA Member</span>
-        <span class="figure-tag r">Anti-Capitalism</span>
-        <span class="figure-tag r">Hamas Abstention</span>
-        <span class="figure-tag r">Iron Dome No</span>
-      </div>
-    </div>
-    <div class="figure-card green-fig">
-      <div class="figure-role">CAIR FOUNDER · ISLAMIST NETWORK</div>
-      <div class="figure-name">Nihad Awad</div>
-      <div class="figure-desc">Co-founder and executive director of CAIR. <strong>Publicly stated he was "happy" about Hamas's October 7 attack</strong> at a conference in Washington D.C. — a statement recorded on video.</div>
-      <div class="figure-tags">
-        <span class="figure-tag g">CAIR Founder</span>
-        <span class="figure-tag g">Hamas Supporter</span>
-        <span class="figure-tag g">HLF Co-Conspirator</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SUBMIT CTA -->
-<section class="section" style="border-bottom:none;">
-  <div class="submit-cta">
-    <div class="submit-cta-text">
-      <h3>Have Evidence of Red-Green Coordination?</h3>
-      <p>Joint events, shared funding, coordinated campaigns, org overlaps. All submissions verified before publication.</p>
-    </div>
-    <a href="/submit/" class="btn-primary">Submit Evidence →</a>
-  </div>
-</section>
-
-<footer></footer>
+<footer></footer><div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
-
+<script src="/components/search.js"></script>
 </body>
 </html>
