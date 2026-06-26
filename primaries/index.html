@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Primary Watch — DSA Exposed</title>
   <meta name="description" content="Tracking DSA-aligned candidates in primaries across America. Who is running, who won, who is next. State by state, district by district." />
-  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -17,398 +16,107 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black:   #0A0A0A;
-      --red:     #CC0000;
-      --red-dim: #8B0000;
-      --white:   #F5F5F5;
-      --gray:    #888888;
-      --gray-dk: #2A2A2A;
-      --gray-md: #444444;
-      --yellow:  #FFD700;
-      --green:   #4CAF50;
-      --border:  #333333;
+      --black:#0A0A0A; --red:#CC0000; --red-dim:#8B0000;
+      --white:#F5F5F5; --gray:#888888; --gray-dk:#2A2A2A;
+      --gray-md:#444444; --yellow:#FFD700; --border:#333333;
+      --green:#4CAF50;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
+    body { background: var(--black); color: var(--white); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── TICKER ── */
-    .ticker-wrap {
-      background: var(--red);
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 8px 0;
-      border-bottom: 2px solid #900;
-    }
-    .ticker-label {
-      display: inline-block;
-      background: var(--black);
-      color: var(--yellow);
-      font-family: 'Oswald', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      padding: 2px 14px;
-      margin-right: 20px;
-      vertical-align: middle;
-    }
-    .ticker-track {
-      display: inline-block;
-      animation: ticker 40s linear infinite;
-    }
-    .ticker-track span {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 12px;
-      color: var(--white);
-      margin-right: 60px;
-    }
-    .ticker-track span::before {
-      content: '▶ ';
-      color: var(--yellow);
-    }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+    /* TICKER */
+    .ticker-wrap { background: var(--red); overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 2px solid #900; }
+    .ticker-label { display: inline-block; background: var(--black); color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 14px; margin-right: 20px; vertical-align: middle; }
+    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
+    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
+    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── NAV ── */
-    nav {
-      background: var(--black);
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo {
-      font-family: 'Oswald', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--white);
-    }
+    /* NAV */
+    nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
     .nav-logo span { color: var(--red); }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: 'Oswald', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      color: var(--gray);
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--red); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--red); }
 
-    /* ── PAGE HEADER ── */
-    .page-header {
-      padding: 60px 40px 40px;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, #0d0500 0%, var(--black) 100%);
-    }
-    .page-header::before {
-      content: 'PRIMARIES';
-      position: absolute;
-      right: -10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Oswald', sans-serif;
-      font-size: 140px;
-      font-weight: 700;
-      color: rgba(204,0,0,0.05);
-      pointer-events: none;
-      white-space: nowrap;
-    }
-    .page-eyebrow {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px;
-      color: var(--red);
-      letter-spacing: 3px;
-      margin-bottom: 12px;
-    }
-    .page-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: clamp(36px, 5vw, 64px);
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
+    /* PAGE HEADER */
+    .page-header { padding: 60px 40px 40px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; background: linear-gradient(180deg, #0d0500 0%, var(--black) 100%); }
+    .page-header::before { content: 'PRIMARIES'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-family: 'Oswald', sans-serif; font-size: 140px; font-weight: 700; color: rgba(204,0,0,0.05); pointer-events: none; white-space: nowrap; }
+    .page-eyebrow { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 3px; margin-bottom: 12px; }
+    .page-title { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
     .page-title span { color: var(--red); }
-    .page-sub {
-      font-size: 16px;
-      color: var(--gray);
-      max-width: 640px;
-      line-height: 1.7;
-    }
+    .page-sub { font-size: 16px; color: var(--gray); max-width: 640px; line-height: 1.7; }
 
-    /* ── STATS BAR ── */
-    .stats-bar {
-      display: flex;
-      border-bottom: 1px solid var(--border);
-    }
-    .stats-bar-item {
-      flex: 1;
-      padding: 24px 40px;
-      border-right: 1px solid var(--border);
-    }
+    /* STATS BAR */
+    .stats-bar { display: flex; border-bottom: 1px solid var(--border); }
+    .stats-bar-item { flex: 1; padding: 24px 40px; border-right: 1px solid var(--border); }
     .stats-bar-item:last-child { border-right: none; }
-    .stats-bar-num {
-      font-family: 'Oswald', sans-serif;
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--red);
-      line-height: 1;
-    }
+    .stats-bar-num { font-family: 'Oswald', sans-serif; font-size: 32px; font-weight: 700; color: var(--red); line-height: 1; }
     .stats-bar-num.green { color: var(--green); }
     .stats-bar-num.yellow { color: var(--yellow); }
-    .stats-bar-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
+    .stats-bar-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
 
-    /* ── SECTIONS ── */
-    .section {
-      padding: 52px 40px;
-      border-bottom: 1px solid var(--border);
-    }
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-    .section-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--red);
-      letter-spacing: 3px;
-    }
-    .section-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .section-rule {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    /* SECTIONS */
+    .section { padding: 52px 40px; border-bottom: 1px solid var(--border); }
+    .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; }
+    .section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; }
+    .section-title { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+    .section-rule { flex: 1; height: 1px; background: var(--border); }
 
-    /* ── RACE CARDS ── */
-    .race-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2px;
-      background: var(--border);
-    }
-    .race-card {
-      background: var(--gray-dk);
-      padding: 26px;
-      position: relative;
-      border-top: 3px solid var(--border);
-    }
+    /* RACE CARDS */
+    .race-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2px; background: var(--border); }
+    .race-card { background: var(--gray-dk); padding: 26px; position: relative; border-top: 3px solid var(--border); }
     .race-card.won   { border-top-color: var(--red); }
     .race-card.watch { border-top-color: var(--yellow); }
     .race-card.lost  { border-top-color: var(--gray-md); }
     .race-card.upcoming { border-top-color: #FF6600; }
-
-    .race-status {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 2px;
-      padding: 3px 8px;
-      text-transform: uppercase;
-    }
+    .race-status { position: absolute; top: 16px; right: 16px; font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; padding: 3px 8px; text-transform: uppercase; }
     .race-status.won      { border: 1px solid var(--red); color: var(--red); }
     .race-status.watch    { border: 1px solid var(--yellow); color: var(--yellow); }
     .race-status.lost     { border: 1px solid var(--gray); color: var(--gray); }
     .race-status.upcoming { border: 1px solid #FF6600; color: #FF6600; }
-
-    .race-district {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray);
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-    }
-    .race-name {
-      font-family: 'Oswald', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
-    .race-office {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray);
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-    .race-result {
-      font-family: 'Oswald', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
+    .race-district { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; margin-bottom: 6px; }
+    .race-name { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+    .race-office { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; margin-bottom: 12px; }
+    .race-result { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
     .race-result.won-text   { color: var(--red); }
     .race-result.watch-text { color: var(--yellow); }
     .race-result.lost-text  { color: var(--gray); }
     .race-result.up-text    { color: #FF6600; }
-
-    .race-desc {
-      font-size: 12px;
-      color: var(--gray);
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
+    .race-desc { font-size: 12px; color: var(--gray); line-height: 1.6; margin-bottom: 14px; }
     .race-desc strong { color: var(--white); }
-    .race-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .race-tag {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 1px;
-      padding: 3px 7px;
-      border: 1px solid var(--border);
-      color: var(--gray);
-      text-transform: uppercase;
-    }
+    .race-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .race-tag { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 3px 7px; border: 1px solid var(--border); color: var(--gray); text-transform: uppercase; }
     .race-tag.r { border-color: var(--red); color: var(--red); }
     .race-tag.y { border-color: var(--yellow); color: var(--yellow); }
 
-    /* ── TREND TABLE ── */
-    .trend-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .trend-table th {
-      font-family: 'Oswald', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gray);
-      padding: 14px 20px;
-      text-align: left;
-      border-bottom: 2px solid var(--border);
-      background: #1a1a1a;
-    }
-    .trend-table td {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px;
-      color: var(--white);
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-      letter-spacing: 0.5px;
-    }
+    /* TREND TABLE */
+    .trend-table { width: 100%; border-collapse: collapse; }
+    .trend-table th { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); padding: 14px 20px; text-align: left; border-bottom: 2px solid var(--border); background: #1a1a1a; }
+    .trend-table td { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--white); padding: 14px 20px; border-bottom: 1px solid var(--border); vertical-align: middle; letter-spacing: 0.5px; }
     .trend-table tr:hover td { background: #2a2a2a; }
     .trend-won  { color: var(--red); font-weight: 700; }
     .trend-lost { color: var(--gray); }
     .trend-watch { color: var(--yellow); }
 
-    /* ── SUBMIT CTA ── */
-    .submit-cta {
-      background: var(--gray-dk);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--red);
-      padding: 36px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-    }
-    .submit-cta-text h3 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
+    /* SUBMIT CTA */
+    .submit-cta { background: var(--gray-dk); border: 1px solid var(--border); border-left: 4px solid var(--red); padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .submit-cta-text h3 { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
     .submit-cta-text p { font-size: 13px; color: var(--gray); }
-    .btn-primary {
-      background: var(--red);
-      color: var(--white);
-      font-family: 'Oswald', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      padding: 14px 32px;
-      white-space: nowrap;
-      transition: background 0.2s;
-      display: inline-block;
-    }
+    .btn-primary { background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding: 14px 32px; white-space: nowrap; transition: background 0.2s; display: inline-block; }
     .btn-primary:hover { background: #AA0000; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #050505;
-      border-top: 1px solid var(--border);
-      padding: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .footer-logo {
-      font-family: 'Oswald', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--gray);
-    }
+    /* FOOTER */
+    footer { background: #050505; border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
     .footer-logo span { color: var(--red); }
-    .footer-note {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray-md);
-      letter-spacing: 1px;
-      text-align: right;
-      line-height: 1.8;
-    }
+    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
 
     @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
+      nav { padding: 0 20px; } .nav-links { display: none; }
       .page-header { padding: 40px 20px 28px; }
       .stats-bar { flex-wrap: wrap; }
       .stats-bar-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
@@ -422,38 +130,11 @@
 </head>
 <body>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <span class="ticker-label">INTEL FEED</span>
-  <span class="ticker-track">
-    <span>NYC primaries: 3 DSA-aligned reps win on anti-America platform</span>
-    <span>DSA national convention endorses BDS movement resolution</span>
-    <span>DSA chapter leaders appear at CAIR-sponsored event</span>
-    <span>Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns</span>
-    <span>DSA publishes "Toward a Socialist America" manifesto</span>
-    <span>Red-Green Axis: Marxist-Islamist alliance deepens in major US cities</span>
-    <span>NYC primaries: 3 DSA-aligned reps win on anti-America platform</span>
-    <span>DSA national convention endorses BDS movement resolution</span>
-    <span>DSA chapter leaders appear at CAIR-sponsored event</span>
-    <span>Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns</span>
-    <span>DSA publishes "Toward a Socialist America" manifesto</span>
-    <span>Red-Green Axis: Marxist-Islamist alliance deepens in major US cities</span>
-  </span>
-</div>
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
 
-<!-- NAV -->
-<nav>
-  <a href="../" class="nav-logo">DSA<span>EXPOSED</span></a>
-  <ul class="nav-links">
-    <li><a href="../reps/">Rep Tracker</a></li>
-    <li><a href="../terrorism/">Terrorism Ties</a></li>
-    <li><a href="../funding/">Funding</a></li>
-    <li><a href="../ideology/">Ideology</a></li>
-    <li><a href="../networks/">Networks</a></li>
-    <li><a href="../chapters/">Chapters</a></li>
-    <li><a href="../submit/">Submit a Tip</a></li>
-  </ul>
-</nav>
+<nav></nav>
+<script src="/components/nav.js"></script>
 
 <!-- PAGE HEADER -->
 <div class="page-header">
@@ -464,22 +145,10 @@
 
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stats-bar-item">
-    <div class="stats-bar-num green">3</div>
-    <div class="stats-bar-label">NYC 2026 Primary Wins</div>
-  </div>
-  <div class="stats-bar-item">
-    <div class="stats-bar-num">22+</div>
-    <div class="stats-bar-label">DSA Candidates Running 2026</div>
-  </div>
-  <div class="stats-bar-item">
-    <div class="stats-bar-num yellow">8</div>
-    <div class="stats-bar-label">Races to Watch — 2026</div>
-  </div>
-  <div class="stats-bar-item">
-    <div class="stats-bar-num">92+</div>
-    <div class="stats-bar-label">Total DSA Officials In Office</div>
-  </div>
+  <div class="stats-bar-item"><div class="stats-bar-num green">3</div><div class="stats-bar-label">NYC 2026 Primary Wins</div></div>
+  <div class="stats-bar-item"><div class="stats-bar-num">22+</div><div class="stats-bar-label">DSA Candidates Running 2026</div></div>
+  <div class="stats-bar-item"><div class="stats-bar-num yellow">8</div><div class="stats-bar-label">Races to Watch — 2026</div></div>
+  <div class="stats-bar-item"><div class="stats-bar-num">92+</div><div class="stats-bar-label">Total DSA Officials In Office</div></div>
 </div>
 
 <!-- NYC 2026 WINS -->
@@ -490,14 +159,13 @@
     <div class="section-rule"></div>
   </div>
   <div class="race-grid">
-
     <div class="race-card won">
       <div class="race-status won">WON PRIMARY</div>
       <div class="race-district">NEW YORK · DISTRICT TBD · JUNE 2026</div>
       <div class="race-name">[Candidate #1]</div>
       <div class="race-office">U.S. HOUSE · DSA ENDORSED</div>
       <div class="race-result won-text">✓ PRIMARY WIN — 2026</div>
-      <div class="race-desc"><strong>On record</strong> with statements supporting Palestinian terrorism, opposing U.S. counter-terrorism operations, and calling for socialist economic transformation. Full profile to be populated with verified sourced data.</div>
+      <div class="race-desc"><strong>On record</strong> with statements supporting Palestinian terrorism, opposing U.S. counter-terrorism operations, and calling for socialist economic transformation.</div>
       <div class="race-tags">
         <span class="race-tag r">Terrorism Ties</span>
         <span class="race-tag r">Anti-America</span>
@@ -505,14 +173,13 @@
         <span class="race-tag">DSA Endorsed</span>
       </div>
     </div>
-
     <div class="race-card won">
       <div class="race-status won">WON PRIMARY</div>
       <div class="race-district">NEW YORK · DISTRICT TBD · JUNE 2026</div>
       <div class="race-name">[Candidate #2]</div>
       <div class="race-office">U.S. HOUSE · DSA ENDORSED</div>
       <div class="race-result won-text">✓ PRIMARY WIN — 2026</div>
-      <div class="race-desc"><strong>On record</strong> with statements supporting Hamas, opposing sanctions on Iran, and calling for abolition of ICE and U.S. military defunding. Full profile to be populated with verified sourced data.</div>
+      <div class="race-desc"><strong>On record</strong> with statements supporting Hamas, opposing sanctions on Iran, and calling for abolition of ICE and U.S. military defunding.</div>
       <div class="race-tags">
         <span class="race-tag r">Hamas Support</span>
         <span class="race-tag r">Anti-Capitalism</span>
@@ -520,14 +187,13 @@
         <span class="race-tag">DSA Endorsed</span>
       </div>
     </div>
-
     <div class="race-card won">
       <div class="race-status won">WON PRIMARY</div>
       <div class="race-district">NEW YORK · DISTRICT TBD · JUNE 2026</div>
       <div class="race-name">[Candidate #3]</div>
       <div class="race-office">U.S. HOUSE · DSA ENDORSED</div>
       <div class="race-result won-text">✓ PRIMARY WIN — 2026</div>
-      <div class="race-desc"><strong>On record</strong> with communist platform statements, anti-Israel positions, and documented coordination with CAIR and BDS movement leadership. Full profile to be populated with verified sourced data.</div>
+      <div class="race-desc"><strong>On record</strong> with communist platform statements, anti-Israel positions, and documented coordination with CAIR and BDS movement leadership.</div>
       <div class="race-tags">
         <span class="race-tag r">Terrorism Ties</span>
         <span class="race-tag r">Communist Platform</span>
@@ -535,7 +201,6 @@
         <span class="race-tag">DSA Endorsed</span>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -547,7 +212,6 @@
     <div class="section-rule"></div>
   </div>
   <div class="race-grid">
-
     <div class="race-card upcoming">
       <div class="race-status upcoming">UPCOMING</div>
       <div class="race-district">ILLINOIS · IL-07 · CHICAGO</div>
@@ -561,7 +225,6 @@
         <span class="race-tag">SEIU Funded</span>
       </div>
     </div>
-
     <div class="race-card watch">
       <div class="race-status watch">MONITOR</div>
       <div class="race-district">TEXAS · TX-35 · AUSTIN</div>
@@ -574,7 +237,6 @@
         <span class="race-tag">DSA Endorsed</span>
       </div>
     </div>
-
     <div class="race-card watch">
       <div class="race-status watch">MONITOR</div>
       <div class="race-district">WASHINGTON · WA-07 · SEATTLE</div>
@@ -587,7 +249,6 @@
         <span class="race-tag">DSA Endorsed</span>
       </div>
     </div>
-
     <div class="race-card watch">
       <div class="race-status watch">MONITOR</div>
       <div class="race-district">PENNSYLVANIA · PA-03 · PHILADELPHIA</div>
@@ -601,11 +262,10 @@
         <span class="race-tag">SEIU Backed</span>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- HISTORICAL RESULTS TABLE -->
+<!-- HISTORICAL RESULTS -->
 <section class="section">
   <div class="section-header">
     <div class="section-label">// Record</div>
@@ -625,86 +285,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>2026</td>
-          <td>[Candidate #1]</td>
-          <td>NYC Congressional Primary</td>
-          <td class="trend-won">WON PRIMARY</td>
-          <td>DSA ENDORSED</td>
-          <td>Anti-Israel / BDS</td>
-        </tr>
-        <tr>
-          <td>2026</td>
-          <td>[Candidate #2]</td>
-          <td>NYC Congressional Primary</td>
-          <td class="trend-won">WON PRIMARY</td>
-          <td>DSA ENDORSED</td>
-          <td>Hamas Support</td>
-        </tr>
-        <tr>
-          <td>2026</td>
-          <td>[Candidate #3]</td>
-          <td>NYC Congressional Primary</td>
-          <td class="trend-won">WON PRIMARY</td>
-          <td>DSA ENDORSED</td>
-          <td>Communist Platform</td>
-        </tr>
-        <tr>
-          <td>2024</td>
-          <td>Alexandria Ocasio-Cortez</td>
-          <td>NY-14 Primary</td>
-          <td class="trend-won">WON</td>
-          <td>DSA MEMBER</td>
-          <td>Anti-Capitalism / BDS</td>
-        </tr>
-        <tr>
-          <td>2024</td>
-          <td>Rashida Tlaib</td>
-          <td>MI-12 Primary</td>
-          <td class="trend-won">WON</td>
-          <td>DSA ENDORSED</td>
-          <td>Hamas / BDS</td>
-        </tr>
-        <tr>
-          <td>2024</td>
-          <td>Ilhan Omar</td>
-          <td>MN-05 Primary</td>
-          <td class="trend-won">WON</td>
-          <td>DSA ENDORSED</td>
-          <td>CAIR / Anti-Israel</td>
-        </tr>
-        <tr>
-          <td>2024</td>
-          <td>Cori Bush</td>
-          <td>MO-01 Primary</td>
-          <td class="trend-lost">LOST</td>
-          <td>DSA ENDORSED</td>
-          <td>Defund Police / BDS</td>
-        </tr>
-        <tr>
-          <td>2022</td>
-          <td>Summer Lee</td>
-          <td>PA-12 Primary</td>
-          <td class="trend-won">WON</td>
-          <td>DSA ENDORSED</td>
-          <td>Socialist Platform</td>
-        </tr>
-        <tr>
-          <td>2022</td>
-          <td>Greg Casar</td>
-          <td>TX-35 Primary</td>
-          <td class="trend-won">WON</td>
-          <td>DSA ENDORSED</td>
-          <td>Socialist / Open Borders</td>
-        </tr>
-        <tr>
-          <td>2018</td>
-          <td>Alexandria Ocasio-Cortez</td>
-          <td>NY-14 Primary</td>
-          <td class="trend-won">WON</td>
-          <td>DSA MEMBER</td>
-          <td>Democratic Socialism</td>
-        </tr>
+        <tr><td>2026</td><td>[Candidate #1]</td><td>NYC Congressional Primary</td><td class="trend-won">WON PRIMARY</td><td>DSA ENDORSED</td><td>Anti-Israel / BDS</td></tr>
+        <tr><td>2026</td><td>[Candidate #2]</td><td>NYC Congressional Primary</td><td class="trend-won">WON PRIMARY</td><td>DSA ENDORSED</td><td>Hamas Support</td></tr>
+        <tr><td>2026</td><td>[Candidate #3]</td><td>NYC Congressional Primary</td><td class="trend-won">WON PRIMARY</td><td>DSA ENDORSED</td><td>Communist Platform</td></tr>
+        <tr><td>2024</td><td>Alexandria Ocasio-Cortez</td><td>NY-14 Primary</td><td class="trend-won">WON</td><td>DSA MEMBER</td><td>Anti-Capitalism / BDS</td></tr>
+        <tr><td>2024</td><td>Rashida Tlaib</td><td>MI-12 Primary</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Hamas / BDS</td></tr>
+        <tr><td>2024</td><td>Ilhan Omar</td><td>MN-05 Primary</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>CAIR / Anti-Israel</td></tr>
+        <tr><td>2024</td><td>Cori Bush</td><td>MO-01 Primary</td><td class="trend-lost">LOST</td><td>DSA ENDORSED</td><td>Defund Police / BDS</td></tr>
+        <tr><td>2022</td><td>Summer Lee</td><td>PA-12 Primary</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Socialist Platform</td></tr>
+        <tr><td>2022</td><td>Greg Casar</td><td>TX-35 Primary</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Socialist / Open Borders</td></tr>
+        <tr><td>2018</td><td>Alexandria Ocasio-Cortez</td><td>NY-14 Primary</td><td class="trend-won">WON</td><td>DSA MEMBER</td><td>Democratic Socialism</td></tr>
       </tbody>
     </table>
   </div>
@@ -717,18 +307,12 @@
       <h3>Know a DSA Primary Race We're Missing?</h3>
       <p>Candidate names, district info, endorsements, funding records. Help us track every DSA electoral threat in America.</p>
     </div>
-    <a href="../submit/" class="btn-primary">Submit a Tip →</a>
+    <a href="/submit/" class="btn-primary">Submit a Tip →</a>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <a href="../" class="footer-logo">DSA<span>EXPOSED</span>.COM</a>
-  <div class="footer-note">
-    Electoral data sourced from FEC filings, state election boards, and verified public records.<br>
-    DSAExposed is an independent watchdog operation. All claims are documented.
-  </div>
-</footer>
+<footer></footer>
+<script src="/components/footer.js"></script>
 
 </body>
 </html>
