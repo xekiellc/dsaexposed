@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Follow the Money — DSA Exposed</title>
   <meta name="description" content="Who funds the DSA. PACs, dark money networks, bundlers, and individual donors traced to designated terrorist organizations and foreign-aligned groups." />
-  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -17,456 +16,116 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black:   #0A0A0A;
-      --red:     #CC0000;
-      --red-dim: #8B0000;
-      --white:   #F5F5F5;
-      --gray:    #888888;
-      --gray-dk: #2A2A2A;
-      --gray-md: #444444;
-      --yellow:  #FFD700;
-      --border:  #333333;
+      --black:#0A0A0A; --red:#CC0000; --red-dim:#8B0000;
+      --white:#F5F5F5; --gray:#888888; --gray-dk:#2A2A2A;
+      --gray-md:#444444; --yellow:#FFD700; --border:#333333;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
-      background: var(--black);
-      color: var(--white);
+      background: var(--black); color: var(--white);
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-size: 16px; line-height: 1.6; overflow-x: hidden;
     }
-
     a { color: inherit; text-decoration: none; }
 
-    /* ── TICKER ── */
-    .ticker-wrap {
-      background: var(--red);
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 8px 0;
-      border-bottom: 2px solid #900;
-    }
-    .ticker-label {
-      display: inline-block;
-      background: var(--black);
-      color: var(--yellow);
-      font-family: 'Oswald', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      padding: 2px 14px;
-      margin-right: 20px;
-      vertical-align: middle;
-    }
-    .ticker-track {
-      display: inline-block;
-      animation: ticker 40s linear infinite;
-    }
-    .ticker-track span {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 12px;
-      color: var(--white);
-      margin-right: 60px;
-    }
-    .ticker-track span::before {
-      content: '▶ ';
-      color: var(--yellow);
-    }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+    /* TICKER */
+    .ticker-wrap { background: var(--red); overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 2px solid #900; }
+    .ticker-label { display: inline-block; background: var(--black); color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 14px; margin-right: 20px; vertical-align: middle; }
+    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
+    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
+    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── NAV ── */
-    nav {
-      background: var(--black);
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo {
-      font-family: 'Oswald', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--white);
-    }
+    /* NAV */
+    nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
     .nav-logo span { color: var(--red); }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: 'Oswald', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      color: var(--gray);
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--red); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--red); }
 
-    /* ── PAGE HEADER ── */
-    .page-header {
-      padding: 60px 40px 40px;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, #0a0a00 0%, var(--black) 100%);
-    }
-    .page-header::before {
-      content: 'MONEY';
-      position: absolute;
-      right: -10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Oswald', sans-serif;
-      font-size: 180px;
-      font-weight: 700;
-      color: rgba(255,215,0,0.04);
-      pointer-events: none;
-      white-space: nowrap;
-    }
-    .page-eyebrow {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px;
-      color: var(--red);
-      letter-spacing: 3px;
-      margin-bottom: 12px;
-    }
-    .page-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: clamp(36px, 5vw, 64px);
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
+    /* PAGE HEADER */
+    .page-header { padding: 60px 40px 40px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; background: linear-gradient(180deg, #0a0a00 0%, var(--black) 100%); }
+    .page-header::before { content: 'MONEY'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-family: 'Oswald', sans-serif; font-size: 180px; font-weight: 700; color: rgba(255,215,0,0.04); pointer-events: none; white-space: nowrap; }
+    .page-eyebrow { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 3px; margin-bottom: 12px; }
+    .page-title { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
     .page-title span { color: var(--yellow); }
-    .page-sub {
-      font-size: 16px;
-      color: var(--gray);
-      max-width: 640px;
-      line-height: 1.7;
-    }
+    .page-sub { font-size: 16px; color: var(--gray); max-width: 640px; line-height: 1.7; }
 
-    /* ── STATS BAR ── */
-    .stats-bar {
-      display: flex;
-      border-bottom: 1px solid var(--border);
-    }
-    .stats-bar-item {
-      flex: 1;
-      padding: 24px 40px;
-      border-right: 1px solid var(--border);
-    }
+    /* STATS BAR */
+    .stats-bar { display: flex; border-bottom: 1px solid var(--border); }
+    .stats-bar-item { flex: 1; padding: 24px 40px; border-right: 1px solid var(--border); }
     .stats-bar-item:last-child { border-right: none; }
-    .stats-bar-num {
-      font-family: 'Oswald', sans-serif;
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--yellow);
-      line-height: 1;
-    }
-    .stats-bar-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
+    .stats-bar-num { font-family: 'Oswald', sans-serif; font-size: 32px; font-weight: 700; color: var(--yellow); line-height: 1; }
+    .stats-bar-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
 
-    /* ── SECTIONS ── */
-    .section {
-      padding: 56px 40px;
-      border-bottom: 1px solid var(--border);
-    }
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 36px;
-    }
-    .section-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--red);
-      letter-spacing: 3px;
-    }
-    .section-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .section-rule {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    /* SECTIONS */
+    .section { padding: 56px 40px; border-bottom: 1px solid var(--border); }
+    .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 36px; }
+    .section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; }
+    .section-title { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+    .section-rule { flex: 1; height: 1px; background: var(--border); }
 
-    /* ── MONEY FLOW DIAGRAM ── */
-    .money-flow {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr auto 1fr;
-      gap: 0;
-      align-items: center;
-      background: var(--gray-dk);
-      padding: 40px;
-      margin-bottom: 40px;
-    }
-    .flow-box {
-      background: var(--black);
-      border: 1px solid var(--border);
-      padding: 20px;
-      text-align: center;
-    }
+    /* MONEY FLOW */
+    .money-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: center; background: var(--gray-dk); padding: 40px; margin-bottom: 40px; }
+    .flow-box { background: var(--black); border: 1px solid var(--border); padding: 20px; text-align: center; }
     .flow-box.highlight { border-color: var(--red); }
-    .flow-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 9px;
-      color: var(--gray);
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-    }
-    .flow-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+    .flow-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 2px; margin-bottom: 6px; }
+    .flow-title { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
     .flow-title.red { color: var(--red); }
     .flow-title.yellow { color: var(--yellow); }
-    .flow-arrow {
-      text-align: center;
-      font-size: 24px;
-      color: var(--red);
-      padding: 0 16px;
-    }
+    .flow-arrow { text-align: center; font-size: 24px; color: var(--red); padding: 0 16px; }
 
-    /* ── DONOR SOURCE CARDS ── */
-    .donor-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2px;
-      background: var(--border);
-    }
-    .donor-card {
-      background: var(--gray-dk);
-      padding: 28px;
-      position: relative;
-    }
-    .donor-flag {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 2px;
-      padding: 3px 8px;
-      text-transform: uppercase;
-    }
+    /* DONOR CARDS */
+    .donor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2px; background: var(--border); }
+    .donor-card { background: var(--gray-dk); padding: 28px; position: relative; }
+    .donor-flag { position: absolute; top: 16px; right: 16px; font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; padding: 3px 8px; text-transform: uppercase; }
     .donor-flag.high { border: 1px solid var(--red); color: var(--red); }
     .donor-flag.med  { border: 1px solid var(--yellow); color: var(--yellow); }
-    .donor-flag.low  { border: 1px solid var(--gray); color: var(--gray); }
-    .donor-type {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray);
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-    }
-    .donor-name {
-      font-family: 'Oswald', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-    }
-    .donor-desc {
-      font-size: 13px;
-      color: var(--gray);
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
+    .donor-type { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; margin-bottom: 6px; }
+    .donor-name { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
+    .donor-desc { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 16px; }
     .donor-desc strong { color: var(--white); }
-    .donor-amounts {
-      border-top: 1px solid var(--border);
-      padding-top: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .donor-amount-row {
-      display: flex;
-      justify-content: space-between;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 1px;
-    }
+    .donor-amounts { border-top: 1px solid var(--border); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .donor-amount-row { display: flex; justify-content: space-between; font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; }
     .donor-amount-row .label { color: var(--gray); }
     .donor-amount-row .amount { color: var(--yellow); }
 
-    /* ── DARK MONEY TABLE ── */
-    .money-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .money-table th {
-      font-family: 'Oswald', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gray);
-      padding: 14px 20px;
-      text-align: left;
-      border-bottom: 2px solid var(--border);
-      background: #1a1a1a;
-    }
-    .money-table td {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px;
-      color: var(--white);
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-      letter-spacing: 0.5px;
-    }
+    /* MONEY TABLE */
+    .money-table { width: 100%; border-collapse: collapse; }
+    .money-table th { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); padding: 14px 20px; text-align: left; border-bottom: 2px solid var(--border); background: #1a1a1a; }
+    .money-table td { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--white); padding: 14px 20px; border-bottom: 1px solid var(--border); vertical-align: top; letter-spacing: 0.5px; }
     .money-table tr:hover td { background: #2a2a2a; }
     .amount-cell { color: var(--yellow); font-weight: 700; }
     .risk-high { color: var(--red); }
     .risk-med  { color: var(--yellow); }
 
-    /* ── PAC NETWORK ── */
-    .pac-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2px;
-      background: var(--border);
-    }
-    .pac-card {
-      background: var(--black);
-      padding: 24px;
-      border-top: 2px solid var(--border);
-      transition: border-color 0.2s;
-    }
+    /* PAC GRID */
+    .pac-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: var(--border); }
+    .pac-card { background: var(--black); padding: 24px; border-top: 2px solid var(--border); transition: border-color 0.2s; }
     .pac-card:hover { border-top-color: var(--red); }
-    .pac-type {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 9px;
-      color: var(--gray);
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
-    .pac-name {
-      font-family: 'Oswald', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-    .pac-desc {
-      font-size: 12px;
-      color: var(--gray);
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-    .pac-total {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 14px;
-      color: var(--yellow);
-      letter-spacing: 1px;
-    }
-    .pac-total-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 9px;
-      color: var(--gray);
-      letter-spacing: 1px;
-    }
+    .pac-type { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 2px; margin-bottom: 8px; }
+    .pac-name { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+    .pac-desc { font-size: 12px; color: var(--gray); line-height: 1.6; margin-bottom: 12px; }
+    .pac-total { font-family: 'Share Tech Mono', monospace; font-size: 14px; color: var(--yellow); letter-spacing: 1px; }
+    .pac-total-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 1px; }
 
-    /* ── SUBMIT CTA ── */
-    .submit-cta {
-      background: var(--gray-dk);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--yellow);
-      padding: 36px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-    }
-    .submit-cta-text h3 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
+    /* SUBMIT CTA */
+    .submit-cta { background: var(--gray-dk); border: 1px solid var(--border); border-left: 4px solid var(--yellow); padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .submit-cta-text h3 { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
     .submit-cta-text p { font-size: 13px; color: var(--gray); }
-    .btn-primary {
-      background: var(--red);
-      color: var(--white);
-      font-family: 'Oswald', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      padding: 14px 32px;
-      white-space: nowrap;
-      transition: background 0.2s;
-      display: inline-block;
-    }
+    .btn-primary { background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding: 14px 32px; white-space: nowrap; transition: background 0.2s; display: inline-block; }
     .btn-primary:hover { background: #AA0000; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #050505;
-      border-top: 1px solid var(--border);
-      padding: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .footer-logo {
-      font-family: 'Oswald', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--gray);
-    }
+    /* FOOTER */
+    footer { background: #050505; border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
     .footer-logo span { color: var(--red); }
-    .footer-note {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray-md);
-      letter-spacing: 1px;
-      text-align: right;
-      line-height: 1.8;
-    }
+    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
 
     @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
+      nav { padding: 0 20px; } .nav-links { display: none; }
       .page-header { padding: 40px 20px 28px; }
       .stats-bar { flex-wrap: wrap; }
       .stats-bar-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
@@ -482,38 +141,11 @@
 </head>
 <body>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <span class="ticker-label">INTEL FEED</span>
-  <span class="ticker-track">
-    <span>NYC primaries: 3 DSA-aligned reps win on anti-America platform</span>
-    <span>DSA national convention endorses BDS movement resolution</span>
-    <span>DSA chapter leaders appear at CAIR-sponsored event</span>
-    <span>Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns</span>
-    <span>DSA publishes "Toward a Socialist America" manifesto</span>
-    <span>Red-Green Axis: Marxist-Islamist alliance deepens in major US cities</span>
-    <span>NYC primaries: 3 DSA-aligned reps win on anti-America platform</span>
-    <span>DSA national convention endorses BDS movement resolution</span>
-    <span>DSA chapter leaders appear at CAIR-sponsored event</span>
-    <span>Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns</span>
-    <span>DSA publishes "Toward a Socialist America" manifesto</span>
-    <span>Red-Green Axis: Marxist-Islamist alliance deepens in major US cities</span>
-  </span>
-</div>
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
 
-<!-- NAV -->
-<nav>
-  <a href="../" class="nav-logo">DSA<span>EXPOSED</span></a>
-  <ul class="nav-links">
-    <li><a href="../reps/">Rep Tracker</a></li>
-    <li><a href="../terrorism/">Terrorism Ties</a></li>
-    <li><a href="../funding/" class="active">Funding</a></li>
-    <li><a href="../ideology/">Ideology</a></li>
-    <li><a href="../networks/">Networks</a></li>
-    <li><a href="../chapters/">Chapters</a></li>
-    <li><a href="../submit/">Submit a Tip</a></li>
-  </ul>
-</nav>
+<nav></nav>
+<script src="/components/nav.js"></script>
 
 <!-- PAGE HEADER -->
 <div class="page-header">
@@ -565,136 +197,73 @@
       <div class="flow-title yellow">DSA-Aligned<br>Candidates</div>
     </div>
   </div>
-
-  <!-- DONOR SOURCE CARDS -->
   <div class="donor-grid">
-
     <div class="donor-card">
       <div class="donor-flag high">HIGH RISK</div>
       <div class="donor-type">DARK MONEY NETWORK</div>
       <div class="donor-name">Sixteen Thirty Fund</div>
       <div class="donor-desc">A major left-wing dark money hub managed by Arabella Advisors. <strong>Funnels hundreds of millions in anonymous donations</strong> to progressive causes annually, including DSA-aligned candidates and organizations. Donors are not publicly disclosed.</div>
       <div class="donor-amounts">
-        <div class="donor-amount-row">
-          <span class="label">2022 CYCLE DISBURSEMENTS</span>
-          <span class="amount">$400M+</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">DSA-ADJACENT ALLOCATIONS</span>
-          <span class="amount">UNDER INVESTIGATION</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">SOURCE</span>
-          <span class="amount">FEC / IRS 990</span>
-        </div>
+        <div class="donor-amount-row"><span class="label">2022 CYCLE DISBURSEMENTS</span><span class="amount">$400M+</span></div>
+        <div class="donor-amount-row"><span class="label">DSA-ADJACENT ALLOCATIONS</span><span class="amount">UNDER INVESTIGATION</span></div>
+        <div class="donor-amount-row"><span class="label">SOURCE</span><span class="amount">FEC / IRS 990</span></div>
       </div>
     </div>
-
     <div class="donor-card">
       <div class="donor-flag high">TERROR-ADJACENT</div>
       <div class="donor-type">ISLAMIST-ALIGNED PAC NETWORK</div>
       <div class="donor-name">CAIR Action Network PAC</div>
-      <div class="donor-desc">Political action arm of CAIR — named as unindicted co-conspirator in the Holy Land Foundation Hamas financing trial. <strong>Actively bundled donations for Ilhan Omar, Rashida Tlaib, and multiple DSA-endorsed candidates.</strong> Coordination between CAIR PAC and DSA electoral apparatus is documented.</div>
+      <div class="donor-desc">Political action arm of CAIR — named as unindicted co-conspirator in the Holy Land Foundation Hamas financing trial. <strong>Actively bundled donations for Ilhan Omar, Rashida Tlaib, and multiple DSA-endorsed candidates.</strong></div>
       <div class="donor-amounts">
-        <div class="donor-amount-row">
-          <span class="label">OMAR CONTRIBUTIONS (CYCLE)</span>
-          <span class="amount">$180K+</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">TLAIB CONTRIBUTIONS (CYCLE)</span>
-          <span class="amount">$140K+</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">SOURCE</span>
-          <span class="amount">FEC FILINGS</span>
-        </div>
+        <div class="donor-amount-row"><span class="label">OMAR CONTRIBUTIONS (CYCLE)</span><span class="amount">$180K+</span></div>
+        <div class="donor-amount-row"><span class="label">TLAIB CONTRIBUTIONS (CYCLE)</span><span class="amount">$140K+</span></div>
+        <div class="donor-amount-row"><span class="label">SOURCE</span><span class="amount">FEC FILINGS</span></div>
       </div>
     </div>
-
     <div class="donor-card">
       <div class="donor-flag high">HIGH RISK</div>
       <div class="donor-type">PROGRESSIVE BUNDLER NETWORK</div>
       <div class="donor-name">Justice Democrats PAC</div>
-      <div class="donor-desc">Co-founded by AOC's chief of staff Saikat Chakrabarti. Justice Democrats recruits, funds, and coordinates DSA-aligned candidates nationwide. <strong>Operates as the electoral pipeline between DSA ideology and congressional seats.</strong> Multiple FEC violations reported.</div>
+      <div class="donor-desc">Co-founded by AOC's chief of staff Saikat Chakrabarti. <strong>Operates as the electoral pipeline between DSA ideology and congressional seats.</strong> Multiple FEC violations reported.</div>
       <div class="donor-amounts">
-        <div class="donor-amount-row">
-          <span class="label">2022 TOTAL RAISED</span>
-          <span class="amount">$11.2M</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">DSA CANDIDATES FUNDED</span>
-          <span class="amount">22+</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">SOURCE</span>
-          <span class="amount">FEC FILINGS</span>
-        </div>
+        <div class="donor-amount-row"><span class="label">2022 TOTAL RAISED</span><span class="amount">$11.2M</span></div>
+        <div class="donor-amount-row"><span class="label">DSA CANDIDATES FUNDED</span><span class="amount">22+</span></div>
+        <div class="donor-amount-row"><span class="label">SOURCE</span><span class="amount">FEC FILINGS</span></div>
       </div>
     </div>
-
     <div class="donor-card">
       <div class="donor-flag med">MONITOR</div>
       <div class="donor-type">UNION FUNDING NETWORK</div>
       <div class="donor-name">SEIU / AFL-CIO</div>
-      <div class="donor-desc">Major labor unions have funneled significant resources to DSA-endorsed candidates. <strong>SEIU alone spent $100M+ in the 2022 cycle</strong> on progressive candidates, many of whom hold DSA membership or endorsement. Union PAC money is the single largest traceable source of DSA campaign funding.</div>
+      <div class="donor-desc">Major labor unions have funneled significant resources to DSA-endorsed candidates. <strong>SEIU alone spent $100M+ in the 2022 cycle</strong> on progressive candidates, many of whom hold DSA membership or endorsement.</div>
       <div class="donor-amounts">
-        <div class="donor-amount-row">
-          <span class="label">SEIU 2022 POLITICAL SPEND</span>
-          <span class="amount">$100M+</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">AFL-CIO 2022 POLITICAL SPEND</span>
-          <span class="amount">$40M+</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">SOURCE</span>
-          <span class="amount">FEC / DOL FILINGS</span>
-        </div>
+        <div class="donor-amount-row"><span class="label">SEIU 2022 POLITICAL SPEND</span><span class="amount">$100M+</span></div>
+        <div class="donor-amount-row"><span class="label">AFL-CIO 2022 POLITICAL SPEND</span><span class="amount">$40M+</span></div>
+        <div class="donor-amount-row"><span class="label">SOURCE</span><span class="amount">FEC / DOL FILINGS</span></div>
       </div>
     </div>
-
     <div class="donor-card">
       <div class="donor-flag high">FOREIGN-ADJACENT</div>
       <div class="donor-type">BDS-ALIGNED DONOR NETWORK</div>
       <div class="donor-name">American Muslims for Palestine</div>
-      <div class="donor-desc">AMP has been linked by researchers to the Holy Land Foundation and its successor networks. <strong>AMP bundlers have contributed directly to Tlaib, Omar, and other DSA-endorsed candidates.</strong> AMP co-sponsors events with DSA chapters nationally.</div>
+      <div class="donor-desc">AMP has been linked by researchers to the Holy Land Foundation and its successor networks. <strong>AMP bundlers have contributed directly to Tlaib, Omar, and other DSA-endorsed candidates.</strong></div>
       <div class="donor-amounts">
-        <div class="donor-amount-row">
-          <span class="label">DOCUMENTED DSA CANDIDATE TIES</span>
-          <span class="amount">8+ REPS</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">HLF SUCCESSOR LINK</span>
-          <span class="amount">DOCUMENTED</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">SOURCE</span>
-          <span class="amount">FEC / RESEARCHERS</span>
-        </div>
+        <div class="donor-amount-row"><span class="label">DOCUMENTED DSA CANDIDATE TIES</span><span class="amount">8+ REPS</span></div>
+        <div class="donor-amount-row"><span class="label">HLF SUCCESSOR LINK</span><span class="amount">DOCUMENTED</span></div>
+        <div class="donor-amount-row"><span class="label">SOURCE</span><span class="amount">FEC / RESEARCHERS</span></div>
       </div>
     </div>
-
     <div class="donor-card">
       <div class="donor-flag med">MONITOR</div>
       <div class="donor-type">SOROS NETWORK</div>
       <div class="donor-name">Open Society Foundations</div>
-      <div class="donor-desc">George Soros's Open Society Foundations has directed billions to progressive causes globally. <strong>OSF has funded organizations that in turn fund DSA-aligned candidates and causes</strong> — including criminal justice reform groups, immigration advocacy, and anti-police organizations.</div>
+      <div class="donor-desc">George Soros's Open Society Foundations has directed billions to progressive causes globally. <strong>OSF has funded organizations that in turn fund DSA-aligned candidates and causes</strong> including criminal justice reform groups and anti-police organizations.</div>
       <div class="donor-amounts">
-        <div class="donor-amount-row">
-          <span class="label">ANNUAL US POLITICAL SPEND</span>
-          <span class="amount">$500M+</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">DA RACES FUNDED (2022)</span>
-          <span class="amount">75+</span>
-        </div>
-        <div class="donor-amount-row">
-          <span class="label">SOURCE</span>
-          <span class="amount">IRS 990 / FEC</span>
-        </div>
+        <div class="donor-amount-row"><span class="label">ANNUAL US POLITICAL SPEND</span><span class="amount">$500M+</span></div>
+        <div class="donor-amount-row"><span class="label">DA RACES FUNDED (2022)</span><span class="amount">75+</span></div>
+        <div class="donor-amount-row"><span class="label">SOURCE</span><span class="amount">IRS 990 / FEC</span></div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -718,70 +287,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>2024</td>
-          <td>Justice Democrats PAC</td>
-          <td>AOC (NY-14)</td>
-          <td class="amount-cell">$2.1M</td>
-          <td class="risk-high">HIGH</td>
-          <td>FEC FILING</td>
-        </tr>
-        <tr>
-          <td>2024</td>
-          <td>CAIR Action Network PAC</td>
-          <td>Ilhan Omar (MN-05)</td>
-          <td class="amount-cell">$180K+</td>
-          <td class="risk-high">TERROR-ADJ</td>
-          <td>FEC FILING</td>
-        </tr>
-        <tr>
-          <td>2024</td>
-          <td>CAIR Action Network PAC</td>
-          <td>Rashida Tlaib (MI-12)</td>
-          <td class="amount-cell">$140K+</td>
-          <td class="risk-high">TERROR-ADJ</td>
-          <td>FEC FILING</td>
-        </tr>
-        <tr>
-          <td>2024</td>
-          <td>AMP-Linked Bundlers</td>
-          <td>Multiple DSA Candidates</td>
-          <td class="amount-cell">$800K+</td>
-          <td class="risk-high">FOREIGN-ADJ</td>
-          <td>FEC / RESEARCH</td>
-        </tr>
-        <tr>
-          <td>2022</td>
-          <td>Sixteen Thirty Fund</td>
-          <td>DSA-Adjacent Orgs</td>
-          <td class="amount-cell">UNDISCLOSED</td>
-          <td class="risk-high">DARK MONEY</td>
-          <td>IRS 990</td>
-        </tr>
-        <tr>
-          <td>2022</td>
-          <td>SEIU PAC</td>
-          <td>DSA-Endorsed Candidates</td>
-          <td class="amount-cell">$22M+</td>
-          <td class="risk-med">MEDIUM</td>
-          <td>FEC FILING</td>
-        </tr>
-        <tr>
-          <td>2022</td>
-          <td>Open Society / Soros Network</td>
-          <td>Progressive DA Races</td>
-          <td class="amount-cell">$40M+</td>
-          <td class="risk-med">MEDIUM</td>
-          <td>IRS 990</td>
-        </tr>
-        <tr>
-          <td>2020</td>
-          <td>Justice Democrats PAC</td>
-          <td>Squad Members (Total)</td>
-          <td class="amount-cell">$8.4M</td>
-          <td class="risk-high">HIGH</td>
-          <td>FEC FILING</td>
-        </tr>
+        <tr><td>2024</td><td>Justice Democrats PAC</td><td>AOC (NY-14)</td><td class="amount-cell">$2.1M</td><td class="risk-high">HIGH</td><td>FEC FILING</td></tr>
+        <tr><td>2024</td><td>CAIR Action Network PAC</td><td>Ilhan Omar (MN-05)</td><td class="amount-cell">$180K+</td><td class="risk-high">TERROR-ADJ</td><td>FEC FILING</td></tr>
+        <tr><td>2024</td><td>CAIR Action Network PAC</td><td>Rashida Tlaib (MI-12)</td><td class="amount-cell">$140K+</td><td class="risk-high">TERROR-ADJ</td><td>FEC FILING</td></tr>
+        <tr><td>2024</td><td>AMP-Linked Bundlers</td><td>Multiple DSA Candidates</td><td class="amount-cell">$800K+</td><td class="risk-high">FOREIGN-ADJ</td><td>FEC / RESEARCH</td></tr>
+        <tr><td>2022</td><td>Sixteen Thirty Fund</td><td>DSA-Adjacent Orgs</td><td class="amount-cell">UNDISCLOSED</td><td class="risk-high">DARK MONEY</td><td>IRS 990</td></tr>
+        <tr><td>2022</td><td>SEIU PAC</td><td>DSA-Endorsed Candidates</td><td class="amount-cell">$22M+</td><td class="risk-med">MEDIUM</td><td>FEC FILING</td></tr>
+        <tr><td>2022</td><td>Open Society / Soros Network</td><td>Progressive DA Races</td><td class="amount-cell">$40M+</td><td class="risk-med">MEDIUM</td><td>IRS 990</td></tr>
+        <tr><td>2020</td><td>Justice Democrats PAC</td><td>Squad Members (Total)</td><td class="amount-cell">$8.4M</td><td class="risk-high">HIGH</td><td>FEC FILING</td></tr>
       </tbody>
     </table>
   </div>
@@ -795,15 +308,13 @@
     <div class="section-rule"></div>
   </div>
   <div class="pac-grid">
-
     <div class="pac-card">
       <div class="pac-type">SUPER PAC // ELECTORAL</div>
       <div class="pac-name">Justice Democrats</div>
-      <div class="pac-desc">Primary electoral vehicle for DSA candidates. Recruits, trains, and funds radical left candidates for federal office. Co-founded by AOC's inner circle.</div>
+      <div class="pac-desc">Primary electoral vehicle for DSA candidates. Recruits, trains, and funds radical left candidates for federal office.</div>
       <div class="pac-total">$11.2M</div>
       <div class="pac-total-label">2022 CYCLE TOTAL</div>
     </div>
-
     <div class="pac-card">
       <div class="pac-type">PAC // ISLAMIST-ALIGNED</div>
       <div class="pac-name">CAIR Action Network PAC</div>
@@ -811,39 +322,34 @@
       <div class="pac-total">$320K+</div>
       <div class="pac-total-label">DOCUMENTED DSA CANDIDATE SPEND</div>
     </div>
-
     <div class="pac-card">
       <div class="pac-type">527 ORG // PROGRESSIVE</div>
       <div class="pac-name">Working Families Party PAC</div>
-      <div class="pac-desc">DSA's primary electoral partner. Co-endorses DSA candidates, coordinates ground operations, and shares donor networks with DSA chapters nationally.</div>
+      <div class="pac-desc">DSA's primary electoral partner. Co-endorses DSA candidates, coordinates ground operations, and shares donor networks nationally.</div>
       <div class="pac-total">$6.8M</div>
       <div class="pac-total-label">2022 CYCLE TOTAL</div>
     </div>
-
     <div class="pac-card">
       <div class="pac-type">DARK MONEY // 501(C)4</div>
       <div class="pac-name">Sunrise Movement Action</div>
-      <div class="pac-desc">Green New Deal advocacy arm. Coordinates with DSA on electoral endorsements and candidate support. Funding sources partially undisclosed through dark money structure.</div>
+      <div class="pac-desc">Green New Deal advocacy arm. Coordinates with DSA on electoral endorsements. Funding sources partially undisclosed.</div>
       <div class="pac-total">$4.1M</div>
       <div class="pac-total-label">2022 CYCLE TOTAL</div>
     </div>
-
     <div class="pac-card">
       <div class="pac-type">SUPER PAC // PROGRESSIVE</div>
       <div class="pac-name">Democracy for America PAC</div>
-      <div class="pac-desc">Long-running progressive PAC that has increasingly endorsed DSA-aligned candidates. Shares endorsement lists and donor networks with Justice Democrats.</div>
+      <div class="pac-desc">Long-running progressive PAC increasingly endorsing DSA-aligned candidates. Shares endorsement lists with Justice Democrats.</div>
       <div class="pac-total">$3.2M</div>
       <div class="pac-total-label">2022 CYCLE TOTAL</div>
     </div>
-
     <div class="pac-card">
       <div class="pac-type">UNION PAC // MAJOR FUNDER</div>
       <div class="pac-name">SEIU COPE PAC</div>
-      <div class="pac-desc">Service Employees International Union political action committee. Single largest traceable source of union funding for DSA-endorsed federal candidates.</div>
+      <div class="pac-desc">Single largest traceable source of union funding for DSA-endorsed federal candidates.</div>
       <div class="pac-total">$100M+</div>
       <div class="pac-total-label">2022 TOTAL POLITICAL SPEND</div>
     </div>
-
   </div>
 </section>
 
@@ -854,18 +360,12 @@
       <h3>Have Funding Documentation?</h3>
       <p>FEC filings, IRS 990s, bank records, donor lists, bundler ties. All submissions verified before publication.</p>
     </div>
-    <a href="../submit/" class="btn-primary">Submit Evidence →</a>
+    <a href="/submit/" class="btn-primary">Submit Evidence →</a>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <a href="../" class="footer-logo">DSA<span>EXPOSED</span>.COM</a>
-  <div class="footer-note">
-    All funding data sourced from FEC filings, IRS Form 990s, DOL records, and verified public documentation.<br>
-    DSAExposed is an independent watchdog operation. All claims are documented.
-  </div>
-</footer>
+<footer></footer>
+<script src="/components/footer.js"></script>
 
 </body>
 </html>
