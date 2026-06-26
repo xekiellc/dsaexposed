@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>404 — File Not Found — DSA Exposed</title>
-  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -16,253 +15,59 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black:   #0A0A0A;
-      --red:     #CC0000;
-      --red-dim: #8B0000;
-      --white:   #F5F5F5;
-      --gray:    #888888;
-      --gray-dk: #2A2A2A;
-      --gray-md: #444444;
-      --yellow:  #FFD700;
-      --border:  #333333;
+      --black:#0A0A0A; --red:#CC0000; --red-dim:#8B0000;
+      --white:#F5F5F5; --gray:#888888; --gray-dk:#2A2A2A;
+      --gray-md:#444444; --yellow:#FFD700; --border:#333333;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
+    body { background: var(--black); color: var(--white); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── TICKER ── */
-    .ticker-wrap {
-      background: var(--red);
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 8px 0;
-      border-bottom: 2px solid #900;
-    }
-    .ticker-label {
-      display: inline-block;
-      background: var(--black);
-      color: var(--yellow);
-      font-family: 'Oswald', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      padding: 2px 14px;
-      margin-right: 20px;
-      vertical-align: middle;
-    }
-    .ticker-track {
-      display: inline-block;
-      animation: ticker 40s linear infinite;
-    }
-    .ticker-track span {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 12px;
-      color: var(--white);
-      margin-right: 60px;
-    }
-    .ticker-track span::before {
-      content: '▶ ';
-      color: var(--yellow);
-    }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+    /* TICKER */
+    .ticker-wrap { background: var(--red); overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 2px solid #900; }
+    .ticker-label { display: inline-block; background: var(--black); color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 14px; margin-right: 20px; vertical-align: middle; }
+    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
+    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
+    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── NAV ── */
-    nav {
-      background: var(--black);
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo {
-      font-family: 'Oswald', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--white);
-    }
+    /* NAV */
+    nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
     .nav-logo span { color: var(--red); }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: 'Oswald', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      color: var(--gray);
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--red); }
 
-    /* ── MAIN ── */
-    .main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 80px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .main::before {
-      content: '404';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'Oswald', sans-serif;
-      font-size: 400px;
-      font-weight: 700;
-      color: rgba(204,0,0,0.04);
-      pointer-events: none;
-      white-space: nowrap;
-      line-height: 1;
-    }
+    /* MAIN */
+    .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 40px; position: relative; overflow: hidden; }
+    .main::before { content: '404'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: 'Oswald', sans-serif; font-size: 400px; font-weight: 700; color: rgba(204,0,0,0.04); pointer-events: none; white-space: nowrap; line-height: 1; }
 
-    .error-box {
-      max-width: 600px;
-      width: 100%;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .error-code {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 11px;
-      color: var(--red);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .error-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: clamp(36px, 6vw, 72px);
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      line-height: 1.0;
-      margin-bottom: 24px;
-    }
+    .error-box { max-width: 600px; width: 100%; text-align: center; position: relative; z-index: 1; }
+    .error-code { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
+    .error-title { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 6vw, 72px); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; line-height: 1.0; margin-bottom: 24px; }
     .error-title span { color: var(--red); }
+    .error-desc { font-size: 15px; color: var(--gray); line-height: 1.8; margin-bottom: 48px; max-width: 480px; margin-left: auto; margin-right: auto; }
 
-    .error-desc {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.8;
-      margin-bottom: 48px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    /* NAV GRID */
+    .nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); margin-bottom: 32px; text-align: left; }
+    .nav-grid-item { background: var(--gray-dk); padding: 18px 20px; display: block; border-top: 2px solid transparent; transition: border-color 0.2s, background 0.2s; }
+    .nav-grid-item:hover { border-top-color: var(--red); background: #333; }
+    .nav-grid-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 2px; margin-bottom: 4px; }
+    .nav-grid-title { font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
 
-    /* ── NAV GRID ── */
-    .nav-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: var(--border);
-      margin-bottom: 32px;
-      text-align: left;
-    }
-    .nav-grid-item {
-      background: var(--gray-dk);
-      padding: 18px 20px;
-      display: block;
-      border-top: 2px solid transparent;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .nav-grid-item:hover {
-      border-top-color: var(--red);
-      background: #333;
-    }
-    .nav-grid-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 9px;
-      color: var(--gray);
-      letter-spacing: 2px;
-      margin-bottom: 4px;
-    }
-    .nav-grid-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .btn-home {
-      display: inline-block;
-      background: var(--red);
-      color: var(--white);
-      font-family: 'Oswald', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      padding: 14px 40px;
-      transition: background 0.2s;
-    }
+    .btn-home { display: inline-block; background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 14px 40px; transition: background 0.2s; }
     .btn-home:hover { background: #AA0000; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #050505;
-      border-top: 1px solid var(--border);
-      padding: 32px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .footer-logo {
-      font-family: 'Oswald', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--gray);
-    }
+    /* FOOTER */
+    footer { background: #050505; border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
     .footer-logo span { color: var(--red); }
-    .footer-note {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 10px;
-      color: var(--gray-md);
-      letter-spacing: 1px;
-      text-align: right;
-      line-height: 1.8;
-    }
+    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
 
     @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
+      nav { padding: 0 20px; } .nav-links { display: none; }
       .main { padding: 48px 20px; }
       .nav-grid { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; text-align: center; }
@@ -272,43 +77,15 @@
 </head>
 <body>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <span class="ticker-label">INTEL FEED</span>
-  <span class="ticker-track">
-    <span>NYC primaries: 3 DSA-aligned reps win on anti-America platform</span>
-    <span>DSA national convention endorses BDS movement resolution</span>
-    <span>DSA chapter leaders appear at CAIR-sponsored event</span>
-    <span>Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns</span>
-    <span>DSA publishes "Toward a Socialist America" manifesto</span>
-    <span>Red-Green Axis: Marxist-Islamist alliance deepens in major US cities</span>
-    <span>NYC primaries: 3 DSA-aligned reps win on anti-America platform</span>
-    <span>DSA national convention endorses BDS movement resolution</span>
-    <span>DSA chapter leaders appear at CAIR-sponsored event</span>
-    <span>Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns</span>
-    <span>DSA publishes "Toward a Socialist America" manifesto</span>
-    <span>Red-Green Axis: Marxist-Islamist alliance deepens in major US cities</span>
-  </span>
-</div>
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
 
-<!-- NAV -->
-<nav>
-  <a href="/" class="nav-logo">DSA<span>EXPOSED</span></a>
-  <ul class="nav-links">
-    <li><a href="/reps/">Rep Tracker</a></li>
-    <li><a href="/terrorism/">Terrorism Ties</a></li>
-    <li><a href="/funding/">Funding</a></li>
-    <li><a href="/ideology/">Ideology</a></li>
-    <li><a href="/networks/">Networks</a></li>
-    <li><a href="/chapters/">Chapters</a></li>
-    <li><a href="/submit/">Submit a Tip</a></li>
-  </ul>
-</nav>
+<nav></nav>
+<script src="/components/nav.js"></script>
 
 <!-- MAIN -->
 <div class="main">
   <div class="error-box">
-
     <div class="error-code">// ERROR 404 — FILE NOT FOUND</div>
     <h1 class="error-title">Page <span>Not</span> Found</h1>
     <p class="error-desc">The file you're looking for doesn't exist or has been moved. The DSA wishes more of our content would disappear — it won't. Navigate back to the archive below.</p>
@@ -334,25 +111,18 @@
         <div class="nav-grid-label">// Section 05</div>
         <div class="nav-grid-title">Red-Green Axis</div>
       </a>
-      <a href="/chapters/" class="nav-grid-item">
-        <div class="nav-grid-label">// Section 06</div>
-        <div class="nav-grid-title">Chapters</div>
+      <a href="/media/" class="nav-grid-item">
+        <div class="nav-grid-label">// Section 08</div>
+        <div class="nav-grid-title">Media Library</div>
       </a>
     </div>
 
     <a href="/" class="btn-home">← Return to Home Base</a>
-
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <a href="/" class="footer-logo">DSA<span>EXPOSED</span>.COM</a>
-  <div class="footer-note">
-    All content sourced from public records, FEC filings, congressional records, and verified primary sources.<br>
-    DSAExposed is an independent watchdog operation. All claims are documented.
-  </div>
-</footer>
+<footer></footer>
+<script src="/components/footer.js"></script>
 
 </body>
 </html>
