@@ -1,441 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terrorism Ties — DSA Exposed</title>
-  <meta name="description" content="Documented connections between DSA-aligned officials and designated terrorist organizations — through words, funding, support, and shared networks." />
+  <link rel="stylesheet" href="/assets/global.css" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PK58BBCJX7');
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PK58BBCJX7');</script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --black:#0A0A0A; --red:#CC0000; --red-dim:#8B0000;
-      --white:#F5F5F5; --gray:#888888; --gray-dk:#2A2A2A;
-      --gray-md:#444444; --yellow:#FFD700; --border:#333333;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--black); color: var(--white);
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 16px; line-height: 1.6; overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none; }
-
-    /* TICKER */
-    .ticker-wrap {
-      background: var(--red); overflow: hidden;
-      white-space: nowrap; padding: 8px 0;
-      border-bottom: 2px solid #900;
-    }
-    .ticker-label {
-      display: inline-block; background: var(--black);
-      color: var(--yellow); font-family: 'Oswald', sans-serif;
-      font-size: 11px; font-weight: 700; letter-spacing: 2px;
-      padding: 2px 14px; margin-right: 20px; vertical-align: middle;
-    }
-    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
-    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
-    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* NAV */
-    nav {
-      background: var(--black); border-bottom: 1px solid var(--border);
-      padding: 0 40px; display: flex; align-items: center;
-      justify-content: space-between; height: 64px;
-      position: sticky; top: 0; z-index: 100;
-    }
-    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
-    .nav-logo span { color: var(--red); }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--red); }
-
-    /* PAGE HEADER */
-    .page-header {
-      padding: 60px 40px 40px; border-bottom: 1px solid var(--border);
-      position: relative; overflow: hidden;
-      background: linear-gradient(180deg, #1a0000 0%, var(--black) 100%);
-    }
-    .page-header::before {
-      content: 'TERROR'; position: absolute; right: -10px; top: 50%;
-      transform: translateY(-50%); font-family: 'Oswald', sans-serif;
-      font-size: 180px; font-weight: 700; color: rgba(204,0,0,0.07);
-      pointer-events: none; white-space: nowrap;
-    }
-    .page-eyebrow { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 3px; margin-bottom: 12px; }
-    .page-title { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    .page-title span { color: var(--red); }
-    .page-sub { font-size: 16px; color: var(--gray); max-width: 640px; line-height: 1.7; }
-
-    /* WARNING */
-    .warning-banner {
-      background: #1a0000; border-left: 4px solid var(--red);
-      border-bottom: 1px solid var(--red-dim);
-      padding: 20px 40px; display: flex; align-items: flex-start; gap: 20px;
-    }
-    .warning-tag { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--red); white-space: nowrap; padding-top: 2px; }
-    .warning-text { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--gray); line-height: 1.8; letter-spacing: 1px; }
-    .warning-text strong { color: var(--white); }
-
-    /* STATS BAR */
-    .stats-bar { display: flex; border-bottom: 1px solid var(--border); }
-    .stats-bar-item { flex: 1; padding: 24px 40px; border-right: 1px solid var(--border); }
-    .stats-bar-item:last-child { border-right: none; }
-    .stats-bar-num { font-family: 'Oswald', sans-serif; font-size: 32px; font-weight: 700; color: var(--red); line-height: 1; }
-    .stats-bar-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
-
-    /* SECTIONS */
-    .section { padding: 56px 40px; border-bottom: 1px solid var(--border); }
-    .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 36px; }
-    .section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; }
-    .section-title { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
-    .section-rule { flex: 1; height: 1px; background: var(--border); }
-
-    /* PILLARS */
-    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; background: var(--border); }
-    .pillar-card { background: var(--black); padding: 28px; }
-    .pillar-num { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; color: rgba(204,0,0,0.3); line-height: 1; margin-bottom: 8px; }
-    .pillar-name { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
-    .pillar-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
-
-    /* ORG CARDS */
-    .org-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2px; background: var(--border); }
-    .org-card { background: var(--gray-dk); padding: 28px; position: relative; }
-    .org-designation { position: absolute; top: 16px; right: 16px; font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; padding: 3px 8px; border: 1px solid var(--red); color: var(--red); text-transform: uppercase; }
-    .org-type { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; margin-bottom: 6px; }
-    .org-name { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; }
-    .org-desc { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 16px; }
-    .org-connections { border-top: 1px solid var(--border); padding-top: 14px; }
-    .org-connections-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--red); letter-spacing: 2px; margin-bottom: 8px; }
-    .org-connection-item { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; padding: 4px 0; border-bottom: 1px solid #1a1a1a; display: flex; justify-content: space-between; }
-    .org-connection-item span { color: var(--yellow); }
-
-    /* EVIDENCE FEED */
-    .evidence-feed { display: flex; flex-direction: column; gap: 2px; }
-    .evidence-item { background: var(--gray-dk); padding: 24px 28px; display: grid; grid-template-columns: 180px 1fr 120px; gap: 24px; align-items: start; border-left: 3px solid transparent; transition: border-color 0.2s; }
-    .evidence-item:hover { border-left-color: var(--red); }
-    .evidence-item.high { border-left-color: var(--red); }
-    .evidence-item.med  { border-left-color: var(--yellow); }
-    .evidence-meta { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; line-height: 1.8; }
-    .evidence-meta strong { display: block; color: var(--white); font-size: 12px; margin-bottom: 4px; }
-    .evidence-type { display: inline-block; font-size: 9px; padding: 2px 6px; border: 1px solid var(--red); color: var(--red); letter-spacing: 1px; margin-top: 6px; }
-    .evidence-content { font-size: 14px; color: var(--white); line-height: 1.7; }
-    .evidence-content em { font-style: italic; color: var(--yellow); }
-    .evidence-source { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--red); letter-spacing: 1px; text-align: right; line-height: 1.8; }
-
-    /* VOTE TABLE */
-    .vote-table { width: 100%; border-collapse: collapse; background: var(--gray-dk); }
-    .vote-table th { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); padding: 14px 20px; text-align: left; border-bottom: 2px solid var(--border); background: #1a1a1a; }
-    .vote-table td { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--white); padding: 14px 20px; border-bottom: 1px solid var(--border); vertical-align: top; letter-spacing: 0.5px; }
-    .vote-table tr:hover td { background: #333; }
-    .vote-no { color: var(--red); font-weight: 700; }
-    .vote-yes { color: #4CAF50; font-weight: 700; }
-    .vote-present { color: var(--yellow); }
-
-    /* SUBMIT CTA */
-    .submit-cta { background: var(--gray-dk); border: 1px solid var(--border); border-left: 4px solid var(--red); padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
-    .submit-cta-text h3 { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
-    .submit-cta-text p { font-size: 13px; color: var(--gray); }
-    .btn-primary { background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding: 14px 32px; white-space: nowrap; transition: background 0.2s; display: inline-block; }
-    .btn-primary:hover { background: #AA0000; }
-
-    /* FOOTER */
-    footer { background: #050505; border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
-    .footer-logo span { color: var(--red); }
-    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; } .nav-links { display: none; }
-      .page-header { padding: 40px 20px 28px; }
-      .warning-banner { padding: 16px 20px; flex-direction: column; gap: 8px; }
-      .stats-bar { flex-wrap: wrap; }
-      .stats-bar-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
-      .section { padding: 40px 20px; }
-      .evidence-item { grid-template-columns: 1fr; }
-      .vote-table th, .vote-table td { padding: 10px 12px; font-size: 10px; }
-      .submit-cta { flex-direction: column; padding: 24px 20px; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-note { text-align: center; }
-    }
+    .section{padding:56px 48px;border-bottom:1px solid var(--rule);}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--red);padding:28px;transition:box-shadow .2s,transform .2s;}
+    .card:hover{box-shadow:0 4px 16px rgba(20,18,16,.1);transform:translateY(-2px);}
+    .card-eyebrow{font-family:var(--font-mono);font-size:9px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+    .card-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3;}
+    .card-body{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
+    .card-body strong{color:var(--ink);}
+    .card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+    .card-source{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px;border-top:1px solid var(--rule);padding-top:10px;}
+    @media(max-width:900px){.section{padding:40px 24px;}.grid-3{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
-
-<div class="ticker-wrap"></div>
-<script src="/components/ticker.js"></script>
-
-<nav></nav>
-<script src="/components/nav.js"></script>
-
-<!-- PAGE HEADER -->
+<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
+<nav></nav><script src="/components/nav.js"></script>
 <div class="page-header">
-  <div class="page-eyebrow">// SECTION 01 — INTELLIGENCE DOSSIER</div>
-  <h1 class="page-title">Terrorism <span>Ties</span></h1>
-  <p class="page-sub">Documented connections between DSA-aligned officials and designated terrorist organizations — through words, funding, support, and shared networks. Every claim sourced to primary record.</p>
+  <div class="page-header-ghost">TERRORISM</div>
+  <div class="section-eyebrow">// Section 01 — Documented Connections</div>
+  <h1>Terrorism <em>Ties</em></h1>
+  <p>Documented connections between DSA-aligned officials and designated terrorist organizations — through words, funding, support, and shared networks. Every claim sourced to primary record.</p>
 </div>
-
-<!-- WARNING -->
-<div class="warning-banner">
-  <div class="warning-tag">⚠ NOTICE</div>
-  <div class="warning-text">
-    <strong>All entries on this page are sourced exclusively from public records:</strong> congressional records, FEC filings, court documents, FBI/DOJ designations, verified video, and official org publications. No inference — only documented fact.
-  </div>
-</div>
-
-<!-- STATS -->
 <div class="stats-bar">
-  <div class="stats-bar-item">
-    <div class="stats-bar-num">40+</div>
-    <div class="stats-bar-label">Terrorist-Tied Orgs</div>
-  </div>
-  <div class="stats-bar-item">
-    <div class="stats-bar-num">18</div>
-    <div class="stats-bar-label">DSA Officials With Documented Ties</div>
-  </div>
-  <div class="stats-bar-item">
-    <div class="stats-bar-num">7</div>
-    <div class="stats-bar-label">Designated Org Connections</div>
-  </div>
-  <div class="stats-bar-item">
-    <div class="stats-bar-num">$2.4M+</div>
-    <div class="stats-bar-label">Funding From Terror-Adjacent Donors</div>
-  </div>
+  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">9</div><div class="stat-label">Terror-Adjacent Orgs Documented</div></div>
+  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">3</div><div class="stat-label">Federal Prosecutions Referenced</div></div>
+  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">$12.4M</div><div class="stat-label">HLF Hamas Financing Convicted</div></div>
+  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">5</div><div class="stat-label">DSA-CAIR Coordination Points</div></div>
 </div>
-
-<!-- FOUR PILLARS -->
 <section class="section">
-  <div class="section-header">
-    <div class="section-label">// How We Document</div>
-    <div class="section-title">Four Categories of Evidence</div>
-    <div class="section-rule"></div>
-  </div>
-  <div class="pillar-grid">
-    <div class="pillar-card">
-      <div class="pillar-num">01</div>
-      <div class="pillar-name">Words</div>
-      <div class="pillar-desc">Statements explicitly supporting designated terrorist organizations, their tactics, or their goals. Floor speeches, interviews, social media — all dated and sourced.</div>
+  <div class="section-eyebrow">// Primary Files</div>
+  <div class="section-title">Terror-Adjacent Organizations</div>
+  <hr class="section-rule" />
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-eyebrow">// CAIR — Unindicted Co-Conspirator</div>
+      <div class="card-title">Council on American-Islamic Relations</div>
+      <div class="card-tags"><span class="tag danger">HLF Co-Conspirator</span><span class="tag danger">Hamas Ties</span><span class="tag warn">$320K+ to DSA Reps</span></div>
+      <div class="card-body">Named unindicted co-conspirator in the Holy Land Foundation Hamas financing trial — the largest terrorism financing prosecution in U.S. history. CAIR Action Network PAC has since bundled <strong>$140,000+ for Rashida Tlaib and $180,000+ for Ilhan Omar.</strong></div>
+      <div class="card-source">Source: DOJ Federal Court Records, HLF Trial Transcripts, FEC Filings</div>
     </div>
-    <div class="pillar-card">
-      <div class="pillar-num">02</div>
-      <div class="pillar-name">Funding</div>
-      <div class="pillar-desc">Campaign contributions traceable to individuals or organizations with documented ties to Hamas, Hezbollah, Palestinian Islamic Jihad, or other designated groups.</div>
+    <div class="card">
+      <div class="card-eyebrow">// BDS — Hamas-Linked Founding</div>
+      <div class="card-title">BDS Movement</div>
+      <div class="card-tags"><span class="tag danger">Hamas Ties</span><span class="tag danger">DSA Endorsed 2017</span><span class="tag warn">Anti-Israel</span></div>
+      <div class="card-body">National DSA officially endorsed BDS in 2017. BDS co-founder Omar Barghouti has documented ties to Hamas leadership. The stated goal — the "right of return" — is universally recognized as incompatible with Israel's continued existence as a Jewish state.</div>
+      <div class="card-source">Source: DSA.org Convention Minutes 2017, BDS Movement Published Platform</div>
     </div>
-    <div class="pillar-card">
-      <div class="pillar-num">03</div>
-      <div class="pillar-name">Support</div>
-      <div class="pillar-desc">Formal endorsements from terror-linked orgs, joint appearances with designated individuals, co-signatures on resolutions defending terrorist actions.</div>
+    <div class="card">
+      <div class="card-eyebrow">// AMP — HLF-Linked</div>
+      <div class="card-title">American Muslims for Palestine</div>
+      <div class="card-tags"><span class="tag danger">HLF Ties</span><span class="tag danger">Hamas Adjacent</span><span class="tag warn">Donor Network</span></div>
+      <div class="card-body">AMP-linked bundlers have donated to Tlaib and Omar campaigns. AMP has documented institutional ties to the Holy Land Foundation and leadership overlaps with organizations named in federal terrorism financing investigations.</div>
+      <div class="card-source">Source: FEC Campaign Finance Records, Senate Judiciary Subcommittee Report</div>
     </div>
-    <div class="pillar-card">
-      <div class="pillar-num">04</div>
-      <div class="pillar-name">Networks</div>
-      <div class="pillar-desc">Organizational overlaps — shared leadership, affiliated PACs, coordinated campaigns between DSA chapters and groups with documented terrorism connections.</div>
+    <div class="card">
+      <div class="card-eyebrow">// HLF — Convicted 2007</div>
+      <div class="card-title">Holy Land Foundation</div>
+      <div class="card-tags"><span class="tag danger">Hamas Financing</span><span class="tag danger">Federal Conviction</span></div>
+      <div class="card-body">Convicted in 2007 of funneling $12.4 million to Hamas. Five founders sentenced to 15-65 years. U.S. designated it a terrorist organization in 2001. Zohran Mamdani praised its founders — the "Holy Land Five" — in a 2017 rap song.</div>
+      <div class="card-source">Source: DOJ Press Release, U.S. v. Holy Land Foundation, Federal Court Records</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// PEOPLE'S FORUM — Oct 8 Rally</div>
+      <div class="card-title">The People's Forum</div>
+      <div class="card-tags"><span class="tag danger">Oct 8 Rally Organizer</span><span class="tag warn">DSA Network</span></div>
+      <div class="card-body">Organized the Times Square rally October 8, 2023 — the day after Hamas massacred 1,200 Israelis. Rallygoers held signs: "Resistance is Justified when People are Occupied." Darializa Avila Chevalier attended. NYC DSA briefly advertised the event.</div>
+      <div class="card-source">Source: City & State NY, Verified Video, NYC DSA Statement</div>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">// COLUMBIA APARTHEID DIVEST</div>
+      <div class="card-title">Columbia University Apartheid Divest</div>
+      <div class="card-tags"><span class="tag danger">Co-Founded by Avila Chevalier</span><span class="tag warn">Violent Occupation 2024</span></div>
+      <div class="card-body">Co-founded by congressional candidate Darializa Avila Chevalier. Led the violent 2024 occupation of Hamilton Hall at Columbia University. Multiple arrests. Avila Chevalier cited this activism throughout her 2026 congressional campaign.</div>
+      <div class="card-source">Source: NYT, Columbia Spectator, Avila Chevalier Campaign Statements</div>
     </div>
   </div>
 </section>
-
-<!-- DESIGNATED ORGS -->
 <section class="section">
-  <div class="section-header">
-    <div class="section-label">// Org Profiles</div>
-    <div class="section-title">Terrorist-Adjacent Organizations</div>
-    <div class="section-rule"></div>
-  </div>
-  <div class="org-grid">
-    <div class="org-card">
-      <div class="org-designation">US-DESIGNATED FTO</div>
-      <div class="org-type">FOREIGN TERRORIST ORGANIZATION</div>
-      <div class="org-name">Hamas</div>
-      <div class="org-desc">Designated Foreign Terrorist Organization by the U.S. State Department. DSA passed a resolution in 2023 refusing to condemn Hamas's October 7 attack on Israel, describing it as "resistance."</div>
-      <div class="org-connections">
-        <div class="org-connections-label">// DSA Connections</div>
-        <div class="org-connection-item">DSA National Convention Refused to Condemn Oct 7 <span>2023</span></div>
-        <div class="org-connection-item">BDS Movement — DSA Official Partner <span>ONGOING</span></div>
-        <div class="org-connection-item">Multiple DSA Reps Voted Against Iron Dome Funding <span>2021</span></div>
-      </div>
+  <div class="section-eyebrow">// Red-Green Axis</div>
+  <div class="section-title">DSA Official Documented Connections</div>
+  <hr class="section-rule" />
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-eyebrow">// Mamdani — Hamas Praise</div>
+      <div class="card-title">Mamdani: "My love to the Holy Land Five"</div>
+      <div class="card-body">In 2017 rap song "Salam," then-community organizer Zohran Mamdani raps: "My love to the Holy Land Five. You better look 'em up." The Holy Land Five are the founders of the Holy Land Foundation, convicted of financing Hamas — the largest terrorism financing case in U.S. history.</div>
+      <div class="card-source">Source: Verified Audio · "Salam" 2017 · Times of Israel</div>
     </div>
-    <div class="org-card">
-      <div class="org-designation">US-DESIGNATED FTO</div>
-      <div class="org-type">FOREIGN TERRORIST ORGANIZATION</div>
-      <div class="org-name">Hezbollah</div>
-      <div class="org-desc">Designated Foreign Terrorist Organization. Multiple DSA-endorsed officials have opposed U.S. sanctions on Hezbollah and voted against measures to restrict their financing.</div>
-      <div class="org-connections">
-        <div class="org-connections-label">// DSA Connections</div>
-        <div class="org-connection-item">Votes Against Hezbollah Sanctions — Multiple DSA Reps <span>2023–24</span></div>
-        <div class="org-connection-item">Shared Stage Events With Hezbollah Supporters <span>DOCUMENTED</span></div>
-      </div>
+    <div class="card">
+      <div class="card-eyebrow">// Tlaib — Hamas Slogan</div>
+      <div class="card-title">Tlaib Promotes Hamas Rallying Cry — Censured</div>
+      <div class="card-body">Rep. Rashida Tlaib promoted "from the river to the sea, Palestine will be free" — the Hamas rallying cry calling for elimination of Israel. The U.S. House voted to censure her in November 2023. Tlaib voted NO on the resolution condemning Hamas's October 7 attack.</div>
+      <div class="card-source">Source: Congressional Record · House Censure Roll Call · November 2023</div>
     </div>
-    <div class="org-card">
-      <div class="org-designation">TERROR-ADJACENT</div>
-      <div class="org-type">DOMESTIC ADVOCACY ORG — TERROR TIES DOCUMENTED</div>
-      <div class="org-name">CAIR</div>
-      <div class="org-desc">Council on American-Islamic Relations. Named as an unindicted co-conspirator in the 2007 Holy Land Foundation Hamas financing trial — the largest terrorism financing case in U.S. history. Major DSA donor network and endorsement partner.</div>
-      <div class="org-connections">
-        <div class="org-connections-label">// DSA Connections</div>
-        <div class="org-connection-item">Holy Land Foundation — Unindicted Co-Conspirator <span>DOJ 2007</span></div>
-        <div class="org-connection-item">Ilhan Omar — CAIR Fundraiser Headliner <span>MULTIPLE</span></div>
-        <div class="org-connection-item">Rashida Tlaib — CAIR Michigan Board Ties <span>DOCUMENTED</span></div>
-        <div class="org-connection-item">DSA Electoral Coordination With CAIR PAC <span>2022–24</span></div>
-      </div>
-    </div>
-    <div class="org-card">
-      <div class="org-designation">TERROR-ADJACENT</div>
-      <div class="org-type">INTERNATIONAL BOYCOTT MOVEMENT</div>
-      <div class="org-name">BDS Movement</div>
-      <div class="org-desc">Boycott, Divestment, Sanctions movement. Leadership figures have publicly expressed support for Hamas and the "right of return" by force. DSA has been an official BDS endorser since 2017.</div>
-      <div class="org-connections">
-        <div class="org-connections-label">// DSA Connections</div>
-        <div class="org-connection-item">DSA Official BDS Endorsement <span>2017–PRESENT</span></div>
-        <div class="org-connection-item">BDS Co-Founder Omar Barghouti — Hamas Supporter <span>DOCUMENTED</span></div>
-        <div class="org-connection-item">Multiple DSA Reps Co-Sponsor BDS Legislation <span>ONGOING</span></div>
-      </div>
+    <div class="card">
+      <div class="card-eyebrow">// Omar — US = Hamas</div>
+      <div class="card-title">Omar Equates U.S. and Israel with Hamas and Taliban</div>
+      <div class="card-body">June 2021: "We must have the same level of accountability for all victims of crimes against humanity. We have seen unthinkable atrocities committed by the U.S., Hamas, Israel, Afghanistan, and the Taliban." Widely condemned by members of both parties.</div>
+      <div class="card-source">Source: Congressional Record · June 2021</div>
     </div>
   </div>
 </section>
-
-<!-- EVIDENCE ARCHIVE -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-label">// Their Words</div>
-    <div class="section-title">Statement Evidence Archive</div>
-    <div class="section-rule"></div>
-  </div>
-  <div class="evidence-feed">
-    <div class="evidence-item high">
-      <div class="evidence-meta">
-        <strong>DSA National</strong>
-        RESOLUTION<br>OCT 2023<br>NATIONAL STATEMENT
-        <div class="evidence-type">WORDS</div>
-      </div>
-      <div class="evidence-content">DSA's national leadership released a statement following the October 7 Hamas attack on Israel that expressed solidarity with Palestinians and declined to condemn the attack, instead framing it as <em>"an expression of the Palestinian people's resistance to settler colonialism and apartheid."</em></div>
-      <div class="evidence-source">SOURCE:<br>DSA.ORG<br>OCT 2023<br>ARCHIVED</div>
-    </div>
-    <div class="evidence-item high">
-      <div class="evidence-meta">
-        <strong>Rashida Tlaib</strong>
-        SOCIAL MEDIA<br>OCT 2023<br>U.S. CONGRESS
-        <div class="evidence-type">WORDS</div>
-      </div>
-      <div class="evidence-content">Rep. Tlaib posted and promoted content using the slogan <em>"From the river to the sea, Palestine will be free"</em> — a phrase widely recognized as a call for the elimination of the State of Israel, used as a rallying cry by Hamas. She was subsequently censured by the U.S. House of Representatives.</div>
-      <div class="evidence-source">SOURCE:<br>HOUSE RECORD<br>NOV 2023<br>CENSURE VOTE</div>
-    </div>
-    <div class="evidence-item high">
-      <div class="evidence-meta">
-        <strong>DSA Convention</strong>
-        RESOLUTION #34<br>AUG 2023<br>NATIONAL CONVENTION
-        <div class="evidence-type">SUPPORT</div>
-      </div>
-      <div class="evidence-content">DSA's national convention passed a resolution affirming support for <em>"the Palestinian people's struggle for liberation and their right to resist occupation by any means necessary"</em> — language that encompasses armed terrorist attacks on civilian populations.</div>
-      <div class="evidence-source">SOURCE:<br>DSA.ORG<br>RESOLUTION #34<br>AUG 2023</div>
-    </div>
-    <div class="evidence-item med">
-      <div class="evidence-meta">
-        <strong>Ilhan Omar</strong>
-        FUNDRAISER<br>MULTIPLE DATES<br>CAIR EVENTS
-        <div class="evidence-type">NETWORKS</div>
-      </div>
-      <div class="evidence-content">Rep. Omar has headlined multiple fundraising events for CAIR — an organization named as an unindicted co-conspirator in the Holy Land Foundation trial, the largest Hamas financing prosecution in U.S. history. Omar has also received campaign contributions from CAIR-affiliated donors.</div>
-      <div class="evidence-source">SOURCE:<br>DOJ RECORDS<br>FEC FILINGS<br>VERIFIED</div>
-    </div>
-    <div class="evidence-item med">
-      <div class="evidence-meta">
-        <strong>AOC</strong>
-        FLOOR VOTE<br>SEP 2021<br>U.S. HOUSE
-        <div class="evidence-type">FUNDING</div>
-      </div>
-      <div class="evidence-content">Alexandria Ocasio-Cortez was one of nine House members to vote against the Iron Dome Supplemental Appropriations Act — a $1 billion package for Israel's missile defense system. She initially voted "present" before switching to "no" amid DSA pressure, later weeping on the House floor over her vote.</div>
-      <div class="evidence-source">SOURCE:<br>HOUSE RECORD<br>ROLL CALL 309<br>SEP 2021</div>
-    </div>
-  </div>
-</section>
-
-<!-- VOTE RECORD -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-label">// Congressional Record</div>
-    <div class="section-title">Anti-Israel / Pro-Terrorism Vote Record</div>
-    <div class="section-rule"></div>
-  </div>
-  <div style="overflow-x:auto;">
-    <table class="vote-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Bill / Resolution</th>
-          <th>AOC</th>
-          <th>Tlaib</th>
-          <th>Omar</th>
-          <th>Source</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>SEP 2021</td>
-          <td>Iron Dome Supplemental Appropriations Act</td>
-          <td class="vote-no">NO</td>
-          <td class="vote-no">NO</td>
-          <td class="vote-no">NO</td>
-          <td>ROLL CALL 309</td>
-        </tr>
-        <tr>
-          <td>NOV 2023</td>
-          <td>H.Res. 845 — Censure of Rashida Tlaib</td>
-          <td class="vote-no">NO</td>
-          <td>—</td>
-          <td class="vote-no">NO</td>
-          <td>ROLL CALL 607</td>
-        </tr>
-        <tr>
-          <td>OCT 2023</td>
-          <td>H.Res. 771 — Condemning Hamas Oct 7 Attack</td>
-          <td class="vote-present">PRESENT</td>
-          <td class="vote-no">NO</td>
-          <td class="vote-no">NO</td>
-          <td>ROLL CALL 521</td>
-        </tr>
-        <tr>
-          <td>DEC 2023</td>
-          <td>Israel Security Assistance Support Act</td>
-          <td class="vote-no">NO</td>
-          <td class="vote-no">NO</td>
-          <td class="vote-no">NO</td>
-          <td>ROLL CALL 648</td>
-        </tr>
-        <tr>
-          <td>APR 2024</td>
-          <td>Israel Foreign Military Financing Package</td>
-          <td class="vote-no">NO</td>
-          <td class="vote-no">NO</td>
-          <td class="vote-no">NO</td>
-          <td>ROLL CALL 133</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- SUBMIT CTA -->
-<section class="section" style="border-bottom:none;">
-  <div class="submit-cta">
-    <div class="submit-cta-text">
-      <h3>Have Documented Evidence of Terrorism Ties?</h3>
-      <p>Court records, FEC filings, verified video, congressional records. All submissions reviewed and sourced before publication.</p>
-    </div>
-    <a href="/submit/" class="btn-primary">Submit Evidence →</a>
-  </div>
-</section>
-
-<footer></footer>
+<div class="submit-cta">
+  <div><h3>Have Intel on Terror Ties?</h3><p>Court records, FEC filings, organizational ties, documented statements. All submissions verified before publication.</p></div>
+  <a href="/submit/" class="btn-primary btn">Submit a Tip →</a>
+</div>
+<footer></footer><div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
-
+<script src="/components/search.js"></script>
 </body>
 </html>
