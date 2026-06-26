@@ -1,67 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chapter Directory — DSA Exposed</title>
-  <link rel="stylesheet" href="/assets/global.css"/>
+  <meta name="description" content="State by state. City by city. Every active DSA chapter in America and their local activity. 250+ chapters across 49 states." />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-PK58BBCJX7");</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PK58BBCJX7');</script>
+  <link rel="stylesheet" href="/assets/global.css" />
   <style>
-    .section{padding:56px 48px;border-bottom:1px solid var(--rule);}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-    .card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--red);padding:28px;transition:box-shadow .2s,transform .2s;position:relative;}
-    .card:hover{box-shadow:0 4px 16px rgba(20,18,16,.1);transform:translateY(-2px);}
-    .card-eyebrow{font-family:var(--font-mono);font-size:9px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
-    .card-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3;}
-    .card-body{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
-    .card-body strong{color:var(--ink);}
-    .card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-    .card-source{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px;border-top:1px solid var(--rule);padding-top:10px;}
-    @media(max-width:900px){.section{padding:40px 24px;}.grid-3,.grid-2{grid-template-columns:1fr;}}
+    .section { padding: 56px 48px; border-bottom: 1px solid var(--rule); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .card { background: var(--white); border: 1px solid var(--rule); border-top: 3px solid var(--ink); padding: 28px; transition: box-shadow 0.22s, transform 0.22s; position: relative; }
+    .card:hover { box-shadow: 0 8px 28px rgba(20,18,16,0.11); transform: translateY(-3px); border-top-color: var(--red); }
+    .card-eyebrow { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+    .card-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
+    .card-body { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+    .card-body strong { color: var(--ink); }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .card-source { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; border-top: 1px solid var(--rule); padding-top: 10px; }
+    .card-stats { display: flex; gap: 24px; margin-bottom: 14px; }
+    .card-stat-num { font-family: var(--font-display); font-size: 28px; font-weight: 900; color: var(--red); line-height: 1; }
+    .card-stat-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .threat-badge { position: absolute; top: 16px; right: 16px; font-family: var(--font-mono); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border: 2px solid; }
+    .threat-critical { border-color: var(--red); color: var(--red); }
+    .threat-high { border-color: #C05A00; color: #C05A00; }
+    .threat-medium { border-color: var(--yellow); color: var(--yellow); }
+    .state-table { width: 100%; border-collapse: collapse; }
+    .state-table th { font-family: var(--font-mono); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding: 12px 20px; text-align: left; border-bottom: 2px solid var(--ink); background: var(--paper-dk); white-space: nowrap; }
+    .state-table td { font-family: var(--font-mono); font-size: 11px; color: var(--ink); padding: 13px 20px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+    .state-table tr:hover td { background: var(--paper-dk); }
+    .threat-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    @media (max-width: 900px) {
+      .section { padding: 40px 24px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
-<nav></nav><script src="/components/nav.js"></script>
+
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
+<nav></nav>
+<script src="/components/nav.js"></script>
+
 <div class="page-header">
   <div class="page-header-ghost">CHAPTERS</div>
   <div class="section-eyebrow">// Section 06 — National Footprint</div>
-  <h1>Chapter Directory</h1>
-  <p>State by state. City by city. Every active DSA chapter in America and their local activity. 250+ chapters across 49 states.</p>
+  <h1>Chapter <em>Directory</em></h1>
+  <p>State by state. City by city. Every active DSA chapter in America and their local activity. 250+ chapters across 49 states — mapped, profiled, and threat-assessed.</p>
 </div>
+
 <div class="stats-bar">
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">250+</div><div class="stat-label">Active Chapters</div></div>
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">49</div><div class="stat-label">States with Active Chapters</div></div>
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">92,000+</div><div class="stat-label">National Members</div></div>
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">12,000+</div><div class="stat-label">NYC DSA Members</div></div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">250+</div>
+    <div class="stat-label">Active Chapters<br>Nationwide</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">49</div>
+    <div class="stat-label">States with<br>Active Chapters</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">92K+</div>
+    <div class="stat-label">National Members<br>Estimated</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">12K+</div>
+    <div class="stat-label">NYC DSA<br>Members Alone</div>
+  </div>
 </div>
+
 <section class="section">
-  <div class="section-eyebrow">// Highest Threat Chapters</div>
-  <div class="section-title">Priority Chapter Intelligence</div>
-  <hr class="section-rule"/>
+  <div class="section-eyebrow">// Priority Intelligence — Highest Threat Chapters</div>
+  <div class="section-title">Critical & High Threat Chapters</div>
+  <hr class="section-rule" />
   <div class="grid-3">
-    <div class="card"><div class="card-eyebrow">// CRITICAL THREAT</div><div class="card-title">NYC DSA — National Headquarters of Power</div><div class="card-tags"><span class="tag danger">12,000+ Members</span><span class="tag danger">18 Sub-Chapters</span></div><div class="card-body">The most powerful DSA chapter in the country. Endorsed Mamdani, Valdez, Avila Chevalier, Lander, and all 6 Albany candidates in the June 2026 cycle. Controls significant NYC Democratic Party infrastructure.</div><div class="card-source">Source: NYC DSA Website · Endorsement Records · NY Focus</div></div>
-    <div class="card"><div class="card-eyebrow">// CRITICAL THREAT</div><div class="card-title">Los Angeles DSA — California Control</div><div class="card-tags"><span class="tag danger">15,000+ CA Members</span><span class="tag danger">32 CA Chapters</span></div><div class="card-body">Largest chapter network in California. Controls significant California Democratic Party apparatus. Multiple city council members endorsed. Targeting federal expansion in CA-34, CA-37.</div><div class="card-source">Source: LA DSA Website · FEC Records</div></div>
-    <div class="card"><div class="card-eyebrow">// CRITICAL THREAT</div><div class="card-title">Chicago DSA — Midwest Hub</div><div class="card-tags"><span class="tag danger">12 IL Chapters</span><span class="tag warn">SEIU Coordination</span></div><div class="card-body">12 active chapters in Illinois. Strong SEIU labor union coordination. Multiple Chicago aldermen endorsed. Targeting IL-07 for federal expansion in 2026 cycle.</div><div class="card-source">Source: Chicago DSA Website · IL Board of Elections</div></div>
-    <div class="card"><div class="card-eyebrow">// CRITICAL THREAT</div><div class="card-title">Detroit DSA — Michigan Coordination Hub</div><div class="card-tags"><span class="tag danger">Dearborn Red-Green Hub</span><span class="tag danger">Tlaib Home District</span></div><div class="card-body">Coordinate with CAIR Michigan on voter outreach in Dearborn. Home chapter for Rashida Tlaib (MI-12). CAIR fundraisers held in district. Documented Red-Green Axis coordination.</div><div class="card-source">Source: CAIR Michigan · FEC Records · Detroit Free Press</div></div>
-    <div class="card"><div class="card-eyebrow">// CRITICAL THREAT</div><div class="card-title">Minneapolis DSA — Omar's Network</div><div class="card-tags"><span class="tag danger">Cedar-Riverside Hub</span><span class="tag danger">Omar Home District</span></div><div class="card-body">Ilhan Omar's home chapter network. Cedar-Riverside documented Red-Green coordination zone. CAIR Minnesota runs joint voter outreach. Omar has headlined multiple CAIR fundraisers.</div><div class="card-source">Source: CAIR Minnesota · FEC Records · Star Tribune</div></div>
-    <div class="card"><div class="card-eyebrow">// HIGH THREAT</div><div class="card-title">Seattle DSA — Pacific Northwest</div><div class="card-tags"><span class="tag warn">City Council Seats</span><span class="tag warn">WA-07 Target</span></div><div class="card-body">Holds multiple Seattle city council seats. Targeting WA-07 for federal expansion. Coordinated Amazon HQ2 opposition campaign. Strong ties to SEIU Local 775.</div><div class="card-source">Source: Seattle DSA Website · King County Elections</div></div>
+
+    <div class="card">
+      <div class="threat-badge threat-critical">Critical</div>
+      <div class="card-eyebrow">// New York City</div>
+      <div class="card-title">NYC DSA — National Command Center</div>
+      <div class="card-stats">
+        <div><div class="card-stat-num">12K+</div><div class="card-stat-label">Members</div></div>
+        <div><div class="card-stat-num">18</div><div class="card-stat-label">Sub-Chapters</div></div>
+      </div>
+      <div class="card-tags">
+        <span class="tag danger">Mamdani Endorsed</span>
+        <span class="tag danger">3 Congress Wins 2026</span>
+        <span class="tag warn">CAIR Coordination</span>
+      </div>
+      <div class="card-body">The most powerful DSA chapter in the country and the command center for the 2026 sweep. Endorsed Mayor Mamdani, Valdez (NY-7), Avila Chevalier (NY-13), Lander (NY-10), and all 6 Albany candidates in June 2026. Controls significant NYC Democratic Party infrastructure. CAIR New York operates in the same political ecosystem.</div>
+      <div class="card-source">Source: NYC DSA Website · Endorsement Records · NY Focus · FEC.gov</div>
+    </div>
+
+    <div class="card">
+      <div class="threat-badge threat-critical">Critical</div>
+      <div class="card-eyebrow">// Los Angeles, California</div>
+      <div class="card-title">Los Angeles DSA — California Control</div>
+      <div class="card-stats">
+        <div><div class="card-stat-num">15K+</div><div class="card-stat-label">CA Members</div></div>
+        <div><div class="card-stat-num">32</div><div class="card-stat-label">CA Chapters</div></div>
+      </div>
+      <div class="card-tags">
+        <span class="tag danger">CA Dem Party Infiltration</span>
+        <span class="tag warn">Federal Expansion Target</span>
+      </div>
+      <div class="card-body">Largest chapter network in California with 15,000+ statewide members across 32 chapters. Controls significant California Democratic Party apparatus at the county and state level. Multiple Los Angeles city council members endorsed. Targeting CA-34 and CA-37 for federal expansion. Has placed DSA members on key CA Democratic Party committees.</div>
+      <div class="card-source">Source: LA DSA Website · CA Democratic Party Records · FEC.gov</div>
+    </div>
+
+    <div class="card">
+      <div class="threat-badge threat-critical">Critical</div>
+      <div class="card-eyebrow">// Chicago, Illinois</div>
+      <div class="card-title">Chicago DSA — Midwest Hub</div>
+      <div class="card-stats">
+        <div><div class="card-stat-num">12</div><div class="card-stat-label">IL Chapters</div></div>
+        <div><div class="card-stat-num">8K+</div><div class="card-stat-label">IL Members</div></div>
+      </div>
+      <div class="card-tags">
+        <span class="tag danger">SEIU Coordination</span>
+        <span class="tag warn">IL-07 Federal Target</span>
+      </div>
+      <div class="card-body">12 active chapters across Illinois with 8,000+ statewide members. Strong coordination with SEIU labor union infrastructure — a force multiplier for electoral organizing. Multiple Chicago aldermen endorsed. Targeting IL-07 for federal expansion in 2026-2028 cycle. Chicago DSA runs joint voter registration with progressive labor orgs.</div>
+      <div class="card-source">Source: Chicago DSA Website · IL Board of Elections · SEIU Records</div>
+    </div>
+
+    <div class="card">
+      <div class="threat-badge threat-critical">Critical</div>
+      <div class="card-eyebrow">// Detroit / Dearborn, Michigan</div>
+      <div class="card-title">Detroit DSA — Red-Green Coordination Hub</div>
+      <div class="card-stats">
+        <div><div class="card-stat-num">8</div><div class="card-stat-label">MI Chapters</div></div>
+        <div><div class="card-stat-num">4K+</div><div class="card-stat-label">MI Members</div></div>
+      </div>
+      <div class="card-tags">
+        <span class="tag danger">CAIR MI Coordination</span>
+        <span class="tag danger">Tlaib Home Chapter</span>
+        <span class="tag warn">Red-Green Hub</span>
+      </div>
+      <div class="card-body">Home chapter for Rashida Tlaib (MI-12). CAIR Michigan and Detroit DSA run coordinated voter outreach in Dearborn — home of the largest Arab-American population in the U.S. CAIR fundraisers for Tlaib held in Dearborn. AMP-linked bundlers active in district. A documented Red-Green Axis coordination zone.</div>
+      <div class="card-source">Source: CAIR Michigan · FEC Records · Detroit Free Press · Tlaib Campaign Records</div>
+    </div>
+
+    <div class="card">
+      <div class="threat-badge threat-critical">Critical</div>
+      <div class="card-eyebrow">// Minneapolis, Minnesota</div>
+      <div class="card-title">Minneapolis DSA — Cedar-Riverside Hub</div>
+      <div class="card-stats">
+        <div><div class="card-stat-num">6</div><div class="card-stat-label">MN Chapters</div></div>
+        <div><div class="card-stat-num">3K+</div><div class="card-stat-label">MN Members</div></div>
+      </div>
+      <div class="card-tags">
+        <span class="tag danger">CAIR MN Coordination</span>
+        <span class="tag danger">Omar Home Chapter</span>
+        <span class="tag warn">Red-Green Hub</span>
+      </div>
+      <div class="card-body">Ilhan Omar's home chapter network. Cedar-Riverside is a documented Red-Green coordination zone where Minneapolis DSA and CAIR Minnesota run joint voter outreach programs. Omar has headlined multiple CAIR fundraisers. DSA endorsed her in every election cycle. CAIR bundled $180K+ for her campaigns from this network.</div>
+      <div class="card-source">Source: CAIR Minnesota · FEC Records · Star Tribune · Omar Campaign Records</div>
+    </div>
+
+    <div class="card">
+      <div class="threat-badge threat-critical">Critical</div>
+      <div class="card-eyebrow">// Seattle, Washington</div>
+      <div class="card-title">Seattle DSA — Pacific Northwest</div>
+      <div class="card-stats">
+        <div><div class="card-stat-num">7</div><div class="card-stat-label">WA Chapters</div></div>
+        <div><div class="card-stat-num">4K+</div><div class="card-stat-label">WA Members</div></div>
+      </div>
+      <div class="card-tags">
+        <span class="tag danger">City Council Seats</span>
+        <span class="tag warn">WA-07 Federal Target</span>
+        <span class="tag warn">SEIU Coordination</span>
+      </div>
+      <div class="card-body">Holds multiple Seattle City Council seats. Targeting WA-07 for federal expansion. Coordinated the Amazon HQ2 opposition campaign that shaped Seattle housing and tech policy. Strong ties to SEIU Local 775. Has blocked multiple pro-business initiatives through coordinated council action.</div>
+      <div class="card-source">Source: Seattle DSA Website · King County Elections · Seattle Times</div>
+    </div>
+
   </div>
 </section>
-<section class="section">
-  <div style="text-align:center;padding:40px 0;">
-    <div class="section-eyebrow">// Interactive Tool</div>
-    <div class="section-title" style="margin-bottom:16px;">Explore the Chapter Map</div>
-    <p style="color:var(--muted);font-size:15px;max-width:480px;margin:0 auto 24px;">Click any state to see chapters, threat level, members, and documented elected officials.</p>
-    <a href="/map/" class="btn-ink btn">Open Interactive Map &rarr;</a>
+
+<section class="section" style="background:var(--paper-dk);">
+  <div class="section-eyebrow">// National Overview — All States</div>
+  <div class="section-title">Chapter Threat Assessment by State</div>
+  <hr class="section-rule" />
+  <div style="overflow-x:auto;">
+    <table class="state-table">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Threat Level</th>
+          <th>Chapters</th>
+          <th>Est. Members</th>
+          <th>DSA Elected</th>
+          <th>Key Activity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>New York</strong></td><td><span class="threat-dot" style="background:#B80000;"></span>Critical</td><td>18</td><td>12,000+</td><td>17+</td><td>NYC sweep 2026 — Congressional + Albany</td></tr>
+        <tr><td><strong>California</strong></td><td><span class="threat-dot" style="background:#B80000;"></span>Critical</td><td>32</td><td>15,000+</td><td>18+</td><td>CA Dem Party apparatus infiltration</td></tr>
+        <tr><td><strong>Michigan</strong></td><td><span class="threat-dot" style="background:#B80000;"></span>Critical</td><td>8</td><td>4,000+</td><td>6+</td><td>Tlaib/Red-Green Dearborn hub</td></tr>
+        <tr><td><strong>Minnesota</strong></td><td><span class="threat-dot" style="background:#B80000;"></span>Critical</td><td>6</td><td>3,000+</td><td>8+</td><td>Omar/Cedar-Riverside Red-Green hub</td></tr>
+        <tr><td><strong>Illinois</strong></td><td><span class="threat-dot" style="background:#B80000;"></span>Critical</td><td>12</td><td>8,000+</td><td>10+</td><td>Chicago Dem Party + SEIU coordination</td></tr>
+        <tr><td><strong>Washington</strong></td><td><span class="threat-dot" style="background:#B80000;"></span>Critical</td><td>7</td><td>4,000+</td><td>7+</td><td>Seattle city council control</td></tr>
+        <tr><td><strong>Massachusetts</strong></td><td><span class="threat-dot" style="background:#B80000;"></span>Critical</td><td>8</td><td>3,500+</td><td>6+</td><td>Boston Dem Party infrastructure</td></tr>
+        <tr><td><strong>Pennsylvania</strong></td><td><span class="threat-dot" style="background:#C05A00;"></span>High</td><td>9</td><td>3,000+</td><td>5</td><td>Summer Lee (PA-12) federal presence</td></tr>
+        <tr><td><strong>Texas</strong></td><td><span class="threat-dot" style="background:#C05A00;"></span>High</td><td>11</td><td>3,500+</td><td>3</td><td>Greg Casar (TX-35) + Austin growth</td></tr>
+        <tr><td><strong>New Jersey</strong></td><td><span class="threat-dot" style="background:#C05A00;"></span>High</td><td>7</td><td>2,500+</td><td>4</td><td>Jersey City council seats</td></tr>
+        <tr><td><strong>Arizona</strong></td><td><span class="threat-dot" style="background:#C05A00;"></span>High</td><td>5</td><td>2,000+</td><td>2</td><td>Phoenix + Tucson municipal targets</td></tr>
+        <tr><td><strong>Colorado</strong></td><td><span class="threat-dot" style="background:#C05A00;"></span>High</td><td>4</td><td>1,800+</td><td>3</td><td>Denver city council presence</td></tr>
+        <tr><td><strong>Florida</strong></td><td><span class="threat-dot" style="background:#C05A00;"></span>High</td><td>9</td><td>2,800+</td><td>2</td><td>Miami + Orlando municipal organizing</td></tr>
+        <tr><td><strong>Ohio</strong></td><td><span class="threat-dot" style="background:#C8960C;"></span>Medium</td><td>5</td><td>1,500+</td><td>2</td><td>Columbus + Cleveland municipal</td></tr>
+        <tr><td><strong>Wisconsin</strong></td><td><span class="threat-dot" style="background:#C8960C;"></span>Medium</td><td>4</td><td>1,200+</td><td>2</td><td>Milwaukee + Madison presence</td></tr>
+        <tr><td><strong>Oregon</strong></td><td><span class="threat-dot" style="background:#C8960C;"></span>Medium</td><td>4</td><td>1,400+</td><td>2</td><td>Portland city politics</td></tr>
+        <tr><td><strong>Virginia</strong></td><td><span class="threat-dot" style="background:#C8960C;"></span>Medium</td><td>5</td><td>1,600+</td><td>2</td><td>Northern VA + Richmond chapters</td></tr>
+        <tr><td><strong>Georgia</strong></td><td><span class="threat-dot" style="background:#C8960C;"></span>Medium</td><td>4</td><td>1,200+</td><td>1</td><td>Atlanta metro organizing</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
+
+<section class="section" style="text-align:center;">
+  <div class="section-eyebrow">// Interactive Tool</div>
+  <div class="section-title" style="margin-bottom:16px;">Explore the Full Chapter Map</div>
+  <p style="font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:1px;max-width:480px;margin:0 auto 28px;line-height:1.8;">Click any state to see chapter details, threat level, estimated members, and documented elected officials. Powered by D3.js.</p>
+  <a href="/map/" class="btn-ink btn">Open Interactive Map →</a>
+</section>
+
 <div class="submit-cta">
-  <div><h3>Have Intel to Add?</h3><p>Documentation, statements, funding records, org ties. All submissions verified before publication.</p></div>
-  <a href="/submit/" class="btn-primary btn">Submit a Tip &rarr;</a>
+  <div>
+    <h3>Know Chapter Activity in Your Area?</h3>
+    <p>Local organizing records, endorsement activity, coordination with other orgs, candidate recruitment. Help us complete the national picture.</p>
+  </div>
+  <a href="/submit/" class="btn-primary btn">Submit a Tip →</a>
 </div>
-<footer></footer><div class="footer-bottom"></div>
+
+<footer></footer>
+<div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
 <script src="/components/search.js"></script>
-</body></html>
+
+</body>
+</html>
