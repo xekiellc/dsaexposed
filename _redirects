@@ -1,4 +1,3 @@
-
 # DSAExposed.com — Cloudflare Pages Redirects
 
 # 404 handler
@@ -12,5 +11,7 @@
 /networks /networks/ 301
 /chapters /chapters/ 301
 /primaries /primaries/ 301
+/media /media/ 301
 /submit /submit/ 301
 /about /about.html 301
+/submit/thanks /submit/thanks.html 301
