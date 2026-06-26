@@ -1,29 +1,22 @@
-document.addEventListener('DOMContentLoaded', function () {
+// DSAExposed — Ticker Component
+(function() {
   const items = [
-    'NYC primaries: 3 DSA-aligned reps win on anti-America platform',
-    'DSA national convention endorses BDS movement resolution',
-    'DSA chapter leaders appear at CAIR-sponsored event',
-    'Follow the money: $4.2M in dark funding traced to DSA 2024 campaigns',
-    'DSA publishes "Toward a Socialist America" manifesto',
-    'Red-Green Axis: Marxist-Islamist alliance deepens in major US cities',
-    'Rashida Tlaib censured by U.S. House for Hamas-linked slogan',
-    'CAIR named unindicted co-conspirator in Holy Land Foundation trial',
-    'AOC votes NO on Iron Dome funding — Roll Call 309',
-    'DSA chapter co-sponsors post-October 7 rally with CAIR in NYC',
-    'Venezuela: 7.7 million flee socialism — largest crisis in Western Hemisphere',
-    'North Korea: 100,000+ political prisoners held in camps today',
+    'NYC Sweep: Mamdani\'s DSA slate goes 3-for-3 in congressional primaries — June 23, 2026',
+    'Claire Valdez wins NY-7 — liked post celebrating Hamas attack on Oct. 7, 2023',
+    'Darializa Avila Chevalier wins NY-13 — refused to condemn Hamas at candidate forum',
+    'Brad Lander wins NY-10 — called Israel\'s campaign "genocide" throughout race',
+    'DSA picks up 6+ NY state legislature seats — bloc now 15+ Albany lawmakers',
+    'Zohran Mamdani revokes pro-Israel decrees on Day 1 as NYC Mayor',
+    'DSA national membership: 92,000+ members across 250+ chapters in 49 states',
+    'CAIR named unindicted co-conspirator in Holy Land Foundation Hamas financing trial',
+    'AOC votes NO on Iron Dome funding — Roll Call 309, September 2021',
+    'Rashida Tlaib censured by U.S. House for promoting Hamas rallying cry',
+    'DSA 2023 convention: refused to condemn Hamas October 7 attack',
+    'DSA officially endorses BDS movement — calls for elimination of U.S. aid to Israel',
   ];
-
-  // Double the items so the scroll loops seamlessly
   const doubled = [...items, ...items];
-
-  const tickerHTML = `
+  document.querySelector('.ticker-wrap').innerHTML = `
     <span class="ticker-label">INTEL FEED</span>
-    <span class="ticker-track">
-      ${doubled.map(item => `<span>${item}</span>`).join('')}
-    </span>
+    <div class="ticker-track">${doubled.map(i => `<span>${i}</span>`).join('')}</div>
   `;
-
-  const ticker = document.querySelector('.ticker-wrap');
-  if (ticker) ticker.innerHTML = tickerHTML;
-});
+})();
