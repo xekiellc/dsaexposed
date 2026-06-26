@@ -1,120 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terrorism Ties — DSA Exposed</title>
-  <link rel="stylesheet" href="/assets/global.css" />
+  <meta name="description" content="Documented connections between DSA-aligned officials and designated terrorist organizations — through words, funding, support, and shared networks." />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PK58BBCJX7');</script>
+  <link rel="stylesheet" href="/assets/global.css" />
   <style>
-    .section{padding:56px 48px;border-bottom:1px solid var(--rule);}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-    .card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--red);padding:28px;transition:box-shadow .2s,transform .2s;}
-    .card:hover{box-shadow:0 4px 16px rgba(20,18,16,.1);transform:translateY(-2px);}
-    .card-eyebrow{font-family:var(--font-mono);font-size:9px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
-    .card-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3;}
-    .card-body{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
-    .card-body strong{color:var(--ink);}
-    .card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-    .card-source{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px;border-top:1px solid var(--rule);padding-top:10px;}
-    @media(max-width:900px){.section{padding:40px 24px;}.grid-3{grid-template-columns:1fr;}}
+    .section { padding: 56px 48px; border-bottom: 1px solid var(--rule); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .card { background: var(--white); border: 1px solid var(--rule); border-top: 3px solid var(--red); padding: 28px; transition: box-shadow 0.22s, transform 0.22s; position: relative; }
+    .card:hover { box-shadow: 0 8px 28px rgba(20,18,16,0.11); transform: translateY(-3px); }
+    .card-eyebrow { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+    .card-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
+    .card-body { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+    .card-body strong { color: var(--ink); }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .card-source { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; border-top: 1px solid var(--rule); padding-top: 10px; margin-top: auto; }
+    .connection-item { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+    .connection-item:last-child { border-bottom: none; }
+    .connection-who { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .connection-role { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .connection-quote { font-family: var(--font-display); font-size: 14px; font-style: italic; color: var(--red); border-left: 3px solid var(--red); padding-left: 14px; line-height: 1.55; margin-bottom: 8px; }
+    .connection-cite { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-bottom: 10px; }
+    .connection-record { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .connection-record strong { color: var(--red); }
+    @media (max-width: 900px) {
+      .section { padding: 40px 24px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .connection-item { grid-template-columns: 1fr; gap: 12px; }
+    }
   </style>
 </head>
 <body>
-<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
-<nav></nav><script src="/components/nav.js"></script>
+
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
+<nav></nav>
+<script src="/components/nav.js"></script>
+
 <div class="page-header">
   <div class="page-header-ghost">TERRORISM</div>
   <div class="section-eyebrow">// Section 01 — Documented Connections</div>
   <h1>Terrorism <em>Ties</em></h1>
   <p>Documented connections between DSA-aligned officials and designated terrorist organizations — through words, funding, support, and shared networks. Every claim sourced to primary record.</p>
 </div>
+
 <div class="stats-bar">
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">9</div><div class="stat-label">Terror-Adjacent Orgs Documented</div></div>
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">3</div><div class="stat-label">Federal Prosecutions Referenced</div></div>
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">$12.4M</div><div class="stat-label">HLF Hamas Financing Convicted</div></div>
-  <div class="stats-bar-item"><div class="stat-num" style="font-size:32px;">5</div><div class="stat-label">DSA-CAIR Coordination Points</div></div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">9</div>
+    <div class="stat-label">Terror-Adjacent<br>Orgs Documented</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">3</div>
+    <div class="stat-label">Federal Prosecutions<br>Referenced</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">$12.4M</div>
+    <div class="stat-label">HLF Hamas<br>Financing Convicted</div>
+  </div>
+  <div class="stats-bar-item">
+    <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">$320K+</div>
+    <div class="stat-label">CAIR PAC →<br>DSA Reps</div>
+  </div>
 </div>
+
 <section class="section">
-  <div class="section-eyebrow">// Primary Files</div>
-  <div class="section-title">Terror-Adjacent Organizations</div>
+  <div class="section-eyebrow">// Primary Files — Terror-Adjacent Organizations</div>
+  <div class="section-title">Documented Organizations</div>
   <hr class="section-rule" />
   <div class="grid-3">
+
     <div class="card">
       <div class="card-eyebrow">// CAIR — Unindicted Co-Conspirator</div>
       <div class="card-title">Council on American-Islamic Relations</div>
-      <div class="card-tags"><span class="tag danger">HLF Co-Conspirator</span><span class="tag danger">Hamas Ties</span><span class="tag warn">$320K+ to DSA Reps</span></div>
-      <div class="card-body">Named unindicted co-conspirator in the Holy Land Foundation Hamas financing trial — the largest terrorism financing prosecution in U.S. history. CAIR Action Network PAC has since bundled <strong>$140,000+ for Rashida Tlaib and $180,000+ for Ilhan Omar.</strong></div>
-      <div class="card-source">Source: DOJ Federal Court Records, HLF Trial Transcripts, FEC Filings</div>
+      <div class="card-tags">
+        <span class="tag danger">HLF Co-Conspirator</span>
+        <span class="tag danger">Hamas Ties</span>
+        <span class="tag warn">$320K+ to DSA Reps</span>
+      </div>
+      <div class="card-body">Named unindicted co-conspirator in the Holy Land Foundation Hamas financing trial — the largest terrorism financing prosecution in U.S. history. CAIR Action Network PAC has since bundled <strong>$140,000+ for Rashida Tlaib</strong> and <strong>$180,000+ for Ilhan Omar.</strong> Both have headlined CAIR fundraisers. CAIR Minnesota and CAIR Michigan run coordinated voter outreach with DSA chapters in their districts.</div>
+      <div class="card-source">Source: DOJ Federal Court Records · HLF Trial Transcripts · FEC Filings · CAIR Event Records</div>
     </div>
+
     <div class="card">
       <div class="card-eyebrow">// BDS — Hamas-Linked Founding</div>
       <div class="card-title">BDS Movement</div>
-      <div class="card-tags"><span class="tag danger">Hamas Ties</span><span class="tag danger">DSA Endorsed 2017</span><span class="tag warn">Anti-Israel</span></div>
-      <div class="card-body">National DSA officially endorsed BDS in 2017. BDS co-founder Omar Barghouti has documented ties to Hamas leadership. The stated goal — the "right of return" — is universally recognized as incompatible with Israel's continued existence as a Jewish state.</div>
-      <div class="card-source">Source: DSA.org Convention Minutes 2017, BDS Movement Published Platform</div>
+      <div class="card-tags">
+        <span class="tag danger">Hamas Ties</span>
+        <span class="tag danger">DSA Endorsed 2017</span>
+        <span class="tag warn">Anti-Israel Elimination</span>
+      </div>
+      <div class="card-body">National DSA officially endorsed BDS in 2017. BDS co-founder Omar Barghouti has documented ties to Hamas leadership. The stated goal of BDS — the "right of return" combined with economic strangulation — is universally recognized by Israeli and American analysts as incompatible with Israel's continued existence as a Jewish state. AOC, Tlaib, Omar, Valdez, and Avila Chevalier all publicly support BDS.</div>
+      <div class="card-source">Source: DSA.org Convention Minutes 2017 · BDS Movement Published Platform · Congressional Statements</div>
     </div>
+
     <div class="card">
       <div class="card-eyebrow">// AMP — HLF-Linked</div>
       <div class="card-title">American Muslims for Palestine</div>
-      <div class="card-tags"><span class="tag danger">HLF Ties</span><span class="tag danger">Hamas Adjacent</span><span class="tag warn">Donor Network</span></div>
-      <div class="card-body">AMP-linked bundlers have donated to Tlaib and Omar campaigns. AMP has documented institutional ties to the Holy Land Foundation and leadership overlaps with organizations named in federal terrorism financing investigations.</div>
-      <div class="card-source">Source: FEC Campaign Finance Records, Senate Judiciary Subcommittee Report</div>
+      <div class="card-tags">
+        <span class="tag danger">HLF Ties</span>
+        <span class="tag danger">Hamas Adjacent</span>
+        <span class="tag warn">Bundler Network</span>
+      </div>
+      <div class="card-body">AMP-linked bundlers have donated to Tlaib and Omar campaigns. AMP has documented institutional ties to the Holy Land Foundation — including leadership overlap with individuals and organizations named in federal terrorism financing investigations. AMP organizes BDS activism on college campuses and co-sponsors events with DSA chapters.</div>
+      <div class="card-source">Source: FEC Campaign Finance Records · Senate Judiciary Subcommittee Report · AMP Event Records</div>
     </div>
+
     <div class="card">
       <div class="card-eyebrow">// HLF — Convicted 2007</div>
       <div class="card-title">Holy Land Foundation</div>
-      <div class="card-tags"><span class="tag danger">Hamas Financing</span><span class="tag danger">Federal Conviction</span></div>
-      <div class="card-body">Convicted in 2007 of funneling $12.4 million to Hamas. Five founders sentenced to 15-65 years. U.S. designated it a terrorist organization in 2001. Zohran Mamdani praised its founders — the "Holy Land Five" — in a 2017 rap song.</div>
-      <div class="card-source">Source: DOJ Press Release, U.S. v. Holy Land Foundation, Federal Court Records</div>
+      <div class="card-tags">
+        <span class="tag danger">Hamas Financing</span>
+        <span class="tag danger">Federal Conviction</span>
+        <span class="tag danger">Praised by Mamdani</span>
+      </div>
+      <div class="card-body">Convicted in 2007 of funneling <strong>$12.4 million to Hamas.</strong> Five founders sentenced to 15-65 years. Designated a terrorist organization by the U.S. government in 2001. In a 2017 rap song, then-community organizer Zohran Mamdani praised its founders — the "Holy Land Five" — saying "my love to the Holy Land Five. You better look 'em up."</div>
+      <div class="card-source">Source: DOJ Press Release · U.S. v. Holy Land Foundation · Federal Court Records · Verified Audio "Salam" 2017</div>
     </div>
+
     <div class="card">
       <div class="card-eyebrow">// PEOPLE'S FORUM — Oct 8 Rally</div>
       <div class="card-title">The People's Forum</div>
-      <div class="card-tags"><span class="tag danger">Oct 8 Rally Organizer</span><span class="tag warn">DSA Network</span></div>
-      <div class="card-body">Organized the Times Square rally October 8, 2023 — the day after Hamas massacred 1,200 Israelis. Rallygoers held signs: "Resistance is Justified when People are Occupied." Darializa Avila Chevalier attended. NYC DSA briefly advertised the event.</div>
-      <div class="card-source">Source: City & State NY, Verified Video, NYC DSA Statement</div>
+      <div class="card-tags">
+        <span class="tag danger">Oct 8 Rally Organizer</span>
+        <span class="tag warn">DSA Network</span>
+        <span class="tag warn">China-Linked Funding</span>
+      </div>
+      <div class="card-body">Organized the Times Square rally on <strong>October 8, 2023</strong> — the day after Hamas massacred 1,200 Israelis. Rallygoers held signs: "Resistance is Justified when People are Occupied." Darializa Avila Chevalier attended. NYC DSA briefly advertised the event before issuing a statement walking back its promotion. The People's Forum has documented funding from a Chinese Communist Party-linked billionaire.</div>
+      <div class="card-source">Source: City &amp; State NY · Verified Video · NYC DSA Statement · The Grayzone Investigation</div>
     </div>
+
     <div class="card">
       <div class="card-eyebrow">// COLUMBIA APARTHEID DIVEST</div>
       <div class="card-title">Columbia University Apartheid Divest</div>
-      <div class="card-tags"><span class="tag danger">Co-Founded by Avila Chevalier</span><span class="tag warn">Violent Occupation 2024</span></div>
-      <div class="card-body">Co-founded by congressional candidate Darializa Avila Chevalier. Led the violent 2024 occupation of Hamilton Hall at Columbia University. Multiple arrests. Avila Chevalier cited this activism throughout her 2026 congressional campaign.</div>
-      <div class="card-source">Source: NYT, Columbia Spectator, Avila Chevalier Campaign Statements</div>
+      <div class="card-tags">
+        <span class="tag danger">Co-Founded by Avila Chevalier</span>
+        <span class="tag danger">Violent Occupation 2024</span>
+        <span class="tag warn">Campus Radicalism</span>
+      </div>
+      <div class="card-body">Co-founded by congressional candidate Darializa Avila Chevalier. Led the violent occupation of Hamilton Hall at Columbia University in 2024, following the October 7 Hamas attack. Multiple arrests. NYPD called to clear the building. Avila Chevalier cited this activism as a central credential throughout her 2026 congressional campaign and continues to defend it.</div>
+      <div class="card-source">Source: NYT · Columbia Spectator · NYPD Records · Avila Chevalier Campaign Statements</div>
     </div>
+
   </div>
 </section>
-<section class="section">
-  <div class="section-eyebrow">// Red-Green Axis</div>
-  <div class="section-title">DSA Official Documented Connections</div>
+
+<section class="section" style="background:var(--paper-dk);">
+  <div class="section-eyebrow">// DSA Officials — Documented Terror-Adjacent Connections</div>
+  <div class="section-title">On the Record</div>
   <hr class="section-rule" />
-  <div class="grid-3">
-    <div class="card">
-      <div class="card-eyebrow">// Mamdani — Hamas Praise</div>
-      <div class="card-title">Mamdani: "My love to the Holy Land Five"</div>
-      <div class="card-body">In 2017 rap song "Salam," then-community organizer Zohran Mamdani raps: "My love to the Holy Land Five. You better look 'em up." The Holy Land Five are the founders of the Holy Land Foundation, convicted of financing Hamas — the largest terrorism financing case in U.S. history.</div>
-      <div class="card-source">Source: Verified Audio · "Salam" 2017 · Times of Israel</div>
+
+  <div class="connection-item">
+    <div>
+      <div class="connection-who">Zohran Mamdani</div>
+      <div class="connection-role">NYC Mayor · DSA Member</div>
+      <div class="card-tags" style="margin-top:8px;">
+        <span class="tag danger">Hamas Praise</span>
+        <span class="tag danger">HLF Ties</span>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-eyebrow">// Tlaib — Hamas Slogan</div>
-      <div class="card-title">Tlaib Promotes Hamas Rallying Cry — Censured</div>
-      <div class="card-body">Rep. Rashida Tlaib promoted "from the river to the sea, Palestine will be free" — the Hamas rallying cry calling for elimination of Israel. The U.S. House voted to censure her in November 2023. Tlaib voted NO on the resolution condemning Hamas's October 7 attack.</div>
-      <div class="card-source">Source: Congressional Record · House Censure Roll Call · November 2023</div>
-    </div>
-    <div class="card">
-      <div class="card-eyebrow">// Omar — US = Hamas</div>
-      <div class="card-title">Omar Equates U.S. and Israel with Hamas and Taliban</div>
-      <div class="card-body">June 2021: "We must have the same level of accountability for all victims of crimes against humanity. We have seen unthinkable atrocities committed by the U.S., Hamas, Israel, Afghanistan, and the Taliban." Widely condemned by members of both parties.</div>
-      <div class="card-source">Source: Congressional Record · June 2021</div>
+    <div>
+      <div class="connection-quote">"My love to the Holy Land Five. You better look 'em up."</div>
+      <div class="connection-cite">Rap Song "Salam," 2017 — Verified Audio — The Holy Land Five are founders convicted of financing Hamas</div>
+      <div class="connection-record">Also: Oct. 7, 2023 statement contained <strong>zero mentions of Hamas</strong> — condemned Israel only. Defended "globalize the intifada" in 2025, calling it "a desperate desire for equality." ADL: "explicit incitement to violence." Israeli FM called his Day-1 pro-Israel decree revocations "antisemitic gasoline on an open fire."</div>
     </div>
   </div>
+
+  <div class="connection-item">
+    <div>
+      <div class="connection-who">Rashida Tlaib</div>
+      <div class="connection-role">U.S. Rep. MI-12 · DSA-Endorsed</div>
+      <div class="card-tags" style="margin-top:8px;">
+        <span class="tag danger">House Censure</span>
+        <span class="tag danger">CAIR-Funded</span>
+      </div>
+    </div>
+    <div>
+      <div class="connection-quote">"From the river to the sea, Palestine will be free."</div>
+      <div class="connection-cite">Social Media · October 2023 · Hamas rallying cry · Led to U.S. House censure November 2023</div>
+      <div class="connection-record">Voted <strong>NO on the House resolution condemning Hamas's October 7 attack.</strong> CAIR Action Network PAC — whose parent org is a named unindicted co-conspirator in the HLF Hamas financing trial — bundled $140,000+ for her campaigns. AMP-linked bundlers have also donated.</div>
+    </div>
+  </div>
+
+  <div class="connection-item">
+    <div>
+      <div class="connection-who">Ilhan Omar</div>
+      <div class="connection-role">U.S. Rep. MN-05 · DSA-Endorsed</div>
+      <div class="card-tags" style="margin-top:8px;">
+        <span class="tag danger">CAIR-Funded</span>
+        <span class="tag warn">US = Hamas</span>
+      </div>
+    </div>
+    <div>
+      <div class="connection-quote">"We have seen unthinkable atrocities committed by the U.S., Hamas, Israel, Afghanistan, and the Taliban."</div>
+      <div class="connection-cite">Congressional Record · June 2021 · Condemned by members of both parties</div>
+      <div class="connection-record">CAIR Action Network PAC bundled <strong>$180,000+</strong> for her campaigns. She has headlined multiple CAIR fundraisers. Voted NO on Iron Dome missile defense funding for Israel. Co-authored legislation opposing anti-BDS laws at the federal level.</div>
+    </div>
+  </div>
+
+  <div class="connection-item">
+    <div>
+      <div class="connection-who">Darializa Avila Chevalier</div>
+      <div class="connection-role">Nominee NY-13 · DSA Member</div>
+      <div class="card-tags" style="margin-top:8px;">
+        <span class="tag danger">Oct 8 Rally</span>
+        <span class="tag danger">Hamas Refusal</span>
+      </div>
+    </div>
+    <div>
+      <div class="connection-quote">"The premise of that question ignores the 75 years of occupation..."</div>
+      <div class="connection-cite">Broadway Democrats Forum · 2026 · Asked directly to condemn Hamas's Oct. 7 massacre of 1,200 Israelis</div>
+      <div class="connection-record">Attended pro-Hamas Times Square rally <strong>October 8, 2023</strong> — organized by The People's Forum — the day after the massacre. Co-founded Columbia University Apartheid Divest, which led the violent 2024 Hamilton Hall occupation. Platform: abolish police, abolish prisons, abolish borders, "all deportations are wrong."</div>
+    </div>
+  </div>
+
 </section>
+
 <div class="submit-cta">
-  <div><h3>Have Intel on Terror Ties?</h3><p>Court records, FEC filings, organizational ties, documented statements. All submissions verified before publication.</p></div>
+  <div>
+    <h3>Have Intel on Terror Ties?</h3>
+    <p>Court records, FEC filings, organizational ties, documented statements. All submissions verified before publication.</p>
+  </div>
   <a href="/submit/" class="btn-primary btn">Submit a Tip →</a>
 </div>
-<footer></footer><div class="footer-bottom"></div>
+
+<footer></footer>
+<div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
 <script src="/components/search.js"></script>
+
 </body>
 </html>
