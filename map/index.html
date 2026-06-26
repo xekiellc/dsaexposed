@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter Map — DSA Exposed</title>
+  <meta name="description" content="Interactive US map of DSA chapters. Click any state to see chapters, leaders, candidates, and local elected officials." />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PK58BBCJX7');</script>
+  <link rel="stylesheet" href="/assets/global.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <style>
+    .map-layout { display: grid; grid-template-columns: 1fr 320px; min-height: 80vh; border-bottom: 2px solid var(--ink); }
+    .map-canvas { background: var(--paper); padding: 24px; position: relative; }
+    #usMap { width: 100%; height: 100%; min-height: 500px; }
+    .map-sidebar { border-left: 2px solid var(--ink); overflow-y: auto; background: var(--white); }
+    .map-sidebar-header { padding: 20px 24px; border-bottom: 2px solid var(--ink); background: var(--paper-dk); }
+    .map-sidebar-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .map-sidebar-sub { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+    .state-detail { padding: 20px 24px; display: none; }
+    .state-detail.active { display: block; }
+    .state-empty { padding: 20px 24px; }
+    .state-empty-text { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 1px; line-height: 1.8; }
+    .state-detail-name { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .state-threat { display: inline-block; font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px; padding: 3px 10px; margin-bottom: 16px; text-transform: uppercase; }
+    .threat-critical { border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+    .threat-high { border: 2px solid #C05A00; color: #C05A00; }
+    .threat-medium { border: 2px solid var(--yellow); color: var(--yellow); }
+    .threat-monitor { border: 1px solid var(--rule); color: var(--muted); }
+    .state-stat { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--rule); font-family: var(--font-mono); font-size: 10px; }
+    .state-stat-label { color: var(--muted); letter-spacing: 1px; }
+    .state-stat-value { color: var(--ink); font-weight: 600; }
+    .chapter-list { margin-top: 16px; }
+    .chapter-list-title { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+    .chapter-item { font-family: var(--font-mono); font-size: 10px; color: var(--ink); padding: 8px 0; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; }
+    .chapter-status { font-size: 9px; color: var(--red); }
+    .map-legend { position: absolute; bottom: 32px; left: 32px; background: var(--white); border: 1px solid var(--rule); padding: 12px 16px; }
+    .map-legend-title { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+    .map-legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; }
+    .map-legend-color { width: 16px; height: 12px; border-radius: 2px; }
+    @media (max-width: 900px) {
+      .map-layout { grid-template-columns: 1fr; }
+      .map-sidebar { border-left: none; border-top: 2px solid var(--ink); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
+<nav></nav>
+<script src="/components/nav.js"></script>
+
+<div class="page-header">
+  <div class="page-header-ghost">MAP</div>
+  <div class="section-eyebrow">// Threat Assessment — All 50 States</div>
+  <h1>DSA <em>Chapter Map</em></h1>
+  <p>Click any state to see DSA chapters, active candidates, local elected officials, and threat level. 250+ chapters across 49 states.</p>
+</div>
+
+<div class="map-layout">
+  <div class="map-canvas" id="mapCanvas">
+    <svg id="usMap"></svg>
+    <div class="map-legend">
+      <div class="map-legend-title">// Threat Level</div>
+      <div class="map-legend-item"><div class="map-legend-color" style="background:#B80000;"></div>Critical</div>
+      <div class="map-legend-item"><div class="map-legend-color" style="background:#C05A00;"></div>High</div>
+      <div class="map-legend-item"><div class="map-legend-color" style="background:#C8960C;"></div>Medium</div>
+      <div class="map-legend-item"><div class="map-legend-color" style="background:#C8BFB0;"></div>Monitor</div>
+    </div>
+  </div>
+
+  <div class="map-sidebar">
+    <div class="map-sidebar-header">
+      <div class="map-sidebar-title">State Intelligence</div>
+      <div class="map-sidebar-sub">Click any state to inspect</div>
+    </div>
+    <div class="state-empty" id="stateEmpty">
+      <div class="state-empty-text">Click any state on the map to view DSA chapter data, threat assessment, active candidates, and documented elected officials.</div>
+    </div>
+    <div class="state-detail" id="stateDetail">
+      <div class="state-detail-name" id="stateName"></div>
+      <div id="stateThreat"></div>
+      <div class="state-stat"><span class="state-stat-label">Active Chapters</span><span class="state-stat-value" id="stateChapters"></span></div>
+      <div class="state-stat"><span class="state-stat-label">Est. Members</span><span class="state-stat-value" id="stateMembers"></span></div>
+      <div class="state-stat"><span class="state-stat-label">DSA Elected</span><span class="state-stat-value" id="stateElected"></span></div>
+      <div class="chapter-list">
+        <div class="chapter-list-title">// Chapters</div>
+        <div id="chapterList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const STATE_DATA = {
+  'New York':       { threat: 'critical', chapters: 18, members: '12,000+', elected: '14+', cities: ['NYC DSA (HQ)', 'Brooklyn DSA', 'Bronx DSA', 'Queens DSA', 'Albany DSA', 'Buffalo DSA'] },
+  'California':     { threat: 'critical', chapters: 32, members: '15,000+', elected: '18+', cities: ['Los Angeles DSA', 'San Francisco DSA', 'East Bay DSA', 'Sacramento DSA', 'San Diego DSA'] },
+  'Michigan':       { threat: 'critical', chapters: 8,  members: '4,000+',  elected: '6+',  cities: ['Detroit DSA', 'Dearborn (Red-Green Hub)', 'Ann Arbor DSA', 'Grand Rapids DSA'] },
+  'Minnesota':      { threat: 'critical', chapters: 6,  members: '3,000+',  elected: '8+',  cities: ['Minneapolis DSA', 'Cedar-Riverside (Red-Green)', 'St. Paul DSA', 'Duluth DSA'] },
+  'Illinois':       { threat: 'critical', chapters: 12, members: '6,000+',  elected: '10+', cities: ['Chicago DSA', 'Evanston DSA', 'Springfield DSA', 'Champaign-Urbana DSA'] },
+  'Washington':     { threat: 'critical', chapters: 7,  members: '4,000+',  elected: '7+',  cities: ['Seattle DSA', 'Tacoma DSA', 'Olympia DSA', 'Spokane DSA'] },
+  'Massachusetts':  { threat: 'critical', chapters: 8,  members: '3,500+',  elected: '6+',  cities: ['Boston DSA', 'Pioneer Valley DSA', 'Worcester DSA'] },
+  'Pennsylvania':   { threat: 'high',     chapters: 9,  members: '3,000+',  elected: '5',   cities: ['Philadelphia DSA', 'Pittsburgh DSA', 'Lehigh Valley DSA'] },
+  'Texas':          { threat: 'high',     chapters: 11, members: '3,500+',  elected: '3',   cities: ['Austin DSA', 'Houston DSA', 'Dallas DSA', 'San Antonio DSA'] },
+  'New Jersey':     { threat: 'high',     chapters: 7,  members: '2,500+',  elected: '4',   cities: ['Jersey City DSA', 'Newark DSA', 'Camden DSA'] },
+  'Arizona':        { threat: 'high',     chapters: 5,  members: '2,000+',  elected: '2',   cities: ['Phoenix DSA', 'Tucson DSA', 'Tempe DSA'] },
+  'Colorado':       { threat: 'high',     chapters: 4,  members: '1,800+',  elected: '3',   cities: ['Denver DSA', 'Boulder DSA'] },
+  'Florida':        { threat: 'high',     chapters: 9,  members: '2,800+',  elected: '2',   cities: ['Miami DSA', 'Orlando DSA', 'Tampa DSA', 'Gainesville DSA'] },
+  'Ohio':           { threat: 'medium',   chapters: 5,  members: '1,500+',  elected: '2',   cities: ['Columbus DSA', 'Cleveland DSA', 'Cincinnati DSA'] },
+  'Wisconsin':      { threat: 'medium',   chapters: 4,  members: '1,200+',  elected: '2',   cities: ['Milwaukee DSA', 'Madison DSA'] },
+};
+
+const THREAT_COLORS = {
+  critical: '#B80000',
+  high: '#C05A00',
+  medium: '#C8960C',
+  monitor: '#C8BFB0',
+};
+
+const THREAT_CLASSES = {
+  critical: 'threat-critical',
+  high: 'threat-high',
+  medium: 'threat-medium',
+  monitor: 'threat-monitor',
+};
+
+// Draw US map using D3 + topojson approach with simple state paths
+fetch('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json')
+  .then(r => r.json())
+  .then(us => {
+    const { feature, mesh } = window.topojson || {};
+
+    // Fallback: simple grid of state boxes if topojson not available
+    drawFallbackMap();
+  })
+  .catch(() => drawFallbackMap());
+
+function drawFallbackMap() {
+  // Simple grid map as fallback
+  const states = [
+    ['WA','OR','CA','NV','ID','MT','WY','CO','UT','AZ','NM','TX'],
+    ['ND','SD','NE','KS','OK','MN','IA','MO','AR','LA','WI','IL'],
+    ['MI','IN','OH','KY','TN','MS','AL','GA','FL','SC','NC','VA'],
+    ['WV','MD','DE','NJ','PA','NY','CT','RI','MA','VT','NH','ME'],
+    ['HI','AK']
+  ];
+
+  const stateNames = {
+    'WA':'Washington','OR':'Oregon','CA':'California','NV':'Nevada','ID':'Idaho','MT':'Montana',
+    'WY':'Wyoming','CO':'Colorado','UT':'Utah','AZ':'Arizona','NM':'New Mexico','TX':'Texas',
+    'ND':'North Dakota','SD':'South Dakota','NE':'Nebraska','KS':'Kansas','OK':'Oklahoma',
+    'MN':'Minnesota','IA':'Iowa','MO':'Missouri','AR':'Arkansas','LA':'Louisiana',
+    'WI':'Wisconsin','IL':'Illinois','MI':'Michigan','IN':'Indiana','OH':'Ohio','KY':'Kentucky',
+    'TN':'Tennessee','MS':'Mississippi','AL':'Alabama','GA':'Georgia','FL':'Florida',
+    'SC':'South Carolina','NC':'North Carolina','VA':'Virginia','WV':'West Virginia',
+    'MD':'Maryland','DE':'Delaware','NJ':'New Jersey','PA':'Pennsylvania','NY':'New York',
+    'CT':'Connecticut','RI':'Rhode Island','MA':'Massachusetts','VT':'Vermont',
+    'NH':'New Hampshire','ME':'Maine','HI':'Hawaii','AK':'Alaska'
+  };
+
+  const getColor = (abbr) => {
+    const name = stateNames[abbr];
+    const data = STATE_DATA[name];
+    if (!data) return '#E6DFD3';
+    return THREAT_COLORS[data.threat];
+  };
+
+  const svg = d3.select('#usMap');
+  const W = document.getElementById('mapCanvas').clientWidth - 48;
+  const cols = 12;
+  const cellW = Math.max(40, Math.floor(W / cols));
+  const cellH = cellW * 0.7;
+
+  svg.attr('height', (states.length * (cellH + 4)) + 40);
+
+  states.forEach((row, ri) => {
+    row.forEach((abbr, ci) => {
+      const x = ci * (cellW + 3) + 12;
+      const y = ri * (cellH + 3) + 12;
+      const name = stateNames[abbr];
+      const color = getColor(abbr);
+
+      const g = svg.append('g')
+        .attr('cursor', STATE_DATA[name] ? 'pointer' : 'default')
+        .on('click', () => STATE_DATA[name] && showState(name));
+
+      g.append('rect')
+        .attr('x', x).attr('y', y)
+        .attr('width', cellW).attr('height', cellH)
+        .attr('fill', color)
+        .attr('rx', 2)
+        .attr('stroke', '#FAFAF8')
+        .attr('stroke-width', 2)
+        .on('mouseenter', function() { d3.select(this).attr('stroke', '#141210').attr('stroke-width', 2.5); })
+        .on('mouseleave', function() { d3.select(this).attr('stroke', '#FAFAF8').attr('stroke-width', 2); });
+
+      g.append('text')
+        .attr('x', x + cellW/2).attr('y', y + cellH/2 + 4)
+        .attr('text-anchor', 'middle')
+        .attr('font-family', "'IBM Plex Mono', monospace")
+        .attr('font-size', Math.max(8, cellW * 0.2) + 'px')
+        .attr('font-weight', '600')
+        .attr('fill', color === '#E6DFD3' ? '#C8BFB0' : '#FAFAF8')
+        .text(abbr);
+    });
+  });
+}
+
+function showState(name) {
+  const data = STATE_DATA[name] || { threat: 'monitor', chapters: 1, members: 'Unknown', elected: 0, cities: ['Chapter data pending'] };
+  document.getElementById('stateEmpty').style.display = 'none';
+  document.getElementById('stateDetail').classList.add('active');
+  document.getElementById('stateName').textContent = name;
+  const threatEl = document.getElementById('stateThreat');
+  threatEl.innerHTML = `<div class="state-threat ${THREAT_CLASSES[data.threat] || 'threat-monitor'}">${(data.threat||'monitor').toUpperCase()} THREAT</div>`;
+  document.getElementById('stateChapters').textContent = data.chapters;
+  document.getElementById('stateMembers').textContent = data.members;
+  document.getElementById('stateElected').textContent = data.elected + ' Known';
+  document.getElementById('chapterList').innerHTML = (data.cities || []).map(c =>
+    `<div class="chapter-item"><span>${c}</span><span class="chapter-status">ACTIVE</span></div>`
+  ).join('');
+}
+</script>
+
+<script src="/components/search.js"></script>
+<footer></footer>
+<div class="footer-bottom"></div>
+<script src="/components/footer.js"></script>
+</body>
+</html>
