@@ -1,249 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Submit a Tip — DSA Exposed</title>
-  <meta name="description" content="Submit documentation, funding records, statements, and organizational ties to DSA Exposed. All submissions reviewed and sourced before publication." />
+  <link rel="stylesheet" href="/assets/global.css"/>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PK58BBCJX7');
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-PK58BBCJX7");</script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --black:#0A0A0A; --red:#CC0000; --red-dim:#8B0000;
-      --white:#F5F5F5; --gray:#888888; --gray-dk:#2A2A2A;
-      --gray-md:#444444; --yellow:#FFD700; --border:#333333;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--white); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-
-    /* TICKER */
-    .ticker-wrap { background: var(--red); overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 2px solid #900; }
-    .ticker-label { display: inline-block; background: var(--black); color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 14px; margin-right: 20px; vertical-align: middle; }
-    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
-    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
-    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* NAV */
-    nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
-    .nav-logo span { color: var(--red); }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--red); }
-
-    /* PAGE HEADER */
-    .page-header { padding: 60px 40px 40px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
-    .page-header::before { content: 'INTEL'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-family: 'Oswald', sans-serif; font-size: 200px; font-weight: 700; color: rgba(204,0,0,0.05); pointer-events: none; white-space: nowrap; }
-    .page-eyebrow { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 3px; margin-bottom: 12px; }
-    .page-title { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    .page-title span { color: var(--red); }
-    .page-sub { font-size: 16px; color: var(--gray); max-width: 600px; line-height: 1.7; }
-
-    /* MAIN LAYOUT */
-    .main-layout { display: grid; grid-template-columns: 1fr 360px; gap: 0; border-bottom: 1px solid var(--border); }
-
-    /* FORM SECTION */
-    .form-section { padding: 56px 48px; border-right: 1px solid var(--border); }
-    .form-section-title { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-
-    /* FORM FIELDS */
-    .field-group { margin-bottom: 24px; }
-    .field-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; display: block; margin-bottom: 8px; }
-    .field-sublabel { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 1px; margin-bottom: 8px; display: block; }
-    .field-input, .field-select, .field-textarea { width: 100%; background: var(--gray-dk); border: 1px solid var(--border); color: var(--white); font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1px; padding: 12px 16px; outline: none; transition: border-color 0.2s; appearance: none; }
-    .field-input:focus, .field-select:focus, .field-textarea:focus { border-color: var(--red); }
-    .field-input::placeholder, .field-textarea::placeholder { color: var(--gray-md); }
-    .field-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
-    .field-select option { background: var(--gray-dk); }
-
-    /* CATEGORY SELECTOR */
-    .category-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .category-option { display: flex; align-items: center; gap: 10px; background: var(--gray-dk); border: 1px solid var(--border); padding: 12px 14px; cursor: pointer; transition: all 0.2s; }
-    .category-option:hover { border-color: var(--red); }
-    .category-option input[type="checkbox"] { accent-color: var(--red); width: 14px; height: 14px; cursor: pointer; }
-    .category-option-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--white); letter-spacing: 1px; text-transform: uppercase; cursor: pointer; }
-
-    /* SUBMIT BUTTON */
-    .submit-row { display: flex; align-items: center; gap: 20px; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
-    .btn-submit { background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 16px 40px; border: none; cursor: pointer; transition: background 0.2s; display: inline-block; }
-    .btn-submit:hover { background: #AA0000; }
-    .submit-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; line-height: 1.6; }
-
-    /* SIDEBAR */
-    .sidebar { padding: 40px 32px; background: #0f0f0f; }
-    .sidebar-block { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
-    .sidebar-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-    .sidebar-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; margin-bottom: 16px; }
-    .sidebar-title { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
-    .sidebar-text { font-size: 13px; color: var(--gray); line-height: 1.7; }
-    .sidebar-text strong { color: var(--white); }
-
-    /* ACCEPT LIST */
-    .accept-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-    .accept-item { display: flex; align-items: flex-start; gap: 10px; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; line-height: 1.5; }
-    .accept-item::before { content: '✓'; color: var(--red); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-
-    /* FOOTER */
-    footer { background: #050505; border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
-    .footer-logo span { color: var(--red); }
-    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
-
-    @media (max-width: 900px) {
-      .main-layout { grid-template-columns: 1fr; }
-      .form-section { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 20px; }
-      .sidebar { padding: 32px 20px; }
-    }
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; } .nav-links { display: none; }
-      .page-header { padding: 40px 20px 28px; }
-      .category-grid { grid-template-columns: 1fr; }
-      .submit-row { flex-direction: column; align-items: flex-start; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-note { text-align: center; }
-    }
+    .submit-layout{display:grid;grid-template-columns:1fr 360px;gap:0;}
+    .submit-form-wrap{padding:56px 48px;border-right:1px solid var(--rule);}
+    .submit-sidebar{padding:40px 32px;background:var(--paper-dk);}
+    .sidebar-block{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--rule);}
+    .sidebar-block:last-child{border-bottom:none;}
+    .sidebar-label{font-family:var(--font-mono);font-size:9px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+    .sidebar-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+    .sidebar-text{font-size:13px;color:var(--muted);line-height:1.7;}
+    @media(max-width:900px){.submit-layout{grid-template-columns:1fr;}.submit-form-wrap{padding:40px 24px;border-right:none;}.submit-sidebar{padding:32px 24px;}}
   </style>
 </head>
 <body>
-
-<div class="ticker-wrap"></div>
-<script src="/components/ticker.js"></script>
-
-<nav></nav>
-<script src="/components/nav.js"></script>
-
-<!-- PAGE HEADER -->
+<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
+<nav></nav><script src="/components/nav.js"></script>
 <div class="page-header">
-  <div class="page-eyebrow">// INTELLIGENCE SUBMISSION — SECURE FORM</div>
-  <h1 class="page-title">Submit <span>a Tip</span></h1>
-  <p class="page-sub">Documentation, funding records, statements, organizational ties, chapter activity. All submissions reviewed and verified before publication. Anonymous submissions accepted.</p>
+  <div class="page-header-ghost">SUBMIT</div>
+  <div class="section-eyebrow">// Intelligence Submission</div>
+  <h1>Submit <em>a Tip</em></h1>
+  <p>Documentation, funding records, statements, organizational ties. All submissions reviewed and verified against primary sources before publication. Anonymous tips accepted.</p>
 </div>
-
-<!-- MAIN LAYOUT -->
-<div class="main-layout">
-
-  <!-- FORM -->
-  <div class="form-section">
-    <div class="form-section-title">// Intelligence Submission Form</div>
-    <form id="tipForm" action="https://formsubmit.co/info@dsaexposed.com" method="POST">
-      <input type="hidden" name="_subject" value="New DSA Exposed Tip Submission" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_next" value="https://dsaexposed.com/submit/thanks.html" />
-
+<div class="submit-layout">
+  <div class="submit-form-wrap">
+    <div class="section-eyebrow">// Tip Submission Form</div>
+    <div class="section-title">Submit Intelligence</div>
+    <hr class="section-rule"/>
+    <form name="tip-submission" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/submit/thanks.html">
+      <input type="hidden" name="form-name" value="tip-submission"/>
+      <div style="display:none;"><input name="bot-field"/></div>
       <div class="field-group">
-        <label class="field-label" for="tip-category">// Category</label>
-        <span class="field-sublabel">What type of intelligence are you submitting?</span>
-        <select class="field-select" id="tip-category" name="category" required>
-          <option value="" disabled selected>SELECT CATEGORY...</option>
-          <option value="terrorism-ties">Terrorism Ties</option>
-          <option value="funding">Funding / Dark Money</option>
-          <option value="rep-profile">Rep / Official Profile</option>
-          <option value="chapter-activity">Chapter Activity</option>
-          <option value="red-green-axis">Red-Green Axis Connection</option>
-          <option value="ideology">Ideology / Platform</option>
-          <option value="statement">Statement / Quote</option>
-          <option value="media">Media / Video Suggestion</option>
-          <option value="other">Other</option>
+        <label class="field-label">Category *</label>
+        <span class="field-sublabel">What type of intelligence is this?</span>
+        <select class="field-select" name="category" required>
+          <option value="">Select category...</option>
+          <option>Terrorism / Terror-Adjacent Ties</option>
+          <option>Funding / Campaign Finance</option>
+          <option>Statement / Quote / Vote</option>
+          <option>Organizational Connection</option>
+          <option>Chapter / Local Activity</option>
+          <option>Primary / Election</option>
+          <option>Media / Video</option>
+          <option>Other</option>
         </select>
       </div>
-
       <div class="field-group">
-        <label class="field-label" for="tip-subject">// Subject</label>
-        <span class="field-sublabel">Name of person, organization, or chapter this tip concerns</span>
-        <input class="field-input" type="text" id="tip-subject" name="subject" placeholder="e.g. NYC DSA Chapter, Rep. [Name], CAIR Michigan..." required />
+        <label class="field-label">Subject / Person / Organization *</label>
+        <span class="field-sublabel">Who or what does this tip concern?</span>
+        <input class="field-input" type="text" name="subject" placeholder="e.g. Rashida Tlaib, CAIR Michigan, NYC DSA..." required/>
       </div>
-
       <div class="field-group">
-        <label class="field-label" for="tip-description">// Intelligence Summary</label>
-        <span class="field-sublabel">Describe what you know. Be as specific as possible.</span>
-        <textarea class="field-textarea" id="tip-description" name="description" placeholder="Describe the connection, statement, funding trail, event, or activity..." style="min-height:160px;" required></textarea>
+        <label class="field-label">Intelligence Summary *</label>
+        <span class="field-sublabel">Describe what you have. Be specific. What happened, when, and who was involved?</span>
+        <textarea class="field-textarea" name="summary" placeholder="Describe the intelligence in detail..." required style="min-height:160px;"></textarea>
       </div>
-
       <div class="field-group">
-        <label class="field-label" for="tip-source">// Source / Documentation</label>
-        <span class="field-sublabel">Link to source, document name, or describe where this can be verified</span>
-        <textarea class="field-textarea" id="tip-source" name="source" placeholder="URL, FEC filing number, congressional record date, video link, document title..."></textarea>
+        <label class="field-label">Source / Documentation *</label>
+        <span class="field-sublabel">Link to primary source, court record, FEC filing, video URL, or describe documentation you can provide.</span>
+        <textarea class="field-textarea" name="source" placeholder="Source URL, court record number, FEC filing, video link, or document description..." required></textarea>
       </div>
-
       <div class="field-group">
-        <label class="field-label">// Evidence Type (check all that apply)</label>
-        <div class="category-grid">
-          <label class="category-option"><input type="checkbox" name="evidence_words" value="yes" /><span class="category-option-label">Words / Statements</span></label>
-          <label class="category-option"><input type="checkbox" name="evidence_funding" value="yes" /><span class="category-option-label">Funding / FEC Records</span></label>
-          <label class="category-option"><input type="checkbox" name="evidence_support" value="yes" /><span class="category-option-label">Support / Endorsement</span></label>
-          <label class="category-option"><input type="checkbox" name="evidence_networks" value="yes" /><span class="category-option-label">Network / Org Ties</span></label>
-          <label class="category-option"><input type="checkbox" name="evidence_video" value="yes" /><span class="category-option-label">Video / Audio</span></label>
-          <label class="category-option"><input type="checkbox" name="evidence_docs" value="yes" /><span class="category-option-label">Documents / Records</span></label>
-        </div>
+        <label class="field-label">Your Contact (Optional)</label>
+        <span class="field-sublabel">Anonymous tips accepted. Provide email only if you want a follow-up from our team.</span>
+        <input class="field-input" type="email" name="contact" placeholder="your@email.com (optional — leave blank to remain anonymous)"/>
       </div>
-
-      <div class="field-group">
-        <label class="field-label" for="tip-contact">// Contact (Optional)</label>
-        <span class="field-sublabel">Email if you want to be contacted for follow-up. Anonymous submissions accepted.</span>
-        <input class="field-input" type="email" id="tip-contact" name="contact_email" placeholder="your@email.com (optional — leave blank to submit anonymously)" />
-      </div>
-
-      <div class="submit-row">
-        <button type="submit" class="btn-submit">Submit Intelligence →</button>
-        <div class="submit-note">
-          All submissions are reviewed by our research team.<br>
-          Nothing is published without independent verification.<br>
-          Anonymous tips are accepted and protected.
-        </div>
-      </div>
+      <button type="submit" class="btn-primary btn" style="width:100%;text-align:center;padding:16px;">Submit Intelligence &rarr;</button>
     </form>
   </div>
-
-  <!-- SIDEBAR -->
-  <div class="sidebar">
+  <div class="submit-sidebar">
     <div class="sidebar-block">
-      <div class="sidebar-label">// What We Accept</div>
-      <div class="sidebar-title">Intelligence We're Looking For</div>
-      <div class="accept-list">
-        <div class="accept-item">On-record statements supporting terrorism, communism, or anti-American positions</div>
-        <div class="accept-item">FEC filings, donor records, or funding trails</div>
-        <div class="accept-item">DSA chapter activity — events, organizers, local candidates</div>
-        <div class="accept-item">Connections between DSA officials and CAIR, AMP, BDS, or terror-linked orgs</div>
-        <div class="accept-item">Video or audio of public statements</div>
-        <div class="accept-item">Court records, DOJ filings, or FBI documents</div>
-        <div class="accept-item">Congressional voting records or floor statements</div>
-        <div class="accept-item">New DSA-endorsed candidates or elected officials</div>
-        <div class="accept-item">Red-Green Axis coordination — joint events, shared infrastructure</div>
-        <div class="accept-item">Video suggestions for the Media Library</div>
-      </div>
-    </div>
-    <div class="sidebar-block">
-      <div class="sidebar-label">// Our Standard</div>
-      <div class="sidebar-title">Verification Policy</div>
-      <div class="sidebar-text"><strong>We publish nothing without independent verification.</strong> Every claim on this site links to a primary source. We do not publish rumors, speculation, or unverified claims — only documented fact.</div>
+      <div class="sidebar-label">// What We Need</div>
+      <div class="sidebar-title">High-Value Intelligence</div>
+      <div class="sidebar-text">We prioritize: documented funding connections, statements with primary source links, FEC filing evidence, court record excerpts, verified video, and chapter-level activity documentation.</div>
     </div>
     <div class="sidebar-block">
       <div class="sidebar-label">// Anonymous Tips</div>
-      <div class="sidebar-title">Your Privacy</div>
-      <div class="sidebar-text">Contact information is <strong>completely optional.</strong> You may submit anonymously. If you have sensitive documents, you may also email us directly at <strong>info@dsaexposed.com</strong></div>
+      <div class="sidebar-title">You Can Stay Anonymous</div>
+      <div class="sidebar-text">Leave the contact field blank. We will not attempt to identify you. Your submission is treated as anonymous unless you choose to provide contact information.</div>
+    </div>
+    <div class="sidebar-block">
+      <div class="sidebar-label">// Verification</div>
+      <div class="sidebar-title">We Verify Everything</div>
+      <div class="sidebar-text">All tips are cross-referenced against primary sources before publication. We do not publish unverified claims. Provide as much primary documentation as possible.</div>
     </div>
     <div class="sidebar-block">
       <div class="sidebar-label">// Direct Contact</div>
-      <div class="sidebar-title">Email Intel Directly</div>
-      <div class="sidebar-text">For sensitive submissions, large document sets, or follow-up on prior tips:<br><br><strong>info@dsaexposed.com</strong></div>
+      <div class="sidebar-title">Email Us Directly</div>
+      <div class="sidebar-text"><strong>info@dsaexposed.com</strong><br><br>For sensitive documentation or secure file transfer, email us directly.</div>
     </div>
   </div>
-
 </div>
-
-<footer></footer>
+<footer></footer><div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
-
-</body>
-</html>
+<script src="/components/search.js"></script>
+</body></html>
