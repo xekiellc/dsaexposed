@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DSA Exposed — Documenting the Radical Left</title>
   <meta name="description" content="Tracking the Democratic Socialists of America: their words, funding, terrorism ties, communist ideology, and infiltration of American government." />
-  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,3 +22,418 @@
       --red:     #CC0000;
       --red-dim: #8B0000;
       --white:   #F5F5F5;
+      --gray:    #888888;
+      --gray-dk: #2A2A2A;
+      --gray-md: #444444;
+      --yellow:  #FFD700;
+      --border:  #333333;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* TICKER */
+    .ticker-wrap { background: var(--red); overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 2px solid #900; }
+    .ticker-label { display: inline-block; background: var(--black); color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 14px; margin-right: 20px; vertical-align: middle; }
+    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
+    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
+    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* NAV */
+    nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--red); }
+
+    /* HERO */
+    .hero { position: relative; padding: 80px 40px 60px; border-bottom: 1px solid var(--border); overflow: hidden; }
+    .hero::before { content: 'EXPOSED'; position: absolute; right: -20px; top: 50%; transform: translateY(-50%); font-family: 'Oswald', sans-serif; font-size: 220px; font-weight: 700; color: rgba(204,0,0,0.06); pointer-events: none; white-space: nowrap; }
+    .hero-eyebrow { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+    .hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(42px, 6vw, 80px); font-weight: 700; line-height: 1.0; letter-spacing: 2px; text-transform: uppercase; max-width: 800px; margin-bottom: 24px; }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero-sub { font-size: 18px; color: var(--gray); max-width: 600px; line-height: 1.7; margin-bottom: 40px; }
+    .hero-stats { display: flex; gap: 48px; border-top: 1px solid var(--border); padding-top: 32px; flex-wrap: wrap; }
+    .stat-num { font-family: 'Oswald', sans-serif; font-size: 40px; font-weight: 700; color: var(--red); line-height: 1; }
+    .stat-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+
+    /* ALERT BANNER */
+    .alert-banner { background: var(--red-dim); border-left: 4px solid var(--yellow); padding: 20px 40px; display: flex; align-items: center; gap: 20px; }
+    .alert-tag { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--yellow); white-space: nowrap; }
+    .alert-text { font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--white); }
+    .alert-text strong { color: var(--yellow); }
+
+    /* SECTIONS */
+    .section { padding: 64px 40px; border-bottom: 1px solid var(--border); }
+    .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 40px; }
+    .section-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; text-transform: uppercase; }
+    .section-title { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+    .section-rule { flex: 1; height: 1px; background: var(--border); }
+
+    /* PILLAR GRID */
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; background: var(--border); }
+    .pillar-card { background: var(--black); padding: 32px 28px; transition: background 0.2s; cursor: pointer; }
+    .pillar-card:hover { background: var(--gray-dk); }
+    .pillar-icon { font-size: 28px; margin-bottom: 16px; }
+    .pillar-name { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .pillar-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* REP CARDS */
+    .rep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; background: var(--border); }
+    .rep-card { background: var(--gray-dk); padding: 28px; position: relative; }
+    .rep-card::before { content: 'FILE OPEN'; position: absolute; top: 16px; right: 16px; font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--red); letter-spacing: 2px; }
+    .rep-district { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; margin-bottom: 8px; }
+    .rep-name { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; }
+    .rep-quote { font-size: 13px; font-style: italic; color: var(--yellow); border-left: 2px solid var(--red); padding-left: 12px; margin-bottom: 16px; line-height: 1.5; }
+    .rep-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .rep-tag { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 3px 8px; border: 1px solid var(--border); color: var(--gray); text-transform: uppercase; }
+    .rep-tag.danger { border-color: var(--red); color: var(--red); }
+
+    /* NAV CARDS */
+    .nav-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; background: var(--border); }
+    .nav-card { background: var(--black); padding: 28px; border-top: 3px solid transparent; transition: border-color 0.2s, background 0.2s; display: block; }
+    .nav-card:hover { border-color: var(--red); background: var(--gray-dk); }
+    .nav-card-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+    .nav-card-title { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .nav-card-desc { font-size: 13px; color: var(--gray); line-height: 1.5; }
+    .nav-card-arrow { margin-top: 16px; font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--red); letter-spacing: 2px; }
+
+    /* STATEMENT FEED */
+    .statement-feed { display: flex; flex-direction: column; gap: 2px; }
+    .statement-item { background: var(--gray-dk); padding: 20px 24px; display: grid; grid-template-columns: 160px 1fr auto; gap: 24px; align-items: start; }
+    .statement-meta { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; line-height: 1.8; }
+    .statement-meta strong { display: block; color: var(--white); font-size: 12px; margin-bottom: 4px; }
+    .statement-quote { font-size: 14px; font-style: italic; color: var(--white); line-height: 1.6; }
+    .statement-source { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--red); letter-spacing: 1px; white-space: nowrap; text-align: right; }
+
+    /* NEWS FEED */
+    .news-feed { display: flex; flex-direction: column; gap: 2px; }
+    .news-item { background: var(--gray-dk); padding: 20px 24px; display: grid; grid-template-columns: 100px 1fr auto; gap: 20px; align-items: start; border-left: 3px solid transparent; transition: border-color 0.2s; text-decoration: none; color: inherit; }
+    .news-item:hover { border-left-color: var(--red); background: #333; }
+    .news-item.terrorism { border-left-color: var(--red); }
+    .news-item.funding { border-left-color: var(--yellow); }
+    .news-item.primaries { border-left-color: #FF6600; }
+    .news-item.ideology { border-left-color: #9C27B0; }
+    .news-item.networks { border-left-color: #4CAF50; }
+    .news-cat { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding-top: 3px; }
+    .news-cat.terrorism { color: var(--red); }
+    .news-cat.funding { color: var(--yellow); }
+    .news-cat.primaries { color: #FF6600; }
+    .news-cat.ideology { color: #CE93D8; }
+    .news-cat.networks { color: #4CAF50; }
+    .news-cat.general { color: var(--gray); }
+    .news-title { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 1px; margin-bottom: 6px; line-height: 1.3; }
+    .news-desc { font-size: 13px; color: var(--gray); line-height: 1.5; }
+    .news-meta { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray-md); letter-spacing: 1px; text-align: right; white-space: nowrap; line-height: 1.8; }
+
+    /* SUBMIT CTA */
+    .submit-cta { background: var(--gray-dk); border: 1px solid var(--border); border-left: 4px solid var(--red); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .submit-cta-text h3 { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .submit-cta-text p { font-size: 14px; color: var(--gray); }
+    .btn-primary { background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding: 14px 32px; border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s; display: inline-block; }
+    .btn-primary:hover { background: #AA0000; }
+
+    /* FOOTER */
+    footer { background: #050505; border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
+    .footer-logo span { color: var(--red); }
+    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; } .nav-links { display: none; }
+      .hero { padding: 48px 20px 40px; }
+      .hero-stats { gap: 24px; }
+      .section { padding: 48px 20px; }
+      .alert-banner { padding: 16px 20px; flex-direction: column; gap: 8px; }
+      .statement-item { grid-template-columns: 1fr; }
+      .news-item { grid-template-columns: 1fr; }
+      .news-meta { text-align: left; }
+      .submit-cta { flex-direction: column; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-note { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ticker-wrap"></div>
+<script src="/components/ticker.js"></script>
+
+<nav></nav>
+<script src="/components/nav.js"></script>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">// INTELLIGENCE DOSSIER — DEMOCRATIC SOCIALISTS OF AMERICA</div>
+  <h1>Documenting<br>the <em>Radical</em><br>Left</h1>
+  <p class="hero-sub">Words. Funding. Support. Networks. The DSA's war on America — tracked, sourced, and archived in full.</p>
+  <div class="hero-stats">
+    <div class="stat-block">
+      <div class="stat-num">92+</div>
+      <div class="stat-label">DSA-Elected Officials</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">250+</div>
+      <div class="stat-label">Active Chapters</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">$12M+</div>
+      <div class="stat-label">Tracked Funding</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">Terrorist-Tied Orgs</div>
+    </div>
+  </div>
+</section>
+
+<!-- ALERT -->
+<div class="alert-banner">
+  <div class="alert-tag">⚠ BREAKING</div>
+  <div class="alert-text"><strong>NYC Primary Results:</strong> Three DSA-backed candidates win congressional primaries — all on record with statements supporting the destruction of Israel, opposing U.S. counter-terrorism operations, and calling for the dismantling of American capitalism. Full profiles below.</div>
+</div>
+
+<!-- FOUR PILLARS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">// Framework</div>
+    <div class="section-title">How We Track Them</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <div class="pillar-icon">🗣</div>
+      <div class="pillar-name">Words</div>
+      <div class="pillar-desc">Their own statements — speeches, social posts, interviews, floor remarks. Dated, sourced, verbatim. No interpretation needed.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">💰</div>
+      <div class="pillar-name">Funding</div>
+      <div class="pillar-desc">Who writes the checks. PACs, bundlers, dark money networks, and individual donors traced to designated terrorist organizations.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">✊</div>
+      <div class="pillar-name">Support</div>
+      <div class="pillar-desc">Who endorses them, marches with them, and platforms them. Joint appearances, co-signed letters, shared stages with terror-linked figures.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">🕸</div>
+      <div class="pillar-name">Networks</div>
+      <div class="pillar-desc">The org web. Marxist coalitions. Islamist-aligned groups. The Red-Green Axis — documented connections, cross-linked and mapped.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NYC THREE -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">// Priority Files</div>
+    <div class="section-title">NYC Primary Winners</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="rep-grid">
+    <div class="rep-card">
+      <div class="rep-district">NY · PRIMARY WIN 2026</div>
+      <div class="rep-name">Rep. Profile #1</div>
+      <div class="rep-quote">"[On-record statement — sourced from congressional record or public interview]"</div>
+      <div class="rep-tags">
+        <span class="rep-tag danger">Terrorism Ties</span>
+        <span class="rep-tag danger">Anti-America</span>
+        <span class="rep-tag">DSA Endorsed</span>
+        <span class="rep-tag">BDS Support</span>
+      </div>
+    </div>
+    <div class="rep-card">
+      <div class="rep-district">NY · PRIMARY WIN 2026</div>
+      <div class="rep-name">Rep. Profile #2</div>
+      <div class="rep-quote">"[On-record statement — sourced from congressional record or public interview]"</div>
+      <div class="rep-tags">
+        <span class="rep-tag danger">Hamas Support</span>
+        <span class="rep-tag danger">Anti-Capitalism</span>
+        <span class="rep-tag">DSA Endorsed</span>
+        <span class="rep-tag">CAIR Ties</span>
+      </div>
+    </div>
+    <div class="rep-card">
+      <div class="rep-district">NY · PRIMARY WIN 2026</div>
+      <div class="rep-name">Rep. Profile #3</div>
+      <div class="rep-quote">"[On-record statement — sourced from congressional record or public interview]"</div>
+      <div class="rep-tags">
+        <span class="rep-tag danger">Terrorism Ties</span>
+        <span class="rep-tag danger">Communist Platform</span>
+        <span class="rep-tag">DSA Endorsed</span>
+        <span class="rep-tag">BDS Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE NEWS FEED -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">// Live Feed</div>
+    <div class="section-title">Latest Intelligence</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="news-feed" id="newsFeed">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--gray);padding:20px;text-align:center;letter-spacing:2px;">
+      LOADING INTEL FEED...
+    </div>
+  </div>
+</section>
+
+<!-- SITE SECTIONS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">// Intelligence Archive</div>
+    <div class="section-title">Explore the Dossier</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="nav-cards">
+    <a href="terrorism/" class="nav-card">
+      <div class="nav-card-label">// Section 01</div>
+      <div class="nav-card-title">Terrorism Ties</div>
+      <div class="nav-card-desc">Documented connections to designated terrorist organizations — through words, funding, support, and shared networks.</div>
+      <div class="nav-card-arrow">VIEW FILES →</div>
+    </a>
+    <a href="reps/" class="nav-card">
+      <div class="nav-card-label">// Section 02</div>
+      <div class="nav-card-title">Rep Tracker</div>
+      <div class="nav-card-desc">Every DSA-aligned elected official in America. Their statements, votes, donors, and organizational ties — in full.</div>
+      <div class="nav-card-arrow">VIEW FILES →</div>
+    </a>
+    <a href="funding/" class="nav-card">
+      <div class="nav-card-label">// Section 03</div>
+      <div class="nav-card-title">Follow the Money</div>
+      <div class="nav-card-desc">FEC filings, PAC networks, dark money trails. Who funds the DSA and what they expect in return.</div>
+      <div class="nav-card-arrow">VIEW FILES →</div>
+    </a>
+    <a href="ideology/" class="nav-card">
+      <div class="nav-card-label">// Section 04</div>
+      <div class="nav-card-title">Communist Ideology</div>
+      <div class="nav-card-desc">DSA's Marxist roots, anti-capitalism platform, and published vision for destroying the American economic system.</div>
+      <div class="nav-card-arrow">VIEW FILES →</div>
+    </a>
+    <a href="networks/" class="nav-card">
+      <div class="nav-card-label">// Section 05</div>
+      <div class="nav-card-title">The Red-Green Axis</div>
+      <div class="nav-card-desc">The strategic alliance between Marxist and Islamist organizations — mapped, sourced, and documented.</div>
+      <div class="nav-card-arrow">VIEW FILES →</div>
+    </a>
+    <a href="chapters/" class="nav-card">
+      <div class="nav-card-label">// Section 06</div>
+      <div class="nav-card-title">Chapter Directory</div>
+      <div class="nav-card-desc">State by state. City by city. District by district. Every active DSA chapter in America and their local activity.</div>
+      <div class="nav-card-arrow">VIEW FILES →</div>
+    </a>
+    <a href="primaries/" class="nav-card">
+      <div class="nav-card-label">// Section 07</div>
+      <div class="nav-card-title">Primary Watch</div>
+      <div class="nav-card-desc">Tracking DSA candidates in primaries across America. Who is running, who won, who is next.</div>
+      <div class="nav-card-arrow">VIEW FILES →</div>
+    </a>
+    <a href="media/" class="nav-card">
+      <div class="nav-card-label">// Section 08</div>
+      <div class="nav-card-title">Media Library</div>
+      <div class="nav-card-desc">Videos, documentaries, survivor testimony, and expert analysis exposing socialism, communism, and the DSA.</div>
+      <div class="nav-card-arrow">VIEW FILES →</div>
+    </a>
+  </div>
+</section>
+
+<!-- STATEMENT ARCHIVE PREVIEW -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">// Their Words</div>
+    <div class="section-title">Statement Archive</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="statement-feed">
+    <div class="statement-item">
+      <div class="statement-meta">
+        <strong>DSA National</strong>
+        RESOLUTION<br>AUG 2023<br>NATIONAL CONVENTION
+      </div>
+      <div class="statement-quote">"The DSA reaffirms its support for the Palestinian people's struggle for liberation and their right to resist occupation by any means necessary."</div>
+      <div class="statement-source">SOURCE:<br>DSA.ORG<br>RESOLUTION #34</div>
+    </div>
+    <div class="statement-item">
+      <div class="statement-meta">
+        <strong>DSA Platform</strong>
+        PUBLISHED DOCUMENT<br>2021<br>NATIONAL PLATFORM
+      </div>
+      <div class="statement-quote">"We are socialists because we reject an international economic order sustained by private profit, alienated labor, brutal force, and the elevation of property rights over human rights."</div>
+      <div class="statement-source">SOURCE:<br>DSA.ORG<br>PLATFORM 2021</div>
+    </div>
+    <div class="statement-item">
+      <div class="statement-meta">
+        <strong>Rashida Tlaib</strong>
+        SOCIAL MEDIA<br>OCT 2023<br>U.S. CONGRESS
+      </div>
+      <div class="statement-quote">"From the river to the sea, Palestine will be free."</div>
+      <div class="statement-source">SOURCE:<br>HOUSE RECORD<br>NOV 2023</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBMIT TIP -->
+<section class="section">
+  <div class="submit-cta">
+    <div class="submit-cta-text">
+      <h3>Have Intel? Submit a Tip</h3>
+      <p>Documentation, funding records, statements, organizational ties. All submissions reviewed and sourced before publication.</p>
+    </div>
+    <a href="submit/" class="btn-primary">Submit a Tip →</a>
+  </div>
+</section>
+
+<footer></footer>
+<script src="/components/footer.js"></script>
+
+<script>
+  // Load news feed from data/news.json
+  fetch('/data/news.json')
+    .then(r => r.json())
+    .then(articles => {
+      const feed = document.getElementById('newsFeed');
+      if (!articles || articles.length === 0) {
+        feed.innerHTML = '<div style="font-family:\'Share Tech Mono\',monospace;font-size:11px;color:var(--gray);padding:20px;text-align:center;letter-spacing:2px;">NO ARTICLES FOUND</div>';
+        return;
+      }
+
+      // Show latest 6
+      const latest = articles.slice(0, 6);
+      feed.innerHTML = latest.map(a => {
+        const date = new Date(a.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const cat = a.category || 'general';
+        return `
+          <a href="${a.url}" target="_blank" rel="noopener" class="news-item ${cat}">
+            <div class="news-cat ${cat}">${cat.toUpperCase()}</div>
+            <div>
+              <div class="news-title">${a.title}</div>
+              <div class="news-desc">${a.description ? a.description.substring(0, 140) + '...' : ''}</div>
+            </div>
+            <div class="news-meta">${a.source}<br>${date}</div>
+          </a>
+        `;
+      }).join('');
+    })
+    .catch(() => {
+      document.getElementById('newsFeed').innerHTML = '<div style="font-family:\'Share Tech Mono\',monospace;font-size:11px;color:var(--gray);padding:20px;text-align:center;letter-spacing:2px;">FEED UNAVAILABLE</div>';
+    });
+</script>
+
+</body>
+</html>
