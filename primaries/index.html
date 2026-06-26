@@ -66,12 +66,24 @@
     .section-title { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
     .section-rule { flex: 1; height: 1px; background: var(--border); }
 
+    /* MAMDANI SWEEP BANNER */
+    .sweep-banner { background: #110000; border: 1px solid var(--red); border-left: 4px solid var(--red); padding: 32px 40px; margin-bottom: 2px; }
+    .sweep-eyebrow { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--red); letter-spacing: 3px; margin-bottom: 12px; }
+    .sweep-title { font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .sweep-title span { color: var(--red); }
+    .sweep-desc { font-size: 14px; color: var(--gray); line-height: 1.7; max-width: 900px; margin-bottom: 20px; }
+    .sweep-desc strong { color: var(--white); }
+    .sweep-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+    .sweep-stat { background: var(--black); padding: 14px 20px; border-left: 2px solid var(--red); }
+    .sweep-stat-num { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; color: var(--red); line-height: 1; }
+    .sweep-stat-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 1px; margin-top: 4px; }
+
     /* RACE CARDS */
     .race-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2px; background: var(--border); }
     .race-card { background: var(--gray-dk); padding: 26px; position: relative; border-top: 3px solid var(--border); }
-    .race-card.won   { border-top-color: var(--red); }
-    .race-card.watch { border-top-color: var(--yellow); }
-    .race-card.lost  { border-top-color: var(--gray-md); }
+    .race-card.won     { border-top-color: var(--red); }
+    .race-card.watch   { border-top-color: var(--yellow); }
+    .race-card.lost    { border-top-color: var(--gray-md); }
     .race-card.upcoming { border-top-color: #FF6600; }
     .race-status { position: absolute; top: 16px; right: 16px; font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; padding: 3px 8px; text-transform: uppercase; }
     .race-status.won      { border: 1px solid var(--red); color: var(--red); }
@@ -81,11 +93,13 @@
     .race-district { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 2px; margin-bottom: 6px; }
     .race-name { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
     .race-office { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; margin-bottom: 12px; }
-    .race-result { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+    .race-result { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 8px; }
     .race-result.won-text   { color: var(--red); }
     .race-result.watch-text { color: var(--yellow); }
     .race-result.lost-text  { color: var(--gray); }
     .race-result.up-text    { color: #FF6600; }
+    .race-quote { font-size: 12px; font-style: italic; color: var(--yellow); border-left: 2px solid var(--red); padding-left: 10px; margin-bottom: 6px; line-height: 1.5; }
+    .race-cite { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 1px; margin-bottom: 12px; }
     .race-desc { font-size: 12px; color: var(--gray); line-height: 1.6; margin-bottom: 14px; }
     .race-desc strong { color: var(--white); }
     .race-tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -121,6 +135,8 @@
       .stats-bar { flex-wrap: wrap; }
       .stats-bar-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
       .section { padding: 36px 20px; }
+      .sweep-banner { padding: 24px 20px; }
+      .sweep-stats { gap: 12px; }
       .trend-table th, .trend-table td { padding: 10px 12px; font-size: 10px; }
       .submit-cta { flex-direction: column; padding: 24px 20px; }
       footer { flex-direction: column; text-align: center; }
@@ -145,69 +161,170 @@
 
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stats-bar-item"><div class="stats-bar-num green">3</div><div class="stats-bar-label">NYC 2026 Primary Wins</div></div>
-  <div class="stats-bar-item"><div class="stats-bar-num">22+</div><div class="stats-bar-label">DSA Candidates Running 2026</div></div>
+  <div class="stats-bar-item"><div class="stats-bar-num green">3</div><div class="stats-bar-label">NYC 2026 Congressional Wins</div></div>
+  <div class="stats-bar-item"><div class="stats-bar-num green">6+</div><div class="stats-bar-label">NY State Legislature Wins</div></div>
   <div class="stats-bar-item"><div class="stats-bar-num yellow">8</div><div class="stats-bar-label">Races to Watch — 2026</div></div>
   <div class="stats-bar-item"><div class="stats-bar-num">92+</div><div class="stats-bar-label">Total DSA Officials In Office</div></div>
 </div>
 
-<!-- NYC 2026 WINS -->
+<!-- MAMDANI SWEEP -->
 <section class="section">
   <div class="section-header">
-    <div class="section-label">// 2026 — Breaking</div>
-    <div class="section-title">NYC 2026 Primary Results — DSA Wins</div>
+    <div class="section-label">// June 23, 2026 — The Socialist Earthquake</div>
+    <div class="section-title">Mamdani's Machine Goes 3-for-3</div>
+    <div class="section-rule"></div>
+  </div>
+  <div class="sweep-banner">
+    <div class="sweep-eyebrow">// NYC MAYOR ZOHRAN MAMDANI — DSA MEMBER — MACHINE BOSS</div>
+    <div class="sweep-title">The <span>Socialist Sweep</span> — NYC June 23, 2026</div>
+    <div class="sweep-desc">
+      NYC Mayor Zohran Mamdani — DSA member, Hamas-praise rapper, "globalize the intifada" defender — endorsed three congressional candidates and went 3-for-3, <strong>toppling two sitting Democratic incumbents</strong> and seizing an open seat. At the DSA victory party that night, the crowd chanted "From the river to the sea, Palestine will be free." DSA representation in Congress doubled in one night.
+      <br><br>
+      <strong>Mamdani's endorsed slate all ran on anti-Israel platforms, opposition to ICE, and socialist economic agendas.</strong> House Minority Leader Hakeem Jeffries was forced to divert resources from flipping Republican seats to defending his own incumbents — an internal civil war Mamdani deliberately created. The results confirmed: the DSA now controls the direction of the Democratic Party in the nation's largest city.
+    </div>
+    <div class="sweep-stats">
+      <div class="sweep-stat"><div class="sweep-stat-num">3-0</div><div class="sweep-stat-label">Mamdani's Record</div></div>
+      <div class="sweep-stat"><div class="sweep-stat-num">2</div><div class="sweep-stat-label">Incumbents Toppled</div></div>
+      <div class="sweep-stat"><div class="sweep-stat-num">$9.6M</div><div class="sweep-stat-label">Anti-DSA Spending — Failed</div></div>
+      <div class="sweep-stat"><div class="sweep-stat-num">15+</div><div class="sweep-stat-label">DSA Lawmakers in NY After Night</div></div>
+    </div>
+  </div>
+
+  <!-- THE THREE -->
+  <div class="race-grid" style="margin-top:2px;">
+
+    <div class="race-card won">
+      <div class="race-status won">WON PRIMARY</div>
+      <div class="race-district">NEW YORK · NY-7 · BROOKLYN / QUEENS</div>
+      <div class="race-name">Claire Valdez</div>
+      <div class="race-office">DSA MEMBER · DEFEATED ANTONIO REYNOSO</div>
+      <div class="race-result won-text">✓ PRIMARY WIN — JUNE 23, 2026</div>
+      <div class="race-quote">"This is exactly why I really love being a member of DSA."</div>
+      <div class="race-cite">— INTERVIEW WITH STREAMER WHO CALLED JEWS "DEMONIC ETHNICITY" · MAY 2026</div>
+      <div class="race-desc"><strong>On October 7, 2023</strong>, liked X post celebrating Hamas attack: "Glory to the resistance." Called Israel's actions "genocide" and "apartheid." Pledged to block ALL military aid to Israel. Sponsored "Not on Our Dime!" bill. Marched with Jewish Voice for Peace. Supports arrest of Netanyahu.</div>
+      <div class="race-tags">
+        <span class="race-tag r">DSA Member</span>
+        <span class="race-tag r">Oct 7 Celebration</span>
+        <span class="race-tag r">Anti-Israel</span>
+        <span class="race-tag y">BDS Support</span>
+        <span class="race-tag y">Block the Bombs Act</span>
+      </div>
+    </div>
+
+    <div class="race-card won">
+      <div class="race-status won">WON PRIMARY</div>
+      <div class="race-district">NEW YORK · NY-13 · UPPER MANHATTAN / BRONX</div>
+      <div class="race-name">Darializa Avila Chevalier</div>
+      <div class="race-office">DSA MEMBER · UPSET 5-TERM INCUMBENT ESPAILLAT</div>
+      <div class="race-result won-text">✓ PRIMARY WIN — JUNE 23, 2026 · 49%-46%</div>
+      <div class="race-quote">"The premise of that question ignores the 75 years of occupation..."</div>
+      <div class="race-cite">— WHEN ASKED DIRECTLY TO CONDEMN HAMAS OCT. 7 ATTACK · BROADWAY DEMOCRATS FORUM</div>
+      <div class="race-desc">Attended pro-Hamas Times Square rally <strong>Oct. 8, 2023 — the day after 1,200 Israelis were massacred.</strong> Co-founded Columbia University Apartheid Divest. Calls for abolishing police, prisons, and all borders. "All deportations are wrong" — even for convicted criminals. Will likely be one of the most far-left members of Congress in history.</div>
+      <div class="race-tags">
+        <span class="race-tag r">DSA Member</span>
+        <span class="race-tag r">Refused Hamas Condemnation</span>
+        <span class="race-tag r">Oct 8 Rally</span>
+        <span class="race-tag y">Abolish Police</span>
+        <span class="race-tag y">Abolish Borders</span>
+      </div>
+    </div>
+
+    <div class="race-card won">
+      <div class="race-status won">WON PRIMARY</div>
+      <div class="race-district">NEW YORK · NY-10 · LOWER MANHATTAN / BROOKLYN</div>
+      <div class="race-name">Brad Lander</div>
+      <div class="race-office">MAMDANI-ENDORSED · UNSEATED 2-TERM REP. DAN GOLDMAN</div>
+      <div class="race-result won-text">✓ PRIMARY WIN — JUNE 23, 2026 · DECISIVE</div>
+      <div class="race-quote">"We are not complicit in occupation and genocide."</div>
+      <div class="race-cite">— CAMPAIGN RALLY WITH MAMDANI · JUNE 2026</div>
+      <div class="race-desc">Former NYC Comptroller and former DSA member. Left DSA after Oct. 7 — then ran as Mamdani's chosen candidate. <strong>Called Israel's military campaign "genocide" throughout the race.</strong> Attacked Goldman for supporting aid to Israel. Pledged to oppose all U.S. military aid. Victory party: crowd chanted "Free Free Palestine."</div>
+      <div class="race-tags">
+        <span class="race-tag r">Genocide Rhetoric</span>
+        <span class="race-tag r">Anti-Israel</span>
+        <span class="race-tag y">Mamdani Endorsed</span>
+        <span class="race-tag y">Former DSA Member</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NY STATE LEGISLATURE WINS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">// June 23, 2026 — NY State</div>
+    <div class="section-title">DSA Sweeps Albany — 6+ State Legislature Seats</div>
     <div class="section-rule"></div>
   </div>
   <div class="race-grid">
+
     <div class="race-card won">
-      <div class="race-status won">WON PRIMARY</div>
-      <div class="race-district">NEW YORK · DISTRICT TBD · JUNE 2026</div>
-      <div class="race-name">[Candidate #1]</div>
-      <div class="race-office">U.S. HOUSE · DSA ENDORSED</div>
-      <div class="race-result won-text">✓ PRIMARY WIN — 2026</div>
-      <div class="race-desc"><strong>On record</strong> with statements supporting Palestinian terrorism, opposing U.S. counter-terrorism operations, and calling for socialist economic transformation.</div>
-      <div class="race-tags">
-        <span class="race-tag r">Terrorism Ties</span>
-        <span class="race-tag r">Anti-America</span>
-        <span class="race-tag y">BDS Support</span>
-        <span class="race-tag">DSA Endorsed</span>
-      </div>
+      <div class="race-status won">WON</div>
+      <div class="race-district">NEW YORK · STATE SENATE DISTRICT 12 · QUEENS</div>
+      <div class="race-name">Aber Kawas</div>
+      <div class="race-office">DSA ENDORSED · DEFEATED STEVEN RAGA</div>
+      <div class="race-result won-text">✓ WON BY DOUBLE DIGITS</div>
+      <div class="race-desc">DSA-endorsed candidate flipped State Senate District 12 in Queens, adding to the growing DSA bloc in Albany.</div>
+      <div class="race-tags"><span class="race-tag r">DSA Endorsed</span><span class="race-tag y">Mamdani Endorsed</span></div>
     </div>
+
     <div class="race-card won">
-      <div class="race-status won">WON PRIMARY</div>
-      <div class="race-district">NEW YORK · DISTRICT TBD · JUNE 2026</div>
-      <div class="race-name">[Candidate #2]</div>
-      <div class="race-office">U.S. HOUSE · DSA ENDORSED</div>
-      <div class="race-result won-text">✓ PRIMARY WIN — 2026</div>
-      <div class="race-desc"><strong>On record</strong> with statements supporting Hamas, opposing sanctions on Iran, and calling for abolition of ICE and U.S. military defunding.</div>
-      <div class="race-tags">
-        <span class="race-tag r">Hamas Support</span>
-        <span class="race-tag r">Anti-Capitalism</span>
-        <span class="race-tag y">BDS Support</span>
-        <span class="race-tag">DSA Endorsed</span>
-      </div>
+      <div class="race-status won">WON</div>
+      <div class="race-district">NEW YORK · ASSEMBLY DISTRICT 37 · QUEENS</div>
+      <div class="race-name">Samantha Kattan</div>
+      <div class="race-office">DSA ENDORSED · WON THREE-WAY RACE</div>
+      <div class="race-result won-text">✓ WON BY DOUBLE DIGITS</div>
+      <div class="race-desc">DSA-endorsed candidate won Assembly District 37 in Queens, defeating two other candidates by double digits despite heavy anti-DSA outside spending.</div>
+      <div class="race-tags"><span class="race-tag r">DSA Endorsed</span><span class="race-tag y">Mamdani Endorsed</span></div>
     </div>
+
     <div class="race-card won">
-      <div class="race-status won">WON PRIMARY</div>
-      <div class="race-district">NEW YORK · DISTRICT TBD · JUNE 2026</div>
-      <div class="race-name">[Candidate #3]</div>
-      <div class="race-office">U.S. HOUSE · DSA ENDORSED</div>
-      <div class="race-result won-text">✓ PRIMARY WIN — 2026</div>
-      <div class="race-desc"><strong>On record</strong> with communist platform statements, anti-Israel positions, and documented coordination with CAIR and BDS movement leadership.</div>
-      <div class="race-tags">
-        <span class="race-tag r">Terrorism Ties</span>
-        <span class="race-tag r">Communist Platform</span>
-        <span class="race-tag y">CAIR Ties</span>
-        <span class="race-tag">DSA Endorsed</span>
-      </div>
+      <div class="race-status won">WON</div>
+      <div class="race-district">NEW YORK · ASSEMBLY DISTRICT 38 · QUEENS</div>
+      <div class="race-name">David Orkin</div>
+      <div class="race-office">DSA ENDORSED · DEFEATED INCUMBENT JENNIFER RAJKUMAR</div>
+      <div class="race-result won-text">✓ TOPPLED INCUMBENT</div>
+      <div class="race-desc">Defeated incumbent Jennifer Rajkumar in Assembly District 38, Queens. Part of the DSA wave that toppled multiple incumbents across the state legislature on primary night.</div>
+      <div class="race-tags"><span class="race-tag r">DSA Endorsed</span><span class="race-tag r">Toppled Incumbent</span></div>
     </div>
+
+    <div class="race-card won">
+      <div class="race-status won">WON</div>
+      <div class="race-district">NEW YORK · ASSEMBLY DISTRICT 54 · BROOKLYN</div>
+      <div class="race-name">Christian Celeste Tate</div>
+      <div class="race-office">DSA ENDORSED · DEFEATED INCUMBENT ERIK DILAN</div>
+      <div class="race-result won-text">✓ TOPPLED INCUMBENT</div>
+      <div class="race-desc">Defeated incumbent Erik Dilan in Assembly District 54, Brooklyn. Another DSA insurgent win against an established Democratic incumbent.</div>
+      <div class="race-tags"><span class="race-tag r">DSA Endorsed</span><span class="race-tag r">Toppled Incumbent</span></div>
+    </div>
+
+    <div class="race-card won">
+      <div class="race-status won">WON</div>
+      <div class="race-district">NEW YORK · ASSEMBLY DISTRICT 56 · BROOKLYN</div>
+      <div class="race-name">Eon Huntley</div>
+      <div class="race-office">DSA ENDORSED · DEFEATED INCUMBENT STEFANI ZINERMAN</div>
+      <div class="race-result won-text">✓ TOPPLED INCUMBENT</div>
+      <div class="race-desc">Defeated incumbent Stefani Zinerman in Assembly District 56, Brooklyn. Third DSA candidate to topple a sitting incumbent in the New York State Assembly on primary night.</div>
+      <div class="race-tags"><span class="race-tag r">DSA Endorsed</span><span class="race-tag r">Toppled Incumbent</span></div>
+    </div>
+
+    <div class="race-card won">
+      <div class="race-status won">WON</div>
+      <div class="race-district">NEW YORK · ASSEMBLY DISTRICT 65</div>
+      <div class="race-name">Illapa Sairitupac</div>
+      <div class="race-office">DSA ENDORSED · WON MULTI-CANDIDATE RACE</div>
+      <div class="race-result won-text">✓ WON BY DOUBLE DIGITS</div>
+      <div class="race-desc">DSA-endorsed candidate won Assembly District 65 by double digits against multiple challengers despite significant anti-DSA outside spending in the race.</div>
+      <div class="race-tags"><span class="race-tag r">DSA Endorsed</span><span class="race-tag y">Mamdani Endorsed</span></div>
+    </div>
+
   </div>
 </section>
 
 <!-- RACES TO WATCH -->
 <section class="section">
   <div class="section-header">
-    <div class="section-label">// 2026 Cycle</div>
+    <div class="section-label">// 2026 Cycle — Ongoing</div>
     <div class="section-title">Races to Watch — Upcoming & Active</div>
     <div class="section-rule"></div>
   </div>
@@ -218,12 +335,8 @@
       <div class="race-name">Chicago DSA Candidate</div>
       <div class="race-office">U.S. HOUSE · DSA ENDORSED</div>
       <div class="race-result up-text">▶ PRIMARY DATE TBD</div>
-      <div class="race-desc">Chicago's DSA chapter is running a candidate in IL-07 with strong union backing, SEIU coordination, and a platform calling for Medicare for All, Green New Deal, and defunding of CPD.</div>
-      <div class="race-tags">
-        <span class="race-tag y">Watch</span>
-        <span class="race-tag">DSA Endorsed</span>
-        <span class="race-tag">SEIU Funded</span>
-      </div>
+      <div class="race-desc">Chicago's DSA chapter running a candidate in IL-07 with SEIU coordination and a platform calling for Medicare for All, Green New Deal, and defunding CPD.</div>
+      <div class="race-tags"><span class="race-tag y">Watch</span><span class="race-tag r">DSA Endorsed</span><span class="race-tag">SEIU Funded</span></div>
     </div>
     <div class="race-card watch">
       <div class="race-status watch">MONITOR</div>
@@ -231,11 +344,8 @@
       <div class="race-name">Austin DSA Candidate</div>
       <div class="race-office">U.S. HOUSE · DSA ENDORSED</div>
       <div class="race-result watch-text">⚠ PRIMARY — MONITOR</div>
-      <div class="race-desc">Austin DSA is fielding a candidate in TX-35 on a full socialist platform. Texas's shifting demographics make this district increasingly competitive for DSA-aligned candidates.</div>
-      <div class="race-tags">
-        <span class="race-tag y">Competitive</span>
-        <span class="race-tag">DSA Endorsed</span>
-      </div>
+      <div class="race-desc">Austin DSA fielding a candidate in TX-35 on a full socialist platform. Texas's shifting demographics make this district increasingly competitive for DSA candidates.</div>
+      <div class="race-tags"><span class="race-tag y">Competitive</span><span class="race-tag r">DSA Endorsed</span></div>
     </div>
     <div class="race-card watch">
       <div class="race-status watch">MONITOR</div>
@@ -244,10 +354,7 @@
       <div class="race-office">U.S. HOUSE · DSA ENDORSED</div>
       <div class="race-result watch-text">⚠ PRIMARY — MONITOR</div>
       <div class="race-desc">Seattle DSA holds multiple city council seats and is targeting WA-07 for federal expansion. Strong chapter infrastructure and union backing make this a credible threat.</div>
-      <div class="race-tags">
-        <span class="race-tag y">Strong Chapter</span>
-        <span class="race-tag">DSA Endorsed</span>
-      </div>
+      <div class="race-tags"><span class="race-tag y">Strong Chapter</span><span class="race-tag r">DSA Endorsed</span></div>
     </div>
     <div class="race-card watch">
       <div class="race-status watch">MONITOR</div>
@@ -255,12 +362,8 @@
       <div class="race-name">Philadelphia DSA Candidate</div>
       <div class="race-office">U.S. HOUSE · DSA ENDORSED</div>
       <div class="race-result watch-text">⚠ PRIMARY — MONITOR</div>
-      <div class="race-desc">Philadelphia DSA has elected multiple city council members and is targeting a federal seat. Working Families Party coordination and SEIU backing provide significant infrastructure.</div>
-      <div class="race-tags">
-        <span class="race-tag y">WFP Allied</span>
-        <span class="race-tag">DSA Endorsed</span>
-        <span class="race-tag">SEIU Backed</span>
-      </div>
+      <div class="race-desc">Philadelphia DSA has elected multiple city council members and is targeting a federal seat. WFP coordination and SEIU backing provide significant infrastructure.</div>
+      <div class="race-tags"><span class="race-tag y">WFP Allied</span><span class="race-tag r">DSA Endorsed</span><span class="race-tag">SEIU Backed</span></div>
     </div>
   </div>
 </section>
@@ -285,16 +388,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>2026</td><td>[Candidate #1]</td><td>NYC Congressional Primary</td><td class="trend-won">WON PRIMARY</td><td>DSA ENDORSED</td><td>Anti-Israel / BDS</td></tr>
-        <tr><td>2026</td><td>[Candidate #2]</td><td>NYC Congressional Primary</td><td class="trend-won">WON PRIMARY</td><td>DSA ENDORSED</td><td>Hamas Support</td></tr>
-        <tr><td>2026</td><td>[Candidate #3]</td><td>NYC Congressional Primary</td><td class="trend-won">WON PRIMARY</td><td>DSA ENDORSED</td><td>Communist Platform</td></tr>
-        <tr><td>2024</td><td>Alexandria Ocasio-Cortez</td><td>NY-14 Primary</td><td class="trend-won">WON</td><td>DSA MEMBER</td><td>Anti-Capitalism / BDS</td></tr>
-        <tr><td>2024</td><td>Rashida Tlaib</td><td>MI-12 Primary</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Hamas / BDS</td></tr>
-        <tr><td>2024</td><td>Ilhan Omar</td><td>MN-05 Primary</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>CAIR / Anti-Israel</td></tr>
-        <tr><td>2024</td><td>Cori Bush</td><td>MO-01 Primary</td><td class="trend-lost">LOST</td><td>DSA ENDORSED</td><td>Defund Police / BDS</td></tr>
+        <tr><td>2026</td><td>Claire Valdez</td><td>NY-7 Primary</td><td class="trend-won">WON</td><td>DSA MEMBER</td><td>Anti-Israel / Genocide Rhetoric / Oct 7 Celebration</td></tr>
+        <tr><td>2026</td><td>Darializa Avila Chevalier</td><td>NY-13 Primary — Upset</td><td class="trend-won">WON</td><td>DSA MEMBER</td><td>Refused Hamas Condemnation / Abolish Police / Abolish Borders</td></tr>
+        <tr><td>2026</td><td>Brad Lander</td><td>NY-10 Primary — Unseated Goldman</td><td class="trend-won">WON</td><td>MAMDANI ENDORSED</td><td>Genocide Rhetoric / Anti-Israel / No Aid to Israel</td></tr>
+        <tr><td>2026</td><td>Aber Kawas</td><td>NY State Senate D12</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Socialist Platform</td></tr>
+        <tr><td>2026</td><td>Samantha Kattan</td><td>NY Assembly D37</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Socialist Platform</td></tr>
+        <tr><td>2026</td><td>David Orkin</td><td>NY Assembly D38 — Toppled Incumbent</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Socialist Platform</td></tr>
+        <tr><td>2026</td><td>Christian Celeste Tate</td><td>NY Assembly D54 — Toppled Incumbent</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Socialist Platform</td></tr>
+        <tr><td>2026</td><td>Eon Huntley</td><td>NY Assembly D56 — Toppled Incumbent</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Socialist Platform</td></tr>
+        <tr><td>2026</td><td>Illapa Sairitupac</td><td>NY Assembly D65</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Socialist Platform</td></tr>
+        <tr><td>2025</td><td>Zohran Mamdani</td><td>NYC Mayor — Upset Cuomo</td><td class="trend-won">WON</td><td>DSA MEMBER</td><td>Full Socialist Platform / Anti-Israel / Hamas Praise History</td></tr>
+        <tr><td>2024</td><td>Alexandria Ocasio-Cortez</td><td>NY-14 Primary</td><td class="trend-won">WON</td><td>DSA MEMBER</td><td>Anti-Capitalism / BDS / Hamas Abstention</td></tr>
+        <tr><td>2024</td><td>Rashida Tlaib</td><td>MI-12 Primary</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Hamas / BDS / Censured</td></tr>
+        <tr><td>2024</td><td>Ilhan Omar</td><td>MN-05 Primary</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>CAIR / Anti-Israel / HLF Donors</td></tr>
+        <tr><td>2024</td><td>Cori Bush</td><td>MO-01 Primary</td><td class="trend-lost">LOST</td><td>DSA ENDORSED</td><td>Defund Police / BDS / Federal Indictment</td></tr>
         <tr><td>2022</td><td>Summer Lee</td><td>PA-12 Primary</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Socialist Platform</td></tr>
         <tr><td>2022</td><td>Greg Casar</td><td>TX-35 Primary</td><td class="trend-won">WON</td><td>DSA ENDORSED</td><td>Socialist / Open Borders</td></tr>
-        <tr><td>2018</td><td>Alexandria Ocasio-Cortez</td><td>NY-14 Primary</td><td class="trend-won">WON</td><td>DSA MEMBER</td><td>Democratic Socialism</td></tr>
+        <tr><td>2018</td><td>Alexandria Ocasio-Cortez</td><td>NY-14 Primary — Upset Crowley</td><td class="trend-won">WON</td><td>DSA MEMBER</td><td>Democratic Socialism — First Major DSA Win</td></tr>
       </tbody>
     </table>
   </div>
