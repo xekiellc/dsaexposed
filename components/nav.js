@@ -1,28 +1,25 @@
-document.addEventListener('DOMContentLoaded', function () {
+// DSAExposed — Nav Component
+(function() {
   const path = window.location.pathname;
+  const links = [
+    { href: '/reps/', label: 'Rep Tracker' },
+    { href: '/terrorism/', label: 'Terrorism Ties' },
+    { href: '/funding/', label: 'Funding' },
+    { href: '/ideology/', label: 'Ideology' },
+    { href: '/networks/', label: 'Networks' },
+    { href: '/chapters/', label: 'Chapters' },
+    { href: '/primaries/', label: 'Primaries' },
+    { href: '/media/', label: 'Media' },
+    { href: '/submit/', label: 'Submit a Tip' },
+  ];
 
-  const isRoot =
-    path === '/' ||
-    path === '/index.html' ||
-    path.match(/^\/index\.html?$/);
+  const isActive = (href) => path === href || path.startsWith(href) && href !== '/';
 
-  const base = isRoot ? '' : '/';
-
-  const navHTML = `
-    <a href="${base}" class="nav-logo">DSA<span style="color:var(--red)">EXPOSED</span></a>
+  document.querySelector('nav').innerHTML = `
+    <a href="/" class="nav-logo">DSA<span>Exposed</span></a>
     <ul class="nav-links">
-      <li><a href="${base}reps/"      ${path.includes('/reps/')      ? 'class="active"' : ''}>Rep Tracker</a></li>
-      <li><a href="${base}terrorism/" ${path.includes('/terrorism/') ? 'class="active"' : ''}>Terrorism Ties</a></li>
-      <li><a href="${base}funding/"   ${path.includes('/funding/')   ? 'class="active"' : ''}>Funding</a></li>
-      <li><a href="${base}ideology/"  ${path.includes('/ideology/')  ? 'class="active"' : ''}>Ideology</a></li>
-      <li><a href="${base}networks/"  ${path.includes('/networks/')  ? 'class="active"' : ''}>Networks</a></li>
-      <li><a href="${base}chapters/"  ${path.includes('/chapters/')  ? 'class="active"' : ''}>Chapters</a></li>
-      <li><a href="${base}primaries/" ${path.includes('/primaries/') ? 'class="active"' : ''}>Primaries</a></li>
-      <li><a href="${base}media/"     ${path.includes('/media/')     ? 'class="active"' : ''}>Media</a></li>
-      <li><a href="${base}submit/"    ${path.includes('/submit/')    ? 'class="active"' : ''}>Submit a Tip</a></li>
+      ${links.map(l => `<li><a href="${l.href}" ${isActive(l.href) ? 'class="active"' : ''}>${l.label}</a></li>`).join('')}
     </ul>
+    <button class="nav-search-btn" onclick="document.getElementById('searchOverlay').classList.add('open');document.getElementById('globalSearch').focus();">⌕ Search</button>
   `;
-
-  const nav = document.querySelector('nav');
-  if (nav) nav.innerHTML = navHTML;
-});
+})();
