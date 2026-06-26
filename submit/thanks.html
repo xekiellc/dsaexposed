@@ -1,179 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Tip Received — DSA Exposed</title>
-  <meta name="description" content="Your intelligence submission has been received. DSA Exposed research team will review and verify before publication." />
+  <link rel="stylesheet" href="/assets/global.css"/>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PK58BBCJX7');
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --black:#0A0A0A; --red:#CC0000; --red-dim:#8B0000;
-      --white:#F5F5F5; --gray:#888888; --gray-dk:#2A2A2A;
-      --gray-md:#444444; --yellow:#FFD700; --border:#333333;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--white); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
-    a { color: inherit; text-decoration: none; }
-
-    /* TICKER */
-    .ticker-wrap { background: var(--red); overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 2px solid #900; }
-    .ticker-label { display: inline-block; background: var(--black); color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 14px; margin-right: 20px; vertical-align: middle; }
-    .ticker-track { display: inline-block; animation: ticker 50s linear infinite; }
-    .ticker-track span { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--white); margin-right: 60px; }
-    .ticker-track span::before { content: '▶ '; color: var(--yellow); }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* NAV */
-    nav { background: var(--black); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); }
-    .nav-logo span { color: var(--red); }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--red); }
-
-    /* MAIN */
-    .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 40px; }
-    .thanks-box { max-width: 640px; width: 100%; text-align: center; }
-
-    /* STAMP */
-    .stamp { display: inline-block; border: 4px solid var(--red); padding: 12px 28px; font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 6px; text-transform: uppercase; color: var(--red); transform: rotate(-3deg); margin-bottom: 48px; position: relative; }
-    .stamp::before { content: ''; position: absolute; inset: 4px; border: 1px solid var(--red-dim); opacity: 0.4; }
-
-    .thanks-eyebrow { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
-    .thanks-title { font-family: 'Oswald', sans-serif; font-size: clamp(32px, 5vw, 56px); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; margin-bottom: 24px; }
-    .thanks-title span { color: var(--red); }
-    .thanks-desc { font-size: 15px; color: var(--gray); line-height: 1.8; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
-    .thanks-desc strong { color: var(--white); }
-
-    /* PROCESS STEPS */
-    .process-steps { display: flex; flex-direction: column; gap: 2px; margin-bottom: 48px; text-align: left; }
-    .process-step { background: var(--gray-dk); padding: 18px 24px; display: flex; align-items: flex-start; gap: 20px; border-left: 3px solid var(--border); }
-    .process-step.done { border-left-color: var(--red); }
-    .process-step-num { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; color: var(--red); line-height: 1; flex-shrink: 0; width: 28px; }
-    .process-step-num.gray { color: var(--gray-md); }
-    .process-step-title { font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-    .process-step-title.done { color: var(--white); }
-    .process-step-title.pending { color: var(--gray); }
-    .process-step-desc { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray); letter-spacing: 1px; line-height: 1.6; }
-
-    /* RETURN LINKS */
-    .return-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); margin-bottom: 32px; text-align: left; }
-    .return-link { background: var(--gray-dk); padding: 18px 20px; display: block; border-top: 2px solid transparent; transition: border-color 0.2s, background 0.2s; }
-    .return-link:hover { border-top-color: var(--red); background: #333; }
-    .return-link-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 2px; margin-bottom: 4px; }
-    .return-link-title { font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-
-    .return-home { display: inline-block; background: var(--red); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 14px 40px; transition: background 0.2s; }
-    .return-home:hover { background: #AA0000; }
-
-    /* FOOTER */
-    footer { background: #050505; border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--gray); }
-    .footer-logo span { color: var(--red); }
-    .footer-note { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gray-md); letter-spacing: 1px; text-align: right; line-height: 1.8; }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; } .nav-links { display: none; }
-      .main { padding: 48px 20px; }
-      .return-links { grid-template-columns: 1fr 1fr; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-note { text-align: center; }
-    }
-  </style>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-PK58BBCJX7");</script>
 </head>
 <body>
-
-<div class="ticker-wrap"></div>
-<script src="/components/ticker.js"></script>
-
-<nav></nav>
-<script src="/components/nav.js"></script>
-
-<!-- MAIN -->
-<div class="main">
-  <div class="thanks-box">
-
-    <div class="stamp">LOGGED</div>
-
-    <div class="thanks-eyebrow">// SUBMISSION CONFIRMED</div>
-    <h1 class="thanks-title">Tip <span>Received</span></h1>
-    <p class="thanks-desc">Your intelligence submission has been logged and is in the queue for review. <strong>Nothing is published without independent verification.</strong> If you provided contact information, our research team will follow up.</p>
-
-    <div class="process-steps">
-      <div class="process-step done">
-        <div class="process-step-num">01</div>
-        <div class="process-step-content">
-          <div class="process-step-title done">Submission Received</div>
-          <div class="process-step-desc">YOUR TIP HAS BEEN LOGGED IN OUR SYSTEM — COMPLETE</div>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="process-step-num gray">02</div>
-        <div class="process-step-content">
-          <div class="process-step-title pending">Research Review</div>
-          <div class="process-step-desc">OUR TEAM WILL REVIEW YOUR SUBMISSION AND ASSESS CREDIBILITY</div>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="process-step-num gray">03</div>
-        <div class="process-step-content">
-          <div class="process-step-title pending">Independent Verification</div>
-          <div class="process-step-desc">ALL CLAIMS ARE CROSS-REFERENCED WITH PRIMARY SOURCES BEFORE PUBLICATION</div>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="process-step-num gray">04</div>
-        <div class="process-step-content">
-          <div class="process-step-title pending">Publication</div>
-          <div class="process-step-desc">VERIFIED CONTENT IS ADDED TO THE ARCHIVE WITH SOURCE CITATIONS</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="return-links">
-      <a href="/reps/" class="return-link">
-        <div class="return-link-label">// Section 02</div>
-        <div class="return-link-title">Rep Tracker</div>
-      </a>
-      <a href="/terrorism/" class="return-link">
-        <div class="return-link-label">// Section 01</div>
-        <div class="return-link-title">Terrorism Ties</div>
-      </a>
-      <a href="/funding/" class="return-link">
-        <div class="return-link-label">// Section 03</div>
-        <div class="return-link-title">Follow the Money</div>
-      </a>
-      <a href="/ideology/" class="return-link">
-        <div class="return-link-label">// Section 04</div>
-        <div class="return-link-title">Ideology</div>
-      </a>
-      <a href="/networks/" class="return-link">
-        <div class="return-link-label">// Section 05</div>
-        <div class="return-link-title">Red-Green Axis</div>
-      </a>
-      <a href="/media/" class="return-link">
-        <div class="return-link-label">// Section 08</div>
-        <div class="return-link-title">Media Library</div>
-      </a>
-    </div>
-
-    <a href="/" class="return-home">← Return to Home Base</a>
-
+<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
+<nav></nav><script src="/components/nav.js"></script>
+<div class="page-header" style="text-align:center;padding:100px 48px;">
+  <div class="section-eyebrow">// Submission Received</div>
+  <h1 style="font-size:clamp(40px,6vw,80px);">Intel <em>Received</em></h1>
+  <p style="font-size:18px;max-width:480px;margin:0 auto 40px;">Your submission has been logged. Our team will verify against primary sources before publication. If you provided contact information, we may follow up.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="/" class="btn-ink btn">Return Home &rarr;</a>
+    <a href="/reps/" class="btn">View Rep Tracker &rarr;</a>
   </div>
 </div>
-
-<footer></footer>
+<footer></footer><div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
-
-</body>
-</html>
+</body></html>
