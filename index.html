@@ -5,12 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DSA Exposed — Documenting the Radical Left</title>
   <meta name="description" content="Tracking the Democratic Socialists of America: their words, funding, terrorism ties, communist ideology, and infiltration of American government." />
-  <meta property="og:image" content="/assets/dsalogo9.png" />
+
+  <meta property="og:title" content="DSA Exposed — Intelligence Dossier">
+  <meta property="og:description" content="Documenting the Democratic Socialists of America — their words, funding, terrorism ties, and infiltration of American government.">
+  <meta property="og:image" content="https://dsaexposed.com/assets/dsalogo9.png">
+  <meta property="og:url" content="https://dsaexposed.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Mind_of_Myers">
+  <meta name="twitter:title" content="DSA Exposed — Intelligence Dossier">
+  <meta name="twitter:description" content="Documenting the Democratic Socialists of America — their words, funding, terrorism ties, and infiltration of American government.">
+  <meta name="twitter:image" content="https://dsaexposed.com/assets/dsalogo9.png">
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PK58BBCJX7');</script>
   <link rel="stylesheet" href="/assets/global.css" />
   <style>
-    /* ── SPLASH SCREEN ─────────────────────────────────── */
     #splash {
       position: fixed;
       inset: 0;
@@ -28,7 +38,6 @@
       inset: 0;
       background: rgba(8,6,4,0.65);
     }
-
     #splash-bar {
       position: absolute;
       bottom: 0;
@@ -42,8 +51,6 @@
       to   { width: 100%; }
     }
     #splash.fade-out { opacity: 0; pointer-events: none; }
-
-    /* ── HERO ──────────────────────────────────────────── */
     .hero {
       padding: 88px 48px 72px;
       border-bottom: 2px solid var(--ink);
@@ -86,8 +93,6 @@
     .hero-stat:first-child { padding-left: 0; }
     .hero-stat:nth-child(2), .hero-stat:nth-child(3) { padding-left: 40px; }
     .hero-stat .stat-label { color: #C8BFB0; }
-
-    /* ── PILLARS ───────────────────────────────────────── */
     .pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 2px solid var(--ink); }
     .pillar-card { padding: 36px 32px; border-right: 1px solid var(--rule); background: var(--white); transition: background 0.18s; cursor: pointer; display: block; }
     .pillar-card:last-child { border-right: none; }
@@ -95,15 +100,12 @@
     .pillar-icon { margin-bottom: 16px; display: flex; align-items: center; }
     .pillar-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--red); margin-bottom: 10px; }
     .pillar-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
-
     .section { padding: 56px 48px; border-bottom: 1px solid var(--rule); }
     .rep-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .rep-card-quote { font-family: var(--font-display); font-size: 14px; font-style: italic; color: var(--red); border-left: 3px solid var(--red); padding-left: 14px; margin: 12px 0 6px; line-height: 1.5; }
     .rep-card-cite { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-bottom: 14px; }
     .rep-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-
     .nav-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-
     .statement-feed { display: flex; flex-direction: column; }
     .statement-item { transition: background 0.2s, padding 0.2s; }
     .statement-item:hover { background: var(--white); padding-left: 16px; padding-right: 16px; margin: 0 -16px; }
@@ -114,7 +116,6 @@
     .statement-meta strong { display: block; font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; letter-spacing: 0; }
     .statement-quote { font-family: var(--font-display); font-size: 15px; font-style: italic; color: var(--ink); line-height: 1.65; }
     .statement-source { font-family: var(--font-mono); font-size: 9px; color: var(--red); letter-spacing: 1px; text-align: right; line-height: 1.8; }
-
     .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .feature-card { background: var(--white); border: 1px solid var(--rule); padding: 32px; display: block; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; overflow: hidden; }
     .feature-card:hover { box-shadow: 0 8px 28px rgba(20,18,16,0.1); transform: translateY(-3px); border-color: var(--ink); }
@@ -123,7 +124,6 @@
     .feature-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
     .feature-link { font-family: var(--font-mono); font-size: 10px; color: var(--red); letter-spacing: 2px; display: inline-block; transition: transform 0.15s; }
     .feature-card:hover .feature-link { transform: translateX(4px); }
-
     @media (max-width: 900px) {
       .hero { padding: 56px 24px 48px; }
       .hero-stats { grid-template-columns: 1fr 1fr; gap: 32px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 32px; }
@@ -145,13 +145,11 @@
 </head>
 <body>
 
-<!-- SPLASH SCREEN -->
 <div id="splash">
   <div id="splash-bar"></div>
 </div>
 
 <script>
-  // Load fonts early so splash renders correctly
   document.fonts && document.fonts.load('900 88px "Playfair Display"');
   setTimeout(function() {
     var splash = document.getElementById('splash');
@@ -169,7 +167,6 @@
 <nav></nav>
 <script src="/components/nav.js"></script>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">// Intelligence Dossier — Democratic Socialists of America</div>
   <h1>Documenting<br>the <em>Radical</em><br>Left</h1>
@@ -199,13 +196,11 @@
   </div>
 </section>
 
-<!-- ALERT -->
 <div class="alert-banner">
   <div class="alert-tag">⚠ Breaking</div>
   <div class="alert-text"><strong>NYC Socialist Sweep — June 23, 2026:</strong> Mayor Mamdani's DSA slate wins all three congressional primaries. Valdez (NY-7), Avila Chevalier (NY-13), Lander (NY-10). Two incumbents toppled. DSA victory party erupts in "From the river to the sea" chants.</div>
 </div>
 
-<!-- FOUR PILLARS -->
 <div class="pillar-grid">
   <a href="/reps/" class="pillar-card">
     <div class="pillar-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4C8.5 4 4 7.8 4 12.5c0 2.8 1.5 5.3 4 7v4l4-2c.6.1 1.3.2 2 .2 5.5 0 10-3.8 10-8.5S19.5 4 14 4z" stroke="#B80000" stroke-width="1.8" fill="none"/><line x1="9" y1="11" x2="19" y2="11" stroke="#B80000" stroke-width="1.5"/><line x1="9" y1="14" x2="16" y2="14" stroke="#B80000" stroke-width="1.5"/></svg></div>
@@ -229,7 +224,6 @@
   </a>
 </div>
 
-<!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-bar-item">
     <div class="stat-num" style="font-size:clamp(36px,4vw,52px);">3</div>
@@ -249,12 +243,10 @@
   </div>
 </div>
 
-<!-- NYC SWEEP PROFILES -->
 <section class="section">
   <div class="section-eyebrow">// Priority Files — NYC 2026</div>
   <div class="section-title">The Socialist Machine</div>
   <hr class="section-rule" />
-
   <div class="mamdani-card">
     <div style="position:absolute;top:20px;right:28px;"><span class="stamp">Machine Boss</span></div>
     <div class="mamdani-eyebrow">// NYC Mayor · DSA Member · Architect of the 2026 Congressional Sweep</div>
@@ -267,9 +259,9 @@
         In a 2017 rap song, <strong>praised the "Holy Land Five" — Islamic charity heads convicted of financing Hamas.</strong> Defended "globalize the intifada" — which the ADL calls "explicit incitement to violence." Oct. 7 statement: zero mentions of Hamas, condemned Israel only.
       </div>
       <div>
-        <div class="mamdani-quote">"When the boot of the NYPD is on your neck, it's been laced by the IDF."<cite>— DSA Panel, 2023 · Verified Video</cite></div>
-        <div class="mamdani-quote">"My love to the Holy Land Five. You better look 'em up."<cite>— Rap Song "Salam," 2017 · Verified Audio</cite></div>
-        <div class="mamdani-quote">"[Globalize the intifada captures] a desperate desire for equality."<cite>— The Bulwark Interview, 2025</cite></div>
+        <div class="mamdani-quote">"When the boot of the NYPD is on your neck, it's been laced by the IDF."— DSA Panel, 2023 · Verified Video</div>
+        <div class="mamdani-quote">"My love to the Holy Land Five. You better look 'em up."— Rap Song "Salam," 2017 · Verified Audio</div>
+        <div class="mamdani-quote">"[Globalize the intifada captures] a desperate desire for equality."— The Bulwark Interview, 2025</div>
       </div>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
@@ -284,7 +276,6 @@
     </div>
     <a href="/reps/profiles/mamdani.html" style="font-family:var(--font-mono);font-size:10px;color:var(--yellow);letter-spacing:2px;border-bottom:1px solid var(--yellow);padding-bottom:2px;">View Full Dossier →</a>
   </div>
-
   <div class="rep-grid" style="margin-top:16px;">
     <div class="rep-card priority" onclick="window.location='/reps/profiles/valdez.html'">
       <div style="position:absolute;top:16px;right:16px;"><span class="stamp" style="font-size:8px;">Primary Win 2026</span></div>
@@ -331,7 +322,6 @@
   </div>
 </section>
 
-<!-- LIVE NEWS FEED -->
 <section class="section" style="background:var(--white);">
   <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0;">
     <div>
@@ -346,7 +336,6 @@
   </div>
 </section>
 
-<!-- EXPLORE THE DOSSIER -->
 <section class="section">
   <div class="section-eyebrow">// Intelligence Archive</div>
   <div class="section-title">Explore the Dossier</div>
@@ -363,7 +352,6 @@
   </div>
 </section>
 
-<!-- STATEMENT ARCHIVE -->
 <section class="section" style="background:var(--paper-dk);">
   <div class="section-eyebrow">// Their Words</div>
   <div class="section-title">Statement Archive</div>
@@ -392,7 +380,6 @@
   </div>
 </section>
 
-<!-- INTERACTIVE FEATURES -->
 <section class="section">
   <div class="section-eyebrow">// Interactive Intelligence Tools</div>
   <div class="section-title">Investigate the Network</div>
@@ -416,7 +403,6 @@
   </div>
 </section>
 
-<!-- SUBMIT TIP -->
 <div class="submit-cta">
   <div>
     <h3>Have Intel? Submit a Tip.</h3>
@@ -456,7 +442,6 @@ fetch('/data/news.json')
 </script>
 
 <script>
-// Count-up animation on hero stats
 function countUp(el, target, duration, prefix, suffix) {
   const isFloat = target.toString().includes('.');
   const numTarget = parseFloat(target.toString().replace(/[^0-9.]/g, ''));
@@ -472,14 +457,12 @@ function countUp(el, target, duration, prefix, suffix) {
   }
   requestAnimationFrame(update);
 }
-
 const stats = [
   { selector: '.hero-stat:nth-child(1) .stat-num', target: '92+', prefix: '', suffix: '' },
   { selector: '.hero-stat:nth-child(2) .stat-num', target: '250+', prefix: '', suffix: '' },
   { selector: '.hero-stat:nth-child(3) .stat-num', target: '12M+', prefix: '$', suffix: '' },
   { selector: '.hero-stat:nth-child(4) .stat-num', target: '40+', prefix: '', suffix: '' },
 ];
-
 let animated = false;
 const observer = new IntersectionObserver((entries) => {
   if (entries[0].isIntersecting && !animated) {
@@ -487,15 +470,10 @@ const observer = new IntersectionObserver((entries) => {
     stats.forEach((s, i) => {
       const el = document.querySelector(s.selector);
       if (!el) return;
-      setTimeout(() => {
-        const numStr = s.target.replace(/[^0-9]/g, '');
-        const suffix = s.target.replace(/[0-9]/g, '');
-        countUp(el, s.target, 700, s.prefix, '');
-      }, i * 120);
+      setTimeout(() => { countUp(el, s.target, 700, s.prefix, ''); }, i * 120);
     });
   }
 }, { threshold: 0.3 });
-
 const heroStats = document.querySelector('.hero-stats');
 if (heroStats) observer.observe(heroStats);
 </script>
