@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Policy Analysis — DSA Exposed</title>
+<meta name="description" content="Every DSA platform position: historical precedent, debunked claims, and the impact if implemented in the United States.">
+
+<meta property="og:title" content="Policy Analysis — DSA Exposed">
+<meta property="og:description" content="Every DSA platform position, documented and analyzed: history, debunk, and US impact.">
+<meta property="og:image" content="https://dsaexposed.com/assets/og-card.jpg?v=2">
+<meta property="og:url" content="https://dsaexposed.com/policy-analysis.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Mind_of_Myers">
+<meta name="twitter:title" content="Policy Analysis — DSA Exposed">
+<meta name="twitter:description" content="Every DSA platform position, documented and analyzed: history, debunk, and US impact.">
+<meta name="twitter:image" content="https://dsaexposed.com/assets/og-card.jpg?v=2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/global.css">
+
+<style>
+  .policy-hero {
+    padding: 64px 24px 40px;
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: left;
+    border-bottom: 1px solid rgba(10,9,6,0.15);
+  }
+
+  .policy-hero .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #B80000;
+    margin-bottom: 14px;
+  }
+
+  .policy-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.08;
+    color: #0A0906;
+    margin: 0 0 18px;
+  }
+
+  .policy-hero p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.55;
+    color: #2a2723;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  .policy-list {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+  }
+
+  .policy-card {
+    border: 1px solid rgba(10,9,6,0.18);
+    background: #F0EBE1;
+    margin-bottom: 14px;
+  }
+
+  .policy-card-header {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 22px 24px;
+    font-family: inherit;
+  }
+
+  .policy-card-header:hover {
+    background: rgba(184,0,0,0.04);
+  }
+
+  .policy-card-index {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: #B80000;
+    margin-right: 16px;
+  }
+
+  .policy-card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #0A0906;
+    flex: 1;
+  }
+
+  .policy-card-toggle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    color: #B80000;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .policy-card.expanded .policy-card-toggle {
+    transform: rotate(45deg);
+  }
+
+  .policy-card-summary {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #2a2723;
+    padding: 0 24px 22px;
+    max-width: 700px;
+  }
+
+  .policy-card-body {
+    display: none;
+    padding: 0 24px 28px;
+    border-top: 1px solid rgba(10,9,6,0.12);
+  }
+
+  .policy-card.expanded .policy-card-body {
+    display: block;
+  }
+
+  .policy-section {
+    margin-top: 22px;
+  }
+
+  .policy-section h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #B80000;
+    margin: 0 0 8px;
+  }
+
+  .policy-section p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2723;
+    margin: 0;
+    white-space: pre-line;
+  }
+
+  .policy-loading,
+  .policy-error {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    color: #2a2723;
+    padding: 40px 0;
+  }
+
+  .policy-error {
+    color: #B80000;
+  }
+</style>
+</head>
+<body>
+
+<div id="nav-root"></div>
+<div id="ticker-root"></div>
+
+<main>
+  <section class="policy-hero">
+    <div class="eyebrow">Policy Analysis</div>
+    <h1>The DSA Platform, Line by Line</h1>
+    <p>Every major position in the Democratic Socialists of America's platform — documented in their own words, traced to historical precedent, and measured against what implementation would actually mean in the United States.</p>
+  </section>
+
+  <section class="policy-list" id="policy-list">
+    <div class="policy-loading" id="policy-loading">Loading platform analysis…</div>
+  </section>
+</main>
+
+<div id="footer-root"></div>
+
+<script src="/components/nav.js"></script>
+<script src="/components/ticker.js"></script>
+<script src="/components/footer.js"></script>
+<script src="/components/search.js"></script>
+
+<script>
+(function () {
+  var listEl = document.getElementById('policy-list');
+  var loadingEl = document.getElementById('policy-loading');
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  function buildCard(topic, index) {
+    var card = document.createElement('div');
+    card.className = 'policy-card';
+    card.id = topic.slug;
+
+    var header = document.createElement('button');
+    header.className = 'policy-card-header';
+    header.setAttribute('aria-expanded', 'false');
+    header.innerHTML =
+      '<span><span class="policy-card-index">' + String(index + 1).padStart(2, '0') + '</span>' +
+      '<span class="policy-card-title">' + escapeHtml(topic.title) + '</span></span>' +
+      '<span class="policy-card-toggle">+</span>';
+
+    var summary = document.createElement('div');
+    summary.className = 'policy-card-summary';
+    summary.textContent = topic.summary || '';
+
+    var body = document.createElement('div');
+    body.className = 'policy-card-body';
+
+    var sections = [
+      ['History', topic.history],
+      ['Debunked', topic.debunked],
+      ['US Impact If Implemented', topic.usImpact]
+    ];
+
+    sections.forEach(function (pair) {
+      if (!pair[1]) return;
+      var section = document.createElement('div');
+      section.className = 'policy-section';
+      var h3 = document.createElement('h3');
+      h3.textContent = pair[0];
+      var p = document.createElement('p');
+      p.textContent = pair[1];
+      section.appendChild(h3);
+      section.appendChild(p);
+      body.appendChild(section);
+    });
+
+    header.addEventListener('click', function () {
+      var isExpanded = card.classList.toggle('expanded');
+      header.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      if (isExpanded) {
+        history.replaceState(null, '', '#' + topic.slug);
+      }
+    });
+
+    card.appendChild(header);
+    card.appendChild(summary);
+    card.appendChild(body);
+    return card;
+  }
+
+  fetch('/data/policy-topics.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('Failed to load policy-topics.json');
+      return res.json();
+    })
+    .then(function (topics) {
+      loadingEl.remove();
+
+      if (!Array.isArray(topics) || topics.length === 0) {
+        var empty = document.createElement('div');
+        empty.className = 'policy-loading';
+        empty.textContent = 'No topics available yet.';
+        listEl.appendChild(empty);
+        return;
+      }
+
+      topics.forEach(function (topic, index) {
+        listEl.appendChild(buildCard(topic, index));
+      });
+
+      var hash = window.location.hash.replace('#', '');
+      if (hash) {
+        var target = document.getElementById(hash);
+        if (target) {
+          target.classList.add('expanded');
+          target.querySelector('.policy-card-header').setAttribute('aria-expanded', 'true');
+          target.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }
+      }
+    })
+    .catch(function (err) {
+      loadingEl.className = 'policy-error';
+      loadingEl.textContent = 'Could not load policy analysis data. (' + err.message + ')';
+    });
+})();
+</script>
+
+</body>
+</html>
