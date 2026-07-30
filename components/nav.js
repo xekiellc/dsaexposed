@@ -10,6 +10,8 @@
     { href: '/chapters/', label: 'Chapters' },
     { href: '/primaries/', label: 'Primaries' },
     { href: '/media/', label: 'Media' },
+    { href: '/policy-analysis.html', label: 'Policy Analysis' },
+    { href: '/history-of-socialism.html', label: 'History of Socialism' },
     { href: '/submit/', label: 'Submit a Tip' },
   ];
 
