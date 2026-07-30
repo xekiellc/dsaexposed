@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>History of Socialism — DSA Exposed</title>
-<meta name="description" content="Leaders and regimes that implemented socialism over the past century: their promises, their policies, and the documented human cost.">
+<title>Policy Analysis — DSA Exposed</title>
+<meta name="description" content="Every DSA platform position: historical precedent, debunked claims, and the impact if implemented in the United States.">
 
-<meta property="og:title" content="History of Socialism — DSA Exposed">
-<meta property="og:description" content="The leaders. The promises. The policies. The documented human cost.">
+<meta property="og:title" content="Policy Analysis — DSA Exposed">
+<meta property="og:description" content="Every DSA platform position, documented and analyzed: history, debunk, and US impact.">
 <meta property="og:image" content="https://dsaexposed.com/assets/og-card.jpg?v=2">
-<meta property="og:url" content="https://dsaexposed.com/history-of-socialism.html">
+<meta property="og:url" content="https://dsaexposed.com/policy-analysis.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@Mind_of_Myers">
-<meta name="twitter:title" content="History of Socialism — DSA Exposed">
-<meta name="twitter:description" content="The leaders. The promises. The policies. The documented human cost.">
+<meta name="twitter:title" content="Policy Analysis — DSA Exposed">
+<meta name="twitter:description" content="Every DSA platform position, documented and analyzed: history, debunk, and US impact.">
 <meta name="twitter:image" content="https://dsaexposed.com/assets/og-card.jpg?v=2">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/assets/global.css">
 
 <style>
-  .history-hero {
+  .policy-hero {
     padding: 64px 24px 40px;
     max-width: 880px;
     margin: 0 auto;
@@ -32,7 +32,7 @@
     border-bottom: 1px solid rgba(10,9,6,0.15);
   }
 
-  .history-hero .eyebrow {
+  .policy-hero .eyebrow {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
     letter-spacing: 0.14em;
@@ -41,7 +41,7 @@
     margin-bottom: 14px;
   }
 
-  .history-hero h1 {
+  .policy-hero h1 {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
     font-size: clamp(32px, 5vw, 52px);
@@ -50,36 +50,28 @@
     margin: 0 0 18px;
   }
 
-  .history-hero p {
+  .policy-hero p {
     font-family: 'Source Serif 4', serif;
     font-size: 18px;
     line-height: 1.55;
     color: #2a2723;
     max-width: 640px;
-    margin: 0 0 14px;
+    margin: 0;
   }
 
-  .history-hero .sourcing-note {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: #5a544b;
-    line-height: 1.6;
-    max-width: 640px;
-  }
-
-  .history-list {
+  .policy-list {
     max-width: 880px;
     margin: 0 auto;
     padding: 40px 24px 100px;
   }
 
-  .history-card {
+  .policy-card {
     border: 1px solid rgba(10,9,6,0.18);
     background: #F0EBE1;
     margin-bottom: 14px;
   }
 
-  .history-card-header {
+  .policy-card-header {
     width: 100%;
     display: flex;
     align-items: baseline;
@@ -93,38 +85,26 @@
     font-family: inherit;
   }
 
-  .history-card-header:hover {
+  .policy-card-header:hover {
     background: rgba(184,0,0,0.04);
   }
 
-  .history-card-index {
+  .policy-card-index {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
     color: #B80000;
     margin-right: 16px;
   }
 
-  .history-card-heading {
-    flex: 1;
-  }
-
-  .history-card-title {
+  .policy-card-title {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 22px;
     color: #0A0906;
-    display: block;
+    flex: 1;
   }
 
-  .history-card-subtitle {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: #5a544b;
-    display: block;
-    margin-top: 4px;
-  }
-
-  .history-card-toggle {
+  .policy-card-toggle {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 20px;
     color: #B80000;
@@ -133,11 +113,11 @@
     transition: transform 0.2s ease;
   }
 
-  .history-card.expanded .history-card-toggle {
+  .policy-card.expanded .policy-card-toggle {
     transform: rotate(45deg);
   }
 
-  .history-card-summary {
+  .policy-card-summary {
     font-family: 'Source Serif 4', serif;
     font-size: 16px;
     line-height: 1.6;
@@ -146,21 +126,21 @@
     max-width: 700px;
   }
 
-  .history-card-body {
+  .policy-card-body {
     display: none;
     padding: 0 24px 28px;
     border-top: 1px solid rgba(10,9,6,0.12);
   }
 
-  .history-card.expanded .history-card-body {
+  .policy-card.expanded .policy-card-body {
     display: block;
   }
 
-  .history-section {
+  .policy-section {
     margin-top: 22px;
   }
 
-  .history-section h3 {
+  .policy-section h3 {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
     letter-spacing: 0.12em;
@@ -169,7 +149,7 @@
     margin: 0 0 8px;
   }
 
-  .history-section p {
+  .policy-section p {
     font-family: 'Source Serif 4', serif;
     font-size: 16px;
     line-height: 1.65;
@@ -178,23 +158,15 @@
     white-space: pre-line;
   }
 
-  .history-sources {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: #5a544b;
-    line-height: 1.6;
-    margin-top: 4px;
-  }
-
-  .history-loading,
-  .history-error {
+  .policy-loading,
+  .policy-error {
     font-family: 'Source Serif 4', serif;
     font-size: 16px;
     color: #2a2723;
     padding: 40px 0;
   }
 
-  .history-error {
+  .policy-error {
     color: #B80000;
   }
 </style>
@@ -202,18 +174,17 @@
 <body>
 
 <nav></nav>
-<div id="ticker-root"></div>
+<div class="ticker-wrap"></div>
 
 <main>
-  <section class="history-hero">
-    <div class="eyebrow">History of Socialism</div>
-    <h1>The Leaders. The Promises. The Cost.</h1>
-    <p>Twelve governments across a century of socialist rule — what they promised, what they actually implemented, and the documented human toll that followed.</p>
-    <div class="sourcing-note">Figures are drawn from historians cited across the political spectrum — including Robert Conquest, Timothy Snyder, and Frank Dikötter — and presented as ranges reflecting the current scholarly consensus, not single point estimates.</div>
+  <section class="policy-hero">
+    <div class="eyebrow">Policy Analysis</div>
+    <h1>The DSA Platform, Line by Line</h1>
+    <p>Every major position in the Democratic Socialists of America's platform — documented in their own words, traced to historical precedent, and measured against what implementation would actually mean in the United States.</p>
   </section>
 
-  <section class="history-list" id="history-list">
-    <div class="history-loading" id="history-loading">Loading historical record…</div>
+  <section class="policy-list" id="policy-list">
+    <div class="policy-loading" id="policy-loading">Loading platform analysis…</div>
   </section>
 </main>
 
@@ -226,8 +197,8 @@
 
 <script>
 (function () {
-  var listEl = document.getElementById('history-list');
-  var loadingEl = document.getElementById('history-loading');
+  var listEl = document.getElementById('policy-list');
+  var loadingEl = document.getElementById('policy-loading');
 
   function escapeHtml(str) {
     var div = document.createElement('div');
@@ -235,40 +206,36 @@
     return div.innerHTML;
   }
 
-  function buildCard(entry, index) {
+  function buildCard(topic, index) {
     var card = document.createElement('div');
-    card.className = 'history-card';
-    card.id = entry.slug;
+    card.className = 'policy-card';
+    card.id = topic.slug;
 
     var header = document.createElement('button');
-    header.className = 'history-card-header';
+    header.className = 'policy-card-header';
     header.setAttribute('aria-expanded', 'false');
     header.innerHTML =
-      '<span style="display:flex; align-items:baseline;">' +
-      '<span class="history-card-index">' + String(index + 1).padStart(2, '0') + '</span>' +
-      '<span class="history-card-heading">' +
-      '<span class="history-card-title">' + escapeHtml(entry.name) + '</span>' +
-      '<span class="history-card-subtitle">' + escapeHtml(entry.country) + ' — ' + escapeHtml(entry.years) + '</span>' +
-      '</span></span>' +
-      '<span class="history-card-toggle">+</span>';
+      '<span><span class="policy-card-index">' + String(index + 1).padStart(2, '0') + '</span>' +
+      '<span class="policy-card-title">' + escapeHtml(topic.title) + '</span></span>' +
+      '<span class="policy-card-toggle">+</span>';
 
     var summary = document.createElement('div');
-    summary.className = 'history-card-summary';
-    summary.textContent = entry.summary || '';
+    summary.className = 'policy-card-summary';
+    summary.textContent = topic.summary || '';
 
     var body = document.createElement('div');
-    body.className = 'history-card-body';
+    body.className = 'policy-card-body';
 
     var sections = [
-      ['The Promises', entry.promises],
-      ['The Policies', entry.policies],
-      ['The Human Cost', entry.humanCost]
+      ['History', topic.history],
+      ['Debunked', topic.debunked],
+      ['US Impact If Implemented', topic.usImpact]
     ];
 
     sections.forEach(function (pair) {
       if (!pair[1]) return;
       var section = document.createElement('div');
-      section.className = 'history-section';
+      section.className = 'policy-section';
       var h3 = document.createElement('h3');
       h3.textContent = pair[0];
       var p = document.createElement('p');
@@ -278,18 +245,11 @@
       body.appendChild(section);
     });
 
-    if (entry.sources) {
-      var sourcesDiv = document.createElement('div');
-      sourcesDiv.className = 'history-sources';
-      sourcesDiv.textContent = 'Sources: ' + entry.sources;
-      body.appendChild(sourcesDiv);
-    }
-
     header.addEventListener('click', function () {
       var isExpanded = card.classList.toggle('expanded');
       header.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
       if (isExpanded) {
-        history.replaceState(null, '', '#' + entry.slug);
+        history.replaceState(null, '', '#' + topic.slug);
       }
     });
 
@@ -299,24 +259,24 @@
     return card;
   }
 
-  fetch('/data/socialism-history.json')
+  fetch('/data/policy-topics.json')
     .then(function (res) {
-      if (!res.ok) throw new Error('Failed to load socialism-history.json');
+      if (!res.ok) throw new Error('Failed to load policy-topics.json');
       return res.json();
     })
-    .then(function (entries) {
+    .then(function (topics) {
       loadingEl.remove();
 
-      if (!Array.isArray(entries) || entries.length === 0) {
+      if (!Array.isArray(topics) || topics.length === 0) {
         var empty = document.createElement('div');
-        empty.className = 'history-loading';
-        empty.textContent = 'No entries available yet.';
+        empty.className = 'policy-loading';
+        empty.textContent = 'No topics available yet.';
         listEl.appendChild(empty);
         return;
       }
 
-      entries.forEach(function (entry, index) {
-        listEl.appendChild(buildCard(entry, index));
+      topics.forEach(function (topic, index) {
+        listEl.appendChild(buildCard(topic, index));
       });
 
       var hash = window.location.hash.replace('#', '');
@@ -324,14 +284,14 @@
         var target = document.getElementById(hash);
         if (target) {
           target.classList.add('expanded');
-          target.querySelector('.history-card-header').setAttribute('aria-expanded', 'true');
+          target.querySelector('.policy-card-header').setAttribute('aria-expanded', 'true');
           target.scrollIntoView({ behavior: 'instant', block: 'start' });
         }
       }
     })
     .catch(function (err) {
-      loadingEl.className = 'history-error';
-      loadingEl.textContent = 'Could not load historical record data. (' + err.message + ')';
+      loadingEl.className = 'policy-error';
+      loadingEl.textContent = 'Could not load policy analysis data. (' + err.message + ')';
     });
 })();
 </script>
