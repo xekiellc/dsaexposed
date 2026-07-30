@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "lenin-bolshevik-russia",
+    "name": "Vladimir Lenin",
+    "country": "Russia / Soviet Union",
+    "years": "1917–1924",
+    "summary": "Promised \"peace, land, and bread\" and worker control of production. Delivered a one-party state, forced grain requisitioning, and a civil war-era famine that killed millions.",
+    "promises": "Lenin's Bolsheviks campaigned on immediate withdrawal from World War I, redistribution of land to peasants, and \"all power to the soviets\" — worker and soldier councils controlling production and government decisions directly, replacing both the Tsarist autocracy and the Provisional Government.",
+    "policies": "After seizing power in October 1917, the Bolsheviks dissolved the democratically elected Constituent Assembly after a single session when they lost the vote, nationalized land and industry, and introduced \"War Communism\" — forced requisitioning of grain from peasants to feed cities and the Red Army, enforced by armed detachments.",
+    "humanCost": "Forced requisitioning, combined with civil war disruption, produced the 1921–1922 Russian famine, which killed an estimated 5 million people. The Cheka secret police executed tens of thousands during the \"Red Terror\" campaign targeting political opponents. Soviet power was consolidated through the suppression of independent unions, opposition parties, and the Kronstadt rebellion of sailors who had originally supported the revolution.",
+    "sources": "Robert Service, \"Lenin: A Biography\"; Orlando Figes, \"A People's Tragedy\""
+  },
+  {
+    "slug": "stalin-ussr",
+    "name": "Joseph Stalin",
+    "country": "Soviet Union",
+    "years": "1924–1953",
+    "summary": "Promised rapid industrialization and agricultural collectivization for the benefit of workers and peasants. Delivered forced collectivization, the Holodomor famine, and mass political purges.",
+    "promises": "Stalin promised \"socialism in one country\" — rapid transformation of the USSR into an industrial power through collective ownership of agriculture and industry, framed as necessary to defend the revolution and improve living standards for workers and peasants.",
+    "policies": "Forced collectivization of agriculture beginning in 1929 seized peasant land and livestock into state and collective farms, with resistant peasants (\"kulaks\") deported or executed. Five-Year Plans directed industrial output through central planning. The Great Purge (1936–1938) used show trials, forced confessions, and mass executions to eliminate perceived political threats within the party, military, and general population.",
+    "humanCost": "Historians estimate the Holodomor famine in Ukraine and forced collectivization elsewhere killed between 5 and 7 million people between 1932–1933. The Great Purge is estimated to have killed at least 700,000 people through direct execution, with millions more sent to Gulag labor camps, where mortality rates were severe. Total excess deaths attributable to Stalin-era policies are estimated in the range of 9 to 20 million depending on methodology and what is counted.",
+    "sources": "Robert Conquest, \"The Harvest of Sorrow\"; Timothy Snyder, \"Bloodlands\"; Stephen Kotkin, \"Stalin\" (biography trilogy)"
+  },
+  {
+    "slug": "mao-zedong-china",
+    "name": "Mao Zedong",
+    "country": "China",
+    "years": "1949–1976",
+    "summary": "Promised land reform and rapid industrial catch-up with the West. Delivered the Great Leap Forward famine, the deadliest in human history, followed by the Cultural Revolution's political violence.",
+    "promises": "Mao promised land redistribution to peasants, liberation from foreign imperialism and warlordism, and a rapid transformation of China into an industrial and agricultural power that would \"overtake\" Western nations within a generation.",
+    "policies": "The Great Leap Forward (1958–1962) forced peasants into communes, mandated unrealistic agricultural and steel production quotas, and diverted farm labor to backyard steel furnaces, disrupting food production nationwide. Local officials, fearing punishment, falsified crop yield reports, leading central authorities to requisition grain that did not exist as surplus. The subsequent Cultural Revolution (1966–1976) mobilized youth Red Guards to purge perceived class enemies, destroying cultural institutions and targeting intellectuals, former landlords, and party officials.",
+    "humanCost": "Historian Frank Dikötter's archival research puts the Great Leap Forward famine death toll at a minimum of 45 million people between 1958 and 1962, making it the deadliest famine in recorded history — largely a direct product of policy rather than natural causes. The Cultural Revolution added an estimated 1.5 to 2 million additional deaths through political violence, forced labor, and suicide, alongside widespread destruction of cultural and educational institutions.",
+    "sources": "Frank Dikötter, \"Mao's Great Famine\"; Yang Jisheng, \"Tombstone\""
+  },
+  {
+    "slug": "pol-pot-khmer-rouge",
+    "name": "Pol Pot",
+    "country": "Cambodia",
+    "years": "1975–1979",
+    "summary": "Promised an agrarian utopia free of foreign influence and class distinction. Delivered forced evacuation of cities, slave labor camps, and genocide that killed roughly a quarter of Cambodia's population.",
+    "promises": "The Khmer Rouge promised liberation from Western and Vietnamese influence and a return to a self-sufficient, classless agrarian society, framed as purging corrupting capitalist and foreign influences from Cambodian life entirely.",
+    "policies": "Upon taking power, the regime forcibly evacuated Phnom Penh and all cities within days, marching the entire urban population into rural labor camps. Money, private property, religion, and education were abolished. People identified as intellectuals, professionals, or connected to the former government — including anyone wearing glasses, in some documented cases — were executed. Family units were broken up in favor of collective work and living structures.",
+    "humanCost": "An estimated 1.5 to 2 million Cambodians died between 1975 and 1979 — roughly 21 to 24 percent of the country's total population — through direct execution, forced labor, starvation, and disease in what is documented as the Cambodian genocide.",
+    "sources": "Ben Kiernan, \"The Pol Pot Regime\"; Documentation Center of Cambodia (DC-Cam) archival research"
+  },
+  {
+    "slug": "castro-cuba",
+    "name": "Fidel Castro",
+    "country": "Cuba",
+    "years": "1959–2008",
+    "summary": "Promised democratic elections and land reform after overthrowing Batista. Delivered a one-party state, mass property seizure, and decades of political imprisonment.",
+    "promises": "Castro's 1959 revolution promised free elections within 18 months, land reform for peasants, and an end to the corruption and inequality of the Batista dictatorship.",
+    "policies": "Promised elections never occurred. The government nationalized virtually all private property, businesses, and foreign-owned assets without compensation, and established a one-party state with Castro as head of government for nearly five decades. Independent media, political opposition, and free assembly were banned.",
+    "humanCost": "Human rights organizations, including Amnesty International and Human Rights Watch, have documented tens of thousands of political prisoners over the regime's history, along with executions of political dissidents in the early years (estimated in the low thousands) and the ongoing suppression of free press and assembly that continues under Castro's successors. An estimated 1 to 2 million Cubans have emigrated since 1959, many as refugees fleeing political repression and economic conditions.",
+    "sources": "Human Rights Watch, Cuba country reports; Yoani Sánchez and independent Cuban dissident documentation"
+  },
+  {
+    "slug": "kim-il-sung-north-korea",
+    "name": "Kim Il-sung",
+    "country": "North Korea",
+    "years": "1948–1994",
+    "summary": "Promised unification and prosperity under \"Juche\" self-reliance. Delivered a hereditary totalitarian state, forced labor camps, and famine conditions that persisted for decades.",
+    "promises": "Kim Il-sung promised national unification of the Korean peninsula, liberation from foreign (particularly Japanese and American) influence, and prosperity through \"Juche\" — a doctrine of national self-reliance and socialist economic planning.",
+    "policies": "The regime established a hereditary totalitarian dictatorship, later passed to Kim Jong-il and Kim Jong-un. Agriculture and industry were fully collectivized under state control. A songbun social classification system determined citizens' access to food, education, and employment based on perceived political loyalty. A network of political prison camps (kwanliso) was established for perceived dissidents and their extended families.",
+    "humanCost": "Decades of centrally planned agricultural mismanagement, combined with the loss of Soviet economic support after 1991, produced the North Korean famine of the mid-to-late 1990s, estimated to have killed between 600,000 and 1 million people, with some estimates ranging higher. Human rights organizations estimate tens of thousands remain imprisoned in political labor camps under successor leadership, with documented conditions including forced labor, starvation, and execution.",
+    "sources": "UN Commission of Inquiry on Human Rights in the DPRK (2014 report); Andrei Lankov, \"The Real North Korea\""
+  },
+  {
+    "slug": "chavez-venezuela",
+    "name": "Hugo Chávez",
+    "country": "Venezuela",
+    "years": "1999–2013",
+    "summary": "Promised \"21st-century socialism\" funded by oil wealth to eliminate poverty. Delivered nationalization of major industries, price controls, and the early stages of what became a full economic collapse.",
+    "promises": "Chávez promised to use Venezuela's oil wealth to fund social programs, reduce poverty and inequality, and build \"21st-century socialism\" as a democratic alternative to both Soviet-style communism and free-market capitalism.",
+    "policies": "The government nationalized major industries including oil, telecommunications, electricity, and agriculture, and imposed strict price and currency controls. Social spending expanded significantly during the 2000s oil boom, funding literacy and healthcare programs. Independent media and opposition figures faced increasing legal and regulatory pressure.",
+    "humanCost": "Price controls and nationalization reduced private investment and domestic production, creating dependency on oil revenue and imports. When oil prices fell after 2014, the resulting shortages of food and medicine — foundational to the economic collapse that followed under Chávez's successor Maduro — trace directly to structural decisions made during the Chávez era, including currency controls and expropriation of productive agricultural land that was not efficiently replaced under state management.",
+    "sources": "Ricardo Hausmann and Francisco Rodríguez, Venezuelan economic policy research (Harvard/Wesleyan); Human Rights Watch, Venezuela country reports"
+  },
+  {
+    "slug": "maduro-venezuela",
+    "name": "Nicolás Maduro",
+    "country": "Venezuela",
+    "years": "2013–present",
+    "summary": "Promised continuity of Chávez's socialist project. Delivered hyperinflation, mass emigration, and severe shortages of food and medicine under continued price controls and state economic mismanagement.",
+    "promises": "Maduro promised to continue and deepen Chávez's socialist policies, maintaining subsidized goods, state control of major industries, and resistance to what the government characterized as foreign economic sabotage and sanctions.",
+    "policies": "The government maintained and expanded price and currency controls, continued nationalization of remaining private industry, and printed currency to fund government spending amid falling oil revenue, while cracking down on opposition protests and independent media.",
+    "humanCost": "Venezuela experienced hyperinflation exceeding 1,000,000% annually at its peak (2018), the collapse of its currency, and severe shortages of food, medicine, and basic goods. An estimated 7.7 million Venezuelans — roughly a quarter of the pre-crisis population — have emigrated since 2014 in what the UN has classified as one of the largest displacement crises in the world. Human rights organizations have documented extrajudicial killings and mass arbitrary detention of political dissidents under Maduro's government.",
+    "sources": "UN High Commissioner for Refugees (UNHCR), Venezuela situation reports; International Monetary Fund inflation data; UN Human Rights Council Independent Fact-Finding Mission on Venezuela"
+  },
+  {
+    "slug": "ho-chi-minh-north-vietnam",
+    "name": "Ho Chi Minh",
+    "country": "North Vietnam",
+    "years": "1945–1969",
+    "summary": "Promised national independence and land reform for peasants. Delivered a one-party state and a land reform campaign that killed tens of thousands before the party itself acknowledged and reversed its excesses.",
+    "promises": "Ho Chi Minh promised independence from French colonial rule and Japanese occupation, followed by land redistribution to peasants and unification of Vietnam under a government free of foreign control.",
+    "policies": "Following independence, the North Vietnamese government implemented a land reform campaign (1953–1956) that classified rural landowners into categories and subjected \"landlord\" and \"rich peasant\" classes to public trials, property seizure, and in many cases execution, carried out partly through local tribunals under pressure to meet quotas.",
+    "humanCost": "Estimates of deaths during the North Vietnamese land reform campaign range from roughly 15,000 to 50,000 people, with the Vietnamese government itself later publicly acknowledging \"excesses\" and errors in the campaign's implementation, and removing party leadership responsible for it in 1956 — a rare instance of a communist government publicly correcting course.",
+    "sources": "Edwin Moise, \"Land Reform in China and North Vietnam\"; Vietnamese Communist Party's own 1956 rectification campaign records"
+  },
+  {
+    "slug": "ceausescu-romania",
+    "name": "Nicolae Ceaușescu",
+    "country": "Romania",
+    "years": "1965–1989",
+    "summary": "Promised national dignity and independence from Soviet control within a socialist framework. Delivered a personality cult, forced pronatalist policies, and severe austerity that left citizens without heat or food while state resources funded palace construction.",
+    "promises": "Ceaușescu promised a distinctly Romanian path to socialism, national industrial self-sufficiency, and independence from direct Soviet control, initially winning some domestic and Western goodwill for distancing Romania from Moscow's foreign policy line.",
+    "policies": "The government banned contraception and abortion in 1966 to forcibly increase the birth rate, resulting in large numbers of children abandoned to severely under-resourced state orphanages. In the 1980s, to pay off foreign debt, Ceaușescu exported most of the country's food and energy production while imposing severe domestic rationing, leaving citizens without adequate heat, electricity, or food for years. A vast personality cult and secret police (Securitate) surveillance apparatus suppressed dissent.",
+    "humanCost": "Romanian orphanages under the pronatalist policy held an estimated 100,000+ children by the late 1980s, many suffering documented neglect and later found to have HIV outbreaks from unsafe medical practices. Winters of extreme rationing in the 1980s caused documented excess deaths among the elderly and infants from cold and malnutrition, though precise figures remain contested. Ceaușescu was overthrown and executed in the 1989 revolution.",
+    "sources": "Human Rights Watch archival reporting on Romanian orphanages; Katherine Verdery, \"What Was Socialism, and What Comes Next?\""
+  },
+  {
+    "slug": "mengistu-ethiopia",
+    "name": "Mengistu Haile Mariam",
+    "country": "Ethiopia",
+    "years": "1974–1991",
+    "summary": "Promised land reform and an end to feudal monarchy. Delivered the \"Red Terror\" political purge and forced collectivization policies that worsened a famine already underway from drought.",
+    "promises": "The Derg regime under Mengistu promised to end Ethiopia's feudal land system, redistribute land to peasants, and modernize the country under Marxist-Leninist central planning after overthrowing Emperor Haile Selassie.",
+    "policies": "The government nationalized land and forced villagization, relocating millions of rural Ethiopians into planned settlements, disrupting existing agricultural patterns. The \"Red Terror\" campaign (1977–1978) used mass arrest, torture, and summary execution to eliminate political opposition, particularly targeting students and intellectuals. Forced collectivization and government control of grain distribution compounded an already severe drought-driven famine.",
+    "humanCost": "The Red Terror campaign killed an estimated 30,000 to 750,000 people depending on the source and time period counted, with human rights organizations generally citing tens of thousands of confirmed political killings. The 1983–1985 famine, worsened by forced villagization and the government's diversion of resources toward military campaigns and away from famine-affected regions, killed an estimated 400,000 to 1 million people.",
+    "sources": "Human Rights Watch, \"Evil Days: Thirty Years of War and Famine in Ethiopia\"; Bahru Zewde, \"A History of Modern Ethiopia\""
+  },
+  {
+    "slug": "mugabe-zimbabwe",
+    "name": "Robert Mugabe",
+    "country": "Zimbabwe",
+    "years": "1980–2017",
+    "summary": "Promised land redistribution and prosperity for the Black majority after independence. Delivered a violent land seizure program that collapsed commercial agriculture and produced world-record hyperinflation.",
+    "promises": "Mugabe promised land redistribution from white commercial farmers to the Black majority as a correction for colonial-era land seizure, alongside broader economic development and social services for a newly independent Zimbabwe.",
+    "policies": "Beginning in earnest in 2000, the government sanctioned often-violent seizures of white-owned commercial farms, frequently redistributing land to political allies rather than experienced smallholder farmers, disrupting the country's agricultural export economy. The central bank printed currency extensively to fund government spending amid collapsing tax revenue.",
+    "humanCost": "Zimbabwe's commercial agricultural output collapsed by an estimated 50 percent or more within a decade of the land seizures, turning a former regional \"breadbasket\" into a food-import-dependent country. The resulting economic collapse produced hyperinflation that peaked at an official rate of 231,000,000% in 2008 (with independent economist estimates significantly higher), wiping out savings and requiring a currency changeover. Human rights organizations also documented politically motivated violence against opposition supporters throughout Mugabe's tenure.",
+    "sources": "International Monetary Fund, Zimbabwe hyperinflation data; Human Rights Watch, Zimbabwe country reports"
+  }
+]
