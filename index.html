@@ -17,6 +17,8 @@
   <meta name="twitter:description" content="Documenting the Democratic Socialists of America — their words, funding, terrorism ties, and infiltration of American government.">
   <meta name="twitter:image" content="https://dsaexposed.com/assets/og-card.jpg?v=2">
 
+  <link rel="preload" as="image" href="/assets/hero-bg.jpg">
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PK58BBCJX7');</script>
   <link rel="stylesheet" href="/assets/global.css" />
@@ -30,7 +32,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.8s ease;
+      transition: opacity 0.4s ease;
     }
     #splash::before {
       content: '';
@@ -44,7 +46,7 @@
       left: 0;
       height: 3px;
       background: #B80000;
-      animation: splashBar 2.4s ease forwards;
+      animation: splashBar 1.2s ease forwards;
     }
     @keyframes splashBar {
       from { width: 0; }
@@ -157,8 +159,8 @@
     setTimeout(function() {
       splash.style.display = 'none';
       document.body.style.overflow = '';
-    }, 800);
-  }, 2600);
+    }, 400);
+  }, 1300);
   document.body.style.overflow = 'hidden';
 </script>
 
