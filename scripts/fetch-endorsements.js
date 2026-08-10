@@ -15,7 +15,7 @@ const SOURCE_URLS = [
 
 // Cap how many discovered chapter links get scraped per run, to keep runtime reasonable
 // and avoid hammering dozens of chapter sites in one Actions job
-const MAX_DISCOVERED_PER_RUN = 15;
+const MAX_DISCOVERED_PER_RUN = 40;
 
 function stripHtml(html) {
   return html
@@ -220,7 +220,7 @@ async function main() {
     console.log(`  Found ${newCandidates.length} new candidates`);
     allNewReps = allNewReps.concat(newCandidates);
 
-    await new Promise(r => setTimeout(r, 1000)); // be polite between requests
+    await new Promise(r => setTimeout(r, 600)); // be polite between requests
   }
 
   // Merge newly found links into the discovered list, deduping by href
