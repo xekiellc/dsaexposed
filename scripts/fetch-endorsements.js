@@ -4,6 +4,7 @@ const path = require('path');
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
+// Fixed seed sources — always scraped every run
 const SOURCE_URLS = [
   { url: 'https://www.dsausa.org/', chapterName: 'DSA National — Home', state: null },
   { url: 'https://www.dsausa.org/chapters/', chapterName: 'DSA National — Chapters Directory', state: null },
@@ -11,6 +12,10 @@ const SOURCE_URLS = [
   { url: 'https://program.dsausa.org/', chapterName: 'DSA National — Program/Platform', state: null },
   { url: 'https://www.dsausa.org/news/', chapterName: 'DSA National — News', state: null },
 ];
+
+// Cap how many discovered chapter links get scraped per run, to keep runtime reasonable
+// and avoid hammering dozens of chapter sites in one Actions job
+const MAX_DISCOVERED_PER_RUN = 15;
 
 function stripHtml(html) {
   return html
@@ -23,7 +28,7 @@ function stripHtml(html) {
     .trim();
 }
 
-function extractLinks(html, baseUrl) {
+function extractLinks(html) {
   const links = [];
   const linkRegex = /<a\s+[^>]*href=["']([^"']+)["'][^>]*>(.*?)<\/a>/gi;
   let match;
@@ -35,6 +40,14 @@ function extractLinks(html, baseUrl) {
     links.push({ href, text });
   }
   return links;
+}
+
+function normalizeUrl(href, baseUrl) {
+  try {
+    return new URL(href, baseUrl).toString();
+  } catch {
+    return null;
+  }
 }
 
 async function fetchPage(url) {
@@ -56,6 +69,15 @@ function slugify(name) {
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
+}
+
+function looksLikeChapterLink(href, linkText) {
+  const h = href.toLowerCase();
+  const t = (linkText || '').toLowerCase();
+  if (h.includes('facebook.com') || h.includes('twitter.com') || h.includes('instagram.com') || h.includes('x.com') || h.includes('youtube.com') || h.includes('linkedin.com')) return false;
+  if (h.startsWith('javascript:')) return false;
+  // Likely a chapter link if it's an external dsa-related domain, or the link text mentions DSA/chapter
+  return h.includes('dsa') || t.includes('dsa') || t.includes('chapter') || t.includes('local');
 }
 
 async function extractCandidatesWithClaude(pageText, sourceInfo, existingReps) {
@@ -133,35 +155,45 @@ Respond with ONLY a JSON array of candidate objects as described. No explanation
   }
 }
 
-async function discoverChapterLinks(html, baseUrl) {
-  // From the chapters directory page, try to find links to individual chapter sites
-  const links = extractLinks(html, baseUrl);
-  // Filter to links that look like chapter pages (external domains or /chapters/ subpaths)
-  return links.filter(l => {
-    const href = l.href.toLowerCase();
-    return (href.includes('dsa') || href.startsWith('http')) &&
-           !href.includes('facebook.com') &&
-           !href.includes('twitter.com') &&
-           !href.includes('instagram.com') &&
-           !href.includes('x.com');
-  });
+function loadJson(filePath, fallback) {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch {
+    return fallback;
+  }
 }
 
 async function main() {
   console.log('DSA Exposed Local Endorsement Scraper starting...');
 
   const repsPath = path.join(process.cwd(), 'data', 'reps.json');
-  let existingReps = [];
-  try {
-    existingReps = JSON.parse(fs.readFileSync(repsPath, 'utf8'));
-  } catch {
-    existingReps = [];
-  }
+  const discoveredPath = path.join(process.cwd(), 'data', 'discovered-chapter-links.json');
+
+  let existingReps = loadJson(repsPath, []);
+
+  // Load previously discovered chapter links (self-expanding source list)
+  let discovered = loadJson(discoveredPath, []);
+  console.log(`Loaded ${discovered.length} previously discovered chapter links`);
+
+  // Track which URLs we've already turned into scrape sources, so we don't
+  // rescrape the same discovered chapter every single run forever
+  const alreadyScraped = new Set(discovered.filter(d => d.scraped).map(d => d.href));
+
+  const pendingDiscovered = discovered.filter(d => !alreadyScraped.has(d.href) && !d.scraped);
+  const thisRunDiscoveredSources = pendingDiscovered.slice(0, MAX_DISCOVERED_PER_RUN).map(d => ({
+    url: d.href,
+    chapterName: d.text || 'DSA Local Chapter',
+    state: null
+  }));
+
+  console.log(`Scraping ${thisRunDiscoveredSources.length} newly discovered chapter link(s) this run (${pendingDiscovered.length - thisRunDiscoveredSources.length} remaining for future runs)`);
+
+  const allSources = [...SOURCE_URLS, ...thisRunDiscoveredSources];
 
   let allNewReps = [];
-  let discoveredChapterLinks = [];
+  let newlyFoundLinks = [];
 
-  for (const source of SOURCE_URLS) {
+  for (const source of allSources) {
     console.log(`Fetching ${source.chapterName}: ${source.url}`);
     const rawHtml = await fetchPage(source.url);
 
@@ -170,11 +202,17 @@ async function main() {
       continue;
     }
 
-    // If this is the chapters directory, also try to discover individual chapter links for future runs
-    if (source.url.includes('/chapters/')) {
-      const links = await discoverChapterLinks(rawHtml, source.url);
-      discoveredChapterLinks = discoveredChapterLinks.concat(links);
-      console.log(`  Discovered ${links.length} potential chapter links (logged for review, not yet auto-added to SOURCE_URLS)`);
+    // Mark this discovered link as scraped so we don't requeue it every run
+    const matchIdx = discovered.findIndex(d => d.href === source.url);
+    if (matchIdx > -1) discovered[matchIdx].scraped = true;
+
+    // If this is a directory/chapters-style page, look for more chapter links to discover
+    if (source.url.includes('/chapters/') || source.chapterName.toLowerCase().includes('chapter')) {
+      const links = extractLinks(rawHtml)
+        .map(l => ({ href: normalizeUrl(l.href, source.url), text: l.text }))
+        .filter(l => l.href && looksLikeChapterLink(l.href, l.text));
+      newlyFoundLinks = newlyFoundLinks.concat(links);
+      console.log(`  Found ${links.length} potential chapter links on this page`);
     }
 
     const pageText = stripHtml(rawHtml);
@@ -185,21 +223,26 @@ async function main() {
     await new Promise(r => setTimeout(r, 1000)); // be polite between requests
   }
 
+  // Merge newly found links into the discovered list, deduping by href
+  const knownHrefs = new Set(discovered.map(d => d.href));
+  newlyFoundLinks.forEach(l => {
+    if (!knownHrefs.has(l.href)) {
+      discovered.push({ href: l.href, text: l.text, scraped: false, foundAt: new Date().toISOString() });
+      knownHrefs.add(l.href);
+    }
+  });
+
+  // Save reps
   const existingIds = new Set(existingReps.map(r => r.id));
   const dedupedNewReps = allNewReps.filter(r => !existingIds.has(r.id));
-
   const mergedReps = [...existingReps, ...dedupedNewReps];
 
   fs.writeFileSync(repsPath, JSON.stringify(mergedReps, null, 2));
   console.log(`reps.json updated with ${mergedReps.length} total entries (${dedupedNewReps.length} new from DSA sources)`);
 
-  // Log discovered chapter links to a separate file for visibility — not auto-scraped yet,
-  // but surfaced so SOURCE_URLS can be expanded over time without guesswork
-  if (discoveredChapterLinks.length > 0) {
-    const discoveredPath = path.join(process.cwd(), 'data', 'discovered-chapter-links.json');
-    fs.writeFileSync(discoveredPath, JSON.stringify(discoveredChapterLinks, null, 2));
-    console.log(`Logged ${discoveredChapterLinks.length} discovered chapter links to data/discovered-chapter-links.json`);
-  }
+  // Save discovered links (self-expanding source list for next run)
+  fs.writeFileSync(discoveredPath, JSON.stringify(discovered, null, 2));
+  console.log(`discovered-chapter-links.json updated: ${discovered.length} total known links, ${discovered.filter(d => d.scraped).length} scraped so far`);
 }
 
 main().catch(err => {
