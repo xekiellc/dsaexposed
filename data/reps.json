@@ -11,57 +11,18 @@
     "photo": "",
     "profile_url": "/reps/profiles/alexandria-ocasio-cortez.html",
     "tags": ["Anti-Capitalism", "BDS Support", "Hamas Defense", "DSA Member", "Squad", "Iron Dome No"],
-    "pillars": {
-      "words": true,
-      "funding": true,
-      "support": true,
-      "networks": true
-    },
+    "pillars": { "words": true, "funding": true, "support": true, "networks": true },
     "statements": [
-      {
-        "quote": "Capitalism is an ideology of capital — the most important thing is the concentration of capital and it will move towards the concentration of capital at the expense of human life.",
-        "source": "Interview",
-        "date": "2019",
-        "url": ""
-      },
-      {
-        "quote": "I think that we have created a vision of the future that's fundamentally different from the one the right wants.",
-        "source": "DSA Convention",
-        "date": "2019",
-        "url": ""
-      }
+      { "quote": "Capitalism is an ideology of capital — the most important thing is the concentration of capital and it will move towards the concentration of capital at the expense of human life.", "source": "Interview", "date": "2019", "url": "" },
+      { "quote": "I think that we have created a vision of the future that's fundamentally different from the one the right wants.", "source": "DSA Convention", "date": "2019", "url": "" }
     ],
     "votes": [
-      {
-        "date": "2021-09-23",
-        "bill": "Iron Dome Supplemental Appropriations Act",
-        "vote": "NO",
-        "roll_call": "309",
-        "source": "House Record"
-      },
-      {
-        "date": "2023-11-07",
-        "bill": "H.Res. 845 — Censure of Rashida Tlaib",
-        "vote": "NO",
-        "roll_call": "607",
-        "source": "House Record"
-      },
-      {
-        "date": "2023-10-25",
-        "bill": "H.Res. 771 — Condemning Hamas Oct 7 Attack",
-        "vote": "PRESENT",
-        "roll_call": "521",
-        "source": "House Record"
-      }
+      { "date": "2021-09-23", "bill": "Iron Dome Supplemental Appropriations Act", "vote": "NO", "roll_call": "309", "source": "House Record" },
+      { "date": "2023-11-07", "bill": "H.Res. 845 — Censure of Rashida Tlaib", "vote": "NO", "roll_call": "607", "source": "House Record" },
+      { "date": "2023-10-25", "bill": "H.Res. 771 — Condemning Hamas Oct 7 Attack", "vote": "PRESENT", "roll_call": "521", "source": "House Record" }
     ],
     "funding": [
-      {
-        "source": "Justice Democrats PAC",
-        "amount": "$2.1M",
-        "cycle": "2024",
-        "risk": "high",
-        "fec_ref": ""
-      }
+      { "source": "Justice Democrats PAC", "amount": "$2.1M", "cycle": "2024", "risk": "high", "fec_ref": "" }
     ],
     "networks": ["DSA National", "Justice Democrats", "Working Families Party", "Sunrise Movement", "BDS Movement"]
   },
@@ -77,44 +38,16 @@
     "photo": "",
     "profile_url": "/reps/profiles/rashida-tlaib.html",
     "tags": ["Terrorism Ties", "BDS Support", "Anti-America", "DSA Endorsed", "Squad", "Hamas Defender", "Censured"],
-    "pillars": {
-      "words": true,
-      "funding": true,
-      "support": true,
-      "networks": true
-    },
+    "pillars": { "words": true, "funding": true, "support": true, "networks": true },
     "statements": [
-      {
-        "quote": "From the river to the sea, Palestine will be free.",
-        "source": "Social Media",
-        "date": "2023-10",
-        "url": ""
-      }
+      { "quote": "From the river to the sea, Palestine will be free.", "source": "Social Media", "date": "2023-10", "url": "" }
     ],
     "votes": [
-      {
-        "date": "2021-09-23",
-        "bill": "Iron Dome Supplemental Appropriations Act",
-        "vote": "NO",
-        "roll_call": "309",
-        "source": "House Record"
-      },
-      {
-        "date": "2023-10-25",
-        "bill": "H.Res. 771 — Condemning Hamas Oct 7 Attack",
-        "vote": "NO",
-        "roll_call": "521",
-        "source": "House Record"
-      }
+      { "date": "2021-09-23", "bill": "Iron Dome Supplemental Appropriations Act", "vote": "NO", "roll_call": "309", "source": "House Record" },
+      { "date": "2023-10-25", "bill": "H.Res. 771 — Condemning Hamas Oct 7 Attack", "vote": "NO", "roll_call": "521", "source": "House Record" }
     ],
     "funding": [
-      {
-        "source": "CAIR Action Network PAC",
-        "amount": "$140K+",
-        "cycle": "2024",
-        "risk": "terror-adjacent",
-        "fec_ref": ""
-      }
+      { "source": "CAIR Action Network PAC", "amount": "$140K+", "cycle": "2024", "risk": "terror-adjacent", "fec_ref": "" }
     ],
     "networks": ["DSA National", "CAIR", "AMP", "BDS Movement", "Working Families Party"]
   },
@@ -130,50 +63,17 @@
     "photo": "",
     "profile_url": "/reps/profiles/ilhan-omar.html",
     "tags": ["CAIR Ties", "BDS Support", "Anti-Israel", "DSA Endorsed", "Squad", "Red-Green Bridge"],
-    "pillars": {
-      "words": true,
-      "funding": true,
-      "support": true,
-      "networks": true
-    },
+    "pillars": { "words": true, "funding": true, "support": true, "networks": true },
     "statements": [
-      {
-        "quote": "We must apply human rights standards universally — and that includes standing up to our allies.",
-        "source": "Floor Statement",
-        "date": "2021",
-        "url": ""
-      },
-      {
-        "quote": "Israel has hypnotized the world, may Allah awaken the people and help them see the evil doings of Israel.",
-        "source": "Twitter",
-        "date": "2012-11",
-        "url": ""
-      }
+      { "quote": "We must apply human rights standards universally — and that includes standing up to our allies.", "source": "Floor Statement", "date": "2021", "url": "" },
+      { "quote": "Israel has hypnotized the world, may Allah awaken the people and help them see the evil doings of Israel.", "source": "Twitter", "date": "2012-11", "url": "" }
     ],
     "votes": [
-      {
-        "date": "2021-09-23",
-        "bill": "Iron Dome Supplemental Appropriations Act",
-        "vote": "NO",
-        "roll_call": "309",
-        "source": "House Record"
-      },
-      {
-        "date": "2023-10-25",
-        "bill": "H.Res. 771 — Condemning Hamas Oct 7 Attack",
-        "vote": "NO",
-        "roll_call": "521",
-        "source": "House Record"
-      }
+      { "date": "2021-09-23", "bill": "Iron Dome Supplemental Appropriations Act", "vote": "NO", "roll_call": "309", "source": "House Record" },
+      { "date": "2023-10-25", "bill": "H.Res. 771 — Condemning Hamas Oct 7 Attack", "vote": "NO", "roll_call": "521", "source": "House Record" }
     ],
     "funding": [
-      {
-        "source": "CAIR Action Network PAC",
-        "amount": "$180K+",
-        "cycle": "2024",
-        "risk": "terror-adjacent",
-        "fec_ref": ""
-      }
+      { "source": "CAIR Action Network PAC", "amount": "$180K+", "cycle": "2024", "risk": "terror-adjacent", "fec_ref": "" }
     ],
     "networks": ["DSA National", "CAIR", "AMP", "BDS Movement", "Justice Democrats"]
   },
@@ -189,19 +89,9 @@
     "photo": "",
     "profile_url": "/reps/profiles/claire-valdez.html",
     "tags": ["DSA Member", "Oct 7 Celebration", "Anti-Israel", "BDS Support", "2026 Primary Win"],
-    "pillars": {
-      "words": true,
-      "funding": false,
-      "support": true,
-      "networks": true
-    },
+    "pillars": { "words": true, "funding": false, "support": true, "networks": true },
     "statements": [
-      {
-        "quote": "This is exactly why I really love being a member of DSA.",
-        "source": "Interview with streamer who called Jews \"demonic ethnicity\"",
-        "date": "2026-05",
-        "url": ""
-      }
+      { "quote": "This is exactly why I really love being a member of DSA.", "source": "Interview with streamer who called Jews \"demonic ethnicity\"", "date": "2026-05", "url": "" }
     ],
     "votes": [],
     "funding": [],
@@ -219,19 +109,9 @@
     "photo": "",
     "profile_url": "/reps/profiles/darializa-avila-chevalier.html",
     "tags": ["DSA Member", "Refused Hamas Condemnation", "Oct 8 Rally", "Abolish Police/Borders", "2026 Primary Win"],
-    "pillars": {
-      "words": true,
-      "funding": false,
-      "support": true,
-      "networks": true
-    },
+    "pillars": { "words": true, "funding": false, "support": true, "networks": true },
     "statements": [
-      {
-        "quote": "The premise of that question ignores the 75 years of occupation...",
-        "source": "Broadway Democrats Forum — asked directly to condemn Hamas's Oct. 7 attack",
-        "date": "2026",
-        "url": ""
-      }
+      { "quote": "The premise of that question ignores the 75 years of occupation...", "source": "Broadway Democrats Forum — asked directly to condemn Hamas's Oct. 7 attack", "date": "2026", "url": "" }
     ],
     "votes": [],
     "funding": [],
@@ -249,19 +129,9 @@
     "photo": "",
     "profile_url": "/reps/profiles/brad-lander.html",
     "tags": ["Genocide Rhetoric", "Anti-Israel", "Mamdani Endorsed", "Former DSA Member", "2026 Primary Win"],
-    "pillars": {
-      "words": true,
-      "funding": false,
-      "support": true,
-      "networks": false
-    },
+    "pillars": { "words": true, "funding": false, "support": true, "networks": false },
     "statements": [
-      {
-        "quote": "We are not complicit in occupation and genocide.",
-        "source": "Campaign Rally with Mamdani",
-        "date": "2026-06",
-        "url": ""
-      }
+      { "quote": "We are not complicit in occupation and genocide.", "source": "Campaign Rally with Mamdani", "date": "2026-06", "url": "" }
     ],
     "votes": [],
     "funding": [],
@@ -279,19 +149,9 @@
     "photo": "",
     "profile_url": "/reps/profiles/cori-bush.html",
     "tags": ["Defund Police", "BDS Support", "Anti-Capitalism", "DSA Endorsed", "Squad", "Lost 2024 Primary"],
-    "pillars": {
-      "words": true,
-      "funding": true,
-      "support": true,
-      "networks": false
-    },
+    "pillars": { "words": true, "funding": true, "support": true, "networks": false },
     "statements": [
-      {
-        "quote": "Defund the police. Defund the military. Defund ICE.",
-        "source": "Twitter",
-        "date": "2020",
-        "url": ""
-      }
+      { "quote": "Defund the police. Defund the military. Defund ICE.", "source": "Twitter", "date": "2020", "url": "" }
     ],
     "votes": [],
     "funding": [],
@@ -309,12 +169,7 @@
     "photo": "",
     "profile_url": "/reps/profiles/summer-lee.html",
     "tags": ["Anti-Capitalism", "BDS Support", "DSA Endorsed", "Socialist Platform"],
-    "pillars": {
-      "words": true,
-      "funding": true,
-      "support": true,
-      "networks": false
-    },
+    "pillars": { "words": true, "funding": true, "support": true, "networks": false },
     "statements": [],
     "votes": [],
     "funding": [],
@@ -332,12 +187,7 @@
     "photo": "",
     "profile_url": "/reps/profiles/greg-casar.html",
     "tags": ["Socialist Platform", "Open Borders", "DSA Endorsed", "Anti-Capitalism"],
-    "pillars": {
-      "words": true,
-      "funding": true,
-      "support": false,
-      "networks": false
-    },
+    "pillars": { "words": true, "funding": true, "support": false, "networks": false },
     "statements": [],
     "votes": [],
     "funding": [],
@@ -355,34 +205,56 @@
     "photo": "",
     "profile_url": "/reps/profiles/mamdani.html",
     "tags": ["Hamas Praise", "HLF Ties", "Anti-Israel", "DSA Member", "Oct 7 — No Hamas Mention"],
-    "pillars": {
-      "words": true,
-      "funding": false,
-      "support": true,
-      "networks": true
-    },
+    "pillars": { "words": true, "funding": false, "support": true, "networks": true },
     "statements": [
-      {
-        "quote": "When the boot of the NYPD is on your neck, it's been laced by the IDF.",
-        "source": "DSA Panel — Verified Video",
-        "date": "2023",
-        "url": ""
-      },
-      {
-        "quote": "My love to the Holy Land Five. You better look 'em up.",
-        "source": "Rap Song \"Salam\" — Verified Audio",
-        "date": "2017",
-        "url": ""
-      },
-      {
-        "quote": "[Globalize the intifada captures] a desperate desire for equality.",
-        "source": "The Bulwark Interview",
-        "date": "2025",
-        "url": ""
-      }
+      { "quote": "When the boot of the NYPD is on your neck, it's been laced by the IDF.", "source": "DSA Panel — Verified Video", "date": "2023", "url": "" },
+      { "quote": "My love to the Holy Land Five. You better look 'em up.", "source": "Rap Song \"Salam\" — Verified Audio", "date": "2017", "url": "" },
+      { "quote": "[Globalize the intifada captures] a desperate desire for equality.", "source": "The Bulwark Interview", "date": "2025", "url": "" }
     ],
     "votes": [],
     "funding": [],
     "networks": ["DSA National"]
+  },
+  {
+    "id": "francesca-hong",
+    "name": "Francesca Hong",
+    "district": "N/A — Statewide",
+    "state": "Wisconsin",
+    "office": "Candidate for Governor",
+    "party": "Democrat",
+    "dsa_status": "DSA Endorsed",
+    "priority": "critical",
+    "photo": "",
+    "profile_url": "/reps/profiles/francesca-hong.html",
+    "tags": ["DSA Endorsed", "Abolish Borders", "Gov Takeover of Corporations", "Defund Pentagon", "Dismantle Police"],
+    "pillars": { "words": false, "funding": false, "support": true, "networks": false },
+    "statements": [],
+    "votes": [],
+    "funding": [],
+    "networks": ["DSA National"],
+    "record_summary": "Fox News \"Democracy '26\" coverage reported her platform includes abolishing borders, government takeover of major companies, defunding the Pentagon, and dismantling police — with abolishing the Senate being the one position she has stated she does not support.",
+    "sourceUrl": null,
+    "sourceName": "Fox News — Democracy '26 coverage (via @Republicans on X)"
+  },
+  {
+    "id": "abdul-el-sayed",
+    "name": "Abdul El-Sayed",
+    "district": "N/A",
+    "state": "Michigan",
+    "office": "Candidate",
+    "party": "Democrat",
+    "dsa_status": "DSA Endorsed",
+    "priority": "critical",
+    "photo": "",
+    "profile_url": "/reps/profiles/abdul-el-sayed.html",
+    "tags": ["DSA Endorsed", "Defund ICE"],
+    "pillars": { "words": false, "funding": false, "support": true, "networks": false },
+    "statements": [],
+    "votes": [],
+    "funding": [],
+    "networks": ["DSA National"],
+    "record_summary": "Referenced in a Tom Cotton post as wanting to \"defund the ICE\" in Michigan.",
+    "sourceUrl": null,
+    "sourceName": "Tom Cotton (@TomCottonAR) on X"
   }
 ]
