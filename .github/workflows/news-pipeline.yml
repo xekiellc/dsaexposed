@@ -2,7 +2,7 @@ name: DSA Exposed News Pipeline
 
 on:
   schedule:
-    - cron: '0 6,12,18,0 * * *'  # 6am, 12pm, 6pm, midnight UTC
+    - cron: '0 4,8,12,16,20,0 * * *'  # 6x/day: 4am, 8am, 12pm, 4pm, 8pm, midnight UTC
   workflow_dispatch:  # manual trigger
 
 jobs:
@@ -33,4 +33,33 @@ jobs:
           git config --global user.email 'bot@dsaexposed.com'
           git add data/news.json data/reps.json
           git diff --staged --quiet || git commit -m 'chore: update news feed and rep data [skip ci]'
+          git push
+
+  fetch-endorsements:
+    needs: fetch-news
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install axios
+
+      - name: Run endorsement scraper
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/fetch-endorsements.js
+
+      - name: Commit updated data
+        run: |
+          git config --global user.name 'DSA Exposed Bot'
+          git config --global user.email 'bot@dsaexposed.com'
+          git add data/reps.json data/discovered-chapter-links.json
+          git diff --staged --quiet || git commit -m 'chore: update reps from DSA chapter sources [skip ci]'
           git push
