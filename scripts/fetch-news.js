@@ -58,7 +58,6 @@ async function fetchArticles() {
         if (!article.title || !article.description) continue;
         if (article.source?.name === '[Removed]') continue;
 
-        // Basic relevance check before sending to Claude
         const text = (article.title + ' ' + article.description).toLowerCase();
         const isRelevant = RELEVANCE_KEYWORDS.some(kw => text.includes(kw));
         if (!isRelevant) continue;
@@ -74,7 +73,6 @@ async function fetchArticles() {
         });
       }
 
-      // Rate limit — NewsAPI allows 1 req/sec on free tier
       await new Promise(r => setTimeout(r, 1200));
 
     } catch (err) {
@@ -136,7 +134,6 @@ No explanation. No markdown. Just the JSON array.`;
 
   } catch (err) {
     console.error('Claude filtering error:', err.message);
-    // If Claude fails, return all articles that passed keyword filter
     return articles;
   }
 }
@@ -165,7 +162,7 @@ function categorizeArticle(article) {
 function slugify(name) {
   return name
     .toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip accents
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
@@ -179,15 +176,18 @@ async function extractRepsWithClaude(articles, existingReps) {
 
 Read the articles below. Identify any DSA-affiliated candidate, elected official, or major donor mentioned who is NOT already in this existing list: ${existingNames}
 
-For each NEW person found, extract:
+For each NEW person found, extract fields matching this exact schema:
 - name: full name
-- office: their current or sought office (e.g. "Candidate for Michigan Governor", "U.S. Representative, NY-14")
-- district: state/district if applicable, otherwise state
-- dsaTie: one sentence describing their documented DSA affiliation or endorsement, based only on what the article states
-- quote: a direct quote attributed to them in the article, if one exists — otherwise null
-- quoteCite: source and date for the quote, if a quote exists — otherwise null
-- record: 1-2 sentence factual summary of what the article reports about their positions or actions, staying close to the article's own language
-- tags: array of 2-4 short tags describing their positions (e.g. "DSA Member", "Abolish ICE", "Defund Pentagon")
+- district: district code if applicable (e.g. "NY-14"), otherwise "N/A"
+- state: state name
+- office: their current or sought office (e.g. "Candidate for Michigan Governor", "U.S. Representative")
+- party: political party if stated, otherwise "Democrat"
+- dsa_status: one of "DSA Member", "DSA Endorsed", "Former DSA Member" — pick the one the article most directly supports
+- priority: "critical" if a sitting/incoming federal or statewide official, otherwise "high"
+- tags: array of 2-5 short tags describing their positions (e.g. "DSA Member", "Abolish ICE", "Defund Pentagon", "Anti-Israel")
+- statements: array of objects {quote, source, date, url} for any direct quotes attributed to them in the article — empty array if none
+- record_summary: 1-2 sentence factual summary of what the article reports, staying close to the article's own language
+- networks: array of any named organizations tied to them (e.g. "DSA National", "CAIR", "BDS Movement") — based only on what the article states
 - sourceUrl: the article URL this was drawn from
 - sourceName: the article's source publication
 
@@ -218,15 +218,35 @@ Respond with ONLY a JSON array of person objects as described above. No explanat
     return extracted
       .filter(r => r && r.name)
       .map(r => ({
-        slug: slugify(r.name),
+        id: slugify(r.name),
         name: r.name,
+        district: r.district || 'N/A',
+        state: r.state || null,
         office: r.office || null,
-        district: r.district || null,
-        dsaTie: r.dsaTie || null,
-        quote: r.quote || null,
-        quoteCite: r.quoteCite || null,
-        record: r.record || null,
+        party: r.party || 'Democrat',
+        dsa_status: r.dsa_status || 'DSA Endorsed',
+        priority: r.priority === 'critical' ? 'critical' : 'high',
+        photo: '',
+        profile_url: `/reps/profiles/${slugify(r.name)}.html`,
         tags: Array.isArray(r.tags) ? r.tags : [],
+        pillars: {
+          words: Array.isArray(r.statements) && r.statements.length > 0,
+          funding: false,
+          support: true,
+          networks: Array.isArray(r.networks) && r.networks.length > 0
+        },
+        statements: Array.isArray(r.statements)
+          ? r.statements.map(s => ({
+              quote: s.quote || '',
+              source: s.source || '',
+              date: s.date || '',
+              url: s.url || ''
+            }))
+          : [],
+        votes: [],
+        funding: [],
+        networks: Array.isArray(r.networks) ? r.networks : [],
+        record_summary: r.record_summary || null,
         sourceUrl: r.sourceUrl || null,
         sourceName: r.sourceName || null,
         addedAt: new Date().toISOString()
@@ -241,7 +261,6 @@ Respond with ONLY a JSON array of person objects as described above. No explanat
 async function main() {
   console.log('DSA Exposed News Pipeline starting...');
 
-  // Fetch articles
   console.log('Fetching articles from NewsAPI...');
   const rawArticles = await fetchArticles();
   console.log(`Fetched ${rawArticles.length} candidate articles`);
@@ -251,12 +270,10 @@ async function main() {
     return;
   }
 
-  // Filter with Claude
   console.log('Filtering with Claude Haiku...');
   const filteredArticles = await filterWithClaude(rawArticles);
   console.log(`${filteredArticles.length} articles passed Claude filter`);
 
-  // Load existing news.json
   const newsPath = path.join(process.cwd(), 'data', 'news.json');
   let existingNews = [];
   try {
@@ -265,7 +282,6 @@ async function main() {
     existingNews = [];
   }
 
-  // Merge and deduplicate news
   const existingUrls = new Set(existingNews.map(a => a.url));
   const newArticles = filteredArticles
     .filter(a => !existingUrls.has(a.url))
@@ -277,10 +293,8 @@ async function main() {
 
   console.log(`${newArticles.length} new articles to add`);
 
-  // Prepend new articles, keep last 100 total
   const mergedNews = [...newArticles, ...existingNews].slice(0, 100);
 
-  // Write to data/news.json
   fs.writeFileSync(newsPath, JSON.stringify(mergedNews, null, 2));
   console.log(`news.json updated with ${mergedNews.length} total articles`);
 
@@ -297,8 +311,8 @@ async function main() {
   const newReps = await extractRepsWithClaude(filteredArticles, existingReps);
   console.log(`${newReps.length} new reps/candidates found`);
 
-  const existingSlugs = new Set(existingReps.map(r => r.slug));
-  const dedupedNewReps = newReps.filter(r => !existingSlugs.has(r.slug));
+  const existingIds = new Set(existingReps.map(r => r.id));
+  const dedupedNewReps = newReps.filter(r => !existingIds.has(r.id));
 
   const mergedReps = [...existingReps, ...dedupedNewReps];
 
