@@ -162,6 +162,82 @@ function categorizeArticle(article) {
   return 'general';
 }
 
+function slugify(name) {
+  return name
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip accents
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+async function extractRepsWithClaude(articles, existingReps) {
+  if (articles.length === 0) return [];
+
+  const existingNames = existingReps.map(r => r.name).join(', ') || 'none yet';
+
+  const prompt = `You are a research assistant for DSAExposed.com, a watchdog site documenting Democratic Socialists of America (DSA) affiliated candidates, elected officials, and donors.
+
+Read the articles below. Identify any DSA-affiliated candidate, elected official, or major donor mentioned who is NOT already in this existing list: ${existingNames}
+
+For each NEW person found, extract:
+- name: full name
+- office: their current or sought office (e.g. "Candidate for Michigan Governor", "U.S. Representative, NY-14")
+- district: state/district if applicable, otherwise state
+- dsaTie: one sentence describing their documented DSA affiliation or endorsement, based only on what the article states
+- quote: a direct quote attributed to them in the article, if one exists — otherwise null
+- quoteCite: source and date for the quote, if a quote exists — otherwise null
+- record: 1-2 sentence factual summary of what the article reports about their positions or actions, staying close to the article's own language
+- tags: array of 2-4 short tags describing their positions (e.g. "DSA Member", "Abolish ICE", "Defund Pentagon")
+- sourceUrl: the article URL this was drawn from
+- sourceName: the article's source publication
+
+Only include a person if the article gives enough specific, attributable information to write an accurate entry. Do not infer or embellish beyond what the article states. If no new people are found, return an empty array.
+
+Articles:
+${articles.map((a, i) => `[${i}] TITLE: ${a.title}\nDESCRIPTION: ${a.description}\nURL: ${a.url}\nSOURCE: ${a.source}`).join('\n\n')}
+
+Respond with ONLY a JSON array of person objects as described above. No explanation, no markdown, just the JSON array. If nothing qualifies, respond with [].`;
+
+  try {
+    const response = await axios.post('https://api.anthropic.com/v1/messages', {
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 2000,
+      messages: [{ role: 'user', content: prompt }]
+    }, {
+      headers: {
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json'
+      }
+    });
+
+    const text = response.data.content[0].text.trim();
+    const extracted = JSON.parse(text);
+    if (!Array.isArray(extracted)) return [];
+
+    return extracted
+      .filter(r => r && r.name)
+      .map(r => ({
+        slug: slugify(r.name),
+        name: r.name,
+        office: r.office || null,
+        district: r.district || null,
+        dsaTie: r.dsaTie || null,
+        quote: r.quote || null,
+        quoteCite: r.quoteCite || null,
+        record: r.record || null,
+        tags: Array.isArray(r.tags) ? r.tags : [],
+        sourceUrl: r.sourceUrl || null,
+        sourceName: r.sourceName || null,
+        addedAt: new Date().toISOString()
+      }));
+
+  } catch (err) {
+    console.error('Claude rep extraction error:', err.message);
+    return [];
+  }
+}
+
 async function main() {
   console.log('DSA Exposed News Pipeline starting...');
 
@@ -182,15 +258,15 @@ async function main() {
 
   // Load existing news.json
   const newsPath = path.join(process.cwd(), 'data', 'news.json');
-  let existing = [];
+  let existingNews = [];
   try {
-    existing = JSON.parse(fs.readFileSync(newsPath, 'utf8'));
+    existingNews = JSON.parse(fs.readFileSync(newsPath, 'utf8'));
   } catch {
-    existing = [];
+    existingNews = [];
   }
 
-  // Merge and deduplicate
-  const existingUrls = new Set(existing.map(a => a.url));
+  // Merge and deduplicate news
+  const existingUrls = new Set(existingNews.map(a => a.url));
   const newArticles = filteredArticles
     .filter(a => !existingUrls.has(a.url))
     .map(a => ({
@@ -202,11 +278,32 @@ async function main() {
   console.log(`${newArticles.length} new articles to add`);
 
   // Prepend new articles, keep last 100 total
-  const merged = [...newArticles, ...existing].slice(0, 100);
+  const mergedNews = [...newArticles, ...existingNews].slice(0, 100);
 
   // Write to data/news.json
-  fs.writeFileSync(newsPath, JSON.stringify(merged, null, 2));
-  console.log(`news.json updated with ${merged.length} total articles`);
+  fs.writeFileSync(newsPath, JSON.stringify(mergedNews, null, 2));
+  console.log(`news.json updated with ${mergedNews.length} total articles`);
+
+  // --- Rep extraction pass ---
+  const repsPath = path.join(process.cwd(), 'data', 'reps.json');
+  let existingReps = [];
+  try {
+    existingReps = JSON.parse(fs.readFileSync(repsPath, 'utf8'));
+  } catch {
+    existingReps = [];
+  }
+
+  console.log('Extracting DSA-affiliated reps/candidates/donors with Claude...');
+  const newReps = await extractRepsWithClaude(filteredArticles, existingReps);
+  console.log(`${newReps.length} new reps/candidates found`);
+
+  const existingSlugs = new Set(existingReps.map(r => r.slug));
+  const dedupedNewReps = newReps.filter(r => !existingSlugs.has(r.slug));
+
+  const mergedReps = [...existingReps, ...dedupedNewReps];
+
+  fs.writeFileSync(repsPath, JSON.stringify(mergedReps, null, 2));
+  console.log(`reps.json updated with ${mergedReps.length} total entries (${dedupedNewReps.length} new)`);
 }
 
 main().catch(err => {
