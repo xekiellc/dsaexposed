@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title id="pageTitle">Rep Profile — DSA Exposed</title>
+  <meta id="metaDesc" name="description" content="DSA-affiliated official profile — DSA Exposed">
+  <link rel="stylesheet" href="/assets/global.css"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PK58BBCJX7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-PK58BBCJX7");</script>
+  <style>
+    .profile-header{padding:64px 48px 40px;border-bottom:2px solid var(--ink);}
+    .profile-eyebrow{font-family:var(--font-mono);font-size:10px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+    .profile-name{font-family:var(--font-display);font-weight:900;font-size:clamp(32px,5vw,56px);color:var(--ink);margin-bottom:16px;line-height:1.05;}
+    .profile-office{font-family:var(--font-mono);font-size:13px;color:var(--muted);letter-spacing:1px;margin-bottom:20px;}
+    .profile-tags{display:flex;flex-wrap:wrap;gap:8px;}
+    .section{padding:48px;border-bottom:1px solid var(--rule);}
+    .section-eyebrow{font-family:var(--font-mono);font-size:10px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+    .section-title{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--ink);margin-bottom:20px;}
+    .statement-block{border-left:3px solid var(--red);padding-left:20px;margin-bottom:24px;}
+    .statement-quote{font-family:var(--font-display);font-size:17px;font-style:italic;color:var(--ink);line-height:1.6;margin-bottom:8px;}
+    .statement-cite{font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:1px;}
+    .record-text{font-size:15px;color:var(--muted);line-height:1.75;max-width:760px;}
+    .data-table th,.data-table td{font-size:13px;}
+    .network-pills{display:flex;flex-wrap:wrap;gap:8px;}
+    .network-pill{font-family:var(--font-mono);font-size:11px;letter-spacing:1px;border:1px solid var(--rule);padding:6px 14px;color:var(--ink);}
+    .source-note{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:1px;padding-top:16px;border-top:1px solid var(--rule);margin-top:8px;}
+    .profile-loading,.profile-error{font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:2px;padding:80px 48px;}
+    .profile-error{color:var(--red);}
+    @media(max-width:900px){.profile-header,.section{padding:40px 24px;}}
+  </style>
+</head>
+<body>
+<div class="ticker-wrap"></div><script src="/components/ticker.js"></script>
+<nav></nav><script src="/components/nav.js"></script>
+
+<div id="profileRoot">
+  <div class="profile-loading">Loading profile...</div>
+</div>
+
+<footer></footer><div class="footer-bottom"></div>
+<script src="/components/footer.js"></script>
+<script src="/components/search.js"></script>
+
+<script>
+(function () {
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  function tagClass(tag) {
+    var t = (tag || '').toLowerCase();
+    if (t.indexOf('hamas') > -1 || t.indexOf('terror') > -1 || t.indexOf('genocide') > -1 || t.indexOf('celebration') > -1 || t.indexOf('refused') > -1 || t.indexOf('censur') > -1) return 'danger';
+    return 'warn';
+  }
+
+  function getSlugFromPath() {
+    var path = window.location.pathname;
+    var match = path.match(/\/reps\/profiles\/([^\/]+?)(\.html)?\/?$/);
+    return match ? match[1] : null;
+  }
+
+  function renderProfile(rep) {
+    document.getElementById('pageTitle').textContent = rep.name + ' — DSA Exposed';
+    document.getElementById('metaDesc').setAttribute('content', (rep.record_summary || rep.office || 'DSA-affiliated official') + ' — documented on DSA Exposed.');
+
+    var root = document.getElementById('profileRoot');
+    var eyebrowParts = [rep.office, rep.district && rep.district !== 'N/A' ? rep.district : rep.state, rep.dsa_status].filter(Boolean);
+    var tags = (rep.tags || []).map(function (t) {
+      return '<span class="tag ' + tagClass(t) + '">' + escapeHtml(t) + '</span>';
+    }).join('');
+
+    var html = '';
+
+    html += '<div class="profile-header">';
+    html += '<div class="profile-eyebrow">// ' + escapeHtml(eyebrowParts.join(' · ')) + '</div>';
+    html += '<div class="profile-name">' + escapeHtml(rep.name) + '</div>';
+    html += '<div class="profile-tags">' + tags + '</div>';
+    html += '</div>';
+
+    // Record summary
+    if (rep.record_summary) {
+      html += '<section class="section">';
+      html += '<div class="section-eyebrow">// On Record</div>';
+      html += '<div class="section-title">Documented Record</div>';
+      html += '<div class="record-text">' + escapeHtml(rep.record_summary) + '</div>';
+      html += '</section>';
+    }
+
+    // Statements
+    if (rep.statements && rep.statements.length > 0) {
+      html += '<section class="section">';
+      html += '<div class="section-eyebrow">// Their Words</div>';
+      html += '<div class="section-title">Statement Archive</div>';
+      rep.statements.forEach(function (s) {
+        html += '<div class="statement-block">';
+        html += '<div class="statement-quote">"' + escapeHtml(s.quote) + '"</div>';
+        html += '<div class="statement-cite">' + escapeHtml([s.source, s.date].filter(Boolean).join(' — ')) + '</div>';
+        html += '</div>';
+      });
+      html += '</section>';
+    }
+
+    // Votes
+    if (rep.votes && rep.votes.length > 0) {
+      html += '<section class="section" style="background:var(--paper-dk);">';
+      html += '<div class="section-eyebrow">// Voting Record</div>';
+      html += '<div class="section-title">Roll Call Votes</div>';
+      html += '<div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Date</th><th>Bill</th><th>Vote</th><th>Roll Call</th></tr></thead><tbody>';
+      rep.votes.forEach(function (v) {
+        html += '<tr><td>' + escapeHtml(v.date) + '</td><td>' + escapeHtml(v.bill) + '</td><td>' + escapeHtml(v.vote) + '</td><td>' + escapeHtml(v.roll_call) + '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+      html += '</section>';
+    }
+
+    // Funding
+    if (rep.funding && rep.funding.length > 0) {
+      html += '<section class="section">';
+      html += '<div class="section-eyebrow">// Follow the Money</div>';
+      html += '<div class="section-title">Funding Ties</div>';
+      html += '<div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Source</th><th>Amount</th><th>Cycle</th><th>Risk</th></tr></thead><tbody>';
+      rep.funding.forEach(function (f) {
+        html += '<tr><td>' + escapeHtml(f.source) + '</td><td>' + escapeHtml(f.amount) + '</td><td>' + escapeHtml(f.cycle) + '</td><td>' + escapeHtml(f.risk) + '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+      html += '</section>';
+    }
+
+    // Networks
+    if (rep.networks && rep.networks.length > 0) {
+      html += '<section class="section" style="background:var(--paper-dk);">';
+      html += '<div class="section-eyebrow">// Organizational Ties</div>';
+      html += '<div class="section-title">Networks</div>';
+      html += '<div class="network-pills">' + rep.networks.map(function (n) {
+        return '<span class="network-pill">' + escapeHtml(n) + '</span>';
+      }).join('') + '</div>';
+      html += '</section>';
+    }
+
+    // Source note (for pipeline-added entries)
+    if (rep.sourceName || rep.sourceUrl) {
+      html += '<section class="section">';
+      var sourceLine = 'Source: ' + escapeHtml(rep.sourceName || 'Unknown');
+      if (rep.sourceUrl) {
+        sourceLine += ' — <a href="' + escapeHtml(rep.sourceUrl) + '" target="_blank" rel="noopener">' + escapeHtml(rep.sourceUrl) + '</a>';
+      }
+      html += '<div class="source-note">' + sourceLine + '</div>';
+      html += '</section>';
+    }
+
+    root.innerHTML = html;
+  }
+
+  var slug = getSlugFromPath();
+
+  if (!slug) {
+    document.getElementById('profileRoot').innerHTML = '<div class="profile-error">No profile specified.</div>';
+    return;
+  }
+
+  fetch('/data/reps.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('Failed to load reps.json');
+      return res.json();
+    })
+    .then(function (reps) {
+      var rep = (reps || []).find(function (r) { return r.id === slug; });
+      if (!rep) {
+        document.getElementById('profileRoot').innerHTML = '<div class="profile-error">Profile not found for "' + escapeHtml(slug) + '".</div>';
+        return;
+      }
+      renderProfile(rep);
+    })
+    .catch(function (err) {
+      document.getElementById('profileRoot').innerHTML = '<div class="profile-error">Could not load profile data. (' + err.message + ')</div>';
+    });
+})();
+</script>
+</body></html>
