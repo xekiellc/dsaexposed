@@ -18,6 +18,7 @@
     .card-body strong{color:var(--ink);}
     .card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
     .card-source{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px;border-top:1px solid var(--rule);padding-top:10px;}
+    .rep-loading{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:2px;padding:20px 0;}
     @media(max-width:900px){.section{padding:40px 24px;}.grid-3,.grid-2{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -40,56 +41,19 @@
   <div class="section-eyebrow">// Priority Files — NYC 2026 Sweep</div>
   <div class="section-title">Highest-Threat Officials</div>
   <hr class="section-rule"/>
-  <div class="grid-2">
-    <a href="/reps/profiles/mamdani.html" class="card" style="display:block;border-top-color:var(--red);">
-      <div style="position:absolute;top:16px;right:16px;"><span class="stamp">NYC Mayor</span></div>
-      <div class="card-eyebrow">// NYC Mayor · DSA Member · Sweep Architect</div>
-      <div class="card-title">Zohran Mamdani</div>
-      <div class="card-tags"><span class="tag danger">Hamas Praise</span><span class="tag danger">HLF Ties</span><span class="tag danger">Intifada Defense</span><span class="tag warn">Day-1 Anti-Israel Orders</span></div>
-      <div class="card-body">Praised Holy Land Foundation Hamas financiers in 2017 rap. Defended "globalize the intifada." Revoked all pro-Israel NYC decrees Day 1. His slate went 3-for-3 in June 2026 congressional primaries. <strong>Most powerful DSA official in America.</strong></div>
-      <div class="card-source">View Full Profile &rarr;</div>
-    </a>
-    <a href="/reps/profiles/avila-chevalier.html" class="card" style="display:block;border-top-color:var(--red);">
-      <div style="position:absolute;top:16px;right:16px;"><span class="stamp">Primary Win 2026</span></div>
-      <div class="card-eyebrow">// NY-13 · DSA Member · Likely Congresswoman 2027</div>
-      <div class="card-title">Darializa Avila Chevalier</div>
-      <div class="card-tags"><span class="tag danger">Refused Hamas Condemnation</span><span class="tag danger">Oct 8 Rally</span><span class="tag warn">Abolish Police/Borders</span></div>
-      <div class="card-body">Attended pro-Hamas Times Square rally Oct. 8, 2023. Refused to condemn Hamas at candidate forum. Co-founded Columbia University Apartheid Divest. "All deportations are wrong — even for convicted criminals."</div>
-      <div class="card-source">View Full Profile &rarr;</div>
-    </a>
-    <a href="/reps/profiles/valdez.html" class="card" style="display:block;">
-      <div style="position:absolute;top:16px;right:16px;"><span class="stamp">Primary Win 2026</span></div>
-      <div class="card-eyebrow">// NY-7 · DSA Member · Likely Congresswoman 2027</div>
-      <div class="card-title">Claire Valdez</div>
-      <div class="card-tags"><span class="tag danger">Oct 7 Celebration</span><span class="tag danger">DSA Member</span><span class="tag warn">BDS Support</span></div>
-      <div class="card-body">Liked X post Oct. 7 celebrating Hamas attack. Interviewed streamer who called Jews "demonic ethnicity." Pledged to block all military aid to Israel. Refused AIPAC, J Street, DMFI donations.</div>
-      <div class="card-source">View Full Profile &rarr;</div>
-    </a>
-    <a href="/reps/profiles/lander.html" class="card" style="display:block;">
-      <div style="position:absolute;top:16px;right:16px;"><span class="stamp">Primary Win 2026</span></div>
-      <div class="card-eyebrow">// NY-10 · Mamdani-Endorsed · Likely Congressman 2027</div>
-      <div class="card-title">Brad Lander</div>
-      <div class="card-tags"><span class="tag danger">Genocide Rhetoric</span><span class="tag warn">Mamdani Endorsed</span><span class="tag warn">Former DSA Member</span></div>
-      <div class="card-body">Called Israel's campaign "genocide" throughout race. Ran as Mamdani's chosen candidate. Toppled 2-term incumbent Dan Goldman. Victory party: "Free Free Palestine" chants.</div>
-      <div class="card-source">View Full Profile &rarr;</div>
-    </a>
-    <a href="/reps/profiles/aoc.html" class="card" style="display:block;">
-      <div class="card-eyebrow">// NY-14 · DSA Member · U.S. Congress</div>
-      <div class="card-title">Alexandria Ocasio-Cortez</div>
-      <div class="card-tags"><span class="tag danger">DSA Member</span><span class="tag warn">Iron Dome NO Vote</span><span class="tag warn">Hamas PRESENT</span></div>
-      <div class="card-body">Voted NO on Iron Dome funding (Roll Call 309, 2021). Voted PRESENT on Hamas condemnation resolution. DSA founding figure in Congress. Endorsed Mamdani for NYC Mayor.</div>
-      <div class="card-source">View Full Profile &rarr;</div>
-    </a>
-    <a href="/reps/profiles/tlaib.html" class="card" style="display:block;">
-      <div class="card-eyebrow">// MI-12 · DSA-Endorsed · U.S. Congress</div>
-      <div class="card-title">Rashida Tlaib</div>
-      <div class="card-tags"><span class="tag danger">Censured by House</span><span class="tag danger">CAIR-Funded</span><span class="tag warn">Hamas NO Condemnation</span></div>
-      <div class="card-body">Censured by U.S. House for promoting Hamas rallying cry. Voted NO on condemning Hamas Oct. 7 attack. CAIR bundled $140,000+ for her campaigns.</div>
-      <div class="card-source">View Full Profile &rarr;</div>
-    </a>
+  <div class="grid-2" id="criticalReps">
+    <div class="rep-loading">Loading tracked officials...</div>
   </div>
 </section>
 <section class="section" style="background:var(--paper-dk);">
+  <div class="section-eyebrow">// Full Archive</div>
+  <div class="section-title">All Documented Officials &amp; Candidates</div>
+  <hr class="section-rule"/>
+  <div class="grid-3" id="otherReps">
+    <div class="rep-loading">Loading full archive...</div>
+  </div>
+</section>
+<section class="section">
   <div class="section-eyebrow">// NY State Legislature — June 2026</div>
   <div class="section-title">Albany DSA Bloc Now 15+ Lawmakers</div>
   <hr class="section-rule"/>
@@ -114,4 +78,83 @@
 <footer></footer><div class="footer-bottom"></div>
 <script src="/components/footer.js"></script>
 <script src="/components/search.js"></script>
+
+<script>
+(function () {
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  function tagClass(tag) {
+    var t = (tag || '').toLowerCase();
+    if (t.indexOf('hamas') > -1 || t.indexOf('terror') > -1 || t.indexOf('genocide') > -1 || t.indexOf('celebration') > -1 || t.indexOf('refused') > -1 || t.indexOf('censur') > -1) return 'danger';
+    return 'warn';
+  }
+
+  function buildCriticalCard(rep) {
+    var quote = (rep.statements && rep.statements[0] && rep.statements[0].quote) ? rep.statements[0].quote : (rep.record_summary || '');
+    var eyebrowParts = [rep.office, rep.dsa_status].filter(Boolean);
+    var tags = (rep.tags || []).slice(0, 4).map(function (t) {
+      return '<span class="tag ' + tagClass(t) + '">' + escapeHtml(t) + '</span>';
+    }).join('');
+
+    return '<a href="' + escapeHtml(rep.profile_url || '#') + '" class="card" style="display:block;">' +
+      '<div class="card-eyebrow">// ' + escapeHtml(eyebrowParts.join(' · ')) + '</div>' +
+      '<div class="card-title">' + escapeHtml(rep.name) + '</div>' +
+      '<div class="card-tags">' + tags + '</div>' +
+      '<div class="card-body">' + escapeHtml(quote) + '</div>' +
+      '<div class="card-source">View Full Profile &rarr;</div>' +
+      '</a>';
+  }
+
+  function buildOtherCard(rep) {
+    var quote = (rep.statements && rep.statements[0] && rep.statements[0].quote) ? rep.statements[0].quote : (rep.record_summary || 'Documentation in progress.');
+    var eyebrowParts = [rep.district && rep.district !== 'N/A' ? rep.district : rep.state, rep.dsa_status].filter(Boolean);
+    var tags = (rep.tags || []).slice(0, 3).map(function (t) {
+      return '<span class="tag ' + tagClass(t) + '">' + escapeHtml(t) + '</span>';
+    }).join('');
+
+    return '<a href="' + escapeHtml(rep.profile_url || '#') + '" class="card" style="display:block;">' +
+      '<div class="card-eyebrow">// ' + escapeHtml(eyebrowParts.join(' · ')) + '</div>' +
+      '<div class="card-title">' + escapeHtml(rep.name) + '</div>' +
+      '<div class="card-tags">' + tags + '</div>' +
+      '<div class="card-body">' + escapeHtml(quote) + '</div>' +
+      '<div class="card-source">View Full Profile &rarr;</div>' +
+      '</a>';
+  }
+
+  fetch('/data/reps.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('Failed to load reps.json');
+      return res.json();
+    })
+    .then(function (reps) {
+      var criticalEl = document.getElementById('criticalReps');
+      var otherEl = document.getElementById('otherReps');
+
+      if (!Array.isArray(reps) || reps.length === 0) {
+        criticalEl.innerHTML = '<div class="rep-loading">No reps documented yet.</div>';
+        otherEl.innerHTML = '';
+        return;
+      }
+
+      var critical = reps.filter(function (r) { return r.priority === 'critical'; });
+      var others = reps.filter(function (r) { return r.priority !== 'critical'; });
+
+      criticalEl.innerHTML = critical.length
+        ? critical.map(buildCriticalCard).join('')
+        : '<div class="rep-loading">No critical-priority officials documented yet.</div>';
+
+      otherEl.innerHTML = others.length
+        ? others.map(buildOtherCard).join('')
+        : '<div class="rep-loading">No additional officials documented yet.</div>';
+    })
+    .catch(function (err) {
+      document.getElementById('criticalReps').innerHTML = '<div class="rep-loading">Could not load rep data. (' + err.message + ')</div>';
+      document.getElementById('otherReps').innerHTML = '';
+    });
+})();
+</script>
 </body></html>
