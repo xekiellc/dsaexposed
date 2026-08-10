@@ -178,73 +178,94 @@
     "networks": ["DSA National", "CAIR", "AMP", "BDS Movement", "Justice Democrats"]
   },
   {
-    "id": "nyc-primary-winner-1",
-    "name": "[NYC Primary Winner #1]",
-    "district": "TBD",
+    "id": "claire-valdez",
+    "name": "Claire Valdez",
+    "district": "NY-7",
     "state": "New York",
-    "office": "U.S. Representative",
+    "office": "Democratic Nominee (Likely U.S. Representative, Jan 2027)",
     "party": "Democrat",
-    "dsa_status": "DSA Endorsed",
+    "dsa_status": "DSA Member",
     "priority": "critical",
     "photo": "",
-    "profile_url": "/reps/profiles/nyc-primary-winner-1.html",
-    "tags": ["Terrorism Ties", "Anti-America", "DSA Endorsed", "BDS Support", "2026 Primary Win"],
+    "profile_url": "/reps/profiles/claire-valdez.html",
+    "tags": ["DSA Member", "Oct 7 Celebration", "Anti-Israel", "BDS Support", "2026 Primary Win"],
     "pillars": {
       "words": true,
-      "funding": true,
+      "funding": false,
       "support": true,
       "networks": true
     },
-    "statements": [],
+    "statements": [
+      {
+        "quote": "This is exactly why I really love being a member of DSA.",
+        "source": "Interview with streamer who called Jews \"demonic ethnicity\"",
+        "date": "2026-05",
+        "url": ""
+      }
+    ],
     "votes": [],
     "funding": [],
-    "networks": ["DSA National", "BDS Movement"]
+    "networks": ["DSA National"]
   },
   {
-    "id": "nyc-primary-winner-2",
-    "name": "[NYC Primary Winner #2]",
-    "district": "TBD",
+    "id": "darializa-avila-chevalier",
+    "name": "Darializa Avila Chevalier",
+    "district": "NY-13",
     "state": "New York",
-    "office": "U.S. Representative",
+    "office": "Democratic Nominee (Likely U.S. Representative, Jan 2027)",
     "party": "Democrat",
-    "dsa_status": "DSA Endorsed",
+    "dsa_status": "DSA Member",
     "priority": "critical",
     "photo": "",
-    "profile_url": "/reps/profiles/nyc-primary-winner-2.html",
-    "tags": ["Hamas Support", "Anti-Capitalism", "DSA Endorsed", "BDS Support", "2026 Primary Win"],
+    "profile_url": "/reps/profiles/darializa-avila-chevalier.html",
+    "tags": ["DSA Member", "Refused Hamas Condemnation", "Oct 8 Rally", "Abolish Police/Borders", "2026 Primary Win"],
     "pillars": {
       "words": true,
-      "funding": true,
+      "funding": false,
       "support": true,
       "networks": true
     },
-    "statements": [],
+    "statements": [
+      {
+        "quote": "The premise of that question ignores the 75 years of occupation...",
+        "source": "Broadway Democrats Forum — asked directly to condemn Hamas's Oct. 7 attack",
+        "date": "2026",
+        "url": ""
+      }
+    ],
     "votes": [],
     "funding": [],
-    "networks": ["DSA National", "CAIR", "BDS Movement"]
+    "networks": ["DSA National"]
   },
   {
-    "id": "nyc-primary-winner-3",
-    "name": "[NYC Primary Winner #3]",
-    "district": "TBD",
+    "id": "brad-lander",
+    "name": "Brad Lander",
+    "district": "NY-10",
     "state": "New York",
-    "office": "U.S. Representative",
+    "office": "Democratic Nominee (Likely U.S. Representative, Jan 2027)",
     "party": "Democrat",
-    "dsa_status": "DSA Endorsed",
-    "priority": "critical",
+    "dsa_status": "Former DSA Member",
+    "priority": "high",
     "photo": "",
-    "profile_url": "/reps/profiles/nyc-primary-winner-3.html",
-    "tags": ["Terrorism Ties", "Communist Platform", "DSA Endorsed", "BDS Support", "2026 Primary Win"],
+    "profile_url": "/reps/profiles/brad-lander.html",
+    "tags": ["Genocide Rhetoric", "Anti-Israel", "Mamdani Endorsed", "Former DSA Member", "2026 Primary Win"],
     "pillars": {
       "words": true,
-      "funding": true,
+      "funding": false,
       "support": true,
-      "networks": true
+      "networks": false
     },
-    "statements": [],
+    "statements": [
+      {
+        "quote": "We are not complicit in occupation and genocide.",
+        "source": "Campaign Rally with Mamdani",
+        "date": "2026-06",
+        "url": ""
+      }
+    ],
     "votes": [],
     "funding": [],
-    "networks": ["DSA National", "BDS Movement"]
+    "networks": []
   },
   {
     "id": "cori-bush",
@@ -321,5 +342,47 @@
     "votes": [],
     "funding": [],
     "networks": ["DSA National", "Justice Democrats"]
+  },
+  {
+    "id": "zohran-mamdani",
+    "name": "Zohran Mamdani",
+    "district": "N/A — Citywide",
+    "state": "New York",
+    "office": "Mayor of New York City",
+    "party": "Democrat",
+    "dsa_status": "DSA Member",
+    "priority": "critical",
+    "photo": "",
+    "profile_url": "/reps/profiles/mamdani.html",
+    "tags": ["Hamas Praise", "HLF Ties", "Anti-Israel", "DSA Member", "Oct 7 — No Hamas Mention"],
+    "pillars": {
+      "words": true,
+      "funding": false,
+      "support": true,
+      "networks": true
+    },
+    "statements": [
+      {
+        "quote": "When the boot of the NYPD is on your neck, it's been laced by the IDF.",
+        "source": "DSA Panel — Verified Video",
+        "date": "2023",
+        "url": ""
+      },
+      {
+        "quote": "My love to the Holy Land Five. You better look 'em up.",
+        "source": "Rap Song \"Salam\" — Verified Audio",
+        "date": "2017",
+        "url": ""
+      },
+      {
+        "quote": "[Globalize the intifada captures] a desperate desire for equality.",
+        "source": "The Bulwark Interview",
+        "date": "2025",
+        "url": ""
+      }
+    ],
+    "votes": [],
+    "funding": [],
+    "networks": ["DSA National"]
   }
 ]
