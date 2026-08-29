@@ -63,3 +63,30 @@ jobs:
           git add data/reps.json data/discovered-chapter-links.json
           git diff --staged --quiet || git commit -m 'chore: update reps from DSA chapter sources [skip ci]'
           git push
+
+  fetch-quotes:
+    needs: fetch-endorsements
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Run quote extraction
+        env:
+          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/fetch-quotes.js
+
+      - name: Commit updated data
+        run: |
+          git config --global user.name 'DSA Exposed Bot'
+          git config --global user.email 'bot@dsaexposed.com'
+          git add data/own-words.json
+          git diff --staged --quiet || git commit -m 'chore: update in-their-own-words quotes [skip ci]'
+          git push
