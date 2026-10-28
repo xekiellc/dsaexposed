@@ -32,7 +32,7 @@ jobs:
           git config --global user.name 'DSA Exposed Bot'
           git config --global user.email 'bot@dsaexposed.com'
           git add data/news.json data/reps.json
-          git diff --staged --quiet || git commit -m 'chore: update news feed and rep data [skip ci]'
+          git diff --staged --quiet || git commit -m 'chore: update news feed and rep data'
           git push
 
   fetch-endorsements:
@@ -61,7 +61,7 @@ jobs:
           git config --global user.name 'DSA Exposed Bot'
           git config --global user.email 'bot@dsaexposed.com'
           git add data/reps.json data/discovered-chapter-links.json
-          git diff --staged --quiet || git commit -m 'chore: update reps from DSA chapter sources [skip ci]'
+          git diff --staged --quiet || git commit -m 'chore: update reps from DSA chapter sources'
           git push
 
   fetch-quotes:
@@ -88,5 +88,5 @@ jobs:
           git config --global user.name 'DSA Exposed Bot'
           git config --global user.email 'bot@dsaexposed.com'
           git add data/own-words.json
-          git diff --staged --quiet || git commit -m 'chore: update in-their-own-words quotes [skip ci]'
+          git diff --staged --quiet || git commit -m 'chore: update in-their-own-words quotes'
           git push
